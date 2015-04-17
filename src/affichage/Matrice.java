@@ -16,4 +16,25 @@ public class Matrice {
 		
 		this.pxls = new Pixel[w][h];
 	}
+	
+	/**
+	 * Set Pixel
+	 * @param x Colonne
+	 * @param y Ligne
+	 * @param p Nouveau Pixel
+	 * @return True si le Pixel à été changé, false si non
+	 */
+	private boolean setPixel(int x, int y, Pixel p) {
+		// Si on ne dépasse pas de la matrice
+		if (x <= largeur &&
+			y <= hauteur &&
+			x >= 0 &&
+			y >= 0)
+		{
+			pxls[x][y] = p;
+			return true;
+		}
+		else
+			return false:
+	}
 }
