@@ -14,7 +14,7 @@ public class Matrice {
 		this.largeur = w;
 		this.hauteur = h;
 		
-		this.pxls = new Pixel[w][h];
+		this.pxls = new Pixel[h][w];
 		
 		// Mettre tout les pixels par defaut
 		Pixel defaultPixel = new Pixel('t', Couleur.BLUE, Couleur.RED);
@@ -26,19 +26,19 @@ public class Matrice {
 	
 	/**
 	 * Set Pixel
-	 * @param x Colonne
 	 * @param y Ligne
+	 * @param x Colonne
 	 * @param p Nouveau Pixel
 	 * @return True si le Pixel à été changé, false si non
 	 */
-	private boolean setPixel(int x, int y, Pixel p) {
+	private boolean setPixel(int y, int x, Pixel p) {
 		// Si on ne dépasse pas de la matrice
 		if (x <= this.largeur &&
 			y <= this.hauteur &&
 			x >= 0 &&
 			y >= 0)
 		{
-			pxls[x][y] = p;
+			this.pxls[y][x] = p;
 			return true;
 		}
 		else
