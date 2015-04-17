@@ -24,6 +24,9 @@ public class Matrice {
 		}
 	}
 	
+	/**
+	 * Affiche la matrice dans le terminal
+	 */
 	public void afficher() {
 		String str = new String();
 		
@@ -34,7 +37,32 @@ public class Matrice {
 			str += "\n";
 		}
 		
-		System.out.println(str);
+		System.out.print(str);
+	}
+	
+	/**
+	 * Dessine un rectangle dans la matrice
+	 * @param x Colonne
+	 * @param y Ligne
+	 * @param w Largeur
+	 * @param h Hauteur
+	 * @param p Pixel qui va remplir le rectangle
+	 * @return True si le rectangle a été dessiné, false si non
+	 */
+	public boolean dessinerRectangle(int x, int y, int w, int h, Pixel p) {
+		// Tester si le rectangle est bien placé dans la matrice
+		if (x < 0 || x > this.largeur ||
+			y < 0 || y > this.hauteur ||
+			p == null)
+			return false;
+		
+		for	(int i = 0; i < w; i++) {
+			for (int j = 0; j < h; j++) {
+				this.setPixel(i + x, j + y, p);
+			}
+		}
+		
+		return true;
 	}
 	
 	/**
