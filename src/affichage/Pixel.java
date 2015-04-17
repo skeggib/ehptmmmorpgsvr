@@ -18,6 +18,18 @@ public class Pixel {
 		this.frontColor = Couleur.WHITE;
 	}
 	
+	/**
+	 * Constructeur
+	 * @param c Caractère
+	 * @param front Couleur du caractère
+	 * @param back COuleur du fond
+	 */
+	public Pixel(char c, String front, String back) {
+		this.c = c;
+		this.backColor = back;
+		this.frontColor = front;
+	}
+	
 	public char getChar() {
 		return c;
 	}
