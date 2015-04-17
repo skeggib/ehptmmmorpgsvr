@@ -5,7 +5,7 @@ public class Test {
 
 	public static void main(String[] args) {
 		Matrice mat = new Matrice(100, 50);
-		System.out.println(mat);
+		mat.afficher();
 	}
 
 }

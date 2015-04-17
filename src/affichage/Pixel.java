@@ -9,36 +9,32 @@ package affichage;
  */
 public class Pixel {
 	private char c;
-	private String backColor = new String();
-	private String frontColor = new String();
+	private String color = new String();
 	
 	public Pixel() {
 		this.c = ' ';
-		this.backColor = Couleur.BLACK;
-		this.frontColor = Couleur.WHITE;
+		this.color = Couleur.WHITE;
 	}
 	
 	/**
 	 * Constructeur
 	 * @param c Caractère
 	 * @param front Couleur du caractère
-	 * @param back COuleur du fond
 	 */
-	public Pixel(char c, String front, String back) {
+	public Pixel(char c, String front) {
 		this.c = c;
-		this.backColor = back;
-		this.frontColor = front;
+		this.color = front;
 	}
 	
 	public char getChar() {
 		return c;
 	}
 	
-	public String getBackCouleur() {
-		return backColor;
+	public String getFrontCouleur() {
+		return color;
 	}
 	
-	public String getFrontCouleur() {
-		return frontColor;
+	public String toStringCouleur() {
+		return this.color + c;
 	}
 }

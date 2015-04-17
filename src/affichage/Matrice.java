@@ -17,11 +17,24 @@ public class Matrice {
 		this.pxls = new Pixel[h][w];
 		
 		// Mettre tout les pixels par defaut
-		Pixel defaultPixel = new Pixel('t', Couleur.BLUE, Couleur.RED);
+		Pixel defaultPixel = new Pixel(); // TODO: Mettre à default
 		for (int i = 0; i < this.pxls.length; i++) {
 			for (int j = 0; j < this.pxls[i].length; j++)
 				this.setPixel(i, j, defaultPixel);
 		}
+	}
+	
+	public void afficher() {
+		String str = new String();
+		
+		for (int i = 0; i < this.pxls.length; i++) {
+			for (int j = 0; j < this.pxls[i].length; j++) {
+				str += this.pxls[i][j].toStringCouleur();
+			}
+			str += "\n";
+		}
+		
+		System.out.println(str);
 	}
 	
 	/**
