@@ -58,7 +58,7 @@ public class Matrice {
 		
 		for	(int i = 0; i < w; i++) {
 			for (int j = 0; j < h; j++) {
-				this.setPixel(i + x, j + y, p);
+				this.setPixel(j + y, i + x, p);
 			}
 		}
 		
@@ -74,8 +74,8 @@ public class Matrice {
 	 */
 	private boolean setPixel(int y, int x, Pixel p) {
 		// Si on ne dépasse pas de la matrice
-		if (x <= this.largeur &&
-			y <= this.hauteur &&
+		if (x < this.largeur &&
+			y < this.hauteur &&
 			x >= 0 &&
 			y >= 0)
 		{
