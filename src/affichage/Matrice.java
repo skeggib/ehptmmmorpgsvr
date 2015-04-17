@@ -86,6 +86,14 @@ public class Matrice {
 			return false;
 	}
 	
+	public int getHauteur() {
+		return this.hauteur;
+	}
+	
+	public int getLargeur() {
+		return this.largeur;
+	}
+	
 	public String toString() {
 		String rtrn = new String();
 		
