@@ -3,15 +3,15 @@ package personnage;
 public class Caracteristique {
 	
 	private int force;
-	private int agilite;
+	private int adresse;
 	private int resistance;
 	
 
 	public int getForce () {
 		return this.force;
 	}
-	public int getAgilite () {
-		return this.agilite;
+	public int getAdresse () {
+		return this.adresse;
 	}
 	public int getResistance () {
 		return this.resistance;
@@ -20,8 +20,8 @@ public class Caracteristique {
 	public void setForce (int value) {
 		this.force = value;
 	}
-	public void setAgilite (int value) {
-		this.agilite = value;
+	public void setAdresse (int value) {
+		this.adresse = value;
 	}
 	public void setResistance (int value) {
 		this.resistance = value;
