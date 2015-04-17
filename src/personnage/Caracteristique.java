@@ -1,33 +1,32 @@
 package personnage;
+
 /**
- * 
- * @author Kevin
+ * Cette Classe contient les caracteristiques d'une entite vivante
+ * @author armya
  *
  */
 public class Caracteristique {
-	/**
-	 * Variable privé stockant la force, adresse et resistance d'un personnage
-	 */
+
 	private int force;
 	private int adresse;
 	private int resistance;
 		
 	/**
-	 * 
+	 * Retourne la force (d'une entite)
 	 * @return force
 	 */
 	public int getForce () {
 		return this.force;
 	}
 	/**
-	 * 
+	 * Retourne l'adresse (d'une entite)
 	 * @return adresse
 	 */
 	public int getAdresse () {
 		return this.adresse;
 	}
 	/**
-	 * 
+	 * Retourne la resistance (d'une entite)
 	 * @return resistance
 	 */
 	public int getResistance () {
@@ -36,21 +35,21 @@ public class Caracteristique {
 
 	/**
 	 * Change la valeur de Force
-	 * @param value valeur affectée a Force
+	 * @param value valeur affectee a Force
 	 */
 	public void setForce (int value) {
 		this.force = value;
 	}
 	/**
 	 * Change la valeur de Adresse
-	 * @param value valeur affectée a Adresse
+	 * @param value valeur affectee a Adresse
 	 */
 	public void setAdresse (int value) {
 		this.adresse = value;
 	}
 	/**
 	 * Change la valeur de Resistance
-	 * @param value valeur affectée a Resistance
+	 * @param value valeur affectee a Resistance
 	 */
 	public void setResistance (int value) {
 		this.resistance = value;
