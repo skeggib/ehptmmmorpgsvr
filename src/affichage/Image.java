@@ -1,7 +1,7 @@
 package affichage;
 
 /**
- * "Image" qui peut être insérée dans une Matrice
+ * "Image" qui peut etre inseree dans une Matrice
  * @author skeggib
  *
  */
@@ -10,6 +10,17 @@ public class Image {
 	private int hauteur;
 	private Pixel[][] pxls;
 	
+	/**
+	 * Creer l'image a partir d'un String de la forme : "abcd\nabcd\nabcd" 
+	 * qui donne l'Image :
+	 * 
+	 * abcd
+	 * abcd
+	 * abcd
+	 * 
+	 * @param str
+	 * @return
+	 */
 	public boolean chargerString(String str) {
 		// Enlever le dernier caractere s'il est '\n'
 		if (str.charAt(str.length() - 1) == '\n')
@@ -53,6 +64,10 @@ public class Image {
 		return this.largeur;
 	}
 	
+	/**
+	 * Retourne le tableau qui contient les Pixels de l'image
+	 * @return
+	 */
 	public Pixel[][] getTableau() {
 		return this.pxls;
 	}
