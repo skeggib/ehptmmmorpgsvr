@@ -8,13 +8,17 @@ public class Joueur extends EntiteVivante {
 	
 	private String pointAction;
 	
-	private int positionX;
-	private int positionY;
 	private int exp;
 	
 	private Casque casque;
 	private Pantalon pantalon;
 	private Torse torse;
+	/**
+	 * Gere la facon dont attaque un joueur
+	 */
+	public void attaquer () {
+		System.out.println(((EntiteVivante) this.getCible()).getCaracteristique().getAdresse());
+	}
 	
 }
 
