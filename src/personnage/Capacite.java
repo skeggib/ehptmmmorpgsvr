@@ -4,6 +4,7 @@ import java.util.Random;
 
 /**
  * Contient toutes les methodes pour calculer les capacites
+ * 
  * @author armya
  *
  */
@@ -21,7 +22,7 @@ public class Capacite {
 	 * @return Retourne l'initiative
 	 */
 	public static int getRandomInitiative (int adresse, int encombrement) {
-		return (Capacite.calculDeRandom(adresse) + Capacite.calculDeRandom(encombrement));
+		return (Capacite.calculDeRandom(adresse) - Capacite.calculDeRandom(encombrement));
 	}	
 	/**
 	 * 
@@ -39,7 +40,7 @@ public class Capacite {
 	 * @return Retourne l'esquive
 	 */
 	public static int getRandomEsquive (int adresse, int encombrement) {
-		return (Capacite.calculDeRandom(adresse) + Capacite.calculDeRandom(encombrement));
+		return (Capacite.calculDeRandom(adresse) - Capacite.calculDeRandom(encombrement));
 	}	
 	/**
 	 * 
@@ -60,6 +61,11 @@ public class Capacite {
 		return (Capacite.calculDeRandom(force) + Capacite.calculDeRandom(impact));
 	}
 	
+	/**
+	 * Retourne le seultat d'un lance de D
+	 * @param degres Nombre de degres possede par la caracteristique
+	 * @return Resultat du lance de de(s) + le bonus
+	 */
 	private static int calculDeRandom (int degres) {
 		int nombreDe = Capacite.calculNiveau(degres);
 		int result = 0;
@@ -69,9 +75,19 @@ public class Capacite {
 		result += calculBonus(degres);
 		return result;
 	}	
+	/**
+	 * Calcul le Bonus d'une caracteristique
+	 * @param degres Nombre de degres possede par la caracteristique
+	 * @return Bonus de la caracteristique
+	 */
 	private static int calculBonus (int degres) {
 		return (degres%3);
-	}	
+	}
+	/**
+	 * Calcul le niveau d'une caracteristique (D)
+	 * @param degres Nombre de degres possede par la caracteristique
+	 * @return resultat du lance
+	 */
 	private static int calculNiveau (int degres) {
 		return (degres - Capacite.calculBonus(degres))/3;
 	}
