@@ -17,7 +17,7 @@ public class Matrice {
 		this.pxls = new Pixel[h][w];
 		
 		// Mettre tout les pixels par defaut
-		Pixel defaultPixel = new Pixel(); // TODO: Mettre à default
+		Pixel defaultPixel = new Pixel();
 		for (int i = 0; i < this.pxls.length; i++) {
 			for (int j = 0; j < this.pxls[i].length; j++)
 				this.setPixel(i, j, defaultPixel);

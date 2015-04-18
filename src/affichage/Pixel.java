@@ -30,6 +30,10 @@ public class Pixel {
 		return c;
 	}
 	
+	public void setChar(char c) {
+		this.c = c;
+	}
+	
 	public String getFrontCouleur() {
 		return color;
 	}
