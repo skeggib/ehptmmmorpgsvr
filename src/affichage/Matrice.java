@@ -64,6 +64,29 @@ public class Matrice {
 		
 		return true;
 	}
+
+	/**
+	 * Dessine une Image dans la matrice
+	 * @param x
+	 * @param y
+	 * @param img
+	 * @return True si l'image a ete dessinee, false si non
+	 */
+	public boolean dessinerImage(int x, int y, Image img) {
+		if (x < 0 || x > this.largeur ||
+				y < 0 || y > this.hauteur ||
+				img == null)
+				return false;
+		
+		Pixel[][] table = img.getTableau();
+		for (int i = 0; i < img.getHauteur(); i++) {
+			for (int j = 0; j < img.getLargeur(); j++) {
+				this.setPixel(i + y, j + x, table[i][j]);
+			}
+		}
+		
+		return true;
+	}
 	
 	/**
 	 * Set Pixel

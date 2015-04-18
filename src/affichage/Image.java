@@ -19,7 +19,7 @@ public class Image {
 	 * abcd
 	 * 
 	 * @param str
-	 * @return
+	 * @return True si le string a ete charge, false si non
 	 */
 	public boolean chargerString(String str) {
 		// Enlever le dernier caractere s'il est '\n'
