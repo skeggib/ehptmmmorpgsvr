@@ -25,6 +25,7 @@ public class Vie {
 	public void ajouterVie (int value) {
 		if(this.controlerVie()){
 			this.vieActuelle += value;
+			this.controlerVie();
 		}
 	}
 	/**
@@ -34,6 +35,7 @@ public class Vie {
 	public void retirerVie (int value) {
 		if(this.controlerVie()){
 			this.vieActuelle -= value;
+			this.controlerVie();
 		}
 	}
 	/**
@@ -60,7 +62,7 @@ public class Vie {
 			return false;
 		}
 		else if (this.vieActuelle > Vie.PLEINE_FORME) {
-			this.setVie(6);
+			this.setVie(7);
 			return true;
 		} else { 
 			return true;

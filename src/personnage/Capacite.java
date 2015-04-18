@@ -4,6 +4,7 @@ import java.util.Random;
 
 /**
  * Contient toutes les methodes pour calculer les capacites
+ * 
  * @author armya
  *
  */
@@ -21,7 +22,7 @@ public class Capacite {
 	 * @return Retourne l'initiative
 	 */
 	public static int getRandomInitiative (int adresse, int encombrement) {
-		return (Capacite.calculDeRandom(adresse) + Capacite.calculDeRandom(encombrement));
+		return (Capacite.calculDeRandom(adresse) - Capacite.calculDeRandom(encombrement));
 	}	
 	/**
 	 * 
@@ -39,7 +40,7 @@ public class Capacite {
 	 * @return Retourne l'esquive
 	 */
 	public static int getRandomEsquive (int adresse, int encombrement) {
-		return (Capacite.calculDeRandom(adresse) + Capacite.calculDeRandom(encombrement));
+		return (Capacite.calculDeRandom(adresse) - Capacite.calculDeRandom(encombrement));
 	}	
 	/**
 	 * 

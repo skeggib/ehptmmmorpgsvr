@@ -16,9 +16,6 @@ public class Joueur extends EntiteVivante {
 	/**
 	 * Gere la facon dont attaque un joueur
 	 */
-	public void attaquer () {
-		System.out.println(((EntiteVivante) this.getCible()).getCaracteristique().getAdresse());
-	}
 	
 }
 
