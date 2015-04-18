@@ -70,7 +70,7 @@ public class Capacite {
 		int nombreDe = Capacite.calculNiveau(degres);
 		int result = 0;
 		for(int i = 0; i < nombreDe; i++){
-			result += (Capacite.rand.nextInt((DE_MAX - DE_MIN) + 1) + DE_MIN);
+			result += (rand.nextInt((DE_MAX - DE_MIN) + 1) + DE_MIN);
 		}
 		result += calculBonus(degres);
 		return result;

@@ -16,4 +16,7 @@ public class Objet {
 	public String getNom (){
 		return this.nom;
 	}
+	public void setNom (String value){
+		this.nom = value;
+	}
 }

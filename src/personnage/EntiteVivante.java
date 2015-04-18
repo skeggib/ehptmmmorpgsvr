@@ -1,12 +1,23 @@
 package personnage;
-
+/**
+ * Classe EntiteVivante, contient : <br>
+ *  - Inventaire <br>
+ *  - Caracteristique <br>
+ *  - Vie <br>
+ *  - nom <br>
+ *  - position (x, y) <br>
+ *  
+ *  ainsi que toute les methodes pour manipuler une entite
+ *  
+ * @author armya
+ *
+ */
 public class EntiteVivante {
 
 	private Caracteristique caracteristique = new Caracteristique();
 	private Inventaire inventaire = new Inventaire();
 	private Vie vie = new Vie();
 	private String nom;
-	private EntiteVivante cible;
 
 	private int positionX;
 	private int positionY;
@@ -69,18 +80,11 @@ public class EntiteVivante {
 		return this.caracteristique;
 	}
 	/**
-	 * Retourne l'objet cible de l'entite
-	 * @return EntiteVivante
-	 */	
-	public Object getCible() {
-		return cible;
-	}
-	/**
-	 * Attribuer une cible a l'entite
-	 * @param cible EntiteVivnte
+	 * Retourne l'objet inventaire de l'entite
+	 * @return Inventaire
 	 */
-	public void setCible(EntiteVivante cible) {
-		this.cible = cible;
+	public Inventaire getInventaire () {
+		return this.inventaire;
 	}
 	/**
 	 * Retourne l'objet Vie de l'entite
@@ -116,13 +120,6 @@ public class EntiteVivante {
 	 */
 	public void setPositionY(int positionY) {
 		this.positionY = positionY;
-	}
-	/**
-	 * Retourne l'objet Inventaire de l'entité
-	 * @return inventaire
-	 */
-	public Inventaire getInvent() {
-		return inventaire;
 	}
 	/**
 	 * Retourne le nom de l'entite

@@ -1,5 +1,11 @@
 package personnage;
 
+/**
+ * Contient la vie d'une entite et les methodes pour controller, manipuler la vie d'une entite
+ * 
+ * @author armya
+ *
+ */
 public class Vie {
 	public static final int MORT = 0;
 	public static final int INCONSCIENT = 1;
