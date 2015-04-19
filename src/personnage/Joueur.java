@@ -14,8 +14,8 @@ public class Joueur extends EntiteVivante {
 	
 	private int exp;
 	
-	private Casque casque;
-	private Pantalon pantalon;
-	private Torse torse;
+	public void seDeplacer () {
+		
+	}
 }
 

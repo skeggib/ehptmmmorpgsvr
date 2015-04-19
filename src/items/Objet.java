@@ -1,6 +1,6 @@
 package items;
 
-public class Objet {
+abstract public class Objet {
 	private String nom;
 	
 	/**

@@ -1,5 +1,7 @@
 package personnage;
 
+import items.Nom;
+
 /**
  * 
  * @author armya
@@ -7,4 +9,11 @@ package personnage;
  */
 public class PersonnageNJ extends EntiteVivante {
 
+	public PersonnageNJ () {
+		this.setNom(Nom.getNomPNJ());
+	}
+
+	public void seDeplacer () {
+		
+	}
 }

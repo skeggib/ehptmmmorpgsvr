@@ -10,12 +10,13 @@ public class Vie {
 	public static final int MORT = 0;
 	public static final int INCONSCIENT = 1;
 	public static final int GRAVEMENT_BLESSE = 2;
-	public static final int BLESSE = 3;
+	public static final int SAIGNEMENT_IMPORTANT = 3;
+	public static final int BLESSE = 4;
 	public static final int LEGEREMENT_BLESSE = 5;
-	public static final int BLESSURES_SUPERFICIELLES = 5;
+	public static final int BLESSURES_SUPERFICIELLES = 6;
 	public static final int PLEINE_FORME = 7;
 	
-	private int vieActuelle = 6;
+	private int vieActuelle = 7;
 	
 
 	/**
@@ -72,6 +73,21 @@ public class Vie {
 			return true;
 		} else { 
 			return true;
+		}
+	}
+	public String toString () {
+		int vieActuelle = this.getVie();
+		switch (vieActuelle){
+		case 0 : return "Votre personnage est mort";
+		case 1 : return "Votre personnage est inconscient";
+		case 2 : return "Votre personnage est gravement blessé" ;
+		case 3 : return "Votre personnage saigne abondamment" ;
+		case 4 : return "Votre personnage est blessé" ;
+		case 5 : return "Votre personnage est légèrement blessé" ;
+		case 6 : return "Votre personnage a des blessures superficielles" ;
+		case 7 : return "Votre personnage est en pleine forme!" ;
+		default : return "" ;
+		
 		}
 	}
 	

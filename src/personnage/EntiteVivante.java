@@ -12,7 +12,7 @@ package personnage;
  * @author armya
  *
  */
-public class EntiteVivante {
+abstract public class EntiteVivante {
 
 	private Caracteristique caracteristique = new Caracteristique();
 	private Inventaire inventaire = new Inventaire();
@@ -32,9 +32,7 @@ public class EntiteVivante {
 	/**
 	 * Gere le deplacement de l'entite
 	 */
-	public void seDeplacer () {
-		//TODO A revoir pour son utilisation
-	}
+	abstract public void seDeplacer ();
 	/**
 	 * Gere une attaque vers la cible de l'entite
 	 */

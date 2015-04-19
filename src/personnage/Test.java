@@ -1,34 +1,80 @@
 package personnage;
 
-import java.util.Random;
-
-import items.Arme;
-import items.Nom;
-import items.PotionDeSoin;
+//import java.io.BufferedReader;
+//import java.io.FileReader;
+//import java.io.IOException;
+//import java.util.Random;
+//import items.Arme;
+//import items.Nom;
+//import items.PotionDeSoin;
 
 public class Test {
 
 	public static void main(String[] args) {
-
-		Random rand = new Random();
+	
+		
+		//Random rand = new Random();
 
 		Joueur joueur = new Joueur ();
-		Joueur joueur1 = new Joueur ();
-		
-		
+		Monstre cible = new Monstre ();
+		/*
+		String filePath = "src/arme.txt";
+		String[] tab = null;
+		if(tab == null){
+			try{
+				// Création du flux bufférisé sur un FileReader, immédiatement suivi par un 
+				// try/finally, ce qui permet de ne fermer le flux QUE s'il le reader
+				// est correctement instancié (évite les NullPointerException)
+				BufferedReader buff = new BufferedReader(new FileReader(filePath));
+
+				try {
+					String line;
+					// Lecture du fichier ligne par ligne. Cette boucle se termine
+					// quand la méthode retourne la valeur null.
+					int i = 0;
+					while ((line = buff.readLine()) != null) {
+						System.out.println(i + " : " + line);
+						i++;
+						//faites ici votre traitement
+					}
+					System.out.println("nombre de ligne : " + (i));
+					buff.close();
+					buff = new BufferedReader(new FileReader(filePath));
+					tab = new String [i]; 
+					i = 0;
+					while ((line = buff.readLine()) != null) {
+						tab[i] = line;
+						i++;
+						//faites ici votre traitement
+					}
+				} finally {
+					// dans tous les cas, on ferme nos flux
+					buff.close();
+				}
+			} catch (IOException ioe) {
+				// erreur de fermeture des flux
+				System.out.println("Erreur --" + ioe.toString());
+			}
+		}
+		System.out.println("\nlecture du tableau : \n");
+		for (int i = 0; i < tab.length; i++){
+			System.out.println(tab[i]);
+		}
+		 */
+
 		/**
 		 * DECOMENTE CE QUI SUIS POUR TESTER UNE ATTAQUE
 		 * ET LE SOIN D'UNE CIBLE
 		 */
 
+		
 		/*
-		Joueur cible = new Joueur ();
 		cible.getCaracteristique().setForce(5);
 		cible.getCaracteristique().setAdresse(5);
 		cible.getCaracteristique().setResistance(5);
-		joueur.getCaracteristique().setForce(5);
-		joueur.getCaracteristique().setAdresse(5);
-		joueur.getCaracteristique().setResistance(5);
+		joueur.getCaracteristique().setForce(7);
+		joueur.getCaracteristique().setAdresse(7);
+		joueur.getCaracteristique().setResistance(7);
 
 		System.out.println("\n   vie avant attaque : " + cible.getVie().getVie() + "\n");
 		joueur.attaquer(cible);
@@ -44,14 +90,13 @@ public class Test {
 		System.out.println(rand.nextInt(3) + 1);
 		*/
 
-		
-		
+
 		/**
 		 * DECOMMENTER CE QUI SUIT POUR TESTER L'AJOUT 
 		 * ET LA SUPPRESSION D'UN OBJET DANS L'INVENTAIRE
 		 * L'AJOUT ET LA SUPPRESION SONT CONTROLE
 		 */
-		
+
 		/*
 		PotionDeSoin potion1 = new PotionDeSoin();
 		PotionDeSoin potion2 = new PotionDeSoin();
@@ -60,7 +105,7 @@ public class Test {
 		Arme arme1 = new Arme();
 		Arme arme2 = new Arme();
 		Arme arme3 = new Arme();
-		
+
 		joueur.getInventaire().ajouterObjet(potion1);
 		joueur.getInventaire().ajouterObjet(arme);
 		joueur.getInventaire().ajouterObjet(potion2);
@@ -73,7 +118,7 @@ public class Test {
 		joueur.getInventaire().deposerObjet(potion2);
 		System.out.println("\n\nOn a retire la deuxieme potion, resultat : ");
 		System.out.println("\n" + joueur.getInventaire().inventaireToString());
-		
+
 
 		System.out.println("\n\nOn equipe le joueur de l'arme 1 et 2 presente dans son inventaire");
 		joueur.getInventaire().equiperObjet(arme);
@@ -91,7 +136,7 @@ public class Test {
 		System.out.println("\n" + joueur.getInventaire().equipeToString());
 		System.out.println("\nOn affiche l'inventaire du joueur : ");
 		System.out.println("\n" + joueur.getInventaire().inventaireToString());
-		
+
 		System.out.println("\n\nOn Ã©quipe le joueur d'une autre arme qui est dans son inventaire\n(Impossible puisqu'il a deja deux arme equipe)");
 		joueur.getInventaire().equiperObjet(arme3);
 
@@ -100,7 +145,7 @@ public class Test {
 		System.out.println("\nOn affiche l'inventaire du joueur : ");
 		System.out.println("\n" + joueur.getInventaire().inventaireToString());
 
-		
+
 		System.out.println("\n\nOn desÃ©quipe le joueur d'une arme");
 		joueur.getInventaire().desequiperObjet(arme);
 
@@ -108,7 +153,7 @@ public class Test {
 		System.out.println("\n" + joueur.getInventaire().equipeToString());
 		System.out.println("\nOn affiche l'inventaire du joueur : ");
 		System.out.println("\n" + joueur.getInventaire().inventaireToString());
-		*/
+		 */
 	}
 }
 
