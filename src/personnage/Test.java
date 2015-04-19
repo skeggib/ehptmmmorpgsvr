@@ -3,20 +3,21 @@ package personnage;
 //import java.io.BufferedReader;
 //import java.io.FileReader;
 //import java.io.IOException;
-//import java.util.Random;
+import java.util.Random;
 //import items.Arme;
 //import items.Nom;
 //import items.PotionDeSoin;
 
 public class Test {
-
 	public static void main(String[] args) {
-	
-		
-		//Random rand = new Random();
-
-		Joueur joueur = new Joueur ();
-		Monstre cible = new Monstre ();
+		int result;
+		Random rand = new Random();
+		for(int i = 0; i < 5000; i++){
+			result = rand.nextInt(3) + 4;
+				System.out.println(result);
+		}
+		//Joueur joueur = new Joueur ();
+		//Monstre cible = new Monstre ();
 		/*
 		String filePath = "src/arme.txt";
 		String[] tab = null;
@@ -67,7 +68,7 @@ public class Test {
 		 * ET LE SOIN D'UNE CIBLE
 		 */
 
-		
+
 		/*
 		cible.getCaracteristique().setForce(5);
 		cible.getCaracteristique().setAdresse(5);
@@ -88,7 +89,7 @@ public class Test {
 
 		System.out.println("\n   vie apres soin de la cible : " + cible.getVie().getVie() + "\n");
 		System.out.println(rand.nextInt(3) + 1);
-		*/
+		 */
 
 
 		/**
