@@ -27,11 +27,19 @@ public class Pixel {
 	}
 	
 	public char getChar() {
-		return c;
+		return this.c;
 	}
 	
 	public void setChar(char c) {
 		this.c = c;
+	}
+	
+	public String getCouleur() {
+		return this.color;
+	}
+	
+	public void setCouleur(String c) {
+		this.color = c;
 	}
 	
 	public String getFrontCouleur() {
