@@ -2,7 +2,7 @@ package items;
 
 import java.util.Random;
 
-public class Vetement extends Objet {
+abstract public class Vetement extends Objet {
 	private int encombrement = 0;
 	private int protection = 0;
 	private int qualite = 0;
@@ -16,7 +16,11 @@ public class Vetement extends Objet {
 	private final int EPIQUE = 4;
 	private final int LEGENDAIRE = 5;
 	
-	
+	/**
+	 * Constructeur par defaut
+	 * 
+	 * Donne une qualité a l'objet et lui attribut un encombrement et une protection en consequence
+	 */
 	public Vetement () {
 		int resultRand = rand.nextInt(1001);
 		if(resultRand < 200){
@@ -35,27 +39,27 @@ public class Vetement extends Objet {
 		
 		switch (this.getQualite()){
 		case 0 : 
-			this.setEncombrement(rand.nextInt(4) + 4);
-			this.setProtection(rand.nextInt(2) + 2);
+			this.setEncombrement(rand.nextInt(3) + 2);
+			this.setProtection(rand.nextInt(3) + 2);
 			break;
 		case 1 : 
-			this.setEncombrement(rand.nextInt(3) + 4);
-			this.setProtection(rand.nextInt(2) + 3);
+			this.setEncombrement(rand.nextInt(3) + 2);
+			this.setProtection(rand.nextInt(3) + 3);
 			break;
 		case 2 : 
-			this.setEncombrement(rand.nextInt(2) + 4);
+			this.setEncombrement(rand.nextInt(2) + 2);
 			this.setProtection(rand.nextInt(3) + 4);
 			break;
 		case 3 : 
-			this.setEncombrement(rand.nextInt(3) + 3);
+			this.setEncombrement(rand.nextInt(2) + 1);
 			this.setProtection(rand.nextInt(3) + 5);
 			break;
 		case 4 : 
-			this.setEncombrement(rand.nextInt(2) + 3);
+			this.setEncombrement(rand.nextInt(2) + 1);
 			this.setProtection(rand.nextInt(3) + 6);
 			break;
 		case 5 : 
-			this.setEncombrement(3);
+			this.setEncombrement(1);
 			this.setProtection(9);
 			break;
 		default : break;
@@ -75,12 +79,6 @@ public class Vetement extends Objet {
 	public int getProtection () {
 		return this.protection;
 	}
-	public void setEncombrement (int value) {
-		this.encombrement = value;
-	}
-	public void setProtection (int value) {
-		this.protection = value;
-	}
 	/**
 	 * @return the qualite
 	 */
@@ -88,9 +86,24 @@ public class Vetement extends Objet {
 		return qualite;
 	}
 	/**
-	 * @param qualite the qualite to set
+	 * 
+	 * @param qualite
 	 */
 	public void setQualite(int qualite) {
 		this.qualite = qualite;
+	}
+	/**
+	 * 
+	 * @param value
+	 */
+	public void setEncombrement (int value) {
+		this.encombrement = value;
+	}
+	/**
+	 * 
+	 * @param value
+	 */
+	public void setProtection (int value) {
+		this.protection = value;
 	}
 }

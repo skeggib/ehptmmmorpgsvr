@@ -54,19 +54,19 @@ public class Inventaire {
 					this.objetInInventaire.remove(obj);
 				}
 			} else {
-
-			} 
-		} else if (obj instanceof Vetement){
-			boolean dejaEquipe = false;
-			for(int i = 0; i < this.objetEquipe.size(); i++){
-				if(this.objetEquipe.get(i).getClass() == obj.getClass()){
-					dejaEquipe = true;
+				boolean dejaEquipe = false;
+				for(int i = 0; i < this.objetEquipe.size(); i++){
+					if(this.objetEquipe.get(i).getClass() == obj.getClass()){
+						dejaEquipe = true;
+					}
 				}
-			}
-			if(!dejaEquipe){
-				this.objetEquipe.add(obj);
-				this.objetInInventaire.remove(obj);
-			}
+				if(!dejaEquipe){
+					this.objetEquipe.add(obj);
+					this.objetInInventaire.remove(obj);
+				}
+			} 
+		} else {
+
 		}
 	}
 
@@ -114,6 +114,87 @@ public class Inventaire {
 			result += (((Objet) this.objetEquipe.get(i)).getNom() + "\n");
 		}
 		return result;
+	}
+	public int getEncombrement () {
+		int result = 0;
+		for(int i = 0; i < this.objetEquipe.size(); i++){
+			if(this.objetEquipe.get(i) instanceof Vetement){
+				result += ((Vetement) this.objetEquipe.get(i)).getEncombrement();
+			}
+		}
+		return (result + this.objetInInventaire.size());
+	}
+	public int getProtection () {
+		int result = 0;
+		for(int i = 0; i < this.objetEquipe.size(); i++){
+			if(this.objetEquipe.get(i) instanceof Vetement){
+				result += ((Vetement) this.objetEquipe.get(i)).getProtection();
+			}
+		}
+		return (result);
+	}
+	public int getImpact () {
+		int result = 0;
+		for(int i = 0; i < this.objetEquipe.size(); i++){
+			if(this.objetEquipe.get(i) instanceof Arme){
+				result += ((Arme) this.objetEquipe.get(i)).getImpact();
+			}
+		}
+		return (result);
+	}
+	public int getManiabilite () {
+		int result = 0;
+		for(int i = 0; i < this.objetEquipe.size(); i++){
+			if(this.objetEquipe.get(i) instanceof Arme){
+				result += ((Arme) this.objetEquipe.get(i)).getManiabilite();
+			}
+		}
+		return (result);
+	}
+	public int getParade () {
+		int result = 0;
+		for(int i = 0; i < this.objetEquipe.size(); i++){
+			if(this.objetEquipe.get(i) instanceof Arme){
+				result += ((Arme) this.objetEquipe.get(i)).getParade();
+			}
+		}
+		return (result);
+	}
+	/**
+	 * Retourne un tableau d'Arme, taille 1 si une arme equipe, taille 2 si deux armes equipes
+	 * @return Arme[] tab
+	 */
+	public Arme[] getArme () {
+		Arme[] tab;
+		int nombreArmeEquipe = 0;
+		for(int i = 0; i < this.objetEquipe.size(); i++){
+			if(this.objetEquipe.get(i) instanceof Arme){
+				nombreArmeEquipe++;
+			}
+		}
+
+		if(nombreArmeEquipe < 2){
+			tab = new Arme[1]; 
+			for(int i = 0; i < this.objetEquipe.size(); i++){
+				if(this.objetEquipe.get(i) instanceof Arme){
+					tab[0] = ((Arme) this.objetEquipe.get(i));
+					return tab;
+				}
+			}
+		} else {
+			tab = new Arme[2]; 
+			for(int i = 0; i < this.objetEquipe.size(); i++){
+				if(this.objetEquipe.get(i) instanceof Arme){
+					if(tab[0] == null){
+						tab[0] = (Arme) this.objetEquipe.get(i);
+					} else {
+						tab[1] = ((Arme) this.objetEquipe.get(i));
+					}
+				}
+			}
+			return tab;
+		}
+		return null;
 	}
 }
 

@@ -29,29 +29,36 @@ abstract public class EntiteVivante {
 	public EntiteVivante () {
 
 	}
+	
 	/**
 	 * Gere le deplacement de l'entite
 	 */
 	abstract public void seDeplacer ();
+	
 	/**
 	 * Gere une attaque vers la cible de l'entite
 	 */
 	public void attaquer (EntiteVivante cible) {
 		int adresseCible = cible.getCaracteristique().getAdresse();
-		int esquiveCible = Capacite.getRandomEsquive(adresseCible, 0);
+		int encombrementCible = cible.getInventaire().getEncombrement();
+		int paradeCible = cible.getInventaire().getParade();
+		int esquiveCible = Capacite.getRandomEsquive(adresseCible, encombrementCible, paradeCible);
 		System.out.println("esquive cible " + esquiveCible);
 		
 		int adresseJ = this.getCaracteristique().getAdresse();
-		int attaqueJ = Capacite.getRandomAttaque(adresseJ, 0);
+		int maniabiliteJ = this.getInventaire().getManiabilite();
+		int attaqueJ = Capacite.getRandomAttaque(adresseJ, maniabiliteJ);
 		System.out.println("attaque joueur " + attaqueJ);
 		
 		if (attaqueJ > esquiveCible){
 			int resistanceCible = cible.getCaracteristique().getResistance();
-			int defenseCible = Capacite.getRandomDefense(resistanceCible, 0);
+			int protectionCible = cible.getInventaire().getProtection();
+			int defenseCible = Capacite.getRandomDefense(resistanceCible, protectionCible);
 			System.out.println("defense cible " + defenseCible);
-			
+
 			int forceJ = this.getCaracteristique().getForce();
-			int degatJ = Capacite.getRandomDegat(forceJ, 0);
+			int impactJ = this.getInventaire().getImpact();
+			int degatJ = Capacite.getRandomDegat(forceJ, impactJ);
 			System.out.println("degat joueur " + degatJ);
 			
 			if (degatJ > defenseCible){
@@ -70,6 +77,7 @@ abstract public class EntiteVivante {
 
 		}
 	}
+	
 	/**
 	 * Retourne l'objet caracteristique de l'entite
 	 * @return Caracteristique
@@ -77,6 +85,7 @@ abstract public class EntiteVivante {
 	public Caracteristique getCaracteristique () {
 		return this.caracteristique;
 	}
+	
 	/**
 	 * Retourne l'objet inventaire de l'entite
 	 * @return Inventaire
@@ -84,6 +93,7 @@ abstract public class EntiteVivante {
 	public Inventaire getInventaire () {
 		return this.inventaire;
 	}
+	
 	/**
 	 * Retourne l'objet Vie de l'entite
 	 * @return Vie
@@ -91,13 +101,16 @@ abstract public class EntiteVivante {
 	public Vie getVie() {
 		return vie;
 	}
+	
 	/**
 	 * Retourne la position X de l'entite
 	 * @return positionX
 	 */
 	public int getPositionX() {
+		
 		return positionX;
 	}
+	
 	/**
 	 * Modifie la position X de l'entite
 	 * @param positionX
@@ -105,6 +118,7 @@ abstract public class EntiteVivante {
 	public void setPositionX(int positionX) {
 		this.positionX = positionX;
 	}
+	
 	/**
 	 * Retourne la position Y de l'entite
 	 * @return positionY
@@ -112,6 +126,7 @@ abstract public class EntiteVivante {
 	public int getPositionY() {
 		return positionY;
 	}
+	
 	/**
 	 * Modifie la position Y de l'entite
 	 * @param positionY
@@ -119,6 +134,7 @@ abstract public class EntiteVivante {
 	public void setPositionY(int positionY) {
 		this.positionY = positionY;
 	}
+	
 	/**
 	 * Retourne le nom de l'entite
 	 * @return nom
@@ -126,6 +142,7 @@ abstract public class EntiteVivante {
 	public String getNom() {
 		return nom;
 	}
+	
 	/**
 	 * Modifie le nom de l'entite
 	 * @param nom nom de l'entite
