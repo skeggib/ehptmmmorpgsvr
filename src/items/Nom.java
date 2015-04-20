@@ -104,7 +104,7 @@ public class Nom {
 	/**
 	 * Lecture d'un fichier txt
 	 * @param file chemin vers le fichiers txt (racine : txt/)
-	 * @return tab : chaque ligne du fichier txt est retourné dans une case du tableau
+	 * @return tab : chaque ligne du fichier txt est retourne dans une case du tableau
 	 */
 	private static String[] getFileText(String file) {
 		String filePath = "txt/" + file;
@@ -117,7 +117,7 @@ public class Nom {
 				
 				/*
 				 * On lit le fichier ligne par ligne.
-				 * On compte d'abord les lignes pour crée le tableau
+				 * On compte d'abord les lignes pour cree le tableau
 				 */
 				
 				while ((ligne = buff.readLine()) != null) {

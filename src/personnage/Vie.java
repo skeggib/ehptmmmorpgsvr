@@ -80,10 +80,10 @@ public class Vie {
 		switch (vieActuelle){
 		case 0 : return "Votre personnage est mort";
 		case 1 : return "Votre personnage est inconscient";
-		case 2 : return "Votre personnage est gravement blessé" ;
+		case 2 : return "Votre personnage est gravement blesse" ;
 		case 3 : return "Votre personnage saigne abondamment" ;
-		case 4 : return "Votre personnage est blessé" ;
-		case 5 : return "Votre personnage est légèrement blessé" ;
+		case 4 : return "Votre personnage est blesse" ;
+		case 5 : return "Votre personnage est legerement blesse" ;
 		case 6 : return "Votre personnage a des blessures superficielles" ;
 		case 7 : return "Votre personnage est en pleine forme!" ;
 		default : return "" ;

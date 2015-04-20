@@ -39,15 +39,15 @@ public class Test {
 		String[] tab = null;
 		if(tab == null){
 			try{
-				// Création du flux bufférisé sur un FileReader, immédiatement suivi par un 
+				// Creation du flux bufferise sur un FileReader, immediatement suivi par un 
 				// try/finally, ce qui permet de ne fermer le flux QUE s'il le reader
-				// est correctement instancié (évite les NullPointerException)
+				// est correctement instancie (evite les NullPointerException)
 				BufferedReader buff = new BufferedReader(new FileReader(filePath));
 
 				try {
 					String line;
 					// Lecture du fichier ligne par ligne. Cette boucle se termine
-					// quand la méthode retourne la valeur null.
+					// quand la methode retourne la valeur null.
 					int i = 0;
 					while ((line = buff.readLine()) != null) {
 						System.out.println(i + " : " + line);

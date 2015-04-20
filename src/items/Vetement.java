@@ -19,7 +19,7 @@ abstract public class Vetement extends Objet {
 	/**
 	 * Constructeur par defaut
 	 * 
-	 * Donne une qualité a l'objet et lui attribut un encombrement et une protection en consequence
+	 * Donne une qualite a l'objet et lui attribut un encombrement et une protection en consequence
 	 */
 	public Vetement () {
 		int resultRand = rand.nextInt(1001);
