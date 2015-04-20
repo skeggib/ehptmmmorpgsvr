@@ -25,6 +25,7 @@ public class Case {
 	
 	public void setValeur(int val) {
 		this.valeur = val;
+		this.chargerImages();
 	}
 	
 	private void chargerImages() {
@@ -63,5 +64,11 @@ public class Case {
 				this.img.chargerString("     \n     \n     \n     ");
 				break;
 		}
+	}
+	
+	public String toString() {
+		String str = new String();
+		str += this.valeur;
+		return str;
 	}
 }
