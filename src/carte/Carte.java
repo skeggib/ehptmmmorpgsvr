@@ -98,6 +98,10 @@ public class Carte {
 		return true;
 	}
 	
+	public Case getCase(int x, int y) {
+		return cases[y][x];
+	}
+	
 	public String toString() {
 		String str = new String();
 		

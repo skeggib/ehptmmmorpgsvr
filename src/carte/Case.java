@@ -66,6 +66,10 @@ public class Case {
 		}
 	}
 	
+	public Image getImage() {
+		return this.img;
+	}
+	
 	public String toString() {
 		String str = new String();
 		str += this.valeur;

@@ -7,7 +7,9 @@ public class Test {
 	public static void main(String[] args) {
 		
 		Carte carte = new Carte("");
-		System.out.println(carte);
+		InterfaceTerm inter = new InterfaceTerm();
+		System.out.println(inter.dessinerCarte(carte));
+		inter.afficher();
 		
 	}
 
