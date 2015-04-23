@@ -43,7 +43,7 @@ abstract public class EntiteVivante {
 	/**
 	 * Gere le deplacement de l'entite
 	 */
-	public void seDeplacer (int direction){
+	public void seDeplacer (int direction){ // TODO: Les deplacements HAUT et BAS sont sans doute inverses
 		switch(direction){
 			case EntiteVivante.BAS :
 				if(this.deplacementPossible(direction)){

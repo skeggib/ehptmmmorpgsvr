@@ -16,6 +16,8 @@ public class Test {
 		inter.setJoueur(joueur);
 		inter.setCarte(carte);
 		
+		joueur.setCarte(carte);
+		
 		while (true) {
 			inter.afficher();
 			joueur.seDeplacer(Clavier.saisieDirection());
