@@ -16,24 +16,27 @@ import items.PotionDeSoin;
 
 public class Test {
 	public static void main(String[] args) {
-		float x = 10;
-		System.out.println(5.00 + (30 * Math.exp(-(40/(x+10)))));
-		x = 20;
-		System.out.println(5.00 + (30 * Math.exp(-(40/(x+10)))));
-		 x = 30;
-		System.out.println(5.00 + (30 * Math.exp(-(40/(x+10)))));
-		 x = 40;
-		System.out.println(5.00 + (30 * Math.exp(-(40/(x+10)))));
-		 x = 50;
-		System.out.println(5.00 + (30 * Math.exp(-(40/(x+10)))));
-		 x = 60;
-		System.out.println(5.00 + (30 * Math.exp(-(40/(x+10)))));
-		 x = 70;
-		System.out.println(5.00 + (30 * Math.exp(-(40/(x+10)))));
-		 x = 80;
-		System.out.println(5.00 + (30 * Math.exp(-(40/(x+10)))));
-		 x = 90;
-		System.out.println(5.00 + (30 * Math.exp(-(40/(x+10)))));
+		
+		
+			
+//		float x = 10;
+//		System.out.println(5.00 + (30 * Math.exp(-(40/(x+10)))));
+//		x = 20;
+//		System.out.println(5.00 + (30 * Math.exp(-(40/(x+10)))));
+//		 x = 30;
+//		System.out.println(5.00 + (30 * Math.exp(-(40/(x+10)))));
+//		 x = 40;
+//		System.out.println(5.00 + (30 * Math.exp(-(40/(x+10)))));
+//		 x = 50;
+//		System.out.println(5.00 + (30 * Math.exp(-(40/(x+10)))));
+//		 x = 60;
+//		System.out.println(5.00 + (30 * Math.exp(-(40/(x+10)))));
+//		 x = 70;
+//		System.out.println(5.00 + (30 * Math.exp(-(40/(x+10)))));
+//		 x = 80;
+//		System.out.println(5.00 + (30 * Math.exp(-(40/(x+10)))));
+//		 x = 90;
+//		System.out.println(5.00 + (30 * Math.exp(-(40/(x+10)))));
 		
 		
 //				int result;
@@ -51,9 +54,9 @@ public class Test {
 //			System.out.println(j.getNom());
 //
 //		}
-		Joueur joueur = new Joueur ();
-		Joueur joueur1 = new Joueur ();
-		Monstre cible = new Monstre ();
+//		Joueur joueur = new Joueur ();
+//		Joueur joueur1 = new Joueur ();
+//		Monstre cible = new Monstre ();
 		/*
 		String filePath = "src/arme.txt";
 		String[] tab = null;
@@ -108,54 +111,54 @@ public class Test {
 		 * L'AJOUT ET LA SUPPRESION SONT CONTROLE
 		 */
 
-
-		PotionDeSoin potion1 = new PotionDeSoin();
-		PotionDeSoin potion2 = new PotionDeSoin();
-		PotionDeSoin potion3 = new PotionDeSoin();
-		Arme arme = new Arme();
-		Arme arme1 = new Arme();
-		Pantalon jambe = new Pantalon();
-		Casque casque = new Casque();
-
-		PotionDeSoin potion11 = new PotionDeSoin();
-		PotionDeSoin potion21 = new PotionDeSoin();
-		PotionDeSoin potion31 = new PotionDeSoin();
-		Arme arme12 = new Arme();
-		Arme arme11 = new Arme();
-		Pantalon jambe1 = new Pantalon();
-		Casque casque1 = new Casque();
-
-		//System.out.println(arme.getNom());
-		joueur.getInventaire().ajouterObjet(potion1);
-		joueur.getInventaire().ajouterObjet(arme);
-		joueur.getInventaire().ajouterObjet(potion2);
-		joueur.getInventaire().ajouterObjet(arme1);
-		joueur.getInventaire().ajouterObjet(potion3);
-		joueur.getInventaire().ajouterObjet(jambe);
-		joueur.getInventaire().ajouterObjet(casque);
-		joueur1.getInventaire().ajouterObjet(potion11);
-		joueur1.getInventaire().ajouterObjet(arme12);
-		joueur1.getInventaire().ajouterObjet(potion21);
-		joueur1.getInventaire().ajouterObjet(arme11);
-		joueur1.getInventaire().ajouterObjet(potion31);
-		joueur1.getInventaire().ajouterObjet(jambe1);
-		joueur1.getInventaire().ajouterObjet(casque1);
+//
+//		PotionDeSoin potion1 = new PotionDeSoin();
+//		PotionDeSoin potion2 = new PotionDeSoin();
+//		PotionDeSoin potion3 = new PotionDeSoin();
+//		Arme arme = new Arme();
+//		Arme arme1 = new Arme();
+//		Pantalon jambe = new Pantalon();
+//		Casque casque = new Casque();
+//
+//		PotionDeSoin potion11 = new PotionDeSoin();
+//		PotionDeSoin potion21 = new PotionDeSoin();
+//		PotionDeSoin potion31 = new PotionDeSoin();
+//		Arme arme12 = new Arme();
+//		Arme arme11 = new Arme();
+//		Pantalon jambe1 = new Pantalon();
+//		Casque casque1 = new Casque();
+//
+//		//System.out.println(arme.getNom());
+//		joueur.getInventaire().ajouterObjet(potion1);
+//		joueur.getInventaire().ajouterObjet(arme);
+//		joueur.getInventaire().ajouterObjet(potion2);
+//		joueur.getInventaire().ajouterObjet(arme1);
+//		joueur.getInventaire().ajouterObjet(potion3);
+//		joueur.getInventaire().ajouterObjet(jambe);
+//		joueur.getInventaire().ajouterObjet(casque);
+//		joueur1.getInventaire().ajouterObjet(potion11);
+//		joueur1.getInventaire().ajouterObjet(arme12);
+//		joueur1.getInventaire().ajouterObjet(potion21);
+//		joueur1.getInventaire().ajouterObjet(arme11);
+//		joueur1.getInventaire().ajouterObjet(potion31);
+//		joueur1.getInventaire().ajouterObjet(jambe1);
+//		joueur1.getInventaire().ajouterObjet(casque1);
 //		System.out.println("Voici l'inventaire du joueur : "); 
 //		System.out.println("\n" + joueur.getInventaire().inventaireToString());
 //		joueur.getInventaire().deposerObjet(potion2);
 //		System.out.println("\n\nOn a retire la deuxieme potion, resultat : ");
 //		System.out.println("\n" + joueur.getInventaire().inventaireToString());
 
-
-		System.out.println("\n\nOn equipe le joueur de l'arme 1 et 2 presente dans son inventaire");
-		joueur.getInventaire().equiperObjet(arme);
-		joueur.getInventaire().equiperObjet(arme1);
-		joueur.getInventaire().equiperObjet(jambe);
-		joueur.getInventaire().equiperObjet(casque);
-		joueur1.getInventaire().equiperObjet(arme11);
-		joueur1.getInventaire().equiperObjet(arme12);
-		joueur1.getInventaire().equiperObjet(jambe1);
-		joueur1.getInventaire().equiperObjet(casque1);
+//
+//		System.out.println("\n\nOn equipe le joueur de l'arme 1 et 2 presente dans son inventaire");
+//		joueur.getInventaire().equiperObjet(arme);
+//		joueur.getInventaire().equiperObjet(arme1);
+//		joueur.getInventaire().equiperObjet(jambe);
+//		joueur.getInventaire().equiperObjet(casque);
+//		joueur1.getInventaire().equiperObjet(arme11);
+//		joueur1.getInventaire().equiperObjet(arme12);
+//		joueur1.getInventaire().equiperObjet(jambe1);
+//		joueur1.getInventaire().equiperObjet(casque1);
 //		System.out.println("\nOn affiche les objets equipé par le joueur : ");
 //		System.out.println("\n" + joueur.getInventaire().equipeToString());
 ////
@@ -203,14 +206,14 @@ public class Test {
 		 */
 
 
-		
-		joueur1.getCaracteristique().setForce(5);
-		joueur1.getCaracteristique().setAdresse(5);
-		joueur1.getCaracteristique().setResistance(5);
-		joueur.getCaracteristique().setForce(5);
-		joueur.getCaracteristique().setAdresse(5);
-		joueur.getCaracteristique().setResistance(5);
-//
+//		
+//		joueur1.getCaracteristique().setForce(5);
+//		joueur1.getCaracteristique().setAdresse(5);
+//		joueur1.getCaracteristique().setResistance(5);
+//		joueur.getCaracteristique().setForce(5);
+//		joueur.getCaracteristique().setAdresse(5);
+//		joueur.getCaracteristique().setResistance(5);
+////
 //		System.out.println("\n   vie avant attaque : " + cible.getVie().getVie() + "\n");
 //		joueur.attaquer(cible);
 //		System.out.println("\n   vie apres attaque : " + cible.getVie().getVie() + "\n");
@@ -219,14 +222,14 @@ public class Test {
 //		joueur.attaquer(cible);
 //		System.out.println("\n   vie apres attaque : " + cible.getVie().getVie() + "\n");
 
-
-		System.out.println("\n   vie avant attaque : " + joueur1.getVie().getVie() + "\n");
-		joueur.attaquer(joueur1);
-		System.out.println("\n   vie apres attaque : " + joueur1.getVie().getVie() + "\n");
-		joueur.attaquer(joueur1);
-		System.out.println("\n   vie apres attaque : " + joueur1.getVie().getVie() + "\n");
-		joueur.attaquer(joueur1);
-		System.out.println("\n   vie apres attaque : " + joueur1.getVie().getVie() + "\n");
+//
+//		System.out.println("\n   vie avant attaque : " + joueur1.getVie().getVie() + "\n");
+//		joueur.attaquer(joueur1);
+//		System.out.println("\n   vie apres attaque : " + joueur1.getVie().getVie() + "\n");
+//		joueur.attaquer(joueur1);
+//		System.out.println("\n   vie apres attaque : " + joueur1.getVie().getVie() + "\n");
+//		joueur.attaquer(joueur1);
+//		System.out.println("\n   vie apres attaque : " + joueur1.getVie().getVie() + "\n");
 //
 //		cible.getVie().ajouterVie(10);
 //

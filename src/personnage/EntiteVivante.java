@@ -43,40 +43,41 @@ abstract public class EntiteVivante {
 	/**
 	 * Gere le deplacement de l'entite
 	 */
-	public void seDeplacer (int direction){ // TODO: Les deplacements HAUT et BAS sont sans doute inverses
+	public void seDeplacer (int direction){
 		switch(direction){
-			case EntiteVivante.BAS :
-				if(this.deplacementPossible(direction)){
-					this.setPositionY(this.getPositionY() - 1);
-				}
-				break;
-			case EntiteVivante.HAUT :
-				if(this.deplacementPossible(direction)){
-					this.setPositionY(this.getPositionY() + 1);
-				}
-				break;
-			case EntiteVivante.GAUCHE :
-				if(this.deplacementPossible(direction)){
-					this.setPositionX(this.getPositionX() - 1);
-				}
-				break;
-			case EntiteVivante.DROITE :
-				if(this.deplacementPossible(direction)){
-					this.setPositionX(this.getPositionX() + 1);
-				}
-				break;
+		case EntiteVivante.BAS :
+			if(this.deplacementPossible(direction)){
+				this.setPositionY(this.getPositionY() + 1);
+			}
+			break;
+		case EntiteVivante.HAUT :
+			if(this.deplacementPossible(direction)){
+				this.setPositionY(this.getPositionY() - 1);
+			}
+			break;
+		case EntiteVivante.GAUCHE :
+			if(this.deplacementPossible(direction)){
+				this.setPositionX(this.getPositionX() - 1);
+			}
+			break;
+		case EntiteVivante.DROITE :
+			if(this.deplacementPossible(direction)){
+				this.setPositionX(this.getPositionX() + 1);
+			}
+			break;
 		}
 	}
 
-	private boolean deplacementPossible (int direction) { // TODO: Teste si une carte a ete associee (setCarte) avant de tester si le deplacement est possible (si non NullPointerExeption)
-		switch(direction){
+	private boolean deplacementPossible (int direction) {
+		if(this.carte != null){
+			switch(direction){
 			case EntiteVivante.BAS :
-				if(carte.getCase(this.getPositionX(), this.getPositionY() - 1).getValeur() == Case.VIDE){
+				if(carte.getCase(this.getPositionX(), this.getPositionY() + 1).getValeur() == Case.VIDE){
 					return true;
 				}
 				return false;
 			case EntiteVivante.HAUT :
-				if(carte.getCase(this.getPositionX(), this.getPositionY() + 1).getValeur() == Case.VIDE){
+				if(carte.getCase(this.getPositionX(), this.getPositionY() - 1).getValeur() == Case.VIDE){
 					return true;
 				}
 				return false;
@@ -91,7 +92,9 @@ abstract public class EntiteVivante {
 				}
 				return false;
 			default : return false;
+			}
 		}
+		return false;
 	}
 
 
