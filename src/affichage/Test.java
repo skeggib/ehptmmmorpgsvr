@@ -10,6 +10,8 @@ public class Test {
 		InterfaceTerm inter = new InterfaceTerm();
 		System.out.println(inter.dessinerCarte(carte));
 		inter.afficher();
+		inter.afficher();
+		inter.afficher();
 		
 	}
 
