@@ -1,16 +1,14 @@
 package affichage;
 
-import java.awt.Color;
-
 import carte.Carte;
 import carte.Case;
 import personnage.Joueur;
 
 public class InterfaceTerm {
 	
-	private static final int LARGEUR_CASE_CARTE = 5;
+	private static final int LARGEUR_CASE_CARTE = 7;
 	private static final int HAUTEUR_CASE_CARTE = 4;
-	private static final int NB_CASES_AFFICHEES_X = 9;
+	private static final int NB_CASES_AFFICHEES_X = 13;
 	private static final int NB_CASES_AFFICHEES_Y = 9;
 	
 	private Matrice matrice;
