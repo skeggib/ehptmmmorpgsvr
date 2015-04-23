@@ -27,7 +27,6 @@ public class Carte {
 	 * @param chemin Chemin du fichier
 	 */
 	public Carte(String chemin) { // TODO: A faire
-		this(10, 10);
 		this.chargerFichier("");
 	}
 	
@@ -46,19 +45,31 @@ public class Carte {
 	 */
 	private boolean chargerFichier(String chemin) { // TODO: A faire
 		
-		// Le fichier contiendra la hauteur, la largeur et le String qui correspond au cases
+		this.setTaille(20, 20);
+		
+		// Le fichier contiendra la hauteur, la largeur et le String qui correspond aux cases
 		
 		String str = new String();
-		str += "3;3;3;3;2;2;2;2;2;2\n";
-		str += "3;3;3;3;2;2;2;2;2;2\n";
-		str += "3;3;2;2;2;1;2;2;2;2\n";
-		str += "2;2;2;2;2;2;2;2;2;2\n";
-		str += "2;2;2;2;2;0;2;2;2;2\n";
-		str += "2;2;2;2;2;2;2;2;2;2\n";
-		str += "2;2;2;2;2;2;2;2;2;2\n";
-		str += "2;2;2;2;2;2;2;2;2;2\n";
-		str += "2;2;2;2;2;2;2;2;2;2\n";
-		str += "2;2;2;2;2;2;2;2;2;2\n";
+		str += "3;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3\n";
+		str += "3;3;3;3;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;3\n";
+		str += "3;3;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;3\n";
+		str += "3;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;3\n";
+		str += "3;2;2;2;2;2;2;2;2;2;2;2;2;3;3;3;2;2;2;3\n";
+		str += "3;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;3\n";
+		str += "3;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;3\n";
+		str += "3;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;3\n";
+		str += "3;2;2;2;2;2;3;3;3;2;2;2;2;2;2;2;2;2;2;3\n";
+		str += "3;2;2;2;2;2;2;3;3;3;2;2;2;2;2;2;2;2;2;3\n";
+		str += "3;2;2;2;2;2;2;2;3;2;2;2;2;2;2;2;2;2;2;3\n";
+		str += "3;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;3\n";
+		str += "3;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;3\n";
+		str += "3;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;3\n";
+		str += "3;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;3\n";
+		str += "3;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;3\n";
+		str += "3;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;3\n";
+		str += "3;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;3\n";
+		str += "3;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;2;3\n";
+		str += "3;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3\n";
 		
 		if (!this.chargerString(str))
 			return false;
@@ -96,6 +107,18 @@ public class Carte {
 		}
 		
 		return true;
+	}
+	
+	private void setTaille(int w, int h) {
+		this.largeur = w;
+		this.hauteur = h;
+		
+		this.cases = new Case[hauteur][largeur];
+		
+		for (int i = 0; i < this.cases.length; i++) {
+			for (int j = 0; j < this.cases[i].length; j++)
+				this.cases[i][j] = new Case(Case.VIDE);
+		}
 	}
 	
 	public Case getCase(int x, int y) {
