@@ -25,6 +25,7 @@ public class Vie {
 	public Vie () {
 		
 	}
+	
 	/**
 	 * Ajoute de la vie a l'entite
 	 * @param value Valeur a ajouter
@@ -35,6 +36,7 @@ public class Vie {
 			this.controlerVie();
 		}
 	}
+	
 	/**
 	 * Retire de la vie a l'entite
 	 * @param value Valeur a retirer
@@ -45,6 +47,7 @@ public class Vie {
 			this.controlerVie();
 		}
 	}
+	
 	/**
 	 * Retourne la vie actuelle de l'entite
 	 * @return vieActuelle
@@ -52,6 +55,7 @@ public class Vie {
 	public int getVie () {
 		return this.vieActuelle;
 	}
+	
 	/**
 	 * Met la vie a la valeur donné en parametre
 	 * @param value
@@ -59,6 +63,7 @@ public class Vie {
 	private void setVie (int value) {
 		this.vieActuelle = value;
 	}
+	
 	/**
 	 * Controle si le joueur n'a pas trop de vie ou s'il n'est pas mort. Ajuste la vie de l'entité si celle ci depasse le maximum
 	 * @return false si le joueur est mort, true si le joueur est vivant
@@ -75,6 +80,11 @@ public class Vie {
 			return true;
 		}
 	}
+	
+	/**
+	 * Transforme la vie (int) de l Entite en String
+	 * @return String definnissant la vie Actuelle de l Entite
+	 */
 	public String toString () {
 		int vieActuelle = this.getVie();
 		switch (vieActuelle){

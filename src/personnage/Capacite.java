@@ -27,7 +27,8 @@ public class Capacite {
 	 */
 	public static int getRandomInitiative (int adresse, int encombrement) {
 		return (Capacite.calculDeRandom(adresse) - (Capacite.calculDeRandom(encombrement)));
-	}	
+	}
+	
 	/**
 	 * 
 	 * @param adresse Adresse de l'entite
@@ -37,6 +38,7 @@ public class Capacite {
 	public static int getRandomAttaque (int adresse, int maniabilite) {
 		return (Capacite.calculDeRandom(adresse) + Capacite.calculDeRandom(maniabilite));
 	}
+	
 	/**
 	 * 
 	 * @param adresse Adresse de l'entite
@@ -45,7 +47,8 @@ public class Capacite {
 	 */
 	public static int getRandomEsquive (int adresse, int encombrement, int parade) {
 		return (Capacite.calculDeRandom(adresse) - Capacite.calculDeRandom(encombrement) + Capacite.calculDeRandom(parade));
-	}	
+	}
+	
 	/**
 	 * 
 	 * @param defense Defense de l'entite
@@ -54,7 +57,8 @@ public class Capacite {
 	 */
 	public static int getRandomDefense(int defense, int solidite) {
 		return (Capacite.calculDeRandom(defense) + Capacite.calculDeRandom(solidite));
-	}	
+	}
+	
 	/**
 	 * 
 	 * @param force Force de l'entite
@@ -79,6 +83,7 @@ public class Capacite {
 		result += calculBonus(degres);
 		return result;
 	}	
+	
 	/**
 	 * Calcul le Bonus d'une caracteristique
 	 * @param degres Nombre de degres possede par la caracteristique
@@ -87,6 +92,7 @@ public class Capacite {
 	private static int calculBonus (int degres) {
 		return (degres%3);
 	}
+	
 	/**
 	 * Calcul le niveau d'une caracteristique (D)
 	 * @param degres Nombre de degres possede par la caracteristique

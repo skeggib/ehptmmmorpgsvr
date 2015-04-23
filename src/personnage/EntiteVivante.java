@@ -65,6 +65,7 @@ abstract public class EntiteVivante {
 				this.setPositionX(this.getPositionX() + 1);
 			}
 			break;
+		default: break;
 		}
 	}
 
@@ -169,7 +170,7 @@ abstract public class EntiteVivante {
 	 * Retourne la position X de l'entite
 	 * @return positionX
 	 */
-	public int getPositionX() {
+	public int getPositionX () {
 		return positionX;
 	}
 
@@ -177,15 +178,17 @@ abstract public class EntiteVivante {
 	 * Modifie la position X de l'entite
 	 * @param positionX
 	 */
-	public void setPositionX(int positionX) {
-		this.positionX = positionX;
+	public void setPositionX (int positionX) {
+		if (positionX > 0) {
+			this.positionX = positionX;
+		}
 	}
 
 	/**
 	 * Retourne la position Y de l'entite
 	 * @return positionY
 	 */
-	public int getPositionY() {
+	public int getPositionY () {
 		return positionY;
 	}
 
@@ -193,15 +196,17 @@ abstract public class EntiteVivante {
 	 * Modifie la position Y de l'entite
 	 * @param positionY
 	 */
-	public void setPositionY(int positionY) {
-		this.positionY = positionY;
+	public void setPositionY (int positionY) {
+		if (positionY > 0) {
+			this.positionY = positionY;
+		}
 	}
 
 	/**
 	 * Retourne le nom de l'entite
 	 * @return nom
 	 */
-	public String getNom() {
+	public String getNom () {
 		return nom;
 	}
 
@@ -209,14 +214,16 @@ abstract public class EntiteVivante {
 	 * Modifie le nom de l'entite
 	 * @param nom nom de l'entite
 	 */
-	public void setNom(String nom) {
+	public void setNom (String nom) {
 		this.nom = nom;
 	}
 
 	/**
 	 * @param carte the carte to set
 	 */
-	public void setCarte(Carte carte) {
-		this.carte = carte;
+	public void setCarte (Carte carte) {
+		if(this.carte == null){
+			this.carte = carte;
+		}
 	}
 }

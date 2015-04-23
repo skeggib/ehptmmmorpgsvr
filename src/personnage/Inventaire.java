@@ -89,13 +89,19 @@ public class Inventaire {
 	 * @return Descrition de l'objet
 	 */
 	public String consulterCaracteristique (Objet obj) {
-		return obj.getNom();
-	}
-	
-	/**
-	 * Utilise une potion
-	 */
-	public void utiliserPotion () {
+		String result = "";
+		result += obj.getNom() + '\n';
+		if(obj instanceof Vetement){
+			result += ((Vetement) obj).toString();
+		}
+		else if (obj instanceof Arme){
+			result += ((Arme) obj).toString();
+		}
+		else if (obj instanceof Potion){
+			result += ((Potion) obj).toString();
+		}
+		
+		return result;
 	}
 	
 	/**
@@ -114,7 +120,7 @@ public class Inventaire {
 	public String inventaireToString () {
 		String result = "";
 		for(int i = 0; i < this.objetInInventaire.size(); i++){
-			result += (((Objet) this.objetInInventaire.get(i)).getNom() + "\n");
+			result += (this.consulterCaracteristique((Objet) this.objetInInventaire.get(i)) + "\n");
 		}
 		return result;
 	}
@@ -126,7 +132,7 @@ public class Inventaire {
 	public String equipeToString () {
 		String result = "";
 		for(int i = 0; i < this.objetEquipe.size(); i++){
-			result += (((Objet) this.objetEquipe.get(i)).getNom() + "\n");
+			result += (this.consulterCaracteristique((Objet) this.objetEquipe.get(i)) + "\n");
 		}
 		return result;
 	}
