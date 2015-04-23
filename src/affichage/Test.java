@@ -1,5 +1,6 @@
 package affichage;
 
+import controles.Clavier;
 import personnage.Joueur;
 import carte.Carte;
 
@@ -14,7 +15,11 @@ public class Test {
 		InterfaceTerm inter = new InterfaceTerm();
 		inter.setJoueur(joueur);
 		inter.setCarte(carte);
-		inter.afficher();
+		
+		while (true) {
+			inter.afficher();
+			joueur.seDeplacer(Clavier.saisieDirection());
+		}
 		
 	}
 

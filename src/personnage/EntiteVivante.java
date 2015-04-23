@@ -68,7 +68,7 @@ abstract public class EntiteVivante {
 		}
 	}
 
-	private boolean deplacementPossible (int direction) {
+	private boolean deplacementPossible (int direction) { // TODO: Teste si une carte a ete associee (setCarte) avant de tester si le deplacement est possible (si non NullPointerExeption)
 		switch(direction){
 			case EntiteVivante.BAS :
 				if(carte.getCase(this.getPositionX(), this.getPositionY() - 1).getValeur() == Case.VIDE){
