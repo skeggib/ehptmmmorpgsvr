@@ -21,18 +21,16 @@ public class Clavier {
 		System.out.print("Dans quelle direction ? (Haut -> 'z', Bas -> 's', Droite -> 'd', Gauche -> 'q') : ");
 		char car = Clavier.saisieCar();
 		
-		switch (car) {
-			case 'z':
-				return EntiteVivante.HAUT;
-			case 's':
-				return EntiteVivante.BAS;
-			case 'd':
-				return EntiteVivante.DROITE;
-			case 'q':
-				return EntiteVivante.GAUCHE;
-			default:
-				return -1;
-		}
+		if (car == 'z' || car == 'Z')
+			return EntiteVivante.HAUT;
+		else if (car == 's' || car == 'S')
+			return EntiteVivante.BAS;
+		else if (car == 'd' || car == 'D')
+			return EntiteVivante.DROITE;
+		else if (car == 'q' || car == 'Q')
+			return EntiteVivante.GAUCHE;
+		else
+			return -1;
 	}
 	
 	/**
