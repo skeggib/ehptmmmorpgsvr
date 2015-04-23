@@ -35,8 +35,11 @@ public class Nom {
 
 	private static Random rand = new Random();
 
+	private Nom () {
+		
+	}
+	
 	public static String getNomPotionSoin(int valueSoin) {
-
 		return Nom.NOM_POTION_SOIN[valueSoin];
 	}
 	/**

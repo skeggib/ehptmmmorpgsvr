@@ -16,6 +16,26 @@ import items.PotionDeSoin;
 
 public class Test {
 	public static void main(String[] args) {
+		float x = 10;
+		System.out.println(5.00 + (30 * Math.exp(-(40/(x+10)))));
+		x = 20;
+		System.out.println(5.00 + (30 * Math.exp(-(40/(x+10)))));
+		 x = 30;
+		System.out.println(5.00 + (30 * Math.exp(-(40/(x+10)))));
+		 x = 40;
+		System.out.println(5.00 + (30 * Math.exp(-(40/(x+10)))));
+		 x = 50;
+		System.out.println(5.00 + (30 * Math.exp(-(40/(x+10)))));
+		 x = 60;
+		System.out.println(5.00 + (30 * Math.exp(-(40/(x+10)))));
+		 x = 70;
+		System.out.println(5.00 + (30 * Math.exp(-(40/(x+10)))));
+		 x = 80;
+		System.out.println(5.00 + (30 * Math.exp(-(40/(x+10)))));
+		 x = 90;
+		System.out.println(5.00 + (30 * Math.exp(-(40/(x+10)))));
+		
+		
 //				int result;
 //		Random rand = new Random();
 //				for(int i = 0; i < 5000; i++){
@@ -136,18 +156,18 @@ public class Test {
 		joueur1.getInventaire().equiperObjet(arme12);
 		joueur1.getInventaire().equiperObjet(jambe1);
 		joueur1.getInventaire().equiperObjet(casque1);
-		System.out.println("\nOn affiche les objets equipé par le joueur : ");
-		System.out.println("\n" + joueur.getInventaire().equipeToString());
-//
-		System.out.println("\nOn affiche l'inventaire du joueur : ");
-		System.out.println("\n" + joueur.getInventaire().inventaireToString());
-		System.out.println("\n\nOn equipe le joueur de l'arme 1 et 2 presente dans son inventaire");
-		
-		System.out.println("\nOn affiche les objets equipé par le joueur : ");
-		System.out.println("\n" + joueur1.getInventaire().equipeToString());
-//
-		System.out.println("\nOn affiche l'inventaire du joueur : ");
-		System.out.println("\n" + joueur1.getInventaire().inventaireToString());
+//		System.out.println("\nOn affiche les objets equipé par le joueur : ");
+//		System.out.println("\n" + joueur.getInventaire().equipeToString());
+////
+//		System.out.println("\nOn affiche l'inventaire du joueur : ");
+//		System.out.println("\n" + joueur.getInventaire().inventaireToString());
+//		System.out.println("\n\nOn equipe le joueur de l'arme 1 et 2 presente dans son inventaire");
+//		
+//		System.out.println("\nOn affiche les objets equipé par le joueur : ");
+//		System.out.println("\n" + joueur1.getInventaire().equipeToString());
+////
+//		System.out.println("\nOn affiche l'inventaire du joueur : ");
+//		System.out.println("\n" + joueur1.getInventaire().inventaireToString());
 
 //		System.out.println("\n\nOn essaye de rééquipé le joueur de la premiere arme qu'il a équipé \n(logiqement impossible puisque sont arme n'est plus dans l'inventaire)");
 //		joueur.getInventaire().equiperObjet(arme);

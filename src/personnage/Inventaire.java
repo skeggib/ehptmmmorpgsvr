@@ -27,6 +27,7 @@ public class Inventaire {
 	public Inventaire () {
 
 	}
+	
 	/**
 	 * Ajoute un objet dans l'intentaire
 	 * @param obj Objet a ajouter
@@ -36,6 +37,7 @@ public class Inventaire {
 			this.objetInInventaire.add(obj);
 		}
 	}
+	
 	/**
 	 * Equipe le joueur de l'objet passe en parametre
 	 * @param obj Objet a equiper
@@ -80,6 +82,7 @@ public class Inventaire {
 			this.objetInInventaire.add(obj);
 		}
 	}
+	
 	/**
 	 * Retourne une chaine de caractere contenant la description de l'objet passé en parametre
 	 * @param obj Objet dont un veut obtenir les caracteritiques
@@ -88,11 +91,13 @@ public class Inventaire {
 	public String consulterCaracteristique (Objet obj) {
 		return obj.getNom();
 	}
+	
 	/**
 	 * Utilise une potion
 	 */
 	public void utiliserPotion () {
 	}
+	
 	/**
 	 * Retire un objet de l'inventaire et le deposer sur le sol a coter du joueur
 	 */
@@ -101,6 +106,11 @@ public class Inventaire {
 			this.objetInInventaire.remove(this.objetInInventaire.indexOf(obj));
 		}
 	}
+	
+	/**
+	 * Retourne la description du contenu de l'inventaire
+	 * @return String
+	 */
 	public String inventaireToString () {
 		String result = "";
 		for(int i = 0; i < this.objetInInventaire.size(); i++){
@@ -108,6 +118,11 @@ public class Inventaire {
 		}
 		return result;
 	}
+	
+	/**
+	 * Retourne la description des objets equipes
+	 * @return String
+	 */
 	public String equipeToString () {
 		String result = "";
 		for(int i = 0; i < this.objetEquipe.size(); i++){
@@ -115,6 +130,11 @@ public class Inventaire {
 		}
 		return result;
 	}
+	
+	/**
+	 * Retourne l'encombrement total des objets dans l'inventaire
+	 * @return int encombrement
+	 */
 	public int getEncombrement () {
 		int result = 0;
 		for(int i = 0; i < this.objetEquipe.size(); i++){
@@ -124,6 +144,11 @@ public class Inventaire {
 		}
 		return (result + this.objetInInventaire.size());
 	}
+	
+	/**
+	 * Retourne la protection apporter par les objets equipes
+	 * @return int protection
+	 */
 	public int getProtection () {
 		int result = 0;
 		for(int i = 0; i < this.objetEquipe.size(); i++){
@@ -133,6 +158,11 @@ public class Inventaire {
 		}
 		return (result);
 	}
+	
+	/**
+	 * Retourne l'impact total des armes dans equipees
+	 * @return int impact
+	 */
 	public int getImpact () {
 		int result = 0;
 		for(int i = 0; i < this.objetEquipe.size(); i++){
@@ -142,6 +172,11 @@ public class Inventaire {
 		}
 		return (result);
 	}
+
+	/**
+	 * Retourne la maniabilite total des armes dans equipees
+	 * @return int maniabilite
+	 */
 	public int getManiabilite () {
 		int result = 0;
 		for(int i = 0; i < this.objetEquipe.size(); i++){
@@ -151,6 +186,11 @@ public class Inventaire {
 		}
 		return (result);
 	}
+
+	/**
+	 * Retourne la parade total des objets dans equipees
+	 * @return int parade
+	 */
 	public int getParade () {
 		int result = 0;
 		for(int i = 0; i < this.objetEquipe.size(); i++){
@@ -160,6 +200,7 @@ public class Inventaire {
 		}
 		return (result);
 	}
+	
 	/**
 	 * Retourne un tableau d'Arme, taille 1 si une arme equipe, taille 2 si deux armes equipes
 	 * @return Arme[] tab

@@ -15,6 +15,10 @@ public class Capacite {
 	
 	private static Random rand = new Random();
 	
+	private Capacite () {
+		
+	}
+	
 	/**
 	 * 
 	 * @param adresse Adresse de l'entite

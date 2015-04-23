@@ -1,6 +1,7 @@
 package personnage;
 
 import carte.Carte;
+import carte.Case;
 
 /**
  * Classe EntiteVivante, contient : <br>
@@ -42,38 +43,53 @@ abstract public class EntiteVivante {
 	/**
 	 * Gere le deplacement de l'entite
 	 */
-	public void seDeplacer (int direct){
-		switch(direct){
-		case EntiteVivante.BAS :
-
-			this.setPositionY(this.getPositionY() - 1);
-			break;
-		case EntiteVivante.HAUT :
-			this.setPositionY(this.getPositionY() + 1);
-			break;
-		case EntiteVivante.GAUCHE :
-			this.setPositionX(this.getPositionX() - 1);
-			break;
-		case EntiteVivante.DROITE :
-			this.setPositionX(this.getPositionX() + 1);
-			break;
+	public void seDeplacer (int direction){
+		switch(direction){
+			case EntiteVivante.BAS :
+				if(this.deplacementPossible(direction)){
+					this.setPositionY(this.getPositionY() - 1);
+				}
+				break;
+			case EntiteVivante.HAUT :
+				if(this.deplacementPossible(direction)){
+					this.setPositionY(this.getPositionY() + 1);
+				}
+				break;
+			case EntiteVivante.GAUCHE :
+				if(this.deplacementPossible(direction)){
+					this.setPositionX(this.getPositionX() - 1);
+				}
+				break;
+			case EntiteVivante.DROITE :
+				if(this.deplacementPossible(direction)){
+					this.setPositionX(this.getPositionX() + 1);
+				}
+				break;
 		}
 	}
 
 	private boolean deplacementPossible (int direction) {
 		switch(direction){
 			case EntiteVivante.BAS :
-				this.setPositionY(this.getPositionY() - 1);
-				break;
+				if(carte.getCase(this.getPositionX(), this.getPositionY() - 1).getValeur() == Case.VIDE){
+					return true;
+				}
+				return false;
 			case EntiteVivante.HAUT :
-				this.setPositionY(this.getPositionY() + 1);
-				break;
+				if(carte.getCase(this.getPositionX(), this.getPositionY() + 1).getValeur() == Case.VIDE){
+					return true;
+				}
+				return false;
 			case EntiteVivante.GAUCHE :
-				this.setPositionX(this.getPositionX() - 1);
-				break;
+				if(carte.getCase(this.getPositionX() - 1, this.getPositionY()).getValeur() == Case.VIDE){
+					return true;
+				}
+				return false;
 			case EntiteVivante.DROITE :
-				this.setPositionX(this.getPositionX() + 1);
-				break;
+				if(carte.getCase(this.getPositionX() + 1, this.getPositionY()).getValeur() == Case.VIDE){
+					return true;
+				}
+				return false;
 			default : return false;
 		}
 	}
