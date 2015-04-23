@@ -12,7 +12,8 @@ public class Test {
 		joueur.setPositionY(18);
 		Carte carte = new Carte("");
 		InterfaceTerm inter = new InterfaceTerm();
-		inter.dessinerCarte(carte, joueur);
+		inter.setJoueur(joueur);
+		inter.setCarte(carte);
 		inter.afficher();
 		
 	}

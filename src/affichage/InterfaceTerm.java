@@ -15,6 +15,7 @@ public class InterfaceTerm {
 	
 	private Matrice matrice;
 	private Joueur joueur;
+	private Carte carte;
 	
 	public InterfaceTerm() {
 		this.matrice = new Matrice(170, 47);
@@ -38,14 +39,23 @@ public class InterfaceTerm {
 		return true;
 	}
 	
+	public boolean setCarte(Carte carte) {
+		if (carte == null)
+			return false;
+		
+		this.carte = carte;
+		
+		return true;
+	}
+	
 	/**
 	 * Dessine une carte dans l'interface (ne l'affiche pas)
 	 * @param carte Carte a dessiner
 	 * @param joueur Joueur autour duquel la carte va etre centree
 	 * @return True si la carte a ete dessinee, false si non
 	 */
-	public boolean dessinerCarte(Carte carte, Joueur joueur) { // TODO: Centrer le joueur
-		if (carte == null || joueur == null)
+	public boolean dessinerCarte() { // TODO: Centrer le joueur
+		if (this.carte == null || this.joueur == null)
 			return false;
 		
 		/* VARIABLES */
@@ -73,16 +83,16 @@ public class InterfaceTerm {
 		/* CALCUL DE LA POSITION DE LA PREMIERE CASE AFFICHEE (pour centrer le joueur) */
 		
 		// Calcul de cette position
-		posPremCaseX = joueur.getPositionX() - InterfaceTerm.NB_CASES_AFFICHEES_X / 2;
-		posPremCaseY = joueur.getPositionY() - InterfaceTerm.NB_CASES_AFFICHEES_Y / 2;
+		posPremCaseX = this.joueur.getPositionX() - InterfaceTerm.NB_CASES_AFFICHEES_X / 2;
+		posPremCaseY = this.joueur.getPositionY() - InterfaceTerm.NB_CASES_AFFICHEES_Y / 2;
 		
 		// Verifier le depassement et le corriger si besoin
-		if (posPremCaseX > carte.getLargeur() - InterfaceTerm.NB_CASES_AFFICHEES_X)
-			posPremCaseX = carte.getLargeur() - InterfaceTerm.NB_CASES_AFFICHEES_X;
+		if (posPremCaseX > this.carte.getLargeur() - InterfaceTerm.NB_CASES_AFFICHEES_X)
+			posPremCaseX = this.carte.getLargeur() - InterfaceTerm.NB_CASES_AFFICHEES_X;
 		else if (posPremCaseX < 0)
 			posPremCaseX = 0;
-		if (posPremCaseY > carte.getHauteur() - InterfaceTerm.NB_CASES_AFFICHEES_Y)
-			posPremCaseY = carte.getHauteur() - InterfaceTerm.NB_CASES_AFFICHEES_Y;
+		if (posPremCaseY > this.carte.getHauteur() - InterfaceTerm.NB_CASES_AFFICHEES_Y)
+			posPremCaseY = this.carte.getHauteur() - InterfaceTerm.NB_CASES_AFFICHEES_Y;
 		else if (posPremCaseY < 0)
 			posPremCaseY = 0;
 		
@@ -90,16 +100,14 @@ public class InterfaceTerm {
 		
 		for (int i = 0; i < InterfaceTerm.NB_CASES_AFFICHEES_Y; i++) {
 			for (int j = 0; j < InterfaceTerm.NB_CASES_AFFICHEES_X; j++) {
-				caseAct = carte.getCase(posPremCaseX + j, posPremCaseY + i);
+				caseAct = this.carte.getCase(posPremCaseX + j, posPremCaseY + i);
 				posCaseMatrX = marge + j * (InterfaceTerm.LARGEUR_CASE_CARTE + largeurEspace);
 				posCaseMatrY = marge + i * (InterfaceTerm.HAUTEUR_CASE_CARTE + largeurEspace);
 				
 				this.matrice.dessinerImage(posCaseMatrX, posCaseMatrY, caseAct.getImage());
 				
 				// Dessiner le joueur si la case actuelle correspond a sa position
-				if (posPremCaseX + j == joueur.getPositionX() && posPremCaseY + i == joueur.getPositionY()) {
-					System.out.println("posPremCaseX + j = " + posPremCaseX + j);
-					System.out.println("posPremCaseY + i = " + posPremCaseY + i);
+				if (posPremCaseX + j == this.joueur.getPositionX() && posPremCaseY + i == this.joueur.getPositionY()) {
 					this.matrice.dessinerImage(posCaseMatrX, posCaseMatrY, caseJoueur.getImage());
 				}
 			}
@@ -112,6 +120,7 @@ public class InterfaceTerm {
 	 * Affiche l'interface
 	 */
 	public void afficher() {
+		this.dessinerCarte();
 		this.matrice.afficher();
 	}
 }
