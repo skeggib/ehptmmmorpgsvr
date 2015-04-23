@@ -32,36 +32,36 @@ public class Case {
 		switch (valeur) {
 			case Case.JOUEUR_PRINCIPAL:
 				this.img = new Image();
-				this.img.chargerString("  o  \n --- \n  |  \n / \\ ");
+				this.img.chargerString("   o   \n  ---  \n   |   \n  / \\  ");
 				this.img.setCouleur(Couleur.GREEN);
 				break;
 			case Case.AUTRE_JOUEUR:
 				this.img = new Image();
-				this.img.chargerString("  o  \n --- \n  |  \n / \\ ");
+				this.img.chargerString("   o   \n  ---  \n   |   \n  / \\  ");
 				this.img.setCouleur(Couleur.BLUE);
 				break;
 			case Case.VIDE:
 				this.img = new Image();
-				this.img.chargerString("     \n     \n     \n     ");
+				this.img.chargerString("       \n       \n       \n       ");
 				break;
 			case Case.MUR:
 				this.img = new Image();
-				this.img.chargerString("#####\n#####\n#####\n#####");
+				this.img.chargerString("#######\n#######\n#######\n#######");
 				this.img.setCouleur(Couleur.WHITE);
 				break;
 			case Case.MONSTRE:
 				this.img = new Image();
-				this.img.chargerString(" / \\ \n|. .|\n --- \n / \\ ");
+				this.img.chargerString("  / \\  \n |. .| \n  ---  \n  / \\  ");
 				this.img.setCouleur(Couleur.PURPLE);
 				break;
 			case Case.OBJET:
 				this.img = new Image();
-				this.img.chargerString("/---\\\n| X |\n| X |\n\\---/");
+				this.img.chargerString(" /---\\ \n | X | \n | X | \n \\---/ ");
 				this.img.setCouleur(Couleur.WHITE);
 				break;
 			default:
 				this.img = new Image();
-				this.img.chargerString("     \n     \n     \n     ");
+				this.img.chargerString("       \n       \n       \n       ");
 				break;
 		}
 	}
