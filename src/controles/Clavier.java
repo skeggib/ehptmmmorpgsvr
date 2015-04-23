@@ -17,7 +17,7 @@ public class Clavier {
 	 * Demande la saisie d'une direction
 	 * @return L'int correspondant a la direction ou -1 si la saisie ne correspond pas a la demande
 	 */
-	public static int saisieDirection() {
+	public static int saisieDirection() { // TODO: Utiliser les fleches directionnelles
 		System.out.print("Dans quelle direction ? (Haut -> 'z', Bas -> 's', Droite -> 'd', Gauche -> 'q') : ");
 		char car = Clavier.saisieCar();
 		
