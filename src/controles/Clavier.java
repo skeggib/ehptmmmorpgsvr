@@ -40,6 +40,10 @@ public class Clavier {
 	 * @return
 	 */
 	private static char saisieCar() {
-		return sc.nextLine().charAt(0);
+		String str = sc.nextLine();
+		if (str.isEmpty())
+			return ' ';
+		else
+			return str.charAt(0);
 	}
 }
