@@ -6,7 +6,7 @@ import personnage.EntiteVivante;
 
 public class Clavier {
 	
-	Scanner sc = new Scanner(System.in);
+	private static Scanner sc = new Scanner(System.in);
 	
 	/**
 	 * Constructeur par defaut prive pour ne pas pouvoir instancier un objet de cette classe
@@ -17,11 +17,9 @@ public class Clavier {
 	 * Demande la saisie d'une direction
 	 * @return L'int correspondant a la direction ou -1 si la saisie ne correspond pas a la demande
 	 */
-	public int saisieDirection() {
+	public static int saisieDirection() {
 		System.out.print("Dans quelle direction ? (Haut -> 'z', Bas -> 's', Droite -> 'd', Gauche -> 'q') : ");
-		String str = new String();
-		str = sc.nextLine();
-		char car = str.charAt(0);
+		char car = Clavier.saisieCar();
 		
 		switch (car) {
 			case 'z':
@@ -41,7 +39,7 @@ public class Clavier {
 	 * Demande une saisie et retourne le premier caractere saisit
 	 * @return
 	 */
-	private char saisieCar() {
+	private static char saisieCar() {
 		return sc.nextLine().charAt(0);
 	}
 }
