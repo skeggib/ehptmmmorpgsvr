@@ -12,8 +12,8 @@ public class Test {
 		System.out.println("    1. Grande");
 		System.out.println("    2. Moyenne");
 		System.out.println("    3. Petite");
-		System.out.println("Votre choix : ");
-		int tailleInterface = 1;
+		System.out.print("Votre choix : ");
+		int tailleInterface = Clavier.saisieInt();
 		
 		Carte carte = new Carte("../carte/test");
 		

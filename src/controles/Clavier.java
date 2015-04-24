@@ -44,4 +44,8 @@ public class Clavier {
 		else
 			return str.charAt(0);
 	}
+	
+	public static int saisieInt() {
+		return sc.nextInt();
+	}
 }
