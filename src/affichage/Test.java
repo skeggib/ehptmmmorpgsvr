@@ -8,15 +8,23 @@ public class Test {
 
 	public static void main(String[] args) {
 		
+		System.out.println("\nChoisissez la taille de l'interface : ");
+		System.out.println("    1. Grande");
+		System.out.println("    2. Moyenne");
+		System.out.println("    3. Petite");
+		System.out.println("Votre choix : ");
+		int tailleInterface = 1;
+		
+		Carte carte = new Carte("../carte/test");
+		
 		Joueur joueur = new Joueur();
 		joueur.setPositionX(3);
 		joueur.setPositionY(3);
-		Carte carte = new Carte("../carte/test");
-		InterfaceTerm inter = new InterfaceTerm();
+		joueur.setCarte(carte);
+		
+		InterfaceTerm inter = new InterfaceTerm(tailleInterface - 1);
 		inter.setJoueur(joueur);
 		inter.setCarte(carte);
-		
-		joueur.setCarte(carte);
 		
 		while (true) {
 			inter.afficher();

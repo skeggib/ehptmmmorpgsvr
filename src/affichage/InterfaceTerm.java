@@ -6,8 +6,8 @@ import personnage.Joueur;
 
 public class InterfaceTerm {
 	
-	private static final int LARGEUR_CASE_CARTE = 7;
-	private static final int HAUTEUR_CASE_CARTE = 4;
+	private static int LARGEUR_CASE_CARTE;
+	private static int HAUTEUR_CASE_CARTE;
 	private static final int NB_CASES_AFFICHEES_X = 13;
 	private static final int NB_CASES_AFFICHEES_Y = 9;
 	
@@ -19,19 +19,41 @@ public class InterfaceTerm {
 	private Joueur joueur;
 	private Carte carte;
 	
-	public InterfaceTerm() {
-		this.taille = 0; // TODO: A enlever
-		this.matrice = new Matrice(170, 47);
+	// Largeur des espaces entre chaque cases
+	private static int LARGEUR_ESPACE_CARTE = 1;
+	
+	// Largeur de la marge autours de la carte
+	private static final int MARGE_CARTE = 1;
+	
+	private InterfaceTerm() {};
+	
+	public InterfaceTerm(int taille) {
+		this.setTaille(taille);
 	}
 	
-	/**
-	 * Constructeur par taille
-	 * @param largeur Largeur de l'affichage
-	 * @param hauteur Hauteur de l'affichage
-	 */
-	public InterfaceTerm(int largeur, int hauteur) {
-		this.taille = 0; // TODO: A enlever
-		this.matrice  = new Matrice(largeur, hauteur);
+	private void setTaille(int t) {
+		this.taille = t;
+		switch (this.TAILLES[t]) {
+			case "large":
+				InterfaceTerm.HAUTEUR_CASE_CARTE = 4;
+				InterfaceTerm.LARGEUR_CASE_CARTE = 7;
+				InterfaceTerm.LARGEUR_ESPACE_CARTE = 1;
+				break;
+			case "normal":
+				InterfaceTerm.HAUTEUR_CASE_CARTE = 3;
+				InterfaceTerm.LARGEUR_CASE_CARTE = 5;
+				InterfaceTerm.LARGEUR_ESPACE_CARTE = 1;
+				break;
+			case "small":
+				InterfaceTerm.HAUTEUR_CASE_CARTE = 1;
+				InterfaceTerm.LARGEUR_CASE_CARTE = 1;
+				InterfaceTerm.LARGEUR_ESPACE_CARTE = 0;
+				break;
+		}
+		
+		int largeurMatr = InterfaceTerm.MARGE_CARTE * 2 + InterfaceTerm.NB_CASES_AFFICHEES_X * (InterfaceTerm.LARGEUR_CASE_CARTE + InterfaceTerm.LARGEUR_ESPACE_CARTE);
+		int hauteurMatr = InterfaceTerm.MARGE_CARTE * 2 + InterfaceTerm.NB_CASES_AFFICHEES_Y * (InterfaceTerm.HAUTEUR_CASE_CARTE + InterfaceTerm.LARGEUR_ESPACE_CARTE);
+		this.matrice = new Matrice(largeurMatr, hauteurMatr);
 	}
 	
 	public boolean setJoueur(Joueur j) {
@@ -74,12 +96,6 @@ public class InterfaceTerm {
 		int posCaseMatrX;
 		int posCaseMatrY;
 		
-		// Largeur des espaces entre chaque cases
-		int largeurEspace = 1;
-		
-		// Largeur de la marge autours de la carte
-		int marge = 1;
-		
 		// Position (sur la carte) de la premiere case affichee
 		int posPremCaseX;
 		int posPremCaseY;
@@ -105,8 +121,8 @@ public class InterfaceTerm {
 		for (int i = 0; i < InterfaceTerm.NB_CASES_AFFICHEES_Y; i++) {
 			for (int j = 0; j < InterfaceTerm.NB_CASES_AFFICHEES_X; j++) {
 				caseAct = this.carte.getCase(posPremCaseX + j, posPremCaseY + i);
-				posCaseMatrX = marge + j * (InterfaceTerm.LARGEUR_CASE_CARTE + largeurEspace);
-				posCaseMatrY = marge + i * (InterfaceTerm.HAUTEUR_CASE_CARTE + largeurEspace);
+				posCaseMatrX = InterfaceTerm.MARGE_CARTE + j * (InterfaceTerm.LARGEUR_CASE_CARTE + InterfaceTerm.LARGEUR_ESPACE_CARTE);
+				posCaseMatrY = InterfaceTerm.MARGE_CARTE + i * (InterfaceTerm.HAUTEUR_CASE_CARTE + InterfaceTerm.LARGEUR_ESPACE_CARTE);
 				
 				this.matrice.dessinerImage(posCaseMatrX, posCaseMatrY, caseAct.getImage(this.taille));
 				
