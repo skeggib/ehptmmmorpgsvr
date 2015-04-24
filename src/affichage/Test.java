@@ -11,7 +11,7 @@ public class Test {
 		Joueur joueur = new Joueur();
 		joueur.setPositionX(3);
 		joueur.setPositionY(3);
-		Carte carte = new Carte("");
+		Carte carte = new Carte("../carte/test");
 		InterfaceTerm inter = new InterfaceTerm();
 		inter.setJoueur(joueur);
 		inter.setCarte(carte);

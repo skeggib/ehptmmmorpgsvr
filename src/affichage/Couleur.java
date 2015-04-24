@@ -10,4 +10,29 @@ public class Couleur {
 	public static final String PURPLE = "\u001B[35m";
 	public static final String CYAN = "\u001B[36m";
 	public static final String WHITE = "\u001B[37m";
+	
+	public static String getCouleurFromString(String str) {
+		switch (str) {
+			case "DEFAULT":
+				return Couleur.DEFAULT;
+			case "BLACK":
+				return Couleur.BLACK;
+			case "RED":
+				return Couleur.RED;
+			case "GREEN":
+				return Couleur.GREEN;
+			case "YELLOW":
+				return Couleur.YELLOW;
+			case "BLUE":
+				return Couleur.BLUE;
+			case "PURPLE":
+				return Couleur.PURPLE;
+			case "CYAN":
+				return Couleur.CYAN;
+			case "WHITE":
+				return Couleur.WHITE;
+			default: 
+				return Couleur.DEFAULT;
+		}
+	}
 }

@@ -11,11 +11,16 @@ public class InterfaceTerm {
 	private static final int NB_CASES_AFFICHEES_X = 13;
 	private static final int NB_CASES_AFFICHEES_Y = 9;
 	
+	public static final String[] TAILLES = {"large", "normal", "small"};
+	
+	private int taille;
+	
 	private Matrice matrice;
 	private Joueur joueur;
 	private Carte carte;
 	
 	public InterfaceTerm() {
+		this.taille = 0; // TODO: A enlever
 		this.matrice = new Matrice(170, 47);
 	}
 	
@@ -25,6 +30,7 @@ public class InterfaceTerm {
 	 * @param hauteur Hauteur de l'affichage
 	 */
 	public InterfaceTerm(int largeur, int hauteur) {
+		this.taille = 0; // TODO: A enlever
 		this.matrice  = new Matrice(largeur, hauteur);
 	}
 	
@@ -102,11 +108,11 @@ public class InterfaceTerm {
 				posCaseMatrX = marge + j * (InterfaceTerm.LARGEUR_CASE_CARTE + largeurEspace);
 				posCaseMatrY = marge + i * (InterfaceTerm.HAUTEUR_CASE_CARTE + largeurEspace);
 				
-				this.matrice.dessinerImage(posCaseMatrX, posCaseMatrY, caseAct.getImage());
+				this.matrice.dessinerImage(posCaseMatrX, posCaseMatrY, caseAct.getImage(this.taille));
 				
 				// Dessiner le joueur si la case actuelle correspond a sa position
 				if (posPremCaseX + j == this.joueur.getPositionX() && posPremCaseY + i == this.joueur.getPositionY()) {
-					this.matrice.dessinerImage(posCaseMatrX, posCaseMatrY, caseJoueur.getImage());
+					this.matrice.dessinerImage(posCaseMatrX, posCaseMatrY, caseJoueur.getImage(this.taille));
 				}
 			}
 		}

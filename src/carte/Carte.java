@@ -1,5 +1,7 @@
 package carte;
 
+import fichiers.LectureFichier;
+
 public class Carte {
 	private Case[][] cases;
 	private int hauteur;
@@ -27,7 +29,7 @@ public class Carte {
 	 * @param chemin Chemin du fichier
 	 */
 	public Carte(String chemin) { // TODO: A faire
-		this.chargerFichier("");
+		this.chargerFichier(chemin);
 	}
 	
 	public int getHauteur() {
@@ -45,31 +47,20 @@ public class Carte {
 	 */
 	private boolean chargerFichier(String chemin) { // TODO: A faire
 		
-		this.setTaille(20, 20);
-		
 		// Le fichier contiendra la hauteur, la largeur et le String qui correspond aux cases
 		
 		String str = new String();
-		str += "3;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3\n";
-		str += "3;3;3;3; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ;3\n";
-		str += "3;3; ; ; ;3; ; ; ; ; ; ; ; ; ; ; ; ; ;3\n";
-		str += "3; ; ; ;3;3;3; ;3;3;3;3;3;3; ; ; ; ; ;3\n";
-		str += "3; ; ;3;4;3; ; ; ; ; ; ; ;3;3;3; ; ; ;3\n";
-		str += "3; ; ; ; ;3; ; ; ; ; ; ; ;3;1;3; ; ; ;3\n";
-		str += "3; ; ; ; ; ; ; ; ; ; ; ; ;3; ;3; ; ; ;3\n";
-		str += "3; ; ; ; ; ; ; ; ; ; ; ; ;3; ;3; ; ; ;3\n";
-		str += "3; ; ; ; ; ;3;3;3; ; ; ; ; ; ; ; ; ; ;3\n";
-		str += "3; ; ; ;4; ; ;3;3;3; ; ; ; ; ; ; ; ; ;3\n";
-		str += "3; ; ; ; ; ; ; ;3; ; ; ;1; ;3;3; ; ; ;3\n";
-		str += "3; ; ; ; ; ; ; ; ; ; ; ; ; ; ;3;3; ; ;3\n";
-		str += "3; ; ;3;3;3; ;3;3;3; ; ; ; ; ; ; ; ; ;3\n";
-		str += "3; ; ;3; ; ; ; ; ;3; ; ; ; ;3; ; ; ; ;3\n";
-		str += "3; ; ;3; ; ; ; ;5;3; ; ; ; ;3; ; ; ; ;3\n";
-		str += "3; ; ;3; ; ;5;5;5;3; ; ; ; ;3; ; ;4; ;3\n";
-		str += "3; ; ;3;3;3;3;3;3;3; ; ; ; ;3; ;4;4; ;3\n";
-		str += "3; ; ; ; ; ; ; ; ; ; ; ; ; ;3; ;4;4; ;3\n";
-		str += "3; ; ; ; ; ; ; ; ; ; ; ; ; ;3; ; ; ; ;3\n";
-		str += "3;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3;3\n";
+		
+		String[] lines = LectureFichier.lire(chemin);
+		
+		for (int i = 0; i < lines.length; i++) {
+			if (!lines[i].isEmpty()) {
+				str += lines[i] + "\n";
+			}
+		}
+		
+		this.setTaille(str.split("\n")[0].split(";").length, str.split("\n").length);
+		System.out.println(this.largeur + "x" + this.hauteur);
 		
 		if (!this.chargerString(str))
 			return false;
