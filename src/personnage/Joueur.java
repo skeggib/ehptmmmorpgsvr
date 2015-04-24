@@ -12,9 +12,6 @@ public class Joueur extends EntiteVivante {
 	
 	private int exp;
 	
-	public void seDeplacer () {
-		
-	}
 
 	/**
 	 * @return the pointAction

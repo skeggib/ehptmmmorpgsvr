@@ -40,61 +40,66 @@ abstract public class EntiteVivante {
 
 	}
 
+	public void realiserAction (int choix) {
+		int contenuCase = this.contenuCase(choix);
+
+		switch(contenuCase){
+		case Case.VIDE:
+			this.seDeplacer(choix);
+			break;
+			//		case Case.OBJET: //TODO completer quand on pourra recuperer les objets sur la Carte
+			//			this.inventaire.ajouterObjet(obj);
+			//			break;
+			//		case Case.MONSTRE: //TODO completer quand on pourra recuperer les entite sur la Carte
+			//			this.attaquer(cible);
+			//			break;
+		case Case.MUR: //TODO dire si c'est utlise ou pas!
+			this.getVie().retirerVie(1);
+			break;
+			//		case Case.AUTRE_JOUEUR: //TODO completer quand on pourra recuperer les entite sur la Carte
+			//			this.attaquer(cible);
+			//			break;
+		}
+	}
+
 	/**
 	 * Gere le deplacement de l'entite
 	 */
 	public void seDeplacer (int direction){
-		switch(direction){
-		case EntiteVivante.BAS :
-			if(this.deplacementPossible(direction)){
+		if(this.contenuCase(direction) == Case.VIDE){
+			switch(direction){
+			case EntiteVivante.BAS :
 				this.setPositionY(this.getPositionY() + 1);
-			}
-			break;
-		case EntiteVivante.HAUT :
-			if(this.deplacementPossible(direction)){
+				break;
+			case EntiteVivante.HAUT :
 				this.setPositionY(this.getPositionY() - 1);
-			}
-			break;
-		case EntiteVivante.GAUCHE :
-			if(this.deplacementPossible(direction)){
+				break;
+			case EntiteVivante.GAUCHE :
 				this.setPositionX(this.getPositionX() - 1);
-			}
-			break;
-		case EntiteVivante.DROITE :
-			if(this.deplacementPossible(direction)){
+				break;
+			case EntiteVivante.DROITE :
 				this.setPositionX(this.getPositionX() + 1);
+				break;
 			}
-			break;
 		}
 	}
 
-	private boolean deplacementPossible (int direction) {
+	private int contenuCase (int direction) {
 		if(this.carte != null){
 			switch(direction){
 			case EntiteVivante.BAS :
-				if(carte.getCase(this.getPositionX(), this.getPositionY() + 1).getValeur() == Case.VIDE){
-					return true;
-				}
-				return false;
+				return carte.getCase(this.getPositionX(), this.getPositionY() + 1).getValeur();
 			case EntiteVivante.HAUT :
-				if(carte.getCase(this.getPositionX(), this.getPositionY() - 1).getValeur() == Case.VIDE){
-					return true;
-				}
-				return false;
+				return carte.getCase(this.getPositionX(), this.getPositionY() - 1).getValeur();
 			case EntiteVivante.GAUCHE :
-				if(carte.getCase(this.getPositionX() - 1, this.getPositionY()).getValeur() == Case.VIDE){
-					return true;
-				}
-				return false;
+				return carte.getCase(this.getPositionX() - 1, this.getPositionY()).getValeur();
 			case EntiteVivante.DROITE :
-				if(carte.getCase(this.getPositionX() + 1, this.getPositionY()).getValeur() == Case.VIDE){
-					return true;
-				}
-				return false;
-			default : return false;
+				return carte.getCase(this.getPositionX() + 1, this.getPositionY()).getValeur();
+			default : return -1;
 			}
+		} else {
+			return -1;
 		}
-		return false;
 	}
 
 

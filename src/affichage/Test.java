@@ -20,7 +20,8 @@ public class Test {
 		
 		while (true) {
 			inter.afficher();
-			joueur.seDeplacer(Clavier.saisieDirection());
+			System.out.println("VIE DU JOUEUR : " + joueur.getVie().getVie());
+			joueur.realiserAction(Clavier.saisieDirection());
 		}
 		
 	}

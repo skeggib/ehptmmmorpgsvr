@@ -8,12 +8,12 @@ public class Arme extends Objet {
 	
 	private Random rand = new Random ();
 
-	private final int MAUVAIS = 0;
-	private final int COMMUN = 1;
-	private final int INHABITUEL = 2;
-	private final int RARE = 3;
-	private final int EPIQUE = 4;
-	private final int LEGENDAIRE = 5;
+	private final static int MAUVAIS = 0;
+	private final static int COMMUN = 1;
+	private final static int INHABITUEL = 2;
+	private final static int RARE = 3;
+	private final static int EPIQUE = 4;
+	private final static int LEGENDAIRE = 5;
 
 	private int maniabilite = 0;
 	private int impact = 0;		
@@ -24,17 +24,17 @@ public class Arme extends Objet {
 		
 		int resultRand = rand.nextInt(1001);
 		if(resultRand < 200){
-			this.setQualite(this.MAUVAIS);
+			this.setQualite(Arme.MAUVAIS);
 		} else if (resultRand >= 200 && resultRand < 600){
-			this.setQualite(this.COMMUN);
+			this.setQualite(Arme.COMMUN);
 		} else if (resultRand >= 600 && resultRand < 850){
-			this.setQualite(this.INHABITUEL);
+			this.setQualite(Arme.INHABITUEL);
 		} else if (resultRand >= 850 && resultRand < 950){
-			this.setQualite(this.RARE);
+			this.setQualite(Arme.RARE);
 		} else if (resultRand >= 950 && resultRand < 1000){
-			this.setQualite(this.EPIQUE);
+			this.setQualite(Arme.EPIQUE);
 		} else if (resultRand == 1000){
-			this.setQualite(this.LEGENDAIRE);
+			this.setQualite(Arme.LEGENDAIRE);
 		}
 		
 		switch (this.getQualite()){
@@ -71,7 +71,33 @@ public class Arme extends Objet {
 		default : break;
 		}
 	}
-
+	
+	private String qualiteToString () {
+		switch (this.qualite) {
+		case Arme.MAUVAIS:
+			return "Ce vetement est de mauvaise qualite";	
+		case Arme.COMMUN:
+			return "Ce vetement est commun";
+		case Arme.INHABITUEL:
+			return "Ce vetement est inhabituel";
+		case Arme.RARE:
+			return "Ce vetement est rare";
+		case Arme.EPIQUE:
+			return "Ce vetement est epique!";
+		case Arme.LEGENDAIRE:
+			return "Ce vetement est legendaire!";
+		default: return "";
+		}
+	}
+	
+	public String toString () {
+		String result = "";
+		result += this.getNom() + "\n";
+		result += this.qualiteToString() + "\n";
+		result += "maniabilite : " + this.getManiabilite() + "\n";
+		result += "impact : " + this.getImpact();
+		return result;
+	}
 
 	/**
 	 * @return the qualite
