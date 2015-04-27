@@ -11,6 +11,11 @@ public class Couleur {
 	public static final String CYAN = "\u001B[36m";
 	public static final String WHITE = "\u001B[37m";
 	
+	/**
+	 * Renvoi le code couleur à partir du nom de cette couleur (ex: "RED")
+	 * @param str Nom de la couleur
+	 * @return Code couleur
+	 */
 	public static String getCouleurFromString(String str) {
 		switch (str) {
 			case "DEFAULT":

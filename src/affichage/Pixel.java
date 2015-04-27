@@ -19,11 +19,11 @@ public class Pixel {
 	/**
 	 * Constructeur
 	 * @param c Caractère
-	 * @param front Couleur du caractère
+	 * @param color Couleur du caractère
 	 */
-	public Pixel(char c, String front) {
+	public Pixel(char c, String color) {
 		this.c = c;
-		this.color = front;
+		this.color = color;
 	}
 	
 	public char getChar() {
@@ -42,10 +42,9 @@ public class Pixel {
 		this.color = c;
 	}
 	
-	public String getFrontCouleur() {
-		return color;
-	}
-	
+	/**
+	 * @return La chaine de caracteres qui affiche le caractere du pixel colore dans le terminal
+	 */
 	public String toStringCouleur() {
 		return this.color + c;
 	}
