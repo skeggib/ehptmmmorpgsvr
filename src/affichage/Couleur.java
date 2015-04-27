@@ -68,26 +68,26 @@ public class Couleur {
 		
 		if (Couleur.loaded) {
 			switch (str) {
-			case "DEFAULT":
-				return Couleur.DEFAULT;
-			case "BLACK":
-				return Couleur.BLACK;
-			case "RED":
-				return Couleur.RED;
-			case "GREEN":
-				return Couleur.GREEN;
-			case "YELLOW":
-				return Couleur.YELLOW;
-			case "BLUE":
-				return Couleur.BLUE;
-			case "PURPLE":
-				return Couleur.PURPLE;
-			case "CYAN":
-				return Couleur.CYAN;
-			case "WHITE":
-				return Couleur.WHITE;
-			default: 
-				return Couleur.DEFAULT;
+				case "DEFAULT":
+					return Couleur.DEFAULT;
+				case "BLACK":
+					return Couleur.BLACK;
+				case "RED":
+					return Couleur.RED;
+				case "GREEN":
+					return Couleur.GREEN;
+				case "YELLOW":
+					return Couleur.YELLOW;
+				case "BLUE":
+					return Couleur.BLUE;
+				case "PURPLE":
+					return Couleur.PURPLE;
+				case "CYAN":
+					return Couleur.CYAN;
+				case "WHITE":
+					return Couleur.WHITE;
+				default: 
+					return Couleur.DEFAULT;
 			}
 		}
 			
