@@ -1,23 +1,73 @@
 package affichage;
 
+import os.DetectOS;
+
 public class Couleur {
-	public static final String DEFAULT = "\u001B[0m";
-	public static final String BLACK = "\u001B[30m";
-	public static final String RED = "\u001B[31m";
-	public static final String GREEN = "\u001B[32m";
-	public static final String YELLOW = "\u001B[33m";
-	public static final String BLUE = "\u001B[34m";
-	public static final String PURPLE = "\u001B[35m";
-	public static final String CYAN = "\u001B[36m";
-	public static final String WHITE = "\u001B[37m";
+	private static String DEFAULT;
+	private static String BLACK;
+	private static String RED;
+	private static String GREEN;
+	private static String YELLOW;
+	private static String BLUE;
+	private static String PURPLE;
+	private static String CYAN;
+	private static String WHITE;
+	
+	private static boolean loaded = false;
+	
+	private static void loadCouleurs() {
+		if (Couleur.loaded == false) {
+			Couleur.loaded = true;
+			
+			// Apparement il est impossible de colorer du texte sous windows...
+			if (DetectOS.Windows()) {
+				Couleur.DEFAULT = "";
+				Couleur.BLACK = "";
+				Couleur.RED = "";
+				Couleur.GREEN = "";
+				Couleur.YELLOW = "";
+				Couleur.BLUE = "";
+				Couleur.PURPLE = "";
+				Couleur.CYAN = "";
+				Couleur.WHITE = "";
+			}
+			
+			else if (DetectOS.Unix()) {
+				Couleur.DEFAULT = "\u001B[0m";
+				Couleur.BLACK = "\u001B[30m";
+				Couleur.RED = "\u001B[31m";
+				Couleur.GREEN = "\u001B[32m";
+				Couleur.YELLOW = "\u001B[33m";
+				Couleur.BLUE = "\u001B[34m";
+				Couleur.PURPLE = "\u001B[35m";
+				Couleur.CYAN = "\u001B[36m";
+				Couleur.WHITE = "\u001B[37m";
+			}
+			
+			else {
+				Couleur.DEFAULT = "";
+				Couleur.BLACK = "";
+				Couleur.RED = "";
+				Couleur.GREEN = "";
+				Couleur.YELLOW = "";
+				Couleur.BLUE = "";
+				Couleur.PURPLE = "";
+				Couleur.CYAN = "";
+				Couleur.WHITE = "";
+			}
+		}
+	}
 	
 	/**
 	 * Renvoi le code couleur à partir du nom de cette couleur (ex: "RED")
 	 * @param str Nom de la couleur
 	 * @return Code couleur
 	 */
-	public static String getCouleurFromString(String str) {
-		switch (str) {
+	public static String getCouleur(String str) {
+		Couleur.loadCouleurs();
+		
+		if (Couleur.loaded) {
+			switch (str) {
 			case "DEFAULT":
 				return Couleur.DEFAULT;
 			case "BLACK":
@@ -38,6 +88,10 @@ public class Couleur {
 				return Couleur.WHITE;
 			default: 
 				return Couleur.DEFAULT;
+			}
 		}
+			
+		else
+			return "";
 	}
 }

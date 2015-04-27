@@ -13,7 +13,7 @@ public class Pixel {
 	
 	public Pixel() {
 		this.c = ' ';
-		this.color = Couleur.WHITE;
+		this.color = Couleur.getCouleur("WHITE");
 	}
 	
 	/**

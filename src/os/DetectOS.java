@@ -1,3 +1,4 @@
+package os;
 /**
  * Sert a detecter l'OS
  * @author Sebastien Klasa
