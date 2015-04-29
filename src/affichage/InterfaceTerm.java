@@ -80,7 +80,7 @@ public class InterfaceTerm {
 	 * @param joueur Joueur autour duquel la carte va etre centree
 	 * @return True si la carte a ete dessinee, false si non
 	 */
-	public boolean dessinerCarte() { // TODO: Centrer le joueur
+	public boolean dessinerCarte() { // TODO: Mettre en prive
 		if (this.carte == null || this.joueur == null)
 			return false;
 		

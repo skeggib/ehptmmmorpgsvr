@@ -45,7 +45,7 @@ public class Carte {
 	 * @param chemin Chemin du fichier
 	 * @return True si la carte a ete chargee, false si non
 	 */
-	private boolean chargerFichier(String chemin) { // TODO: A faire
+	private boolean chargerFichier(String chemin) {
 		
 		// Le fichier contiendra la hauteur, la largeur et le String qui correspond aux cases
 		
