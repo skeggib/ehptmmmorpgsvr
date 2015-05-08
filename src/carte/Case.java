@@ -45,13 +45,13 @@ public class Case {
 		if (Case.IMG_JOUEUR_PRINCIPAL == null) {
 			Case.IMG_JOUEUR_PRINCIPAL = new Image[InterfaceTerm.TAILLES.length];
 			for (int i = 0; i < InterfaceTerm.TAILLES.length; i ++) {
-				array = LectureFichier.lire("../images/joueurPrincipal/" + InterfaceTerm.TAILLES[i]);
+				array = LectureFichier.lire("ressources/images/joueurPrincipal/" + InterfaceTerm.TAILLES[i]);
 				str = new String();
 				for (int j = 0; j < array.length; j ++)
 					str += array[j] + "\n";
 				Case.IMG_JOUEUR_PRINCIPAL[i] = new Image();
 				Case.IMG_JOUEUR_PRINCIPAL[i].chargerString(str);
-				Case.IMG_JOUEUR_PRINCIPAL[i].setCouleur(Couleur.getCouleur(LectureFichier.lire("../images/joueurPrincipal/color")[0]));
+				Case.IMG_JOUEUR_PRINCIPAL[i].setCouleur(Couleur.getCouleur(LectureFichier.lire("ressources/images/joueurPrincipal/color")[0]));
 			}
 		}
 
@@ -60,13 +60,13 @@ public class Case {
 		if (Case.IMG_AUTRE_JOUEUR == null) {
 			Case.IMG_AUTRE_JOUEUR = new Image[InterfaceTerm.TAILLES.length];
 			for (int i = 0; i < InterfaceTerm.TAILLES.length; i ++) {
-				array = LectureFichier.lire("../images/autreJoueur/" + InterfaceTerm.TAILLES[i]);
+				array = LectureFichier.lire("ressources/images/autreJoueur/" + InterfaceTerm.TAILLES[i]);
 				str = new String();
 				for (int j = 0; j < array.length; j ++)
 					str += array[j] + "\n";
 				Case.IMG_AUTRE_JOUEUR[i] = new Image();
 				Case.IMG_AUTRE_JOUEUR[i].chargerString(str);
-				Case.IMG_AUTRE_JOUEUR[i].setCouleur(Couleur.getCouleur(LectureFichier.lire("../images/autreJoueur/color")[0]));
+				Case.IMG_AUTRE_JOUEUR[i].setCouleur(Couleur.getCouleur(LectureFichier.lire("ressources/images/autreJoueur/color")[0]));
 			}
 		}
 
@@ -75,13 +75,13 @@ public class Case {
 		if (Case.IMG_VIDE == null) {
 			Case.IMG_VIDE = new Image[InterfaceTerm.TAILLES.length];
 			for (int i = 0; i < InterfaceTerm.TAILLES.length; i ++) {
-				array = LectureFichier.lire("../images/vide/" + InterfaceTerm.TAILLES[i]);
+				array = LectureFichier.lire("ressources/images/vide/" + InterfaceTerm.TAILLES[i]);
 				str = new String();
 				for (int j = 0; j < array.length; j ++)
 					str += array[j] + "\n";
 				Case.IMG_VIDE[i] = new Image();
 				Case.IMG_VIDE[i].chargerString(str);
-				Case.IMG_VIDE[i].setCouleur(Couleur.getCouleur(LectureFichier.lire("../images/vide/color")[0]));
+				Case.IMG_VIDE[i].setCouleur(Couleur.getCouleur(LectureFichier.lire("ressources/images/vide/color")[0]));
 			}
 		}
 
@@ -90,13 +90,13 @@ public class Case {
 		if (Case.IMG_MUR == null) {
 			Case.IMG_MUR = new Image[InterfaceTerm.TAILLES.length];
 			for (int i = 0; i < InterfaceTerm.TAILLES.length; i ++) {
-				array = LectureFichier.lire("../images/mur/" + InterfaceTerm.TAILLES[i]);
+				array = LectureFichier.lire("ressources/images/mur/" + InterfaceTerm.TAILLES[i]);
 				str = new String();
 				for (int j = 0; j < array.length; j ++)
 					str += array[j] + "\n";
 				Case.IMG_MUR[i] = new Image();
 				Case.IMG_MUR[i].chargerString(str);
-				Case.IMG_MUR[i].setCouleur(Couleur.getCouleur(LectureFichier.lire("../images/mur/color")[0]));
+				Case.IMG_MUR[i].setCouleur(Couleur.getCouleur(LectureFichier.lire("ressources/images/mur/color")[0]));
 			}
 		}
 
@@ -105,13 +105,13 @@ public class Case {
 		if (Case.IMG_MONSTRE == null) {
 			Case.IMG_MONSTRE = new Image[InterfaceTerm.TAILLES.length];
 			for (int i = 0; i < InterfaceTerm.TAILLES.length; i ++) {
-				array = LectureFichier.lire("../images/monstre/" + InterfaceTerm.TAILLES[i]);
+				array = LectureFichier.lire("ressources/images/monstre/" + InterfaceTerm.TAILLES[i]);
 				str = new String();
 				for (int j = 0; j < array.length; j ++)
 					str += array[j] + "\n";
 				Case.IMG_MONSTRE[i] = new Image();
 				Case.IMG_MONSTRE[i].chargerString(str);
-				Case.IMG_MONSTRE[i].setCouleur(Couleur.getCouleur(LectureFichier.lire("../images/monstre/color")[0]));
+				Case.IMG_MONSTRE[i].setCouleur(Couleur.getCouleur(LectureFichier.lire("ressources/images/monstre/color")[0]));
 			}
 		}
 
@@ -120,13 +120,13 @@ public class Case {
 		if (Case.IMG_OBJET == null) {
 			Case.IMG_OBJET = new Image[InterfaceTerm.TAILLES.length];
 			for (int i = 0; i < InterfaceTerm.TAILLES.length; i ++) {
-				array = LectureFichier.lire("../images/objet/" + InterfaceTerm.TAILLES[i]);
+				array = LectureFichier.lire("ressources/images/objet/" + InterfaceTerm.TAILLES[i]);
 				str = new String();
 				for (int j = 0; j < array.length; j ++)
 					str += array[j] + "\n";
 				Case.IMG_OBJET[i] = new Image();
 				Case.IMG_OBJET[i].chargerString(str);
-				Case.IMG_OBJET[i].setCouleur(Couleur.getCouleur(LectureFichier.lire("../images/objet/color")[0]));
+				Case.IMG_OBJET[i].setCouleur(Couleur.getCouleur(LectureFichier.lire("ressources/images/objet/color")[0]));
 			}
 		}
 

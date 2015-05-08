@@ -110,7 +110,7 @@ public class Nom {
 	 * @return tab : chaque ligne du fichier txt est retourne dans une case du tableau
 	 */
 	private static String[] getFileText(String file) {
-		String filePath = "txt/" + file;
+		String filePath = "ressources/txt/" + file;
 		String[] tab = null;
 		try {
 			BufferedReader buff = new BufferedReader(new FileReader(filePath));

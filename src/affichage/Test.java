@@ -15,7 +15,7 @@ public class Test {
 		System.out.print("Votre choix : ");
 		int tailleInterface = Clavier.saisieInt();
 		
-		Carte carte = new Carte("../carte/test");
+		Carte carte = new Carte("ressources/carte/test");
 		
 		Joueur joueur = new Joueur();
 		joueur.setPositionX(3);
