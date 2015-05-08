@@ -25,6 +25,7 @@ public class InterfaceTerm {
 	// Largeur de la marge autours de la carte
 	private static final int MARGE_CARTE = 1;
 	
+	@SuppressWarnings("unused")
 	private InterfaceTerm() {};
 	
 	public InterfaceTerm(int taille) {
@@ -33,7 +34,7 @@ public class InterfaceTerm {
 	
 	private void setTaille(int t) {
 		this.taille = t;
-		switch (this.TAILLES[t]) {
+		switch (InterfaceTerm.TAILLES[t]) {
 			case "large":
 				InterfaceTerm.HAUTEUR_CASE_CARTE = 4;
 				InterfaceTerm.LARGEUR_CASE_CARTE = 7;

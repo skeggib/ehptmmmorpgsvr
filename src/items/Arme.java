@@ -8,6 +8,7 @@ public class Arme extends Objet {
 	
 	private Random rand = new Random ();
 
+	// TODO: Tu devrai mettre un static pour les attributs en dessous
 	private final int MAUVAIS = 0;
 	private final int COMMUN = 1;
 	private final int INHABITUEL = 2;
