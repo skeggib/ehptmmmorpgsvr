@@ -1,5 +1,7 @@
 package affichage;
 
+import os.DetectOS;
+
 public class Couleur {
 	
 	private static String DEFAULT;
