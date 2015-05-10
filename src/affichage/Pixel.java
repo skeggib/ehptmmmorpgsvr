@@ -40,8 +40,7 @@ public class Pixel {
 	}
 	
 	public String getCouleur() {
-		// TODO: A faire
-		return "";
+		return Couleur.getCouleur(this.couleur);
 	}
 	
 	public void setCouleur(String couleur) {
