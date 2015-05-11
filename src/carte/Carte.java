@@ -121,7 +121,18 @@ public class Carte {
 		String rtrn = "";
 		
 		rtrn += "Largeur : " + this.largeur + "\n";
-		rtrn += "Hauteur : " + this.hauteur;
+		rtrn += "Hauteur : " + this.hauteur + "\n";
+		rtrn += "\n";
+		
+		for (int i = 0; i < this.cases.length; i ++) {
+			for (int j = 0; j < this.cases[i].length; j ++) {
+				if (this.cases[i][j].getContenu().getNumero() == ContenuCase.VIDE)
+					rtrn += " ";
+				else
+					rtrn += this.cases[i][j].getContenu().getNumero();
+			}
+			rtrn += "\n";
+		}
 		
 		return rtrn;
 	}
