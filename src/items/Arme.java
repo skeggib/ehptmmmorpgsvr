@@ -2,7 +2,7 @@ package items;
 
 import fichiers.LectureFichier;
 
-public class Arme extends Objet {
+public class Arme extends Objet { 
 
 	/*
 	 * Variable
