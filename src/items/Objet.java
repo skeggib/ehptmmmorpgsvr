@@ -5,6 +5,8 @@ public abstract class Objet {
 	/* 
 	 * Variable
 	 */
+	
+	public static String [] NOM;
 
 	private String nom;
 	private int qualite;
