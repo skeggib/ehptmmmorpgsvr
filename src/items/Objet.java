@@ -7,6 +7,7 @@ public abstract class Objet {
 	 */
 
 	private String nom;
+	private int qualite;
 	
 	/*
 	 * Constructeur
