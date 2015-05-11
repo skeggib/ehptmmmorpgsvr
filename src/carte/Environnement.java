@@ -1,5 +1,5 @@
 package carte;
 
-public abstract class Environnement {
+public abstract class Environnement implements ContenuCase {
 
 }

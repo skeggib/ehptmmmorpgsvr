@@ -70,7 +70,25 @@ public class Carte {
 		
 		this.creerTableau(lignes.length, lignes[0].length());
 		
-		// TODO: A finir
+		// On remplit le tableau
+		for (int i = 0; i < lignes.length; i++) {
+			for (int j = 0; j < lengthLine0; j ++) {
+				switch (lignes[i].charAt(j)) {
+					case ' ':
+						this.cases[i][j].changerContenu(new Vide());
+						break;
+					case 'm':
+						this.cases[i][j].changerContenu(new Mur());
+						break;
+					case 'M':
+						this.cases[i][j].changerContenu(new Mur());
+						break;
+					default:
+						this.cases[i][j].changerContenu(new Inconnu());
+						break;
+				}
+			}
+		}
 				
 		return true;
 	}
