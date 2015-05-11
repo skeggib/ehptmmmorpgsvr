@@ -1,24 +1,36 @@
 package items;
 
-public abstract class Objet {
-	
-	/* 
-	 * Variable
+import carte.ContenuCase;
+
+public abstract class Objet implements ContenuCase {
+
+	/*
+	 * Variables
 	 */
-	
-	public static String [] NOM;
+
+	public static final String[] NOM = null;
 
 	private String nom;
-	private int qualite;
-	
+	private int qualite = -1;
+
 	/*
 	 * Constructeur
 	 */
 
-	public Objet () {
-		
+	public Objet() {
+
 	}
 	
+	/*
+	 * Methodes
+	 */
+	
+	public abstract String randNom ();
+	
+	public int getNumero(){
+		return ContenuCase.OBJET;
+	}
+
 	/*
 	 * Methode d'acces
 	 */
@@ -29,5 +41,15 @@ public abstract class Objet {
 
 	public void setNom(String nom) {
 		this.nom = nom;
+	}
+
+	public int getQualite() {
+		return qualite;
+	}
+
+	public void setQualite(int qualite) {
+		if(this.qualite != -1){
+			this.qualite = qualite;
+		}
 	}
 }
