@@ -79,4 +79,13 @@ public class Carte {
 		this.largeur = largeur;
 	}
 	
+	public String toString() {
+		String rtrn = "";
+		
+		rtrn += "Largeur : " + this.largeur + "\n";
+		rtrn += "Hauteur : " + this.hauteur + "\n";
+		
+		return rtrn;
+	}
+	
 }
