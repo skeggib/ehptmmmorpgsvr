@@ -1,5 +1,7 @@
 package carte;
 
+import fichiers.LectureFichier;
+
 public class Carte {
 
 	private int hauteur;
@@ -20,15 +22,7 @@ public class Carte {
 	 * @param largeur
 	 */
 	public Carte(int hauteur, int largeur) {
-		this.largeur = largeur;
-		this.hauteur = hauteur;
-		
-		this.cases = new Case[hauteur][largeur];
-		
-		for (int i = 0; i < this.cases.length; i++) {
-			for (int j = 0; j < this.cases[i].length; j++)
-				this.cases[i][j] = new Case();
-		}
+		this.creerTableau(hauteur, largeur);
 	}
 	
 	/**
@@ -45,7 +39,17 @@ public class Carte {
 	 * @return True si le fichier a ete charge
 	 */
 	public boolean chargerFichier(String chemin) {
-		// TODO: A faire
+		
+		// Lire le fichier
+		String lines[] = LectureFichier.lire(chemin);
+		String str = new String();
+		
+		// Reconstituer les lines en une seule chaine
+		for (int i = 0; i < lines.length; i++)
+			str += lines[i] + "\n";
+		
+		this.chargerString(str);
+		
 		return true;
 	}
 	
@@ -57,9 +61,30 @@ public class Carte {
 	private boolean chargerString(String str) {
 		String[] lignes = str.split("\n");
 		
-		// TODO: A faire
+		// Verifier que toute les lignes ont les même taille
+		int lengthLine0 = lignes[0].length();
+		for (int i = 0; i < lignes.length; i++) {
+			if (lignes[i].length() != lengthLine0)
+				return false;
+		}
+		
+		this.creerTableau(lignes.length, lignes[0].length());
+		
+		// TODO: A finir
 				
 		return true;
+	}
+	
+	private void creerTableau(int hauteur, int largeur) {
+		this.largeur = largeur;
+		this.hauteur = hauteur;
+		
+		this.cases = new Case[hauteur][largeur];
+		
+		for (int i = 0; i < this.cases.length; i++) {
+			for (int j = 0; j < this.cases[i].length; j++)
+				this.cases[i][j] = new Case();
+		}
 	}
 	
 	public Case getCase(int x, int y) {
@@ -70,16 +95,8 @@ public class Carte {
 		return hauteur;
 	}
 	
-	public void setHauteur(int hauteur) {
-		this.hauteur = hauteur;
-	}
-	
 	public int getLargeur() {
 		return largeur;
-	}
-	
-	public void setLargeur(int largeur) {
-		this.largeur = largeur;
 	}
 	
 	public String toString() {
