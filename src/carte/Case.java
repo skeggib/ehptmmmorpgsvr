@@ -16,6 +16,8 @@ public class Case {
 		this.contenu = contenu;
 	}
 	
-	// TODO: Ajouter toString()
+	public String toString() {
+		return "Contient : " + ((Object) this.contenu).getClass().getName();
+	}
 	
 }

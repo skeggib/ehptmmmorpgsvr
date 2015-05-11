@@ -83,7 +83,7 @@ public class Carte {
 		String rtrn = "";
 		
 		rtrn += "Largeur : " + this.largeur + "\n";
-		rtrn += "Hauteur : " + this.hauteur + "\n";
+		rtrn += "Hauteur : " + this.hauteur;
 		
 		return rtrn;
 	}
