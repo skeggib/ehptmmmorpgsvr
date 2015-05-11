@@ -2,6 +2,6 @@ package carte;
 
 public class Vide extends Environnement {
 	
-	public int NUMERO = ContenuCase.VIDE;
+	public static int NUMERO = ContenuCase.VIDE;
 	
 }

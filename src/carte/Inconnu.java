@@ -2,6 +2,6 @@ package carte;
 
 public class Inconnu extends Environnement {
 	
-	public int NUMERO = ContenuCase.INCONNU;
+	public static int NUMERO = ContenuCase.INCONNU;
 
 }

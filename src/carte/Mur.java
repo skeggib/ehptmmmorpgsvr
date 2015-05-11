@@ -2,6 +2,6 @@ package carte;
 
 public class Mur extends Environnement {
 	
-	public int NUMERO = ContenuCase.MUR;
+	public static int NUMERO = ContenuCase.MUR;
 
 }
