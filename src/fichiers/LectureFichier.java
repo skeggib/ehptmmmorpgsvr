@@ -4,9 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class LectureFichier {	
-	
-	private LectureFichier() {};
+public abstract class LectureFichier {	
 	
 	public static String[] lire(String chemin) {
 		String[] tab = null;
