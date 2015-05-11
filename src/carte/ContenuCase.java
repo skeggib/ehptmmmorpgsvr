@@ -2,7 +2,7 @@ package carte;
 
 public interface ContenuCase {
 	
-	public static int NUMERO = 0;
+	public static final int NUMERO = 0;
 	
 	public static final int INCONNU = 0;
 	public static final int VIDE = 1;
