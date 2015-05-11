@@ -55,7 +55,10 @@ public class Carte {
 	 * @return True si le String a ete charge
 	 */
 	private boolean chargerString(String str) {
+		String[] lignes = str.split("\n");
+		
 		// TODO: A faire
+				
 		return true;
 	}
 	

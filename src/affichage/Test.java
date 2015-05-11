@@ -18,7 +18,7 @@ public class Test {
 		
 		for (int i = 0; i < tbl.length; i++) {
 			for (int j = 0; j < tbl[i].length; j++) {
-				System.out.print(tbl[i][j].getCouleur() + tbl[i][j].getCar());
+				System.out.println(tbl[i][j].toString());
 			}
 			System.out.print("\n");
 		}
