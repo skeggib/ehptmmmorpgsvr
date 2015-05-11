@@ -46,4 +46,8 @@ public class Pixel {
 	public void setCouleur(String couleur) {
 		this.couleur = couleur;
 	}
+	
+	public String toString() {
+		return this.car + " (" + this.couleur + ")";
+	}
 }
