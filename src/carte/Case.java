@@ -16,4 +16,6 @@ public class Case {
 		this.contenu = contenu;
 	}
 	
+	// TODO: Ajouter toString()
+	
 }
