@@ -14,7 +14,7 @@ public class InterfaceTerm {
 	/**
 	 * Tailles de l'interface possibles
 	 */
-	public static final String[] TAILLES = {"grande", "moyenne", "petite"};
+	public static final String[] TAILLES = {"large", "normal", "small"};
 	private int taille;
 	
 	// Largeur des espaces entre chaque cases
@@ -46,15 +46,15 @@ public class InterfaceTerm {
 			this.taille = 0;
 		
 		switch (InterfaceTerm.TAILLES[this.taille]) {
-		case "grande":
+		case "large":
 			this.largeurCaseCarte = 7;
 			this.hauteurCaseCarte = 4;
 			break;
-		case "moyenne":
+		case "normal":
 			this.largeurCaseCarte = 5;
 			this.hauteurCaseCarte = 3;
 			break;
-		case "petite":
+		case "small":
 			this.largeurCaseCarte = 1;
 			this.hauteurCaseCarte = 1;
 			break;

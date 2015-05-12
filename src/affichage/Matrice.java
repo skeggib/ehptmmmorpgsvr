@@ -100,6 +100,8 @@ public class Matrice {
 	public String toString() {
 		String rtrn = new String();
 		
+		rtrn += this.largeur + "x" + this.largeur + "\n";
+		
 		for (int i = 0; i < this.pxls.length; i++) {
 			for (int j = 0; j < this.pxls[i].length; j++) {
 				rtrn += this.pxls[i][j].getCar();
