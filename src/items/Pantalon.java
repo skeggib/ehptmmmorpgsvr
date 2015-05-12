@@ -1,5 +1,8 @@
 package items;
 
+import java.util.Random;
+
+import personnage.EntiteVivante;
 import fichiers.LectureFichier;
 
 public class Pantalon extends Vetement {
@@ -24,7 +27,14 @@ public class Pantalon extends Vetement {
 	 */
 
 	public String randNom() {
-		return Pantalon.NOM[0];
+		int i = new Random().nextInt((Pantalon.NOM.length));
+		return Pantalon.NOM[i];
+	}
+
+	@Override
+	public void affecterBonus(EntiteVivante cible) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

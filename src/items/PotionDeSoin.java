@@ -1,5 +1,8 @@
 package items;
 
+import java.util.Random;
+
+import personnage.EntiteVivante;
 import fichiers.LectureFichier;
 
 public class PotionDeSoin extends Potion {
@@ -26,6 +29,13 @@ public class PotionDeSoin extends Potion {
 	 */
 	
 	public String randNom () {
-		return PotionDeSoin.NOM[0];
+		int i = new Random().nextInt((PotionDeSoin.NOM.length));
+		return PotionDeSoin.NOM[i];
+	}
+
+	@Override
+	public void affecterBonus(EntiteVivante cible) {
+		// TODO Auto-generated method stub
+		
 	}
 }

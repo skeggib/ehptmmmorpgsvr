@@ -1,5 +1,8 @@
 package items;
 
+import java.util.Random;
+
+import personnage.EntiteVivante;
 import fichiers.LectureFichier;
 
 public class Arme extends Objet {
@@ -29,7 +32,8 @@ public class Arme extends Objet {
 	 */
 
 	public String randNom() {
-		return Arme.NOM[0];
+		int i = new Random().nextInt((Arme.NOM.length));
+		return Arme.NOM[i];
 	}
 
 	/*
@@ -66,5 +70,11 @@ public class Arme extends Objet {
 
 	public void setBonusForce(int bonusForce) {
 		this.bonusForce = bonusForce;
+	}
+
+	@Override
+	public void affecterBonus(EntiteVivante cible) {
+		// TODO Auto-generated method stub
+		
 	}
 }

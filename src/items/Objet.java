@@ -1,5 +1,6 @@
 package items;
 
+import personnage.EntiteVivante;
 import carte.ContenuCase;
 
 public abstract class Objet implements ContenuCase {
@@ -26,6 +27,8 @@ public abstract class Objet implements ContenuCase {
 	 */
 	
 	public abstract String randNom ();
+	
+	public abstract void affecterBonus (EntiteVivante cible);
 	
 	public int getNumero(){
 		return ContenuCase.OBJET;
