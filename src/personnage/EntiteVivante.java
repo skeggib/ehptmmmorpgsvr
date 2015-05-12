@@ -1,10 +1,23 @@
 package personnage;
 
+import items.Objet;
+
 import java.util.List;
 
+import carte.Case;
 import carte.ContenuCase;
 
 public abstract class EntiteVivante implements ContenuCase {
+
+	/*
+	 * Constante
+	 */
+
+	public static final int MAX_VIE = 7;
+	public static final int MIN_VIE = 0;
+
+	public static final int MAX_PA = 20;
+	public static final int MIN_PA = 0;
 
 	/*
 	 * Variables
@@ -12,9 +25,12 @@ public abstract class EntiteVivante implements ContenuCase {
 
 	private String nom;
 
+	private int pointActionMax =  EntiteVivante.MAX_PA;
 	private int pointAction;
 
 	private int vie = EntiteVivante.MAX_VIE;
+	
+	private Case emplacement;
 
 	private int force;
 	private int adresse;
@@ -35,34 +51,60 @@ public abstract class EntiteVivante implements ContenuCase {
 		this.setEquipement(new Equipement());
 	}
 
-	/*
-	 * Constante
-	 */
-
-	public static final int MAX_VIE = 7;
-	public static final int MIN_VIE = 0;
+	public EntiteVivante(int force, int adresse, int resistance) {
+		this.setForce(force);
+		this.setAdresse(adresse);
+		this.setResistance(resistance);
+		this.setInventaire(new Inventaire());
+		this.setEquipement(new Equipement());
+	}
 
 	/*
 	 * Methode
 	 */
-	
-	public abstract String randNom ();
+	public void seDeplacer(Case destination) {
+		if(destination.ajoutContenu(this)){
+			this.emplacement.supprContenu();
+			this.setEmplacement(destination);
+		}
+	}
+
+	public void attaquer(EntiteVivante cible) {
+		cible.retirerVie(1);
+	}
+
+	public boolean rammasserObjet(Objet obj) {
+		return this.inventaire.ajouterObjet(obj);
+	}
+
+	public boolean equiperObjet(Objet obj) {
+		if(this.inventaire.retirerObjet(obj)){
+			return this.equipement.ajouterObjet(obj);
+		}
+		return false;
+	}
+
+	public boolean desequiperObjet(Objet obj) {
+		if(this.equipement.retirerObjet(obj)){
+			return this.inventaire.ajouterObjet(obj);
+		}
+		return false;
+	}
+
+	public void deposerObjet(Objet obj, Case destination) {
+		//TODO A revoir pour la case de destination
+	}
 
 	public void ajouterVie(int vie) {
 		if (vie > 0) {
 			this.setVie(this.getVie() + vie);
-
-			if (this.getVie() < EntiteVivante.MIN_VIE) {
-				this.setVie(EntiteVivante.MIN_VIE);
-			}
-			if (this.getVie() > EntiteVivante.MAX_VIE) {
-				this.setVie(EntiteVivante.MAX_VIE);
-			}
 		}
 	}
 
 	public void retirerVie(int vie) {
-		this.setVie(this.getVie() - vie);
+		if (vie < 0) {
+			this.setVie(this.getVie() - vie);
+		}
 	}
 
 	public boolean ajouterEffet(Effet effet) {
@@ -84,6 +126,14 @@ public abstract class EntiteVivante implements ContenuCase {
 		}
 		return false;
 	}
+	
+	public void controlerEffet(){
+		for(int i = 0; i < this.effet.size(); i++){
+			if(this.effet.get(i).decrementerTour()){
+				this.retirerEffet(this.effet.get(i));
+			}
+		}
+	}
 
 	/*
 	 * Methode d'acces
@@ -93,7 +143,7 @@ public abstract class EntiteVivante implements ContenuCase {
 		return nom;
 	}
 
-	private void setNom(String nom) {
+	public void setNom(String nom) {
 		if (this.nom == null) {
 			this.nom = nom;
 		}
@@ -105,6 +155,21 @@ public abstract class EntiteVivante implements ContenuCase {
 
 	private void setPointAction(int pointAction) {
 		this.pointAction = pointAction;
+
+		if (this.getPointAction() < EntiteVivante.MIN_PA) {
+			this.pointAction = EntiteVivante.MIN_PA;
+		}
+		if (this.getPointAction() > EntiteVivante.MAX_PA) {
+			this.pointAction = EntiteVivante.MAX_PA;
+		}
+	}
+
+	private int getPointActionMax() {
+		return pointActionMax;
+	}
+
+	private void setPointActionMax(int pointActionMax) {
+		this.pointActionMax = pointActionMax;
 	}
 
 	public int getVie() {
@@ -176,6 +241,14 @@ public abstract class EntiteVivante implements ContenuCase {
 		if (this.inventaire == null) {
 			this.inventaire = inventaire;
 		}
+	}
+
+	public Case getEmplacement() {
+		return emplacement;
+	}
+
+	private void setEmplacement(Case emplacement) {
+		this.emplacement = emplacement;
 	}
 
 }
