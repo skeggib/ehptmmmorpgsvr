@@ -21,7 +21,7 @@ public class Case {
 	 * @return True si le contenu a ete ajoute
 	 */
 	public boolean ajoutContenu(ContenuCase nouvContenu) {
-		// On ne change rien s'il y a déjà quelque chose
+		// On ne change rien s'il y a deja quelque chose
 		if (this.getContenu() != null)
 			return false;
 		

@@ -48,10 +48,10 @@ public class Matrice {
 	 * @param w Largeur
 	 * @param h Hauteur
 	 * @param p Pixel qui va remplir le rectangle
-	 * @return True si le rectangle a été dessiné, false si non
+	 * @return True si le rectangle a ete dessine, false si non
 	 */
 	public boolean dessinerRectangle(int x, int y, int w, int h, Pixel p) {
-		// Tester si le rectangle est bien placé dans la matrice
+		// Tester si le rectangle est bien place dans la matrice
 		if (x < 0 || x > this.largeur ||
 			y < 0 || y > this.hauteur ||
 			p == null)
@@ -111,7 +111,7 @@ public class Matrice {
 	}
 	
 	private boolean setPixel(int y, int x, Pixel p) {
-		// Si on ne dépasse pas de la matrice
+		// Si on ne depasse pas de la matrice
 		if (x < this.largeur &&
 			y < this.hauteur &&
 			x >= 0 &&

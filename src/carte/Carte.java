@@ -61,7 +61,7 @@ public class Carte {
 	private boolean chargerString(String str) {
 		String[] lignes = str.split("\n");
 		
-		// Verifier que toute les lignes ont les même taille
+		// Verifier que toute les lignes ont les meme taille
 		int lengthLine0 = lignes[0].length();
 		for (int i = 0; i < lignes.length; i++) {
 			if (lignes[i].length() != lengthLine0)
