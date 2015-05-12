@@ -5,6 +5,11 @@ public class Position {
 	private int x;
 	private int y;
 	
+	public Position(int x, int y) {
+		this.setX(x);
+		this.setY(y);
+	}
+	
 	public int getX() {
 		return x;
 	}
@@ -19,6 +24,10 @@ public class Position {
 	
 	public void setY(int y) {
 		this.y = y;
+	}
+	
+	public String toString() {
+		return "(" + this.getX() + ", " + this.getY() + ")";
 	}
 
 }
