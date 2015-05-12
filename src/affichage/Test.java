@@ -14,14 +14,9 @@ public class Test {
 		image.chargerString(str);
 		image.setCouleur("RED");
 		
-		Pixel[][] tbl = image.getTableau();
-		
-		for (int i = 0; i < tbl.length; i++) {
-			for (int j = 0; j < tbl[i].length; j++) {
-				System.out.println(tbl[i][j].toString());
-			}
-			System.out.print("\n");
-		}
+		Matrice matr = new Matrice(50, 20);
+		matr.dessinerImage(10, 10, image);
+		matr.afficher();
 		
 	}
 

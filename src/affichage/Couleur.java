@@ -60,7 +60,7 @@ public class Couleur {
 	}
 	
 	/**
-	 * Renvoi le code couleur à partir du nom de cette couleur (ex: "RED")
+	 * Renvoi le code couleur a partir du nom de cette couleur (ex: "RED")
 	 * @param str Nom de la couleur
 	 * @return Code couleur
 	 */
