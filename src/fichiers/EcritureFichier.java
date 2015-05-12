@@ -3,7 +3,7 @@ package fichiers;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 
-public abstract class EcritureFichier {
+public abstract class EcritureFichier { // TODO: Ajouter cette classe dans l'UML (c'est maaaaaal de faire le Java avant l'UML armya !)
 	/*
 	 * La racine (chemin) est le dossier du projet
 	 */

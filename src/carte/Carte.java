@@ -105,7 +105,7 @@ public class Carte {
 		}
 	}
 	
-	public Position getPosContenu(ContenuCase contenu) { // TODO: A faire
+	public Position getPosContenu(ContenuCase contenu) {
 		for (int i = 0; i < this.cases.length; i++) {
 			for (int j = 0; j < this.cases[i].length; j++) {
 				if (contenu == this.cases[i][j].getContenu())

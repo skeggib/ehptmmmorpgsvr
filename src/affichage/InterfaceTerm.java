@@ -1,5 +1,9 @@
 package affichage;
 
+import personnage.Joueur;
+import carte.Carte;
+import carte.Position;
+
 public class InterfaceTerm {
 
 	private int largeurCaseCarte;
@@ -18,6 +22,7 @@ public class InterfaceTerm {
 	private boolean espace = false;
 	
 	private Matrice matrice;
+	private Carte carte = new Carte();
 	
 	public InterfaceTerm() {
 		this.setTaille(0);
@@ -68,6 +73,79 @@ public class InterfaceTerm {
 		this.matrice = new Matrice(largeur, hauteur);
 	}
 
+	public boolean afficher(Joueur joueur) {
+		if (!this.dessinerInterface(joueur))
+			return false;
+		
+		this.matrice.afficher();
+		
+		return true;
+	}
+	
+	private boolean dessinerInterface(Joueur joueur) {
+		if (!this.dessinerCarte(joueur))
+			return false;
+		
+		return true;
+	}
+	
+	private boolean dessinerCarte(Joueur joueur) { // TODO: Apparement affiche NB_CASES_AFFICHEES_? - 1
+		// Image a dessiner
+		Image img;
+		
+		// Position de la case dans la matrice
+		int posCaseMatrX;
+		int posCaseMatrY;
+		
+		// Position (sur la carte) de la premiere case affichee
+		int posPremCaseX;
+		int posPremCaseY;
+		
+		/* CALCUL DE LA POSITION DE LA PREMIERE CASE AFFICHEE (pour centrer le joueur) */
+		
+		// Position du joueur sur la carte
+		Position posJoueur = this.carte.getPosContenu(joueur);
+		if (posJoueur == null)
+			return false;
+		
+		// Calcul de cette position
+		posPremCaseX = posJoueur.getX() - InterfaceTerm.NB_CASES_AFFICHEES_X / 2;
+		posPremCaseY = posJoueur.getY() - InterfaceTerm.NB_CASES_AFFICHEES_Y / 2;
+		
+		// Verifier le depassement et le corriger si besoin
+		if (posPremCaseX > this.carte.getLargeur() - InterfaceTerm.NB_CASES_AFFICHEES_X)
+			posPremCaseX = this.carte.getLargeur() - InterfaceTerm.NB_CASES_AFFICHEES_X;
+		else if (posPremCaseX < 0)
+			posPremCaseX = 0;
+		if (posPremCaseY > this.carte.getHauteur() - InterfaceTerm.NB_CASES_AFFICHEES_Y)
+			posPremCaseY = this.carte.getHauteur() - InterfaceTerm.NB_CASES_AFFICHEES_Y;
+		else if (posPremCaseY < 0)
+			posPremCaseY = 0;
+		
+		/* DESSIN DES CASES */
+		
+		for (int i = 0; i < InterfaceTerm.NB_CASES_AFFICHEES_Y; i++) {
+			for (int j = 0; j < InterfaceTerm.NB_CASES_AFFICHEES_X; j++) {
+				img = new Image();
+				img.chargerString(Integer.toString(this.carte.getCase(posPremCaseX + j, posPremCaseY + i).getContenu().getNumero())); // TODO: A changer pour mettre les vrais images
+				
+				posCaseMatrX = InterfaceTerm.LARGEUR_ESPACE_CARTE + j * (this.largeurCaseCarte + InterfaceTerm.LARGEUR_ESPACE_CARTE);
+				posCaseMatrY = InterfaceTerm.LARGEUR_ESPACE_CARTE + i * (this.hauteurCaseCarte + InterfaceTerm.LARGEUR_ESPACE_CARTE);
+				
+				this.matrice.dessinerImage(posCaseMatrX, posCaseMatrY, img);
+			}
+		}
+		
+		return true;
+	}
+	
+	public boolean chargerCarte(String chemin) {
+		return this.carte.chargerFichier(chemin);
+	}
+	
+	public Carte getCarte() { // TODO: A enlever
+		return this.carte;
+	}
 	
 	public String toString() {
 		String rtrn = new String();
