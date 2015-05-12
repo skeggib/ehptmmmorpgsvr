@@ -67,6 +67,7 @@ public class InterfaceTerm {
 		
 		this.matrice = new Matrice(largeur, hauteur);
 	}
+
 	
 	public String toString() {
 		String rtrn = new String();
