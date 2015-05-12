@@ -1,5 +1,5 @@
 package personnage;
 
-public class Equipement {
+public class Equipement extends ContenantObjet{
 
 }
