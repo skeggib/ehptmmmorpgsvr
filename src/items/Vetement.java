@@ -10,7 +10,6 @@ public abstract class Vetement extends Equipable {
 	private int bonusForce;
 	private int bonusAdresse;
 	private int bonusResistance;
-	private int esquive;
 	
 	/*
 	 * Methodes d'acces
@@ -46,14 +45,6 @@ public abstract class Vetement extends Equipable {
 
 	public void setBonusResistance(int bonusResistance) {
 		this.bonusResistance = bonusResistance;
-	}
-
-	public int getEsquive() {
-		return esquive;
-	}
-
-	public void setEsquive(int esquive) {
-		this.esquive = esquive;
 	}
 
 }
