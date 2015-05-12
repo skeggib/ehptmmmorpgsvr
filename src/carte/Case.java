@@ -20,7 +20,7 @@ public class Case {
 	 * @param nouvContenu Contenu a ajouter
 	 * @return True si le contenu a ete ajoute
 	 */
-	public boolean ajoutContenu(ContenuCase nouvContenu) {
+	public boolean ajoutContenu(ContenuCase nouvContenu) { // TODO: Permetre l'ajout si la case contient Vide
 		// On ne change rien s'il y a deja quelque chose
 		if (this.getContenu() != null)
 			return false;

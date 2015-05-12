@@ -127,10 +127,17 @@ public class InterfaceTerm {
 		for (int i = 0; i < InterfaceTerm.NB_CASES_AFFICHEES_Y; i++) {
 			for (int j = 0; j < InterfaceTerm.NB_CASES_AFFICHEES_X; j++) {
 				img = new Image();
-				img.chargerString(Integer.toString(this.carte.getCase(posPremCaseX + j, posPremCaseY + i).getContenu().getNumero())); // TODO: A changer pour mettre les vrais images
+				img = ImagesCases.getImage(this.taille, this.carte.getCase(posPremCaseX + j, posPremCaseY + i));
 				
-				posCaseMatrX = InterfaceTerm.LARGEUR_ESPACE_CARTE + j * (this.largeurCaseCarte + InterfaceTerm.LARGEUR_ESPACE_CARTE);
-				posCaseMatrY = InterfaceTerm.LARGEUR_ESPACE_CARTE + i * (this.hauteurCaseCarte + InterfaceTerm.LARGEUR_ESPACE_CARTE);
+				if (this.espace) {
+					posCaseMatrX = InterfaceTerm.LARGEUR_ESPACE_CARTE + j * (this.largeurCaseCarte + InterfaceTerm.LARGEUR_ESPACE_CARTE);
+					posCaseMatrY = InterfaceTerm.LARGEUR_ESPACE_CARTE + i * (this.hauteurCaseCarte + InterfaceTerm.LARGEUR_ESPACE_CARTE);
+				}
+				else {
+					posCaseMatrX = j * this.largeurCaseCarte;
+					posCaseMatrY = i * this.hauteurCaseCarte;
+				}
+				
 				
 				this.matrice.dessinerImage(posCaseMatrX, posCaseMatrY, img);
 			}

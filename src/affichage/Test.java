@@ -7,7 +7,7 @@ public class Test {
 	public static void main(String[] args) {
 				
 		Joueur joueur = new Joueur("joueur");
-		InterfaceTerm inter = new InterfaceTerm(1);
+		InterfaceTerm inter = new InterfaceTerm(0);
 		
 		inter.chargerCarte("../ressources/carte/test");
 		inter.getCarte().getCase(3, 3).changerContenu(joueur);
