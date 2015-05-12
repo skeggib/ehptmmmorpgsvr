@@ -1,18 +1,38 @@
 package personnage;
 
+import java.util.List;
+
 import items.Objet;
 
 public class ContenantObjet {
+	
+	private List<Objet> listObjet;
 
-	public String consulterCaracteristique(Objet o){
-		return null;
+	public Objet getObjet(int index){
+		return this.listObjet.get(index);
 	}
 
-	public String ajouterObjet(Objet o) {
-		return null;
+	public boolean ajouterObjet(Objet o) {
+		if(!(this.listObjet.contains(o))){
+			this.listObjet.add(o);
+			if(this.listObjet.contains(o)){
+				return true;
+			}
+		}
+		return false;
 	}
 
-	public String retirerObjet(Objet o) {
-		return null;
+	public boolean retirerObjet(Objet o) {
+		if(this.listObjet.contains(o)){
+			this.listObjet.remove(o);
+			if(!(this.listObjet.contains(o))){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public int getTaille () {
+		return this.listObjet.size();
 	}
 }

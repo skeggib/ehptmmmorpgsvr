@@ -5,7 +5,9 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public abstract class LectureFichier {	
-	
+	/*
+	 * La racine (chemin) est le dossier du projet
+	 */
 	public static String[] lire(String chemin) {
 		String[] tab = null;
 		try {
