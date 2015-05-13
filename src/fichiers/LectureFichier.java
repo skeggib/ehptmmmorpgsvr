@@ -8,7 +8,7 @@ public abstract class LectureFichier {
 	/*
 	 * La racine (chemin) est le dossier du projet
 	 */
-	public static String[] lire(String chemin) {
+	public static String[] lireT(String chemin) {
 		String[] tab = null;
 		try {
 			BufferedReader buff = new BufferedReader(new FileReader(chemin));
@@ -49,5 +49,25 @@ public abstract class LectureFichier {
 			System.out.println("Erreur --" + ioe.toString());
 		}
 		return tab;
+	}
+
+	public static String lireS(String chemin) {
+		String result = null;
+		try {
+			BufferedReader buff = new BufferedReader(new FileReader(chemin));
+			try {
+				String ligne;
+				
+				while ((ligne = buff.readLine()) != null) {
+					result += ligne + "\n";
+				}
+			} finally {
+				buff.close();
+			}
+		} catch (IOException ioe) {
+			// erreur de fermeture des flux
+			System.out.println("Erreur --" + ioe.toString());
+		}
+		return result;
 	}
 }
