@@ -59,6 +59,15 @@ public abstract class EntiteVivante implements ContenuCase {
 		this.setEquipement(new Equipement());
 	}
 
+	public EntiteVivante(int force, int adresse, int resistance, int vie) {
+		this.setForce(force);
+		this.setAdresse(adresse);
+		this.setResistance(resistance);
+		this.setVie(vie);
+		this.setInventaire(new Inventaire());
+		this.setEquipement(new Equipement());
+	}
+
 	/*
 	 * Methode
 	 */

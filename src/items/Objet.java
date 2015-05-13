@@ -12,7 +12,6 @@ public abstract class Objet implements ContenuCase {
 	public static final String[] NOM = null;
 
 	private String nom;
-	private int qualite = -1;
 
 	/*
 	 * Constructeur
@@ -44,15 +43,5 @@ public abstract class Objet implements ContenuCase {
 
 	public void setNom(String nom) {
 		this.nom = nom;
-	}
-
-	public int getQualite() {
-		return qualite;
-	}
-
-	public void setQualite(int qualite) {
-		if(this.qualite != -1){
-			this.qualite = qualite;
-		}
 	}
 }
