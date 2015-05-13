@@ -24,7 +24,7 @@ public abstract class Equipable extends Objet{
 	/*
 	 * Constructeurs
 	 */
-	
+
 	public Equipable () {
 		int resultRand = new Random().nextInt(1001);
 		if(resultRand < 200){
@@ -40,6 +40,9 @@ public abstract class Equipable extends Objet{
 		} else if (resultRand == 1000){
 			this.setQualite(Equipable.LEGENDAIRE);
 		}
+	}
+	public Equipable (int qualite) {
+		this.setQualite(qualite);
 	}
 
 	/*
