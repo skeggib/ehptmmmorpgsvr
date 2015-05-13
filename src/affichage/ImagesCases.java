@@ -53,13 +53,13 @@ public abstract class ImagesCases {
 			break;
 		}
 		
-		String[] lines = LectureFichier.lire("../ressources/images/" + nomContenu + "/" + InterfaceTerm.TAILLES[taille]);
+		String[] lines = LectureFichier.lireT("../ressources/images/" + nomContenu + "/" + InterfaceTerm.TAILLES[taille]);
 		String str = new String();
 		for (int i = 0; i < lines.length; i++) {
 			str += lines[i] + "\n";
 		}
 		
-		String[] couleur = LectureFichier.lire("../ressources/images/" + nomContenu + "/color");
+		String[] couleur = LectureFichier.lireT("../ressources/images/" + nomContenu + "/color");
 		
 		rtrn.chargerString(str);
 		rtrn.setCouleur(couleur[0]);

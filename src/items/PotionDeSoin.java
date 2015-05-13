@@ -17,7 +17,7 @@ public class PotionDeSoin extends Potion {
 	 * Constantes
 	 */
 	
-	public static final String [] NOM = LectureFichier.lire("ressources/noms/potionSoin.txt");
+	public static final String [] NOM = LectureFichier.lireT("ressources/noms/potionSoin.txt");
 
 
 	public PotionDeSoin () {

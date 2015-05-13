@@ -7,7 +7,7 @@ import fichiers.LectureFichier;
 
 public class Torse extends Vetement{
 	public static final String[] NOM = LectureFichier
-			.lire("ressources/noms/torse.txt");
+			.lireT("ressources/noms/torse.txt");
 
 	@Override
 	public String randNom() {

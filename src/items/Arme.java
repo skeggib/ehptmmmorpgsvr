@@ -21,7 +21,7 @@ public class Arme extends Objet {
 	 */
 
 	public static final String[] NOM = LectureFichier
-			.lire("ressources/noms/arme.txt");
+			.lireT("ressources/noms/arme.txt");
 
 	public Arme() {
 		super();

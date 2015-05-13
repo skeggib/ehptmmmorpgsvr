@@ -41,7 +41,7 @@ public class Carte {
 	public boolean chargerFichier(String chemin) {
 		
 		// Lire le fichier
-		String lines[] = LectureFichier.lire(chemin);
+		String lines[] = LectureFichier.lireT(chemin);
 		String str = new String();
 		
 		// Reconstituer les lines en une seule chaine

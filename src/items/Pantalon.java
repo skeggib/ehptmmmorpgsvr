@@ -12,7 +12,7 @@ public class Pantalon extends Vetement {
 	 */
 
 	public static final String[] NOM = LectureFichier
-			.lire("ressources/noms/jambe.txt");
+			.lireT("ressources/noms/jambe.txt");
 
 	/*
 	 * Constructeur

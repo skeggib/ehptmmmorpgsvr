@@ -6,7 +6,7 @@ import personnage.EntiteVivante;
 import fichiers.LectureFichier;
 
 public class Casque extends Vetement {
-	public static final String [] NOM = LectureFichier.lire("ressources/noms/casque.txt");
+	public static final String [] NOM = LectureFichier.lireT("ressources/noms/casque.txt");
 
 	public Casque () {
 		this.setNom(this.randNom());
