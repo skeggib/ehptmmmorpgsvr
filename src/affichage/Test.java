@@ -10,7 +10,7 @@ public class Test {
 		InterfaceTerm inter = new InterfaceTerm(0);
 		
 		inter.chargerCarte("../ressources/carte/test");
-		inter.getCarte().getCase(3, 3).changerContenu(joueur);
+		inter.getCarte().getCase(3, 3).ajoutContenu(joueur);
 		
 		if (!inter.afficher(joueur))
 			System.out.println("Impossible d'afficher l'interface");
