@@ -1,6 +1,18 @@
 package items;
 
 public abstract class Vetement extends Equipable {
+	
+	/*
+	 * Constructeurs
+	 */
+	
+	public Vetement () {
+		super();
+	}
+	
+	public Vetement(int qualite){
+		super(qualite);
+	}
 
 	/*
 	 * Variables

@@ -14,10 +14,17 @@ public abstract class Equipable extends Objet{
 	private final static int RARE = 3;
 	private final static int EPIQUE = 4;
 	private final static int LEGENDAIRE = 5;
+	
 	/*
 	 * Variables
 	 */
 	
+	private int qualite;
+	
+	/*
+	 * Constructeurs
+	 */
+
 	public Equipable () {
 		int resultRand = new Random().nextInt(1001);
 		if(resultRand < 200){
@@ -33,5 +40,21 @@ public abstract class Equipable extends Objet{
 		} else if (resultRand == 1000){
 			this.setQualite(Equipable.LEGENDAIRE);
 		}
+	}
+	public Equipable (int qualite) {
+		this.setQualite(qualite);
+	}
+
+	/*
+	 * Methode d'acces
+	 */
+
+	public int getQualite() {
+		return qualite;
+	}
+
+
+	public void setQualite(int qualite) {
+		this.qualite = qualite;
 	}
 }

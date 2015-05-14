@@ -27,6 +27,11 @@ public class Joueur extends EntiteVivante {
 		this.setNom(nom);
 	}
 	
+	public Joueur (String nom, int force, int adresse, int resistance, int vie){
+		super(force, adresse, resistance, vie);
+		this.setNom(nom);
+	}
+	
 	/*
 	 * Methodes
 	 */

@@ -5,7 +5,7 @@ import java.util.Random;
 import personnage.EntiteVivante;
 import fichiers.LectureFichier;
 
-public class Arme extends Objet {
+public class Arme extends Equipable {
 
 	/*
 	 * Variable

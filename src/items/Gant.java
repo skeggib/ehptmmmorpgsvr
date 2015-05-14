@@ -12,6 +12,11 @@ public class Gant extends Vetement {
 	public Gant() {
 		this.setNom(this.randNom());
 	}
+	
+	public Gant(int qualite){
+		super(qualite);
+		this.setNom(this.randNom());
+	}
 
 	/*
 	 * Methode

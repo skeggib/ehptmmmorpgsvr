@@ -4,10 +4,10 @@ import java.util.List;
 
 import items.Objet;
 
-public class ContenantObjet {
+public class ContenantObjet implements ContenirObjets {
 	
 	private List<Objet> listObjet;
-
+	
 	public Objet getObjet(int index){
 		return this.listObjet.get(index);
 	}
