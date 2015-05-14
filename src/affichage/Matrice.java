@@ -33,7 +33,7 @@ public class Matrice {
 		
 		for (int i = 0; i < this.pxls.length; i++) {
 			for (int j = 0; j < this.pxls[i].length; j++) {
-				str += this.pxls[i][j].getCouleur() + this.pxls[i][j].getCar();
+				str += this.pxls[i][j].getPixelCouleur();
 			}
 			str += "\n";
 		}

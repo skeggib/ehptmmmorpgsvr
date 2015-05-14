@@ -89,7 +89,7 @@ public class InterfaceTerm {
 		return true;
 	}
 	
-	private boolean dessinerCarte(Joueur joueur) { // TODO: Apparement affiche NB_CASES_AFFICHEES_? - 1
+	private boolean dessinerCarte(Joueur joueur) {
 		// Image a dessiner
 		Image img;
 		
