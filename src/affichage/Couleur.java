@@ -5,6 +5,7 @@ import os.DetectOS;
 public class Couleur {
 	
 	private static String DEFAULT;
+	
 	private static String BLACK;
 	private static String RED;
 	private static String GREEN;
@@ -13,6 +14,15 @@ public class Couleur {
 	private static String PURPLE;
 	private static String CYAN;
 	private static String WHITE;
+	
+	private static String BACK_BLACK;
+	private static String BACK_RED;
+	private static String BACK_GREEN;
+	private static String BACK_YELLOW;
+	private static String BACK_BLUE;
+	private static String BACK_PURPLE;
+	private static String BACK_CYAN;
+	private static String BACK_WHITE;
 	
 	private static boolean loaded = false;
 	
@@ -23,6 +33,7 @@ public class Couleur {
 			// Apparement il est impossible de colorer du texte sous windows...
 			if (DetectOS.Windows()) {
 				Couleur.DEFAULT = "";
+				
 				Couleur.BLACK = "";
 				Couleur.RED = "";
 				Couleur.GREEN = "";
@@ -31,10 +42,20 @@ public class Couleur {
 				Couleur.PURPLE = "";
 				Couleur.CYAN = "";
 				Couleur.WHITE = "";
+				
+				Couleur.BACK_BLACK = "";
+				Couleur.BACK_RED = "";
+				Couleur.BACK_GREEN = "";
+				Couleur.BACK_YELLOW = "";
+				Couleur.BACK_BLUE = "";
+				Couleur.BACK_PURPLE = "";
+				Couleur.BACK_CYAN = "";
+				Couleur.BACK_WHITE = "";
 			}
 			
 			else if (DetectOS.Unix()) {
 				Couleur.DEFAULT = "\u001B[0m";
+				
 				Couleur.BLACK = "\u001B[30m";
 				Couleur.RED = "\u001B[31m";
 				Couleur.GREEN = "\u001B[32m";
@@ -43,10 +64,20 @@ public class Couleur {
 				Couleur.PURPLE = "\u001B[35m";
 				Couleur.CYAN = "\u001B[36m";
 				Couleur.WHITE = "\u001B[37m";
+				
+				Couleur.BACK_BLACK = "\u001B[40m";
+				Couleur.BACK_RED = "\u001B[41m";
+				Couleur.BACK_GREEN = "\u001B[42m";
+				Couleur.BACK_YELLOW = "\u001B[43m";
+				Couleur.BACK_BLUE = "\u001B[44m";
+				Couleur.BACK_PURPLE = "\u001B[45m";
+				Couleur.BACK_CYAN = "\u001B[46m";
+				Couleur.BACK_WHITE = "\u001B[47m";
 			}
 			
 			else {
 				Couleur.DEFAULT = "";
+				
 				Couleur.BLACK = "";
 				Couleur.RED = "";
 				Couleur.GREEN = "";
@@ -55,6 +86,15 @@ public class Couleur {
 				Couleur.PURPLE = "";
 				Couleur.CYAN = "";
 				Couleur.WHITE = "";
+				
+				Couleur.BACK_BLACK = "";
+				Couleur.BACK_RED = "";
+				Couleur.BACK_GREEN = "";
+				Couleur.BACK_YELLOW = "";
+				Couleur.BACK_BLUE = "";
+				Couleur.BACK_PURPLE = "";
+				Couleur.BACK_CYAN = "";
+				Couleur.BACK_WHITE = "";
 			}
 		}
 	}
@@ -87,6 +127,22 @@ public class Couleur {
 					return Couleur.CYAN;
 				case "WHITE":
 					return Couleur.WHITE;
+				case "BACK_BLACK":
+					return Couleur.BACK_BLACK;
+				case "BACK_RED":
+					return Couleur.BACK_RED;
+				case "BACK_GREEN":
+					return Couleur.BACK_GREEN;
+				case "BACK_YELLOW":
+					return Couleur.BACK_YELLOW;
+				case "BACK_BLUE":
+					return Couleur.BACK_BLUE;
+				case "BACK_PURPLE":
+					return Couleur.BACK_PURPLE;
+				case "BACK_CYAN":
+					return Couleur.BACK_CYAN;
+				case "BACK_WHITE":
+					return Couleur.BACK_WHITE;
 				default: 
 					return Couleur.DEFAULT;
 			}
