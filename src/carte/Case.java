@@ -12,7 +12,7 @@ public class Case {
 	 * Supprime le contenu de la case
 	 */
 	public void supprContenu() {
-		this.setContenu(null);
+		this.setContenu(new Vide());
 	}
 	
 	/**
@@ -23,15 +23,20 @@ public class Case {
 	public boolean ajoutContenu(ContenuCase nouvContenu) {
 		
 		// Si la case ne contient rien
-		if (this.getContenu() == null)
+		if (this.getContenu() == null) {
 			// Ajouter le nouveau contenu
 			this.setContenu(nouvContenu);
+			return true;
+		}
+
 		// Si la case contient quelque chose
 		else {
 			// Si c'est du vide
-			if (this.getContenu().getNumero() == ContenuCase.VIDE)
+			if (this.getContenu().getNumero() == ContenuCase.VIDE) {
 				// Ajouter le nouveau contenu
 				this.setContenu(nouvContenu);
+				return true;
+			}
 		}
 		
 		// Si non ne rien ajouter

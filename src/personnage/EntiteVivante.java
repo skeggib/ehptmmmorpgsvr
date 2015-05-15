@@ -81,7 +81,8 @@ public abstract class EntiteVivante implements ContenuCase {
 	 */
 	public void seDeplacer(Case destination) { // TODO: Faire un retour boolean (si le deplacement a ete fait ou non) SANS OUBLIER L'UML
 		if (destination.ajoutContenu(this)) {
-			this.emplacement.supprContenu();
+			if (this.emplacement != null) // skeggib : J'ai du rejouter ce test car si non ca me faisait un nullPointerExeption
+				this.emplacement.supprContenu();
 			this.setEmplacement(destination);
 		}
 	}

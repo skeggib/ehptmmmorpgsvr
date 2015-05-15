@@ -2,6 +2,7 @@ package affichage;
 
 import carte.Case;
 import carte.ContenuCase;
+import carte.Inconnu;
 import fichiers.LectureFichier;
 
 public abstract class ImagesCases {
@@ -16,7 +17,10 @@ public abstract class ImagesCases {
 			return null;
 
 		if (c == null)
-			return null;
+			c = new Case();
+		
+		if (c.getContenu() == null)
+			c.ajoutContenu(new Inconnu());
 		
 		int num = c.getContenu().getNumero();
 
