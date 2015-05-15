@@ -150,10 +150,6 @@ public class InterfaceTerm {
 		return true;
 	}
 	
-	public boolean chargerCarte(String chemin) {
-		return this.carte.chargerFichier(chemin);
-	}
-	
 	public void setCarte(Carte carte) {
 		this.carte = carte;
 	}

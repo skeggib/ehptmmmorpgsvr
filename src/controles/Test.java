@@ -1,5 +1,6 @@
 package controles;
 
+import carte.Carte;
 import personnage.Joueur;
 import affichage.InterfaceTerm;
 
@@ -10,12 +11,15 @@ public class Test {
 		Joueur joueur = new Joueur("joueur");
 		InterfaceTerm inter = new InterfaceTerm(0);
 		
-		inter.chargerCarte("../ressources/carte/test");
+		Carte carte = new Carte();
+		carte.chargerFichier("../ressources/carte/test");
 		
-		joueur.seDeplacer(inter.getCarte().getCase(3, 3));
+		inter.setCarte(carte);
+		
+		joueur.seDeplacer(carte.getCase(3, 3));
 		
 		Clavier clavier = new Clavier();
-		clavier.setCarte(inter.getCarte());
+		clavier.setCarte(carte);
 		clavier.setJoueur(joueur);
 		
 		while (true) {
