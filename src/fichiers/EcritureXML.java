@@ -55,6 +55,7 @@ public class EcritureXML {
 			final Element entite = document.createElement("entite");
 			racine.appendChild(entite);
 
+
 			/*
 			 * Etape 6 : création du personnage
 			 */
