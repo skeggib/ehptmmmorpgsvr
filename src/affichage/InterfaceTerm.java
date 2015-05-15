@@ -22,7 +22,7 @@ public class InterfaceTerm {
 	private boolean espace = false;
 	
 	private Matrice matrice;
-	private Carte carte = new Carte(); // TODO: Ne devrait pas creet une carte mais en recevoir une
+	private Carte carte;
 	
 	public InterfaceTerm() {
 		this.setTaille(0);
@@ -90,6 +90,10 @@ public class InterfaceTerm {
 	}
 	
 	private boolean dessinerCarte(Joueur joueur) {
+		
+		if (this.carte == null)
+			return false;
+		
 		// Image a dessiner
 		Image img;
 		
@@ -150,8 +154,8 @@ public class InterfaceTerm {
 		return this.carte.chargerFichier(chemin);
 	}
 	
-	public Carte getCarte() { // TODO: A enlever
-		return this.carte;
+	public void setCarte(Carte carte) {
+		this.carte = carte;
 	}
 	
 	public String toString() {
