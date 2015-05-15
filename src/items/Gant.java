@@ -29,7 +29,7 @@ public class Gant extends Vetement {
 
 	@Override
 	public void affecterBonus(EntiteVivante cible) {
-		// TODO Auto-generated method stub
+		// TODO:armya Auto-generated method stub
 		
 	}
 

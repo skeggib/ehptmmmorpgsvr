@@ -35,7 +35,7 @@ public class Clavier {
 	 * Demande la saisie d'une direction
 	 * @return L'int correspondant a la direction ou -1 si la saisie ne correspond pas a la demande
 	 */
-	public void saisieDirection() { // TODO: Utiliser les fleches directionnelles
+	public void saisieDirection() { // TODO:skeggib Utiliser les fleches directionnelles
 		System.out.print("Dans quelle direction ? (Haut -> 'z', Bas -> 's', Droite -> 'd', Gauche -> 'q') : ");
 		char car = this.saisieCar();
 		
@@ -53,7 +53,7 @@ public class Clavier {
 		this.deplacerJoueur(direction);
 	}
 	
-	private boolean deplacerJoueur(int direction) { // TODO: Ajouter UML
+	private boolean deplacerJoueur(int direction) { // TODO:skeggib Ajouter UML
 		// Verifier que je joueur et la carte on ete defenis
 		if (this.carte == null || this.joueur == null)
 			return false;
@@ -84,7 +84,7 @@ public class Clavier {
 		
 		this.joueur.seDeplacer(destination);
 		
-		return true; // TODO: Retourner ce que retourne seDeplacer
+		return true; // TODO:skeggib Retourner ce que retourne seDeplacer
 	}
 	
 	public int saisieInt() {
