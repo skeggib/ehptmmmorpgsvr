@@ -41,6 +41,14 @@ public class Matrice {
 		System.out.print(str);
 	}
 	
+	private boolean depasse(int x, int y) { // TODO:skeggib Ajout UML
+		if (x < 0 || x >= this.largeur ||
+			y < 0 || y >= this.hauteur)
+			return true;
+		
+		return false;
+	}
+	
 	/**
 	 * Dessine un rectangle dans la matrice
 	 * @param x Colonne
@@ -52,8 +60,7 @@ public class Matrice {
 	 */
 	public boolean dessinerRectangle(int x, int y, int w, int h, Pixel p) {
 		// Tester si le rectangle est bien place dans la matrice
-		if (x < 0 || x > this.largeur ||
-			y < 0 || y > this.hauteur ||
+		if (this.depasse(x, y) ||
 			p == null)
 			return false;
 		
@@ -74,16 +81,31 @@ public class Matrice {
 	 * @return True si l'image a ete dessinee, false si non
 	 */
 	public boolean dessinerImage(int x, int y, Image img) {
-		if (x < 0 || x > this.largeur ||
-				y < 0 || y > this.hauteur ||
-				img == null)
-				return false;
+		if (this.depasse(x, y) ||
+			img == null)
+			return false;
 		
 		Pixel[][] table = img.getTableau();
 		for (int i = 0; i < img.getHauteur(); i++) {
 			for (int j = 0; j < img.getLargeur(); j++) {
 				this.setPixel(i + y, j + x, table[i][j]);
 			}
+		}
+		
+		return true;
+	}
+	
+	public boolean dessinerTexte(int x, int y, String texte, String couleur, String couleurFond) { // TODO:skeggib Ajout UML
+		if (this.depasse(x, y) ||
+			texte == null)
+			return false;
+		
+		for (int i = 0; i < texte.length(); i++) {
+			Pixel pix = new Pixel(); // TODO:skeggib Sortir le new de la boucle
+			pix.setCouleur(couleur);
+			pix.setCouleurFond(couleurFond);
+			pix.setCar(texte.charAt(i));
+			this.setPixel(y, x + i, pix);
 		}
 		
 		return true;
@@ -124,6 +146,16 @@ public class Matrice {
 		}
 		else
 			return false;
+	}
+	
+	public static void main(String[] args) {
+		
+		Matrice matr = new Matrice(50, 20);
+		
+		matr.dessinerTexte(5, 10, "Salut !", "BLACK", "WHITE");
+		
+		matr.afficher();
+		
 	}
 
 }

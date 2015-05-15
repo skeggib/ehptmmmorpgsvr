@@ -1,7 +1,9 @@
 package affichage;
 
+import personnage.EntiteVivante;
 import personnage.Joueur;
 import carte.Carte;
+import carte.ContenuCase;
 import carte.Position;
 
 public class InterfaceTerm {
@@ -141,7 +143,6 @@ public class InterfaceTerm {
 					posCaseMatrX = j * this.largeurCaseCarte;
 					posCaseMatrY = i * this.hauteurCaseCarte;
 				}
-				
 				
 				this.matrice.dessinerImage(posCaseMatrX, posCaseMatrY, img);
 			}
