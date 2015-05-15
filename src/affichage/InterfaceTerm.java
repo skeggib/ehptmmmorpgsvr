@@ -22,7 +22,7 @@ public class InterfaceTerm {
 	private boolean espace = false;
 	
 	private Matrice matrice;
-	private Carte carte = new Carte();
+	private Carte carte = new Carte(); // TODO: Ne devrait pas creet une carte mais en recevoir une
 	
 	public InterfaceTerm() {
 		this.setTaille(0);

@@ -79,7 +79,7 @@ public abstract class EntiteVivante implements ContenuCase {
 	/*
 	 * Methode
 	 */
-	public void seDeplacer(Case destination) {
+	public void seDeplacer(Case destination) { // TODO: Faire un retour boolean (si le deplacement a ete fait ou non) SANS OUBLIER L'UML
 		if (destination.ajoutContenu(this)) {
 			this.emplacement.supprContenu();
 			this.setEmplacement(destination);

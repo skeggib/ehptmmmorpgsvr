@@ -39,7 +39,7 @@ public class Case {
 	}
 	
 	/**
-	 * Change le contnu de la case
+	 * Change le contenu de la case
 	 * @param nouvContenu Nouveau contenu de la case
 	 * @return Le contenu precedent de la case
 	 */
