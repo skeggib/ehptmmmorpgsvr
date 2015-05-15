@@ -81,18 +81,22 @@ public abstract class EntiteVivante implements ContenuCase {
 	 */
 	public boolean seDeplacer(Case destination) {
 		if (destination.ajoutContenu(this)) {
-			this.emplacement.supprContenu();;
+			this.emplacement.supprContenu();
+			;
 			this.setEmplacement(destination);
-			
+
 			return (this.getEmplacement() == destination);
 		}
 		return false;
 	}
-	
-	public boolean initialiserPos (Case position){
-		this.setEmplacement(position);
 
-		return (this.getEmplacement() == position);
+	public boolean initialiserPos(Case position) {
+		if (this.getEmplacement() == null) {
+			this.setEmplacement(position);
+
+			return (this.getEmplacement() == position);
+		}
+		return false;
 	}
 
 	public void attaquer(EntiteVivante cible) {
