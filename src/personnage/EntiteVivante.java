@@ -79,12 +79,20 @@ public abstract class EntiteVivante implements ContenuCase {
 	/*
 	 * Methode
 	 */
-	public void seDeplacer(Case destination) { // TODO:armya Faire un retour boolean (si le deplacement a ete fait ou non) SANS OUBLIER L'UML
+	public boolean seDeplacer(Case destination) {
 		if (destination.ajoutContenu(this)) {
-			if (this.emplacement != null) // skeggib : J'ai du rejouter ce test car si non ca me faisait un nullPointerExeption
-				this.emplacement.supprContenu();
+			this.emplacement.supprContenu();;
 			this.setEmplacement(destination);
+			
+			return (this.getEmplacement() == destination);
 		}
+		return false;
+	}
+	
+	public boolean initialiserPos (Case position){
+		this.setEmplacement(position);
+
+		return (this.getEmplacement() == position);
 	}
 
 	public void attaquer(EntiteVivante cible) {
