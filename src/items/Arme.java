@@ -13,8 +13,6 @@ public class Arme extends Equipable {
 
 	private int maniabilite;
 	private int impact;
-	private int parade;
-	private int bonusForce;
 
 	/*
 	 * Constantes
@@ -30,15 +28,15 @@ public class Arme extends Equipable {
 
 		Random rand = new Random();
 
-		switch (this.getQualite()) {                   
-		case 0:                                        
-			this.setManiabilite(rand.nextInt(2) + 2);  
-			this.setImpact(rand.nextInt(2) + 2);       
-			break;                                     
-		case 1:                                        
-			this.setManiabilite(rand.nextInt(2) + 3);  
-			this.setImpact(rand.nextInt(2) + 3);       
-			break;                                     
+		switch (this.getQualite()) {
+		case 0:
+			this.setManiabilite(rand.nextInt(2) + 2);
+			this.setImpact(rand.nextInt(2) + 2);
+			break;
+		case 1:
+			this.setManiabilite(rand.nextInt(2) + 3);
+			this.setImpact(rand.nextInt(2) + 3);
+			break;
 		case 2:
 			this.setManiabilite(rand.nextInt(3) + 4);
 			this.setImpact(rand.nextInt(3) + 4);
@@ -69,6 +67,12 @@ public class Arme extends Equipable {
 		return Arme.NOM[i];
 	}
 
+	@Override
+	public void affecterBonus(EntiteVivante cible) {
+		// TODO:armya Auto-generated method stub
+
+	}
+
 	/*
 	 * Methodes d'acces
 	 */
@@ -87,27 +91,5 @@ public class Arme extends Equipable {
 
 	public void setImpact(int impact) {
 		this.impact = impact;
-	}
-
-	public int getParade() {
-		return parade;
-	}
-
-	public void setParade(int parade) {
-		this.parade = parade;
-	}
-
-	public int getBonusForce() {
-		return bonusForce;
-	}
-
-	public void setBonusForce(int bonusForce) {
-		this.bonusForce = bonusForce;
-	}
-
-	@Override
-	public void affecterBonus(EntiteVivante cible) {
-		// TODO:armya Auto-generated method stub
-
 	}
 }
