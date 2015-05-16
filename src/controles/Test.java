@@ -1,5 +1,6 @@
 package controles;
 
+import items.Gant;
 import carte.Carte;
 import personnage.Joueur;
 import affichage.InterfaceTerm;
@@ -16,7 +17,10 @@ public class Test {
 		
 		inter.setCarte(carte);
 		
-		joueur.seDeplacer(carte.getCase(3, 3));
+		joueur.initialiserPos((carte.getCase(3, 3)));
+		joueur.seDeplacer((carte.getCase(4, 3)));
+		
+		carte.getCase(3, 3).ajoutContenu(new Gant());
 		
 		Clavier clavier = new Clavier();
 		clavier.setCarte(carte);

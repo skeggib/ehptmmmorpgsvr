@@ -1,10 +1,13 @@
 package controles;
 
+import items.Objet;
+
 import java.util.Scanner;
 
 import carte.Carte;
 import carte.Case;
 import carte.Position;
+import personnage.EntiteVivante;
 import personnage.Joueur;
 
 public class Clavier {
@@ -50,10 +53,10 @@ public class Clavier {
 		else if (car == 'q' || car == 'Q')
 			direction = Clavier.GAUCHE;
 		
-		this.deplacerJoueur(direction);
+		this.realiserAction(direction);
 	}
 	
-	private boolean deplacerJoueur(int direction) {
+	private boolean realiserAction(int direction) {
 		// Verifier que je joueur et la carte on ete defenis
 		if (this.carte == null || this.joueur == null)
 			return false;
@@ -82,7 +85,18 @@ public class Clavier {
 		
 		destination = this.carte.getCase(posDest.getX(), posDest.getY());
 		
-		this.joueur.seDeplacer(destination);
+		if (destination.estVide())
+			this.joueur.seDeplacer(destination);
+		else if (destination.contientEntite()) {
+			EntiteVivante ennemi = (EntiteVivante)destination.getContenu();
+			this.joueur.attaquer(ennemi);
+		}
+		else if (destination.contientObjet()) {
+			Objet obj = (Objet)destination.getContenu();
+			System.out.println(obj);
+			this.joueur.rammasserObjet(obj);
+			destination.supprContenu();
+		}
 		
 		return true; // TODO:skeggib Retourner ce que retourne seDeplacer
 	}

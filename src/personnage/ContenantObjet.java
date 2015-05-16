@@ -1,12 +1,13 @@
 package personnage;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import items.Objet;
 
 public class ContenantObjet implements ContenirObjets {
 	
-	private List<Objet> listObjet;
+	private List<Objet> listObjet = new LinkedList<Objet>();
 	
 	public Objet getObjet(int index){
 		return this.listObjet.get(index);
