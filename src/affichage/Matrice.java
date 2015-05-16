@@ -41,7 +41,13 @@ public class Matrice {
 		System.out.print(str);
 	}
 	
-	private boolean depasse(int x, int y) { // TODO:skeggib Ajout UML
+	/**
+	 * Verifier si les coordonnes depassent de la carte
+	 * @param x Abcisse
+	 * @param y Ordonne
+	 * @return True si les coordonnes depassent
+	 */
+	private boolean depasse(int x, int y) {
 		if (x < 0 || x >= this.largeur ||
 			y < 0 || y >= this.hauteur)
 			return true;
@@ -95,7 +101,16 @@ public class Matrice {
 		return true;
 	}
 	
-	public boolean dessinerTexte(int x, int y, String texte, String couleur, String couleurFond) { // TODO:skeggib Ajout UML
+	/**
+	 * Ecrit du texte dans la matrice
+	 * @param x
+	 * @param y
+	 * @param texte Texte a ecrire
+	 * @param couleur Couleur du texte
+	 * @param couleurFond Couleur du fond
+	 * @return True si le texte a ete ecrit
+	 */
+	public boolean dessinerTexte(int x, int y, String texte, String couleur, String couleurFond) {
 		if (this.depasse(x, y) ||
 			texte == null)
 			return false;

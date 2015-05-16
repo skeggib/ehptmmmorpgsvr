@@ -53,7 +53,7 @@ public class Clavier {
 		this.deplacerJoueur(direction);
 	}
 	
-	private boolean deplacerJoueur(int direction) { // TODO:skeggib Ajouter UML
+	private boolean deplacerJoueur(int direction) {
 		// Verifier que je joueur et la carte on ete defenis
 		if (this.carte == null || this.joueur == null)
 			return false;

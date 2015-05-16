@@ -1,9 +1,7 @@
 package affichage;
 
-import personnage.EntiteVivante;
 import personnage.Joueur;
 import carte.Carte;
-import carte.ContenuCase;
 import carte.Position;
 
 public class InterfaceTerm {

@@ -12,7 +12,7 @@ public class Pixel {
 	 * etc...
 	 */
 	private String couleur;
-	private String couleurFond; // TODO:skeggib Ajouter UML
+	private String couleurFond;
 	
 	/**
 	 * Contructeur par defaut
@@ -29,7 +29,7 @@ public class Pixel {
 	 * @param couleur Couleur
 	 * @param couleurFond Couleur de fond
 	 */
-	public Pixel(char car, String couleur, String couleurFond) { // TODO:skeggib MAJ UML
+	public Pixel(char car, String couleur, String couleurFond) {
 		this.car = car;
 		this.couleur = couleur;
 		this.couleurFond = couleurFond;
@@ -59,7 +59,7 @@ public class Pixel {
 		this.couleurFond = "BACK_" + couleurFond;
 	}
 	
-	public String getPixelCouleur() { // TODO:skeggib Ajouter UML
+	public String getPixelCouleur() {
 		return this.getCouleur() + this.getCouleurFond() + this.getCar();
 	}
 	
