@@ -1,5 +1,8 @@
 package carte;
 
+import personnage.EntiteVivante;
+import items.Objet;
+
 public class Case {
 
 	private ContenuCase contenu;
@@ -52,6 +55,43 @@ public class Case {
 		ContenuCase rtrn = this.getContenu();
 		this.setContenu(nouvContenu);
 		return rtrn;
+	}
+	
+	/**
+	 * 	
+	 * @return True si la case contient du Vide ou rien
+	 */
+	public boolean estVide() {
+		if (this.getContenu() == null)
+			return true;
+		if (this.getContenu() instanceof Vide)
+			return true;
+		
+		return false;
+	}
+	
+	public boolean contientObjet() {
+		if (this.getContenu() instanceof Objet) {
+			return true;
+		}
+		
+		return false;
+	}
+	
+	public boolean contientEntite() {
+		if (this.getContenu() instanceof EntiteVivante) {
+			return true;
+		}
+		
+		return false;
+	}
+	
+	public boolean contientEnvironnement() {
+		if (this.getContenu() instanceof Environnement) {
+			return true;
+		}
+		
+		return false;
 	}
 
 	public ContenuCase getContenu() {
