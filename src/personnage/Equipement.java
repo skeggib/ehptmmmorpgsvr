@@ -1,5 +1,6 @@
 package personnage;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import items.Arme;
@@ -10,6 +11,18 @@ public class Equipement implements ContenirObjets {
 
 	private List<Equipable> listObjet;
 
+	/*
+	 * Constructeurs
+	 */
+	
+	public Equipement() {
+		this.listObjet = new LinkedList<Equipable>();
+	}
+
+	/*
+	 * Methode
+	 */
+	
 	public Objet getObjet(int index) {
 		return this.listObjet.get(index);
 	}
@@ -19,14 +32,15 @@ public class Equipement implements ContenirObjets {
 			Equipable eq = (Equipable) obj;
 			if (!this.listObjet.contains(eq)) {
 				if (eq instanceof Arme) {
+					Arme a = (Arme) eq;
 					int nombreArmeEquipe = 0;
 					for (int i = 0; i < this.listObjet.size(); i++) {
-						if (this.listObjet.get(i) instanceof Arme) {
+						if (this.listObjet.get(i).getClass() == a.getClass()) {
 							nombreArmeEquipe++;
 						}
 					}
 					if (nombreArmeEquipe < 2) {
-						this.listObjet.add(eq);
+						this.listObjet.add(a);
 						return true;
 					}
 				} else {
@@ -59,5 +73,9 @@ public class Equipement implements ContenirObjets {
 
 	public int getTaille() {
 		return this.listObjet.size();
+	}
+
+	public boolean contient(Objet o) {
+		return this.listObjet.contains(o);
 	}
 }
