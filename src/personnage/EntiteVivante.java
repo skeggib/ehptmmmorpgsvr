@@ -2,6 +2,7 @@ package personnage;
 
 import items.Objet;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import carte.Case;
@@ -55,6 +56,7 @@ public abstract class EntiteVivante implements ContenuCase {
 		this.setEquipement(new Equipement());
 		this.setVie(EntiteVivante.MAX_VIE);
 		this.setMAX_PA(EntiteVivante.BASE_PA);
+		this.effet = new LinkedList();
 	}
 
 	public EntiteVivante(int force, int adresse, int resistance) {
@@ -65,24 +67,29 @@ public abstract class EntiteVivante implements ContenuCase {
 		this.setEquipement(new Equipement());
 		this.setVie(EntiteVivante.MAX_VIE);
 		this.setMAX_PA(EntiteVivante.BASE_PA);
+		this.effet = new LinkedList();
 	}
 
 	public EntiteVivante(int force, int adresse, int resistance, int vie) {
 		this.setForce(force);
 		this.setAdresse(adresse);
 		this.setResistance(resistance);
-		this.setVie(vie);
 		this.setInventaire(new Inventaire());
 		this.setEquipement(new Equipement());
+		this.setVie(vie);
+		this.setMAX_PA(EntiteVivante.BASE_PA);
+		this.effet = new LinkedList();
 	}
 
 	/*
 	 * Methode
 	 */
-	
+
 	/**
 	 * Permet de se deplacer
-	 * @param destination Case de destination
+	 * 
+	 * @param destination
+	 *            Case de destination
 	 * @return true si le deplacement est reussi, false sinon
 	 */
 	public boolean seDeplacer(Case destination) {
@@ -98,7 +105,9 @@ public abstract class EntiteVivante implements ContenuCase {
 
 	/**
 	 * Initialise la position du joueur si ca n'a pas deja ete fait
-	 * @param position Position de depart du joueur
+	 * 
+	 * @param position
+	 *            Position de depart du joueur
 	 * @return true si la position a ete initialiser, false sinon
 	 */
 	public boolean initialiserPos(Case position) { // TODO:armya Fait this.seDeplacer(position) dans cette methode... 
@@ -112,7 +121,9 @@ public abstract class EntiteVivante implements ContenuCase {
 
 	/**
 	 * Attaque une cible
-	 * @param cible Entite qui subira les degats
+	 * 
+	 * @param cible
+	 *            Entite qui subira les degats
 	 */
 	public void attaquer(EntiteVivante cible) {
 		cible.retirerVie(1);
@@ -120,31 +131,42 @@ public abstract class EntiteVivante implements ContenuCase {
 
 	/**
 	 * Permet de ramasser un objet
-	 * @param obj Objet a rammasser
+	 * 
+	 * @param obj
+	 *            Objet a rammasser
 	 * @return true si l'objet a ete ajouter a l'inventaire, false sinon
 	 */
 	public boolean rammasserObjet(Objet obj) {
-		return this.inventaire.ajouterObjet(obj);
+		if ((!this.inventaire.contient(obj) && !this.equipement.contient(obj))) {
+			return this.inventaire.ajouterObjet(obj);
+		}
+		return false;
 	}
 
 	/**
 	 * Permet d'equiper un objet
-	 * @param obj Objet a equipe (doit etre dans l'inventaire du joueur
+	 * 
+	 * @param obj
+	 *            Objet a equipe (doit etre dans l'inventaire du joueur
 	 * @return true si l'objet a ete equipe, false sinon
 	 */
 	public boolean equiperObjet(Objet obj) {
 		if (this.inventaire.retirerObjet(obj)) {
 			if (!this.equipement.ajouterObjet(obj)) {
-				return this.inventaire.ajouterObjet(obj);
+				this.inventaire.ajouterObjet(obj);
+				return false;
+			} else {
+				return true;
 			}
 		}
 		return false;
 	}
 
-
 	/**
 	 * Permet de desequiper un objet
-	 * @param obj Objet a desequipe (doit etre dans l'inventaire du joueur
+	 * 
+	 * @param obj
+	 *            Objet a desequipe (doit etre dans l'inventaire du joueur
 	 * @return true si l'objet a ete desequipe, false sinon
 	 */
 	public boolean desequiperObjet(Objet obj) {
@@ -158,17 +180,22 @@ public abstract class EntiteVivante implements ContenuCase {
 
 	/**
 	 * Permet de mettre un Objet dans une case
-	 * @param obj Objet a mettre dans la case
-	 * @param destination Case qui recevra l'objet
+	 * 
+	 * @param obj
+	 *            Objet a mettre dans la case
+	 * @param destination
+	 *            Case qui recevra l'objet
 	 * @return
 	 */
 	public boolean deposerObjet(Objet obj, Case destination) {
 		return destination.ajoutContenu(obj);
 	}
-	
+
 	/**
 	 * Permet d'ajouter de la vie
-	 * @param vie Nombre de point de vie a ajouter
+	 * 
+	 * @param vie
+	 *            Nombre de point de vie a ajouter
 	 */
 	public void ajouterVie(int vie) {
 		if (vie > 0) {
@@ -178,7 +205,9 @@ public abstract class EntiteVivante implements ContenuCase {
 
 	/**
 	 * Permet de retirrer de la vie
-	 * @param vie Nombre de point de vie a retirer
+	 * 
+	 * @param vie
+	 *            Nombre de point de vie a retirer
 	 */
 	public void retirerVie(int vie) {
 		if (vie < 0) {
@@ -188,7 +217,9 @@ public abstract class EntiteVivante implements ContenuCase {
 
 	/**
 	 * Permet d'ajouter un effet a l'entite
-	 * @param effet Effet a ajouter
+	 * 
+	 * @param effet
+	 *            Effet a ajouter
 	 * @return true si l'effet a ete ajoute, false sinon
 	 */
 	public boolean ajouterEffet(Effet effet) {
@@ -203,7 +234,9 @@ public abstract class EntiteVivante implements ContenuCase {
 
 	/**
 	 * Permet de retirer un effet a l'entite
-	 * @param effet Effet a retirer
+	 * 
+	 * @param effet
+	 *            Effet a retirer
 	 * @return true si l'effet a ete retirer, false sinon
 	 */
 	public boolean retirerEffet(Effet effet) {
@@ -217,8 +250,7 @@ public abstract class EntiteVivante implements ContenuCase {
 	}
 
 	/**
-	 * Controlle les effets de l'entite
-	 * Si l'effet prend fin, il sera supprime
+	 * Controlle les effets de l'entite Si l'effet prend fin, il sera supprime
 	 */
 	public void controlerEffet() {
 		for (int i = 0; i < this.effet.size(); i++) {
@@ -252,8 +284,8 @@ public abstract class EntiteVivante implements ContenuCase {
 		if (this.getPointAction() < EntiteVivante.MIN_PA) {
 			this.pointAction = EntiteVivante.MIN_PA;
 		}
-		if (this.getPointAction() > EntiteVivante.BASE_PA) {
-			this.pointAction = EntiteVivante.BASE_PA;
+		if (this.getPointAction() > this.MAX_PA) {
+			this.pointAction = this.MAX_PA;
 		}
 	}
 

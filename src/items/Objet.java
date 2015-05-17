@@ -20,16 +20,27 @@ public abstract class Objet implements ContenuCase {
 	public Objet() {
 
 	}
-	
+
 	/*
 	 * Methodes
 	 */
-	
-	public abstract String randNom ();
-	
-	public abstract void affecterBonus (EntiteVivante cible);
-	
-	public int getNumero(){
+
+	/**
+	 * Attribut un nom aleatoire a l'objet
+	 * 
+	 * @return String nom correspondant a l'objet
+	 */
+	public abstract String randNom();
+
+	/**
+	 * Affecte le bonus a l'objet
+	 * 
+	 * @param cible
+	 *            Cible qui recoit le bonus
+	 */
+	public abstract void affecterBonus(EntiteVivante cible);
+
+	public int getNumero() {
 		return ContenuCase.OBJET;
 	}
 
@@ -42,6 +53,9 @@ public abstract class Objet implements ContenuCase {
 	}
 
 	public void setNom(String nom) {
-		this.nom = nom;
+		if (this.nom == null) {
+
+			this.nom = nom;
+		}
 	}
 }
