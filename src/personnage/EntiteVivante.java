@@ -110,7 +110,7 @@ public abstract class EntiteVivante implements ContenuCase {
 	 *            Position de depart du joueur
 	 * @return true si la position a ete initialiser, false sinon
 	 */
-	public boolean initialiserPos(Case position) {
+	public boolean initialiserPos(Case position) { // TODO:armya Fait this.seDeplacer(position) dans cette methode... 
 		if (this.getEmplacement() == null) {
 			this.setEmplacement(position);
 			if (this.getEmplacement() == position) {

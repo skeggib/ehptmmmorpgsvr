@@ -1,10 +1,13 @@
 package controles;
 
+import items.Objet;
+
 import java.util.Scanner;
 
 import carte.Carte;
 import carte.Case;
 import carte.Position;
+import personnage.EntiteVivante;
 import personnage.Joueur;
 
 public class Clavier {
@@ -50,10 +53,15 @@ public class Clavier {
 		else if (car == 'q' || car == 'Q')
 			direction = Clavier.GAUCHE;
 		
-		this.deplacerJoueur(direction);
+		this.realiserAction(direction);
 	}
 	
-	private boolean deplacerJoueur(int direction) {
+	/**
+	 * Ordonne au Joueur de realiser une action en fonction du contenu de la case
+	 * @param direction Direction que l'utilisateur a choisit
+	 * @return True si le Joueur s'est deplace
+	 */
+	private boolean realiserAction(int direction) {
 		// Verifier que je joueur et la carte on ete defenis
 		if (this.carte == null || this.joueur == null)
 			return false;
@@ -63,8 +71,8 @@ public class Clavier {
 		
 		posJoueur = this.carte.getPosContenu(this.joueur);
 		
+		// Calcul de la position de la destination
 		Position posDest = posJoueur;
-		
 		switch (direction) {
 		case Clavier.HAUT:
 			posDest.setY(posDest.getY() - 1);
@@ -80,11 +88,29 @@ public class Clavier {
 			break;
 		}
 		
+		// On recupere la case qui correspond a la destination
 		destination = this.carte.getCase(posDest.getX(), posDest.getY());
 		
-		this.joueur.seDeplacer(destination);
+		// Si la dest est vide on deplace le joueur
+		if (destination.estVide())
+			return this.joueur.seDeplacer(destination);
 		
-		return true; // TODO:skeggib Retourner ce que retourne seDeplacer
+		// Si la dest contient une entite on l'attaque
+		else if (destination.contientEntite()) {
+			EntiteVivante ennemi = (EntiteVivante)destination.getContenu();
+			this.joueur.attaquer(ennemi);
+		}
+		
+		// Si la dest contient un objet, on le ramasse puis on se deplace
+		else if (destination.contientObjet()) {
+			Objet obj = (Objet)destination.getContenu();
+			System.out.println(obj);
+			this.joueur.rammasserObjet(obj);
+			destination.supprContenu();
+			return this.joueur.seDeplacer(destination);
+		}
+		
+		return false;
 	}
 	
 	public int saisieInt() {

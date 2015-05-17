@@ -12,7 +12,6 @@ public abstract class ContenantObjet implements ContenirObjets {
 	/*
 	 * Constructeur
 	 */ 
-	
 	public ContenantObjet() {
 		this.listObjet = new LinkedList<Objet>();
 	}
