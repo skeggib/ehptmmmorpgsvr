@@ -113,8 +113,9 @@ public abstract class EntiteVivante implements ContenuCase {
 	public boolean initialiserPos(Case position) {
 		if (this.getEmplacement() == null) {
 			this.setEmplacement(position);
-
-			return (this.getEmplacement() == position);
+			if (this.getEmplacement() == position) {
+				return position.ajoutContenu(this);
+			}
 		}
 		return false;
 	}
