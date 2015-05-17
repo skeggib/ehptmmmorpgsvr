@@ -22,8 +22,7 @@ public class Test {
 		
 		inter.setCarte(carte);
 		
-		joueur.initialiserPos((carte.getCase(3, 3))); // TODO:skeggib C'est moche de faire ca...
-		joueur.seDeplacer((carte.getCase(4, 3)));
+		joueur.initialiserPos((carte.getCase(3, 3)));
 		
 		carte.getCase(3, 3).ajoutContenu(new Gant());
 		
