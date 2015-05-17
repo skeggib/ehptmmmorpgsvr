@@ -1,5 +1,7 @@
 package items;
 
+import java.util.Random;
+
 import personnage.EntiteVivante;
 
 public class PotionDeDegat extends Potion {
@@ -10,15 +12,14 @@ public class PotionDeDegat extends Potion {
 	
 	private int malusVie;
 	
+
 	/*
-	 * Constantes
+	 * Constructeurs
 	 */
 	
-	
-
-
 	public PotionDeDegat () {
 		this.setNom(this.randNom());
+		this.setMalusVie(new Random().nextInt(2) + 1);
 	}
 	
 	/*
@@ -29,9 +30,19 @@ public class PotionDeDegat extends Potion {
 		return Arme.NOM[0]; // TODO:armya Trouver des noms de potions de degats a mettre dans un .txt
 	}
 
-	@Override
 	public void affecterBonus(EntiteVivante cible) {
-		// TODO:armya Auto-generated method stub
-		
+		cible.retirerVie(this.getMalusVie());
+	}
+	
+	/*
+	 * Methode d'acces
+	 */
+
+	public int getMalusVie() {
+		return malusVie;
+	}
+
+	private void setMalusVie(int malusVie) {
+		this.malusVie = malusVie;
 	}
 }

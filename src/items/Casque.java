@@ -21,7 +21,6 @@ public class Casque extends Vetement {
 		return Casque.NOM[i];
 	}
 
-	@Override
 	public void affecterBonus(EntiteVivante cible) {
 		// TODO:armya Auto-generated method stub
 		

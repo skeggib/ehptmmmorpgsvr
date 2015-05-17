@@ -31,7 +31,6 @@ public class Pantalon extends Vetement {
 		return Pantalon.NOM[i];
 	}
 
-	@Override
 	public void affecterBonus(EntiteVivante cible) {
 		// TODO:armya Auto-generated method stub
 		

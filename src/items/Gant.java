@@ -27,7 +27,6 @@ public class Gant extends Vetement {
 		return Gant.NOM[i];
 	}
 
-	@Override
 	public void affecterBonus(EntiteVivante cible) {
 		// TODO:armya Auto-generated method stub
 		
