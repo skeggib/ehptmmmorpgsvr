@@ -15,6 +15,7 @@ public class Test {
 		
 		inter.setCarte(carte);
 		
+		joueur.initialiserPos(carte.getCase(3, 2));
 		joueur.seDeplacer(carte.getCase(3, 3));
 		
 		inter.afficher(joueur);

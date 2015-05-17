@@ -56,7 +56,7 @@ public abstract class EntiteVivante implements ContenuCase {
 		this.setEquipement(new Equipement());
 		this.setVie(EntiteVivante.MAX_VIE);
 		this.setMAX_PA(EntiteVivante.BASE_PA);
-		this.effet = new LinkedList();
+		this.effet = new LinkedList<Effet>();
 	}
 
 	public EntiteVivante(int force, int adresse, int resistance) {
@@ -67,7 +67,7 @@ public abstract class EntiteVivante implements ContenuCase {
 		this.setEquipement(new Equipement());
 		this.setVie(EntiteVivante.MAX_VIE);
 		this.setMAX_PA(EntiteVivante.BASE_PA);
-		this.effet = new LinkedList();
+		this.effet = new LinkedList<Effet>();
 	}
 
 	public EntiteVivante(int force, int adresse, int resistance, int vie) {
@@ -78,7 +78,7 @@ public abstract class EntiteVivante implements ContenuCase {
 		this.setEquipement(new Equipement());
 		this.setVie(vie);
 		this.setMAX_PA(EntiteVivante.BASE_PA);
-		this.effet = new LinkedList();
+		this.effet = new LinkedList<Effet>();
 	}
 
 	/*
