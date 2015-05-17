@@ -3,7 +3,6 @@ package fichiers;
 import java.util.List;
 
 import items.*;
-import personnage.EntiteVivante;
 import personnage.Joueur;
 
 public class Test {
