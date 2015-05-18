@@ -1,5 +1,7 @@
 package personnage;
 
+import java.util.ArrayList;
+
 import items.Objet;
 
 public interface ContenirObjets {
@@ -17,6 +19,8 @@ public interface ContenirObjets {
 	 * @return true si l'objet a ete ajoute, false sinon
 	 */
 	public boolean ajouterObjet(Objet o);
+	
+	public void ajouterObjets(ArrayList<Objet> list);
 
 	/**
 	 * Permet de retirer un objet de la liste

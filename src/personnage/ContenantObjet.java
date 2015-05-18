@@ -1,27 +1,26 @@
 package personnage;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.ArrayList;
 
 import items.Objet;
 
 public abstract class ContenantObjet implements ContenirObjets {
 
-	private List<Objet> listObjet;
+	private ArrayList<Objet> listObjet;
 
 	/*
 	 * Constructeur
-	 */ 
+	 */
 	public ContenantObjet() {
-		this.listObjet = new LinkedList<Objet>();
+		this.listObjet = new ArrayList<Objet>();
 	}
 
 	/*
 	 * Methode
 	 */
-	
+
 	public Objet getObjet(int index) {
-		if(index < this.getTaille() && index > -1){
+		if (index < this.getTaille() && index > -1) {
 			return this.listObjet.get(index);
 		}
 		return null;
@@ -33,6 +32,12 @@ public abstract class ContenantObjet implements ContenirObjets {
 		} else {
 			this.listObjet.add(o);
 			return true;
+		}
+	}
+
+	public void ajouterObjets(ArrayList<Objet> list) {
+		for(int i = 0; i < this.getTaille(); i++){
+			this.ajouterObjet(list.get(i));
 		}
 	}
 

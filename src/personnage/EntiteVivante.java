@@ -17,17 +17,11 @@ public abstract class EntiteVivante implements ContenuCase {
 	public static final int MAX_VIE = 7;
 	public static final int MIN_VIE = 0;
 
-	public static final int BASE_PA = 20;
 	public static final int MIN_PA = 0;
 
 	/*
 	 * Variables
 	 */
-
-	// Demi constante qui ne peut etre modifier qu'avec
-	// une potion qui augmente le nombre de PA pour un
-	// certains nombre de tour
-	private int MAX_PA;
 
 	private String nom;
 
@@ -47,7 +41,7 @@ public abstract class EntiteVivante implements ContenuCase {
 	
 	private Inventaire inventaire;
 	private Equipement equipement;
-	private List<Effet> effet;
+	private LinkedList<Effet> effet;
 
 	/*
 	 * Constructeurs
@@ -60,7 +54,6 @@ public abstract class EntiteVivante implements ContenuCase {
 		this.setInventaire(new Inventaire());
 		this.setEquipement(new Equipement());
 		this.setVie(EntiteVivante.MAX_VIE);
-		this.setMAX_PA(EntiteVivante.BASE_PA);
 		this.effet = new LinkedList<Effet>();
 	}
 
@@ -71,7 +64,6 @@ public abstract class EntiteVivante implements ContenuCase {
 		this.setInventaire(new Inventaire());
 		this.setEquipement(new Equipement());
 		this.setVie(EntiteVivante.MAX_VIE);
-		this.setMAX_PA(EntiteVivante.BASE_PA);
 		this.effet = new LinkedList<Effet>();
 	}
 
@@ -82,7 +74,6 @@ public abstract class EntiteVivante implements ContenuCase {
 		this.setInventaire(new Inventaire());
 		this.setEquipement(new Equipement());
 		this.setVie(vie);
-		this.setMAX_PA(EntiteVivante.BASE_PA);
 		this.effet = new LinkedList<Effet>();
 	}
 
@@ -304,17 +295,6 @@ public abstract class EntiteVivante implements ContenuCase {
 		return pointAction;
 	}
 
-	private void setPointAction(int pointAction) {
-		this.pointAction = pointAction;
-
-		if (this.getPointAction() < EntiteVivante.MIN_PA) {
-			this.pointAction = EntiteVivante.MIN_PA;
-		}
-		if (this.getPointAction() > this.MAX_PA) {
-			this.pointAction = this.MAX_PA;
-		}
-	}
-
 	public int getVie() {
 		return vie;
 	}
@@ -368,14 +348,6 @@ public abstract class EntiteVivante implements ContenuCase {
 
 	private void setEmplacement(Case emplacement) {
 		this.emplacement = emplacement;
-	}
-
-	public int getMAX_PA() {
-		return MAX_PA;
-	}
-
-	private void setMAX_PA(int max_pa) {
-		MAX_PA = max_pa;
 	}
 
 	public int getForceBase() {

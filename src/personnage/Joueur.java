@@ -5,7 +5,13 @@ import java.util.Scanner;
 import carte.ContenuCase;
 
 public class Joueur extends EntiteVivante {
-	
+
+	public static final int BASE_PA = 10;
+
+	// Demi constante qui ne peut etre modifier qu'avec
+	// une potion qui augmente le nombre de PA pour un
+	// certains nombre de tour
+	private int MAX_PA;
 	
 	/*
 	 * Constructeur
@@ -16,6 +22,7 @@ public class Joueur extends EntiteVivante {
 	public Joueur () {
 		super();
 		this.setNom(new Scanner(System.in).nextLine()); // armya -> Met au moins un println pour demander le nom... Je cherchais pourquoi mon programme marchait pas
+		this.setMAX_PA(Joueur.BASE_PA);
 	}
 	
 	public Joueur (String nom) {
@@ -40,4 +47,18 @@ public class Joueur extends EntiteVivante {
 	public int getNumero(){
 		return ContenuCase.JOUEUR;
 	}
+	
+	/*
+	 * Methode d'acces
+	 */
+	
+	public int getMAX_PA(){
+		return this.MAX_PA;
+	}
+	
+	public void setMAX_PA(int nbPA){
+		this.MAX_PA = nbPA;
+	}
+	
+	
 }

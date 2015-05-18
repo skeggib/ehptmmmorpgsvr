@@ -1,7 +1,6 @@
 package personnage;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.ArrayList;
 
 import items.Arme;
 import items.Equipable;
@@ -9,22 +8,22 @@ import items.Objet;
 
 public class Equipement implements ContenirObjets {
 
-	private List<Equipable> listObjet;
+	private ArrayList<Equipable> listObjet;
 
 	/*
 	 * Constructeurs
 	 */
-	
+
 	public Equipement() {
-		this.listObjet = new LinkedList<Equipable>();
+		this.listObjet = new ArrayList<Equipable>();
 	}
 
 	/*
 	 * Methode
 	 */
-	
+
 	public Objet getObjet(int index) {
-		if(index < this.getTaille() && index > -1){
+		if (index < this.getTaille() && index > -1) {
 			return this.listObjet.get(index);
 		}
 		return null;
@@ -62,6 +61,12 @@ public class Equipement implements ContenirObjets {
 			return false;
 		}
 		return false;
+	}
+
+	public void ajouterObjets(ArrayList<Objet> list) {
+		for (int i = 0; i < this.getTaille(); i++) {
+			this.ajouterObjet(list.get(i));
+		}
 	}
 
 	public boolean retirerObjet(Objet o) {
