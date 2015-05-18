@@ -6,23 +6,23 @@ import personnage.EntiteVivante;
 import fichiers.LectureFichier;
 
 public class Casque extends Vetement {
-	public static final String [] NOM = LectureFichier.lireT("ressources/noms/casque.txt");
+	public static final String[] NOM = LectureFichier
+			.lireT("ressources/noms/casque.txt");
 
-	public Casque () {
+	public Casque() {
 		this.setNom(this.randNom());
 	}
-	
+
 	/*
 	 * Methode
 	 */
-	
-	public String randNom () {
+
+	public String randNom() {
 		int i = new Random().nextInt((Casque.NOM.length));
 		return Casque.NOM[i];
 	}
 
-	public void affecterBonus(EntiteVivante cible) {
+	public void affecterBonus(EntiteVivante utilisateur, EntiteVivante cible) {
 		// TODO:armya Auto-generated method stub
-		
 	}
 }

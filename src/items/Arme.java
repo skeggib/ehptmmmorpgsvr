@@ -67,9 +67,8 @@ public class Arme extends Equipable {
 		return Arme.NOM[i];
 	}
 
-	public void affecterBonus(EntiteVivante cible) {
+	public void affecterBonus(EntiteVivante utilisateur, EntiteVivante cible) {
 		// TODO:armya Auto-generated method stub
-
 	}
 
 	/*

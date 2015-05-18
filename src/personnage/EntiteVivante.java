@@ -37,9 +37,14 @@ public abstract class EntiteVivante implements ContenuCase {
 
 	private Case emplacement;
 
-	private int force;
-	private int adresse;
-	private int resistance;
+	private int forceBase;
+	private int adresseBase;
+	private int resistanceBase;
+
+	private int forceEqui;
+	private int adresseEqui;
+	private int resistanceEqui;
+	
 	private Inventaire inventaire;
 	private Equipement equipement;
 	private List<Effet> effet;
@@ -49,9 +54,9 @@ public abstract class EntiteVivante implements ContenuCase {
 	 */
 
 	public EntiteVivante() {
-		this.setForce(0);
-		this.setAdresse(0);
-		this.setResistance(0);
+		this.setForceBase(0);
+		this.setAdresseBase(0);
+		this.setResistanceBase(0);
 		this.setInventaire(new Inventaire());
 		this.setEquipement(new Equipement());
 		this.setVie(EntiteVivante.MAX_VIE);
@@ -60,9 +65,9 @@ public abstract class EntiteVivante implements ContenuCase {
 	}
 
 	public EntiteVivante(int force, int adresse, int resistance) {
-		this.setForce(force);
-		this.setAdresse(adresse);
-		this.setResistance(resistance);
+		this.setForceBase(force);
+		this.setAdresseBase(adresse);
+		this.setResistanceBase(resistance);
 		this.setInventaire(new Inventaire());
 		this.setEquipement(new Equipement());
 		this.setVie(EntiteVivante.MAX_VIE);
@@ -71,9 +76,9 @@ public abstract class EntiteVivante implements ContenuCase {
 	}
 
 	public EntiteVivante(int force, int adresse, int resistance, int vie) {
-		this.setForce(force);
-		this.setAdresse(adresse);
-		this.setResistance(resistance);
+		this.setForceBase(force);
+		this.setAdresseBase(adresse);
+		this.setResistanceBase(resistance);
 		this.setInventaire(new Inventaire());
 		this.setEquipement(new Equipement());
 		this.setVie(vie);
@@ -95,7 +100,6 @@ public abstract class EntiteVivante implements ContenuCase {
 	public boolean seDeplacer(Case destination) {
 		if (destination.ajoutContenu(this)) {
 			this.emplacement.supprContenu();
-			;
 			this.setEmplacement(destination);
 
 			return (this.getEmplacement() == destination);
@@ -193,6 +197,16 @@ public abstract class EntiteVivante implements ContenuCase {
 	}
 
 	/**
+	 * Retire un objet de l'inventaire
+	 * 
+	 * @param obj
+	 *            Objet a retirer
+	 */
+	public void retirerObjet(Objet obj) { // TODO:skeggib ajouter UML
+		this.inventaire.retirerObjet(obj);
+	}
+
+	/**
 	 * Permet d'ajouter de la vie
 	 * 
 	 * @param vie
@@ -214,6 +228,15 @@ public abstract class EntiteVivante implements ContenuCase {
 		if (vie < 0) {
 			this.setVie(this.getVie() - vie);
 		}
+	}
+
+	/**
+	 * Controlle si l'entite est vivante
+	 * 
+	 * @return true si vie > 0, false sinon
+	 */
+	public boolean estVivant() {
+		return !(this.getVie() <= 0);
 	}
 
 	/**
@@ -260,6 +283,8 @@ public abstract class EntiteVivante implements ContenuCase {
 			}
 		}
 	}
+	
+	
 
 	/*
 	 * Methode d'acces
@@ -306,39 +331,15 @@ public abstract class EntiteVivante implements ContenuCase {
 	}
 
 	public int getForce() {
-		return force;
-	}
-
-	private void setForce(int force) {
-		this.force = force;
-
-		if (this.getForce() < 0) {
-			this.force = 0;
-		}
+		return this.forceBase + this.forceEqui;
 	}
 
 	public int getAdresse() {
-		return adresse;
-	}
-
-	private void setAdresse(int adresse) {
-		this.adresse = adresse;
-
-		if (this.getAdresse() < 0) {
-			this.adresse = 0;
-		}
+		return this.adresseBase + this.adresseEqui;
 	}
 
 	public int getResistance() {
-		return resistance;
-	}
-
-	private void setResistance(int resistance) {
-		this.resistance = resistance;
-
-		if (this.getResistance() < 0) {
-			this.resistance = 0;
-		}
+		return this.resistanceBase + this.resistanceEqui;
 	}
 
 	public Equipement getEquipement() {
@@ -375,6 +376,54 @@ public abstract class EntiteVivante implements ContenuCase {
 
 	private void setMAX_PA(int max_pa) {
 		MAX_PA = max_pa;
+	}
+
+	public int getForceBase() {
+		return forceBase;
+	}
+
+	public void setForceBase(int forceBase) {
+		this.forceBase = forceBase;
+	}
+
+	public int getAdresseBase() {
+		return adresseBase;
+	}
+
+	public void setAdresseBase(int adresseBase) {
+		this.adresseBase = adresseBase;
+	}
+
+	public int getResistanceBase() {
+		return resistanceBase;
+	}
+
+	public void setResistanceBase(int resistanceBase) {
+		this.resistanceBase = resistanceBase;
+	}
+
+	public int getForceEqui() {
+		return forceEqui;
+	}
+
+	public void setForceEqui(int forceEqui) {
+		this.forceEqui = forceEqui;
+	}
+
+	public int getAdresseEqui() {
+		return adresseEqui;
+	}
+
+	public void setAdresseEqui(int adresseEqui) {
+		this.adresseEqui = adresseEqui;
+	}
+
+	public int getResistanceEqui() {
+		return resistanceEqui;
+	}
+
+	public void setResistanceEqui(int resistanceEqui) {
+		this.resistanceEqui = resistanceEqui;
 	}
 
 }

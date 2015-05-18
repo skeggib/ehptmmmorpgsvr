@@ -30,8 +30,9 @@ public class PotionDeDegat extends Potion {
 		return Arme.NOM[0]; // TODO:armya Trouver des noms de potions de degats a mettre dans un .txt
 	}
 
-	public void affecterBonus(EntiteVivante cible) {
+	public void affecterBonus(EntiteVivante utilisateur, EntiteVivante cible) {
 		cible.retirerVie(this.getMalusVie());
+		utilisateur.retirerObjet(this);
 	}
 	
 	/*
