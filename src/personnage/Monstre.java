@@ -1,8 +1,5 @@
 package personnage;
 
-import items.Casque;
-import items.PotionDeSoin;
-
 import java.util.Random;
 
 import carte.ContenuCase;
@@ -11,7 +8,7 @@ import fichiers.LectureFichier;
 public class Monstre extends EntiteVivante {
 	
 	public static final String[] NOM = LectureFichier
-			.lireT("ressources/noms/monstre.txt");
+			.lireT("../ressources/noms/monstre.txt");
 	
 	/*
 	 * Constructeur
