@@ -68,7 +68,10 @@ public class Arme extends Equipable {
 	}
 
 	public void affecterBonus(EntiteVivante utilisateur, EntiteVivante cible) {
-		// TODO:armya Auto-generated method stub
+		utilisateur.setManiabiliteArm(utilisateur.getManiabiliteArm() + this.getManiabilite());
+		utilisateur.setImpactArm(utilisateur.getImpactArm() + this.getImpact());
+		
+		System.out.println("affecter bonus : " + utilisateur.getManiabiliteArm());
 	}
 
 	/*

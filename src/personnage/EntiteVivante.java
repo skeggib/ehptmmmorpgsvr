@@ -31,13 +31,18 @@ public abstract class EntiteVivante implements ContenuCase {
 
 	private Case emplacement;
 
+	
+	//TODO:skeggib Mettre a jours toutes ces variables dans l'UML
 	private int forceBase;
 	private int adresseBase;
 	private int resistanceBase;
 
+	
 	private int forceEqui;
 	private int adresseEqui;
 	private int resistanceEqui;
+	private int maniabiliteArm;
+	private int impactArm;
 	
 	private Inventaire inventaire;
 	private Equipement equipement;
@@ -51,6 +56,13 @@ public abstract class EntiteVivante implements ContenuCase {
 		this.setForceBase(0);
 		this.setAdresseBase(0);
 		this.setResistanceBase(0);
+		
+		this.setForceEqui(0);
+		this.setAdresseEqui(0);
+		this.setResistanceEqui(0);
+		this.setManiabiliteArm(0);
+		this.setImpactArm(0);
+		
 		this.setInventaire(new Inventaire());
 		this.setEquipement(new Equipement());
 		this.setVie(EntiteVivante.MAX_VIE);
@@ -61,6 +73,13 @@ public abstract class EntiteVivante implements ContenuCase {
 		this.setForceBase(force);
 		this.setAdresseBase(adresse);
 		this.setResistanceBase(resistance);
+		
+		this.forceEqui = 0;
+		this.adresseEqui = 0;
+		this.resistanceEqui = 0;
+		this.setManiabiliteArm(0);
+		this.setImpactArm(0);
+		
 		this.setInventaire(new Inventaire());
 		this.setEquipement(new Equipement());
 		this.setVie(EntiteVivante.MAX_VIE);
@@ -71,6 +90,13 @@ public abstract class EntiteVivante implements ContenuCase {
 		this.setForceBase(force);
 		this.setAdresseBase(adresse);
 		this.setResistanceBase(resistance);
+		
+		this.forceEqui = 0;
+		this.adresseEqui = 0;
+		this.resistanceEqui = 0;
+		this.setManiabiliteArm(0);
+		this.setImpactArm(0);
+		
 		this.setInventaire(new Inventaire());
 		this.setEquipement(new Equipement());
 		this.setVie(vie);
@@ -122,7 +148,10 @@ public abstract class EntiteVivante implements ContenuCase {
 	 *            Entite qui subira les degats
 	 */
 	public void attaquer(EntiteVivante cible) {
-		cible.retirerVie(1);
+		if(this.getPointAction() > 0){
+			cible.retirerVie(1);
+			this.setPointAction(this.getPointAction() - 2);
+		}
 	}
 
 	/**
@@ -152,6 +181,7 @@ public abstract class EntiteVivante implements ContenuCase {
 				this.inventaire.ajouterObjet(obj);
 				return false;
 			} else {
+				this.majCaractEqui();
 				return true;
 			}
 		}
@@ -169,6 +199,9 @@ public abstract class EntiteVivante implements ContenuCase {
 		if (this.equipement.retirerObjet(obj)) {
 			if (!this.inventaire.ajouterObjet(obj)) {
 				return this.equipement.ajouterObjet(obj);
+			} else {
+				this.majCaractEqui();
+				return true;
 			}
 		}
 		return false;
@@ -275,6 +308,22 @@ public abstract class EntiteVivante implements ContenuCase {
 		}
 	}
 	
+	/**
+	 * Met a jour les caracteristiques apporte par l'equipement
+	 */
+	private void majCaractEqui(){
+
+		this.setForceEqui(0);
+		this.setAdresseEqui(0);
+		this.setResistanceEqui(0);
+		this.setManiabiliteArm(0);
+		this.setImpactArm(0);	
+		
+		for(int i = 0; i < this.equipement.getTaille(); i++){
+			this.equipement.getObjet(i).affecterBonus(this, this);
+		}
+	}
+	
 	
 
 	/*
@@ -295,6 +344,10 @@ public abstract class EntiteVivante implements ContenuCase {
 		return pointAction;
 	}
 
+	private void setPointAction(int pointAction) {
+		this.pointAction = pointAction;
+	}
+	
 	public int getVie() {
 		return vie;
 	}
@@ -397,5 +450,22 @@ public abstract class EntiteVivante implements ContenuCase {
 	public void setResistanceEqui(int resistanceEqui) {
 		this.resistanceEqui = resistanceEqui;
 	}
+
+	public int getManiabiliteArm() {
+		return maniabiliteArm;
+	}
+
+	public void setManiabiliteArm(int maniabiliteArm) {
+		this.maniabiliteArm = maniabiliteArm;
+	}
+
+	public int getImpactArm() {
+		return impactArm;
+	}
+
+	public void setImpactArm(int impactArm) {
+		this.impactArm = impactArm;
+	}
+
 
 }

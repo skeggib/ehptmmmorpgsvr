@@ -8,57 +8,49 @@ public class Joueur extends EntiteVivante {
 
 	public static final int BASE_PA = 10;
 
-	// Demi constante qui ne peut etre modifier qu'avec
-	// une potion qui augmente le nombre de PA pour un
-	// certains nombre de tour
-	private int MAX_PA;
-	
 	/*
 	 * Constructeur
 	 */
-	
-	@SuppressWarnings("resource")
-	
-	public Joueur () {
+
+	public Joueur() {
 		super();
-		this.setNom(new Scanner(System.in).nextLine()); // armya -> Met au moins un println pour demander le nom... Je cherchais pourquoi mon programme marchait pas
-		this.setMAX_PA(Joueur.BASE_PA);
+		this.setNom(new Scanner(System.in).nextLine());
+		
 	}
-	
-	public Joueur (String nom) {
+
+	public Joueur(String nom) {
 		super();
 		this.setNom(nom);
 	}
-	
-	public Joueur (String nom, int force, int adresse, int resistance){
+
+	public Joueur(String nom, int force, int adresse, int resistance) {
 		super(force, adresse, resistance);
 		this.setNom(nom);
 	}
-	
-	public Joueur (String nom, int force, int adresse, int resistance, int vie){
+
+	public Joueur(String nom, int force, int adresse, int resistance, int vie) {
 		super(force, adresse, resistance, vie);
 		this.setNom(nom);
 	}
-	
+
 	/*
 	 * Methodes
 	 */
-	
-	public int getNumero(){
+
+	public int getNumero() {
 		return ContenuCase.JOUEUR;
 	}
-	
+
 	/*
 	 * Methode d'acces
 	 */
-	
-	public int getMAX_PA(){
-		return this.MAX_PA;
+
+	public int getMAX_PA() {
+		return Joueur.BASE_PA;
 	}
+
+	private void setPointAction(int pointAction) {
 	
-	public void setMAX_PA(int nbPA){
-		this.MAX_PA = nbPA;
 	}
-	
-	
+
 }

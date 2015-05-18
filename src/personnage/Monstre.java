@@ -6,6 +6,13 @@ import carte.ContenuCase;
 import fichiers.LectureFichier;
 
 public class Monstre extends EntiteVivante {
+
+	public static final int BASE_PA = 5;
+
+	// Demi constante qui ne peut etre modifier qu'avec
+	// une potion qui augmente le nombre de PA pour un
+	// certains nombre de tour
+	private int MAX_PA;
 	
 	public static final String[] NOM = LectureFichier
 			.lireT("../ressources/noms/monstre.txt");
@@ -46,5 +53,17 @@ public class Monstre extends EntiteVivante {
 	
 	public int getNumero(){
 		return ContenuCase.MONSTRE;
+	}
+	
+	/*
+	 * Methode d'acces
+	 */
+
+	public int getMAX_PA() {
+		return this.MAX_PA;
+	}
+
+	public void setMAX_PA(int nbPA) {
+		this.MAX_PA = nbPA;
 	}
 }
