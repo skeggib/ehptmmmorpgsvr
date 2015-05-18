@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import items.Objet;
 import carte.Case;
-import carte.ContenuCase;
+import carte.ContenuCase; 
 
 public abstract class EntiteVivante implements ContenuCase { //TODO:skeggib Verifier toute cette classe -> MAJ UML
 
