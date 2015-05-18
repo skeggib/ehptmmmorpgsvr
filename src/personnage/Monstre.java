@@ -1,21 +1,32 @@
 package personnage;
 
-import java.util.Scanner;
+import items.Casque;
+import items.PotionDeSoin;
+
+import java.util.Random;
 
 import carte.ContenuCase;
+import fichiers.LectureFichier;
 
 public class Monstre extends EntiteVivante {
 	
+	public static final String[] NOM = LectureFichier
+			.lireT("ressources/noms/monstre.txt");
 	
 	/*
 	 * Constructeur
 	 */
 	
-	@SuppressWarnings("resource")
 	public Monstre () {
 		super();
-		this.setNom(new Scanner(System.in).nextLine()); // armya -> Met au moins un println pour demander le nom... Je cherchais pourquoi mon programme marchait pas
+		this.setNom(this.randNom());
 	}
+	
+	public String randNom() {
+		int i = new Random().nextInt((Monstre.NOM.length));
+		return Monstre.NOM[i];
+	}
+
 	
 	public Monstre (String nom) {
 		super();
