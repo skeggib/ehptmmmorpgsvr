@@ -9,7 +9,7 @@ import carte.ContenuCase;
 public abstract class EntiteVivante implements ContenuCase { //TODO:skeggib Verifier toute cette classe -> MAJ UML
 
 	/*
-	 * Constante
+	 * Constante 
 	 */
 
 	public static final int MAX_VIE = 7;
