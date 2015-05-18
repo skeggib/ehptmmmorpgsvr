@@ -1,14 +1,12 @@
 package personnage;
 
+import java.util.ArrayList;
+
 import items.Objet;
-
-import java.util.LinkedList;
-import java.util.List;
-
 import carte.Case;
 import carte.ContenuCase;
 
-public abstract class EntiteVivante implements ContenuCase {
+public abstract class EntiteVivante implements ContenuCase { //TODO:skeggib Verifier toute cette classe -> MAJ UML
 
 	/*
 	 * Constante
@@ -46,7 +44,7 @@ public abstract class EntiteVivante implements ContenuCase {
 	
 	private Inventaire inventaire;
 	private Equipement equipement;
-	private LinkedList<Effet> effet;
+	private ArrayList<Effet> effet;
 
 	/*
 	 * Constructeurs
@@ -66,7 +64,7 @@ public abstract class EntiteVivante implements ContenuCase {
 		this.setInventaire(new Inventaire());
 		this.setEquipement(new Equipement());
 		this.setVie(EntiteVivante.MAX_VIE);
-		this.effet = new LinkedList<Effet>();
+		this.effet = new ArrayList<Effet>();
 	}
 
 	public EntiteVivante(int force, int adresse, int resistance) {
@@ -83,7 +81,7 @@ public abstract class EntiteVivante implements ContenuCase {
 		this.setInventaire(new Inventaire());
 		this.setEquipement(new Equipement());
 		this.setVie(EntiteVivante.MAX_VIE);
-		this.effet = new LinkedList<Effet>();
+		this.effet = new ArrayList<Effet>();
 	}
 
 	public EntiteVivante(int force, int adresse, int resistance, int vie) {
@@ -100,7 +98,7 @@ public abstract class EntiteVivante implements ContenuCase {
 		this.setInventaire(new Inventaire());
 		this.setEquipement(new Equipement());
 		this.setVie(vie);
-		this.effet = new LinkedList<Effet>();
+		this.effet = new ArrayList<Effet>();
 	}
 
 	/*
@@ -290,11 +288,8 @@ public abstract class EntiteVivante implements ContenuCase {
 	public boolean retirerEffet(Effet effet) {
 		if (this.effet.contains(effet)) {
 			this.effet.remove(effet);
-			if (!this.effet.contains(effet)) {
-				return true;
-			}
 		}
-		return false;
+		return !this.effet.contains(effet);
 	}
 
 	/**
@@ -309,9 +304,9 @@ public abstract class EntiteVivante implements ContenuCase {
 	}
 	
 	/**
-	 * Met a jour les caracteristiques apporte par l'equipement
+	 * Met a jour les caracteristiques apportees par l'equipement
 	 */
-	private void majCaractEqui(){
+	private void majCaractEqui(){ //TODO:skeggib Ajouter UML
 
 		this.setForceEqui(0);
 		this.setAdresseEqui(0);
@@ -363,30 +358,10 @@ public abstract class EntiteVivante implements ContenuCase {
 		}
 	}
 
-	public int getForce() {
-		return this.forceBase + this.forceEqui;
-	}
-
-	public int getAdresse() {
-		return this.adresseBase + this.adresseEqui;
-	}
-
-	public int getResistance() {
-		return this.resistanceBase + this.resistanceEqui;
-	}
-
-	public Equipement getEquipement() {
-		return equipement;
-	}
-
 	private void setEquipement(Equipement equipement) {
 		if (this.equipement == null) {
 			this.equipement = equipement;
 		}
-	}
-
-	public Inventaire getInventaire() {
-		return inventaire;
 	}
 
 	private void setInventaire(Inventaire inventaire) {
@@ -400,8 +375,30 @@ public abstract class EntiteVivante implements ContenuCase {
 	}
 
 	private void setEmplacement(Case emplacement) {
-		this.emplacement = emplacement;
+		if(this.emplacement != emplacement){
+			this.emplacement = emplacement;
+		}
 	}
+	
+	/*
+	 * Caracteristique generale
+	 */
+
+	public int getForce() {
+		return this.getForceBase() + this.getForceEqui();
+	}
+
+	public int getAdresse() {
+		return this.getAdresseBase() + this.getAdresseEqui();
+	}
+
+	public int getResistance() {
+		return this.getResistanceBase() + this.getResistanceEqui();
+	}
+	
+	/*
+	 * Caracteristique de Base
+	 */
 
 	public int getForceBase() {
 		return forceBase;
@@ -430,6 +427,10 @@ public abstract class EntiteVivante implements ContenuCase {
 	public int getForceEqui() {
 		return forceEqui;
 	}
+	
+	/*
+	 * Caracteristique d'equipement (vetement, arme)
+	 */
 
 	public void setForceEqui(int forceEqui) {
 		this.forceEqui = forceEqui;
