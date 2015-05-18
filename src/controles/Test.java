@@ -39,7 +39,7 @@ public class Test {
 
 	}
 	
-	private static LinkedList<Monstre> ajoutMonstres(Carte carte) {
+	private static void ajoutMonstres(Carte carte) {
 		Random rand = new Random();
 		int randInt;
 		
@@ -49,7 +49,7 @@ public class Test {
 		// Chance qu'a chaque case de recevoir un Monstre
 		int chanceCase = 5;
 		// Chance que chaque monstre a de devenir un groupe de monstres
-		int chanceDevientGroupe = 33;
+		int chanceDevientGroupe = 10;
 		
 		// On ajoute des monstres aleatoirement dans la carte sur les cases vides
 		for (int i = 0; i < carte.getHauteur(); i++) {
@@ -59,14 +59,13 @@ public class Test {
 					if (randInt < chanceCase) {
 						tempMonstre = new Monstre("monster");
 						liste.add(tempMonstre);
-						carte.getCase(j, i).ajoutContenu(tempMonstre);
+						tempMonstre.initialiserPos(carte.getCase(j, i));
 					}
 				}
 			}
 		}
 		
 		Position posM;
-		LinkedList<Monstre> tempListe = new LinkedList<Monstre>();
 		
 		// On creer les groupes de monstre
 		for (int i = 0; i < liste.size(); i++) {
@@ -80,17 +79,12 @@ public class Test {
 						randInt = rand.nextInt(100);
 						if (randInt < 33) {
 							tempMonstre = new Monstre("monster");
-							tempListe.add(tempMonstre);
-							carte.getCase(x, y).ajoutContenu(tempMonstre);
+							tempMonstre.initialiserPos(carte.getCase(x, y));
 						}
 					}
 				}
 			}
 		}
-		
-		liste.addAll(tempListe);
-		
-		return liste;
 	}
 
 }
