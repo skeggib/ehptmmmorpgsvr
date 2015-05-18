@@ -38,7 +38,8 @@ public abstract class Objet implements ContenuCase {
 	 * @param cible
 	 *            Cible qui recoit le bonus
 	 */
-	public abstract void affecterBonus(EntiteVivante cible);
+	public abstract void affecterBonus(EntiteVivante utilisateur, EntiteVivante cible);
+	//TODO;skeggib ajouter UML
 
 	public int getNumero() {
 		return ContenuCase.OBJET;

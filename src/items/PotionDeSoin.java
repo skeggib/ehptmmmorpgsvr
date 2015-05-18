@@ -33,9 +33,9 @@ public class PotionDeSoin extends Potion {
 		return PotionDeSoin.NOM[this.getBonusVie() - 1];
 	}
 
-	public void affecterBonus(EntiteVivante cible) {
+	public void affecterBonus(EntiteVivante utilisateur, EntiteVivante cible) {
 		cible.ajouterVie(this.getBonusVie());
-
+		utilisateur.retirerObjet(this);
 	}
 
 	/*

@@ -12,8 +12,8 @@ public class Gant extends Vetement {
 	public Gant() {
 		this.setNom(this.randNom());
 	}
-	
-	public Gant(int qualite){
+
+	public Gant(int qualite) {
 		super(qualite);
 		this.setNom(this.randNom());
 	}
@@ -27,9 +27,8 @@ public class Gant extends Vetement {
 		return Gant.NOM[i];
 	}
 
-	public void affecterBonus(EntiteVivante cible) {
+	public void affecterBonus(EntiteVivante utilisateur, EntiteVivante cible) {
 		// TODO:armya Auto-generated method stub
-		
 	}
 
 }

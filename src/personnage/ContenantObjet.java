@@ -21,7 +21,10 @@ public abstract class ContenantObjet implements ContenirObjets {
 	 */
 	
 	public Objet getObjet(int index) {
-		return this.listObjet.get(index);
+		if(index < this.getTaille() && index > -1){
+			return this.listObjet.get(index);
+		}
+		return null;
 	}
 
 	public boolean ajouterObjet(Objet o) {
