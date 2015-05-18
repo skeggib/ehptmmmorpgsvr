@@ -34,14 +34,14 @@ public class Couleur {
 			if (DetectOS.Windows()) {
 				Couleur.DEFAULT = "";
 				
-				Couleur.BLACK = "\033[30m";
-				Couleur.RED = "\033[31m";
-				Couleur.GREEN = "\033[32m";
-				Couleur.YELLOW = "\033[33m";
-				Couleur.BLUE = "\033[34m";
-				Couleur.PURPLE = "\033[35m";
-				Couleur.CYAN = "\033[36m";
-				Couleur.WHITE = "\033[37m";
+				Couleur.BLACK = "";
+				Couleur.RED = "";
+				Couleur.GREEN = "";
+				Couleur.YELLOW = "";
+				Couleur.BLUE = "";
+				Couleur.PURPLE = "";
+				Couleur.CYAN = "";
+				Couleur.WHITE = "";
 				
 				Couleur.BACK_BLACK = "";
 				Couleur.BACK_RED = "";
