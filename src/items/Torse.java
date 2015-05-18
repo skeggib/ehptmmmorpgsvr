@@ -15,8 +15,7 @@ public class Torse extends Vetement{
 	}
 
 	public void affecterBonus(EntiteVivante utilisateur, EntiteVivante cible) {
-		// TODO:armya Auto-generated method stub
-		
+		super.affecterBonus(utilisateur, cible);
 	}
 
 }

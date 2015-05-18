@@ -1,16 +1,18 @@
 package items;
 
+import personnage.EntiteVivante;
+
 public abstract class Vetement extends Equipable {
-	
+
 	/*
 	 * Constructeurs
 	 */
-	
-	public Vetement () {
+
+	public Vetement() {
 		super();
 	}
-	
-	public Vetement(int qualite){
+
+	public Vetement(int qualite) {
 		super(qualite);
 	}
 
@@ -18,22 +20,23 @@ public abstract class Vetement extends Equipable {
 	 * Variables
 	 */
 
-	private int protection;
 	private int bonusForce;
 	private int bonusAdresse;
 	private int bonusResistance;
 	
 	/*
-	 * Methodes d'acces
+	 * Methode
 	 */
 
-	public int getProtection() {
-		return protection;
+	public void affecterBonus(EntiteVivante utilisateur, EntiteVivante cible) {
+		utilisateur.setForceEqui(utilisateur.getForceEqui() + this.getBonusForce());
+		utilisateur.setAdresseEqui(utilisateur.getAdresseEqui() + this.getBonusAdresse());
+		utilisateur.setResistanceEqui(utilisateur.getResistanceEqui() + this.getBonusResistance());
 	}
 
-	public void setProtection(int protection) {
-		this.protection = protection;
-	}
+	/*
+	 * Methodes d'acces
+	 */
 
 	public int getBonusForce() {
 		return bonusForce;
@@ -58,5 +61,4 @@ public abstract class Vetement extends Equipable {
 	public void setBonusResistance(int bonusResistance) {
 		this.bonusResistance = bonusResistance;
 	}
-
 }

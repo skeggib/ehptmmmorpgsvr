@@ -20,6 +20,7 @@ public class Pantalon extends Vetement {
 
 	public Pantalon() {
 		this.setNom(this.randNom());
+		this.setBonusForce(8);
 	}
 
 	/*
@@ -32,7 +33,7 @@ public class Pantalon extends Vetement {
 	}
 
 	public void affecterBonus(EntiteVivante utilisateur, EntiteVivante cible) {
-		// TODO:armya Auto-generated method stub
+		super.affecterBonus(utilisateur, cible);
 	}
 
 }

@@ -10,6 +10,7 @@ public class Gant extends Vetement {
 			.lireT("../ressources/noms/gant.txt");
 
 	public Gant() {
+		this.setBonusForce(4);
 		this.setNom(this.randNom());
 	}
 
@@ -28,7 +29,7 @@ public class Gant extends Vetement {
 	}
 
 	public void affecterBonus(EntiteVivante utilisateur, EntiteVivante cible) {
-		// TODO:armya Auto-generated method stub
+		super.affecterBonus(utilisateur, cible);
 	}
 
 }
