@@ -49,7 +49,7 @@ public class Test {
 		// Chance qu'a chaque case de recevoir un Monstre
 		int chanceCase = 5;
 		// Chance que chaque monstre a de devenir un groupe de monstres
-		int chanceDevientGroupe = 33;
+		int chanceDevientGroupe = 10;
 		
 		// On ajoute des monstres aleatoirement dans la carte sur les cases vides
 		for (int i = 0; i < carte.getHauteur(); i++) {
