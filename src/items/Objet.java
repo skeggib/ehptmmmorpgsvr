@@ -9,7 +9,7 @@ public abstract class Objet implements ContenuCase {
 	 * Variables
 	 */
 
-	public static final String[] NOM = null;
+	public static final String[] NOM = null; 
 
 	private String nom;
 
