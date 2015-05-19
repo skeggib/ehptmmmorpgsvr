@@ -10,3 +10,4 @@ public class Inventaire extends ContenantObjet {
 		super();
 	}
 }
+ 

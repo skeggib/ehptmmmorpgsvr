@@ -2,4 +2,3 @@ bin/
 *.class
 doc/
 uml/*.ucls
-src/personnage/Test.java
