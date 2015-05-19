@@ -10,7 +10,7 @@ public class Gant extends Vetement {
 			.lireT("../ressources/noms/gant.txt");
 
 	public Gant() {
-		this.setBonusForce(4);
+		this.setForce(4);
 		this.setNom(this.randNom());
 	}
 

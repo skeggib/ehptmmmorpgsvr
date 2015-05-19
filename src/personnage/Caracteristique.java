@@ -87,4 +87,24 @@ public class Caracteristique {
 	public void setImpact(int impact) {
 		this.impact = impact;
 	}
+	
+	public void ajouterForce(int force){
+		this.setForce(this.getForce() + force);
+	}
+	
+	public void ajouterAdresse(int adresse){
+		this.setAdresse(this.getAdresse() + adresse);
+	}
+	
+	public void ajouterResistance(int resistance){
+		this.setResistance(this.getResistance() + resistance);
+	}
+	
+	public void ajouterManiabilite(int maniabilite){
+		this.setManiabilite(this.getManiabilite() + maniabilite);
+	}
+	
+	public void ajouterImpact(int impact){
+		this.setImpact(this.getImpact() + impact);
+	}
 }

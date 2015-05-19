@@ -27,7 +27,11 @@ public class Effet extends Caracteristique {
 	 */
 	
 	public void appliquerEffet(EntiteVivante cible){
-		cible
+		cible.getCaractEffet().ajouterForce(this.getForce());
+		cible.getCaractEffet().ajouterAdresse(this.getAdresse());
+		cible.getCaractEffet().ajouterResistance(this.getResistance());
+		cible.getCaractEffet().ajouterManiabilite(this.getManiabilite());
+		cible.getCaractEffet().ajouterImpact(this.getImpact());
 	}
 
 	public void reinitialiserTimer(int tourRestant){

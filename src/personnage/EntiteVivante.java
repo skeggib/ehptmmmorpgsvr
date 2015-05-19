@@ -146,7 +146,7 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 				this.inventaire.ajouterObjet(obj);
 				return false;
 			} else {
-				// this.majCaractEqui();
+				this.majCaractEqui();
 				return true;
 			}
 		}
@@ -165,7 +165,7 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 			if (!this.inventaire.ajouterObjet(obj)) {
 				return this.equipement.ajouterObjet(obj);
 			} else {
-				// this.majCaractEqui();
+				this.majCaractEqui();
 				return true;
 			}
 		}
@@ -239,6 +239,7 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 		if (!this.effet.contains(effet)) {
 			this.effet.add(effet);
 			if (this.effet.contains(effet)) {
+				this.majCaractEffet();
 				return true;
 			}
 		}
@@ -255,6 +256,7 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 	public boolean retirerEffet(Effet effet) {
 		if (this.effet.contains(effet)) {
 			this.effet.remove(effet);
+			this.majCaractEffet();
 		}
 		return !this.effet.contains(effet);
 	}
@@ -364,6 +366,18 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 		if (this.emplacement != emplacement) {
 			this.emplacement = emplacement;
 		}
+	}
+	
+	public Caracteristique getCaractPrinc (){
+		return this.caractPrinc;
+	}
+	
+	public Caracteristique getCaractEquip (){
+		return this.caractEquip;
+	}
+	
+	public Caracteristique getCaractEffet (){
+		return this.caractEffet;
 	}
 
 }
