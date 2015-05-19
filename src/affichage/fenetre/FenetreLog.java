@@ -38,7 +38,7 @@ public class FenetreLog extends Fenetre {
 	
 	/* --- METHODES --- */
 	
-	private boolean dessinerLog() { // TODO:skeggib Bug couleur de fond
+	private boolean dessinerLog() {
 		if (this.log == null)
 			return false;
 		
@@ -48,7 +48,7 @@ public class FenetreLog extends Fenetre {
 		Pixel remplissage = new Pixel(' ', "BLACK", "WHITE");
 		int matriceH = this.getMatrice().getHauteur();
 		int matriceW = this.getMatrice().getLargeur();
-		this.getMatrice().dessinerRectangle(0, 0, matriceW - 1, matriceH - 1, remplissage);
+		this.getMatrice().dessinerRectangle(0, 0, matriceW, matriceH, remplissage);
 		for (int i = 0; i < messages.length; i++) {
 			this.getMatrice().dessinerTexte(0, i, messages[i], "BLACK", "WHITE");
 		}
