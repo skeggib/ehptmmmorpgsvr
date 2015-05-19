@@ -1,16 +1,15 @@
 package affichage;
 
+import affichage.fenetre.Fenetre;
+
 public class Test {
 
 	public static void main(String[] args) {
 				
 		Matrice matr1 = new Matrice(50, 20);
-		matr1.dessinerRectangle(0, 0, matr1.getLargeur(), matr1.getHauteur(), new Pixel('#', "WHITE", "RED"));
+		Fenetre fen = new Fenetre(40, 10, "Test");
 		
-		Matrice matr2 = new Matrice(10, 5);
-		matr2.dessinerTexte(1, 1, "Salut", "BLACK", "WHITE");
-		
-		matr1.dessinerMatrice(47, 10, matr2);
+		matr1.dessinerFenetre(1, 1, fen);
 		
 		matr1.afficher();
 		

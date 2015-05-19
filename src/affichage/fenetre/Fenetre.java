@@ -1,8 +1,9 @@
 package affichage.fenetre;
 
 import affichage.Matrice;
+import affichage.Pixel;
 
-public abstract class Fenetre {
+public class Fenetre { // TODO:skeggib Mettre abstract
 	
 	private int largeur;
 	private int hauteur;
@@ -10,13 +11,15 @@ public abstract class Fenetre {
 	
 	private Matrice matrice;
 	
+	public static final int LARGEUR_CADRE = 2;
+	
 	/* --- CONTRUCTEURS --- */
 	
 	public Fenetre() {
 		this.largeur = 1;
 		this.hauteur = 1;
 		this.setTitre("Fenetre");
-		this.matrice = new Matrice(this.largeur, this.hauteur);
+		this.matrice = new Matrice(this.largeur - Fenetre.LARGEUR_CADRE, this.hauteur - Fenetre.LARGEUR_CADRE);
 	}
 
 	/**
@@ -28,7 +31,7 @@ public abstract class Fenetre {
 		this.largeur = w;
 		this.hauteur = h;
 		this.setTitre("Fenetre");
-		this.matrice = new Matrice(this.largeur, this.hauteur);
+		this.matrice = new Matrice(this.largeur - Fenetre.LARGEUR_CADRE, this.hauteur - Fenetre.LARGEUR_CADRE);
 	}
 	
 	/**
@@ -44,11 +47,37 @@ public abstract class Fenetre {
 	
 	/* METHODES */
 	
+	/**
+	 * @return Une matrice contenant la representation de la fenetre
+	 */
 	public Matrice getMatrice() {
 		// On cree une matrice plus grande de 2 pixels (en h et en w)
-		Matrice rtrn = new Matrice(this.matrice.getLargeur() + 2, this.matrice.getHauteur() + 2);
+		Matrice rtrn = new Matrice(this.largeur, this.hauteur);
 		
-		// TODO: Creer la Matrice a retourner
+		// Lignes en haut et en bas
+		Pixel ligneHorizontale = new Pixel('-', "BLACK", "WHITE");
+		rtrn.dessinerRectangle(0, 0, rtrn.getLargeur(), 1, ligneHorizontale);
+		rtrn.dessinerRectangle(0, rtrn.getHauteur() - 1, rtrn.getLargeur(), 1, ligneHorizontale);
+		
+		// Lignes a gauche et a droite
+		Pixel ligneVerticale = new Pixel('|', "BLACK", "WHITE");
+		rtrn.dessinerRectangle(0, 1, 1, rtrn.getHauteur() - 2, ligneVerticale);
+		rtrn.dessinerRectangle(rtrn.getLargeur() - 1, 1, 1, rtrn.getHauteur() - 2, ligneVerticale);
+		
+		// Coins
+		Pixel coin = new Pixel('+', "BLACK", "WHITE");
+		rtrn.dessinerRectangle(0, 0, 1, 1, coin);
+		rtrn.dessinerRectangle(rtrn.getLargeur() - 1, 0, 1, 1, coin);
+		rtrn.dessinerRectangle(0, rtrn.getHauteur() - 1, 1, 1, coin);
+		rtrn.dessinerRectangle(rtrn.getLargeur() - 1, rtrn.getHauteur() - 1, 1, 1, coin);
+		
+		// Titre
+		String texte = " " + this.titre + " ";
+		int posXTexte = rtrn.getLargeur() / 2 - texte.length() / 2;
+		rtrn.dessinerTexte(posXTexte, 0, texte, "BLACK", "WHITE");
+		
+		// Insertion de la matrice
+		rtrn.dessinerMatrice(1, 1, this.matrice);
 		
 		return rtrn;
 	}
