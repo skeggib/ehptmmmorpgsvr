@@ -27,7 +27,7 @@ public class Effet extends Caracteristique {
 	 */
 	
 	public void appliquerEffet(EntiteVivante cible){
-		cible
+		
 	}
 
 	public void reinitialiserTimer(int tourRestant){
