@@ -141,7 +141,7 @@ public class Matrice {
 		for (int i = 0; i < matrice.hauteur; i++) {
 			for (int j = 0; j < matrice.largeur; j++) {
 				if (!this.depasse(j + x, i + y)) {
-					this.pxls[i + y][j + x] = matrice.pxls[i][j];
+					this.pxls[i + y][j + x] = new Pixel(matrice.pxls[i][j]);
 				}
 			}
 		}
@@ -183,12 +183,9 @@ public class Matrice {
 	
 	private boolean setPixel(int y, int x, Pixel p) {
 		// Si on ne depasse pas de la matrice
-		if (x < this.largeur &&
-			y < this.hauteur &&
-			x >= 0 &&
-			y >= 0)
+		if (!this.depasse(x, y))
 		{
-			this.pxls[y][x] = p;
+			this.pxls[y][x] = new Pixel(p);
 			return true;
 		}
 		else
