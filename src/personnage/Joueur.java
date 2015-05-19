@@ -11,6 +11,7 @@ public class Joueur extends EntiteVivante {
 
 	public static final int PA_DEPLACEMENT = 2;
 	public static final int PA_ATTAQUE = 2;
+	public static final int PA_UTILISE_POTION = 1;
 
 	/*
 	 * Constructeur
@@ -73,6 +74,10 @@ public class Joueur extends EntiteVivante {
 		
 		this.setPointAction(newPa);
 		
+	}
+	
+	public boolean actionDisponible(){
+		return (this.getPointAction() != 0);
 	}
 
 	/*
