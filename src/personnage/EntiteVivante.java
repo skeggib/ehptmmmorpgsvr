@@ -1,7 +1,5 @@
 package personnage;
 
-import java.util.ArrayList;
-
 import items.Objet;
 import carte.Case;
 import carte.ContenuCase; 
@@ -44,7 +42,7 @@ public abstract class EntiteVivante implements ContenuCase { //TODO:skeggib Veri
 	
 	private Inventaire inventaire;
 	private Equipement equipement;
-	private ArrayList<Effet> effet;
+	private ListeUnique<Effet> effet;
 
 	/*
 	 * Constructeurs
@@ -64,7 +62,7 @@ public abstract class EntiteVivante implements ContenuCase { //TODO:skeggib Veri
 		this.setInventaire(new Inventaire());
 		this.setEquipement(new Equipement());
 		this.setVie(EntiteVivante.MAX_VIE);
-		this.effet = new ArrayList<Effet>();
+		this.effet = new ListeUnique<Effet>();
 	}
 
 	public EntiteVivante(int force, int adresse, int resistance) {
@@ -81,7 +79,7 @@ public abstract class EntiteVivante implements ContenuCase { //TODO:skeggib Veri
 		this.setInventaire(new Inventaire());
 		this.setEquipement(new Equipement());
 		this.setVie(EntiteVivante.MAX_VIE);
-		this.effet = new ArrayList<Effet>();
+		this.effet = new ListeUnique<Effet>();
 	}
 
 	public EntiteVivante(int force, int adresse, int resistance, int vie) {
@@ -98,7 +96,7 @@ public abstract class EntiteVivante implements ContenuCase { //TODO:skeggib Veri
 		this.setInventaire(new Inventaire());
 		this.setEquipement(new Equipement());
 		this.setVie(vie);
-		this.effet = new ArrayList<Effet>();
+		this.effet = new ListeUnique<Effet>();
 	}
 
 	/*

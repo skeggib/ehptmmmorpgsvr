@@ -8,15 +8,15 @@ import items.Objet;
 
 public class Equipement implements ContenirObjets {
 
-	private ArrayList<Equipable> listObjet;
+	private ListeUnique<Equipable> listObjet;
 
 	/*
 	 * Constructeurs
 	 */
 
 	public Equipement() {
-		this.listObjet = new ArrayList<Equipable>();
-	}
+		this.listObjet = new ListeUnique<Equipable>();
+	}	
 
 	/*
 	 * Methode
@@ -63,7 +63,7 @@ public class Equipement implements ContenirObjets {
 		return false;
 	}
 
-	public void ajouterObjets(ArrayList<Objet> list) {
+	public void ajouterObjets(ListeUnique<Objet> list) {
 		for (int i = 0; i < this.getTaille(); i++) {
 			this.ajouterObjet(list.get(i));
 		}
