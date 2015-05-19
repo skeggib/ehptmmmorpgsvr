@@ -26,19 +26,10 @@ public abstract class EntiteVivante implements ContenuCase { //TODO:skeggib Veri
 	private int vie;
 
 	private Case emplacement;
-
 	
-	//TODO:skeggib Mettre a jours toutes ces variables dans l'UML
-	private int forceBase;
-	private int adresseBase;
-	private int resistanceBase;
-
+	private Caracteristique caractEntite;
+	private Caracteristique caractEquipe;
 	
-	private int forceEqui;
-	private int adresseEqui;
-	private int resistanceEqui;
-	private int maniabiliteArm;
-	private int impactArm;
 	
 	private Inventaire inventaire;
 	private Equipement equipement;
@@ -49,15 +40,6 @@ public abstract class EntiteVivante implements ContenuCase { //TODO:skeggib Veri
 	 */
 
 	public EntiteVivante() {
-		this.setForceBase(0);
-		this.setAdresseBase(0);
-		this.setResistanceBase(0);
-		
-		this.setForceEqui(0);
-		this.setAdresseEqui(0);
-		this.setResistanceEqui(0);
-		this.setManiabiliteArm(0);
-		this.setImpactArm(0);
 		
 		this.setInventaire(new Inventaire());
 		this.setEquipement(new Equipement());
@@ -66,15 +48,6 @@ public abstract class EntiteVivante implements ContenuCase { //TODO:skeggib Veri
 	}
 
 	public EntiteVivante(int force, int adresse, int resistance) {
-		this.setForceBase(force);
-		this.setAdresseBase(adresse);
-		this.setResistanceBase(resistance);
-		
-		this.forceEqui = 0;
-		this.adresseEqui = 0;
-		this.resistanceEqui = 0;
-		this.setManiabiliteArm(0);
-		this.setImpactArm(0);
 		
 		this.setInventaire(new Inventaire());
 		this.setEquipement(new Equipement());
@@ -83,15 +56,6 @@ public abstract class EntiteVivante implements ContenuCase { //TODO:skeggib Veri
 	}
 
 	public EntiteVivante(int force, int adresse, int resistance, int vie) {
-		this.setForceBase(force);
-		this.setAdresseBase(adresse);
-		this.setResistanceBase(resistance);
-		
-		this.forceEqui = 0;
-		this.adresseEqui = 0;
-		this.resistanceEqui = 0;
-		this.setManiabiliteArm(0);
-		this.setImpactArm(0);
 		
 		this.setInventaire(new Inventaire());
 		this.setEquipement(new Equipement());
@@ -177,7 +141,7 @@ public abstract class EntiteVivante implements ContenuCase { //TODO:skeggib Veri
 				this.inventaire.ajouterObjet(obj);
 				return false;
 			} else {
-				this.majCaractEqui();
+				//this.majCaractEqui();
 				return true;
 			}
 		}
@@ -196,7 +160,7 @@ public abstract class EntiteVivante implements ContenuCase { //TODO:skeggib Veri
 			if (!this.inventaire.ajouterObjet(obj)) {
 				return this.equipement.ajouterObjet(obj);
 			} else {
-				this.majCaractEqui();
+				//this.majCaractEqui();
 				return true;
 			}
 		}
@@ -304,18 +268,18 @@ public abstract class EntiteVivante implements ContenuCase { //TODO:skeggib Veri
 	/**
 	 * Met a jour les caracteristiques apportees par l'equipement
 	 */
-	private void majCaractEqui(){ //TODO:skeggib Ajouter UML
-
-		this.setForceEqui(0);
-		this.setAdresseEqui(0);
-		this.setResistanceEqui(0);
-		this.setManiabiliteArm(0);
-		this.setImpactArm(0);	
-		
-		for(int i = 0; i < this.equipement.getTaille(); i++){
-			this.equipement.getObjet(i).affecterBonus(this, this);
-		}
-	}
+//	private void majCaractEqui(){ //TODO:skeggib Ajouter UML
+//
+//		this.setForceEqui(0);
+//		this.setAdresseEqui(0);
+//		this.setResistanceEqui(0);
+//		this.setManiabiliteArm(0);
+//		this.setImpactArm(0);	
+//		
+//		for(int i = 0; i < this.equipement.getTaille(); i++){
+//			this.equipement.getObjet(i).affecterBonus(this, this);
+//		}
+//	}
 	
 	
 
@@ -377,94 +341,5 @@ public abstract class EntiteVivante implements ContenuCase { //TODO:skeggib Veri
 			this.emplacement = emplacement;
 		}
 	}
-	
-	/*
-	 * Caracteristique generale
-	 */
-
-	public int getForce() {
-		return this.getForceBase() + this.getForceEqui();
-	}
-
-	public int getAdresse() {
-		return this.getAdresseBase() + this.getAdresseEqui();
-	}
-
-	public int getResistance() {
-		return this.getResistanceBase() + this.getResistanceEqui();
-	}
-	
-	/*
-	 * Caracteristique de Base
-	 */
-
-	public int getForceBase() {
-		return forceBase;
-	}
-
-	public void setForceBase(int forceBase) {
-		this.forceBase = forceBase;
-	}
-
-	public int getAdresseBase() {
-		return adresseBase;
-	}
-
-	public void setAdresseBase(int adresseBase) {
-		this.adresseBase = adresseBase;
-	}
-
-	public int getResistanceBase() {
-		return resistanceBase;
-	}
-
-	public void setResistanceBase(int resistanceBase) {
-		this.resistanceBase = resistanceBase;
-	}
-
-	public int getForceEqui() {
-		return forceEqui;
-	}
-	
-	/*
-	 * Caracteristique d'equipement (vetement, arme)
-	 */
-
-	public void setForceEqui(int forceEqui) {
-		this.forceEqui = forceEqui;
-	}
-
-	public int getAdresseEqui() {
-		return adresseEqui;
-	}
-
-	public void setAdresseEqui(int adresseEqui) {
-		this.adresseEqui = adresseEqui;
-	}
-
-	public int getResistanceEqui() {
-		return resistanceEqui;
-	}
-
-	public void setResistanceEqui(int resistanceEqui) {
-		this.resistanceEqui = resistanceEqui;
-	}
-
-	public int getManiabiliteArm() {
-		return maniabiliteArm;
-	}
-
-	public void setManiabiliteArm(int maniabiliteArm) {
-		this.maniabiliteArm = maniabiliteArm;
-	}
-
-	public int getImpactArm() {
-		return impactArm;
-	}
-
-	public void setImpactArm(int impactArm) {
-		this.impactArm = impactArm;
-	}
-
 
 }

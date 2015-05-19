@@ -68,8 +68,8 @@ public class Arme extends Equipable {
 	}
 
 	public void affecterBonus(EntiteVivante utilisateur, EntiteVivante cible) {
-		utilisateur.setManiabiliteArm(utilisateur.getManiabiliteArm() + this.getManiabilite());
-		utilisateur.setImpactArm(utilisateur.getImpactArm() + this.getImpact());
+//		utilisateur.setManiabiliteArm(utilisateur.getManiabiliteArm() + this.getManiabilite());
+//		utilisateur.setImpactArm(utilisateur.getImpactArm() + this.getImpact());
 	}
 
 	/*

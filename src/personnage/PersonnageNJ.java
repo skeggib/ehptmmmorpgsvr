@@ -11,7 +11,6 @@ public class PersonnageNJ extends EntiteVivante {
 	 * Constructeur
 	 */
 	
-	@SuppressWarnings("resource")
 	public PersonnageNJ () {
 		super();
 		this.setNom(new Scanner(System.in).nextLine()); // armya -> Met au moins un println pour demander le nom... Je cherchais pourquoi mon programme marchait pas

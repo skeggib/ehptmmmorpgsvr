@@ -29,9 +29,9 @@ public abstract class Vetement extends Equipable {
 	 */
 
 	public void affecterBonus(EntiteVivante utilisateur, EntiteVivante cible) {
-		utilisateur.setForceEqui(utilisateur.getForceEqui() + this.getBonusForce());
-		utilisateur.setAdresseEqui(utilisateur.getAdresseEqui() + this.getBonusAdresse());
-		utilisateur.setResistanceEqui(utilisateur.getResistanceEqui() + this.getBonusResistance());
+//		utilisateur.setForceEqui(utilisateur.getForceEqui() + this.getBonusForce());
+//		utilisateur.setAdresseEqui(utilisateur.getAdresseEqui() + this.getBonusAdresse());
+//		utilisateur.setResistanceEqui(utilisateur.getResistanceEqui() + this.getBonusResistance());
 	}
 
 	/*
