@@ -71,6 +71,9 @@ public class Clavier {
 		
 		posJoueur = this.carte.getPosContenu(this.joueur);
 		
+		if (posJoueur == null)
+			return false;
+		
 		// Calcul de la position de la destination
 		Position posDest = posJoueur;
 		switch (direction) {

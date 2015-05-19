@@ -2,6 +2,7 @@ package jeu;
 
 import java.util.Scanner;
 
+import controles.Clavier;
 import affichage.InterfaceTerm;
 import carte.Carte;
 import personnage.Joueur;
@@ -23,11 +24,12 @@ public class Moteur {
 		carte.chargerFichier("../ressources/carte/test");
 		
 		// Creer le joueur
-		Joueur joueur = new Joueur();
+		Joueur joueur = new Joueur("default");
 		// Creation du joueur interactive
 		// TODO:skeggib Mettre la creation interractive dans InterfaceTerm
-		System.out.print("Nom du joueur : ");
-		joueur.setNom(sc.nextLine());
+//		System.out.print("Nom du joueur : ");
+//		joueur.setNom(sc.nextLine());
+		joueur.initialiserPos(carte.getCase(3, 3));
 		
 		// Remplir la carte avec des monstres
 		
@@ -40,14 +42,36 @@ public class Moteur {
 		taille--;
 		// Creer l'interface
 		InterfaceTerm inter = new InterfaceTerm(taille);
+		inter.setCarte(carte);
+		
+		// Creer le controleur
+		Clavier clavier = new Clavier();
+		clavier.setCarte(carte);
+		clavier.setJoueur(joueur);
 		
 		// Boucle principale
-			// Boucle actions joueur
-				// Action
+		while (true) {
+			
+			// Boucle actions du joueur
+			while (true) { // TODO:skeggib Verifier les PA du joueur
 				// Affichage
+				inter.afficher(joueur);
+				// Action
+				clavier.saisieDirection(); // TODO:skeggib A remplacer par choixAction
+			}
+			
 			// Boucle action des monstres
-				// Action
 				// Affichage
+				// Action
+		}
+		
+	}
+	
+	public static void main(String[] args) {
+		
+		Moteur moteur = new Moteur();
+		moteur.jouer();
+		
 	}
 
 }

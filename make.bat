@@ -1,5 +1,7 @@
 @echo off
 
+set a=
+
 echo Recherche...
 for /R %%i in (*.java) do (
 	call :AddFile "%%i"
