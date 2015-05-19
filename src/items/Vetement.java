@@ -20,45 +20,46 @@ public abstract class Vetement extends Equipable {
 	 * Variables
 	 */
 
-	private int bonusForce;
-	private int bonusAdresse;
-	private int bonusResistance;
+	private int force;
+	private int adresse;
+	private int resistance;
 	
 	/*
 	 * Methode
 	 */
 
 	public void affecterBonus(EntiteVivante utilisateur, EntiteVivante cible) {
-//		utilisateur.setForceEqui(utilisateur.getForceEqui() + this.getBonusForce());
-//		utilisateur.setAdresseEqui(utilisateur.getAdresseEqui() + this.getBonusAdresse());
-//		utilisateur.setResistanceEqui(utilisateur.getResistanceEqui() + this.getBonusResistance());
+		cible.getCaractEffet().ajouterForce(this.getForce());
+		cible.getCaractEffet().ajouterAdresse(this.getAdresse());
+		cible.getCaractEffet().ajouterResistance(this.getResistance());
+	}
+
+	public int getForce() {
+		return force;
+	}
+
+	public void setForce(int force) {
+		this.force = force;
+	}
+
+	public int getAdresse() {
+		return adresse;
+	}
+
+	public void setAdresse(int adresse) {
+		this.adresse = adresse;
+	}
+
+	public int getResistance() {
+		return resistance;
+	}
+
+	public void setResistance(int resistance) {
+		this.resistance = resistance;
 	}
 
 	/*
 	 * Methodes d'acces
 	 */
 
-	public int getBonusForce() {
-		return bonusForce;
-	}
-
-	public void setBonusForce(int bonusForce) {
-		this.bonusForce = bonusForce;
-	}
-
-	public int getBonusAdresse() {
-		return bonusAdresse;
-	}
-
-	public void setBonusAdresse(int bonusAdresse) {
-		this.bonusAdresse = bonusAdresse;
-	}
-
-	public int getBonusResistance() {
-		return bonusResistance;
-	}
-
-	public void setBonusResistance(int bonusResistance) {
-		this.bonusResistance = bonusResistance;
-	}
 }
