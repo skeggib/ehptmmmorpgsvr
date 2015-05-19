@@ -7,6 +7,46 @@ public class Caracteristique {
 	private int resistance;
 	private int maniabilite;
 	private int impact;
+	
+	/*
+	 * Constructeurs
+	 */
+
+	public Caracteristique(){
+		
+	}
+	
+	public Caracteristique(int force, int adresse, int resistance, int maniabilite, int impact){
+		this.setForce(force);
+		this.setAdresse(adresse);
+		this.setResistance(resistance);
+		this.setManiabilite(maniabilite);
+		this.setImpact(impact);
+	}
+	
+	/*
+	 * Methode
+	 */
+
+	public void reinitialiserCaract(){
+		this.setForce(0);
+		this.setAdresse(0);
+		this.setResistance(0);
+		this.setManiabilite(0);
+		this.setImpact(0);
+	}
+	
+	public void reinitialiserCaract(int force, int adresse, int resistance, int maniabilite, int impact){
+		this.setForce(force);
+		this.setAdresse(adresse);
+		this.setResistance(resistance);
+		this.setManiabilite(maniabilite);
+		this.setImpact(impact);
+	}
+	
+	/*
+	 * Methode d'acces
+	 */
 
 	public int getForce() {
 		return force;
