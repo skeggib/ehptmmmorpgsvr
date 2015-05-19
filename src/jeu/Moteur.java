@@ -16,6 +16,25 @@ public class Moteur {
 		
 		Scanner sc = new Scanner(System.in);
 		
+		Log log = new Log(); // TODO:skeggib Log de test, a enlever
+		log.add("Salut 1");
+		log.add("Salut 2");
+		log.add("Salut 3");
+		log.add("Salut 4");
+		log.add("Salut 5");
+		log.add("Salut 6");
+		log.add("Salut 7");
+		log.add("Salut 8");
+		log.add("Salut 9");
+		log.add("Salut 10");
+		log.add("Salut 11");
+		log.add("Salut 12");
+		log.add("Salut 13");
+		log.add("Salut 14");
+		log.add("Salut 15");
+		log.add("Test");
+		log.add("Message");
+		
 		// TODO:skeggib A faire
 		
 		// Affichage du menu
@@ -43,6 +62,7 @@ public class Moteur {
 //		taille--;
 		// Creer l'interface
 		InterfaceTerm inter = new InterfaceTerm();
+		inter.setLog(log);
 		
 		// Creer le controleur
 		Clavier clavier = new Clavier();

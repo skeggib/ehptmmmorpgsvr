@@ -1,6 +1,8 @@
 package affichage;
 
+import jeu.Log;
 import affichage.fenetre.FenetreCarte;
+import affichage.fenetre.FenetreLog;
 import personnage.Joueur;
 import carte.Carte;
 import carte.Position;
@@ -10,11 +12,13 @@ public class InterfaceTerm {
 	private Matrice matrice;
 	
 	private FenetreCarte fenCarte;
+	private FenetreLog fenLog;
 	
 	public InterfaceTerm() {
 		this.fenCarte = new FenetreCarte(0); // TODO: Choisir la taille
+		this.fenLog = new FenetreLog(30, 10);
 		
-		int largeur = this.fenCarte.getLargeur();
+		int largeur = this.fenCarte.getLargeur() + this.fenLog.getLargeur();
 		int hauteur = this.fenCarte.getHauteur();
 		
 		this.matrice = new Matrice(largeur, hauteur);
@@ -29,11 +33,12 @@ public class InterfaceTerm {
 		return true;
 	}
 	
-	private boolean dessinerInterface(Joueur joueur, Carte carte) {
+	private boolean dessinerInterface(Joueur joueur, Carte carte) { // TODO:skeggib Ajouter setter joueur et carte
 		
 		this.fenCarte.setCarte(carte);
 		this.fenCarte.setJoueur(joueur);
 		this.matrice.dessinerFenetre(0, 0, fenCarte);
+		this.matrice.dessinerFenetre(this.fenCarte.getLargeur(), this.matrice.getHauteur() - this.fenLog.getHauteur(), fenLog);
 		
 		return true;
 	}
@@ -43,5 +48,9 @@ public class InterfaceTerm {
 		rtrn += "Matrice : " + this.matrice.getLargeur() + "x" + this.matrice.getHauteur();
 		
 		return rtrn;
+	}
+
+	public void setLog(Log log) {
+		this.fenLog.setLog(log);
 	}
 }
