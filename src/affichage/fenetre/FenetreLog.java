@@ -38,19 +38,19 @@ public class FenetreLog extends Fenetre {
 	
 	/* --- METHODES --- */
 	
-	private boolean dessinerLog() {
+	private boolean dessinerLog() { // TODO:skeggib Bug couleur de fond
 		if (this.log == null)
 			return false;
 		
 		String[] messages;
 		messages = this.log.getDerniersMessages(this.getMatrice().getHauteur());
 		
-		Pixel remplissage = new Pixel(' ', "WHITE", "BLACK");
+		Pixel remplissage = new Pixel(' ', "BLACK", "WHITE");
 		int matriceH = this.getMatrice().getHauteur();
 		int matriceW = this.getMatrice().getLargeur();
 		this.getMatrice().dessinerRectangle(0, 0, matriceW - 1, matriceH - 1, remplissage);
 		for (int i = 0; i < messages.length; i++) {
-			this.getMatrice().dessinerTexte(0, i, messages[i], "WHITE", "BLACK");
+			this.getMatrice().dessinerTexte(0, i, messages[i], "BLACK", "WHITE");
 		}
 		
 		return true;
