@@ -54,6 +54,10 @@ public class Monstre extends EntiteVivante {
 	public int getNumero(){
 		return ContenuCase.MONSTRE;
 	}
+
+	public void recupererPA() {
+		
+	}
 	
 	/*
 	 * Methode d'acces

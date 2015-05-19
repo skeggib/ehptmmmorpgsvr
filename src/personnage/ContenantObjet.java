@@ -1,18 +1,16 @@
 package personnage;
 
-import java.util.ArrayList;
-
 import items.Objet;
 
 public abstract class ContenantObjet implements ContenirObjets {
 
-	private ArrayList<Objet> listObjet;
+	private ListeUnique<Objet> listObjet;
 
 	/*
 	 * Constructeur
 	 */
 	public ContenantObjet() {
-		this.listObjet = new ArrayList<Objet>();
+		this.listObjet = new ListeUnique<Objet>();
 	}
 
 	/*
@@ -27,15 +25,10 @@ public abstract class ContenantObjet implements ContenirObjets {
 	}
 
 	public boolean ajouterObjet(Objet o) {
-		if (this.listObjet.contains(o)) {
-			return false;
-		} else {
-			this.listObjet.add(o);
-			return true;
-		}
+		return this.listObjet.add(o);
 	}
 
-	public void ajouterObjets(ArrayList<Objet> list) {
+	public void ajouterObjets(ListeUnique<Objet> list) {
 		for(int i = 0; i < this.getTaille(); i++){
 			this.ajouterObjet(list.get(i));
 		}
