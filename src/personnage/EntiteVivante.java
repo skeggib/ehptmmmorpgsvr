@@ -2,12 +2,16 @@ package personnage;
 
 import items.Objet;
 import carte.Case;
-import carte.ContenuCase; 
+import carte.ContenuCase;
 
-public abstract class EntiteVivante implements ContenuCase { //TODO:skeggib Verifier toute cette classe -> MAJ UML
+public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
+																// Verifier
+																// toute cette
+																// classe -> MAJ
+																// UML
 
 	/*
-	 * Constante 
+	 * Constante
 	 */
 
 	public static final int MAX_VIE = 7;
@@ -26,11 +30,10 @@ public abstract class EntiteVivante implements ContenuCase { //TODO:skeggib Veri
 	private int vie;
 
 	private Case emplacement;
-	
+
 	private Caracteristique caractEntite;
 	private Caracteristique caractEquipe;
-	
-	
+
 	private Inventaire inventaire;
 	private Equipement equipement;
 	private ListeUnique<Effet> effet;
@@ -40,7 +43,7 @@ public abstract class EntiteVivante implements ContenuCase { //TODO:skeggib Veri
 	 */
 
 	public EntiteVivante() {
-		
+
 		this.setInventaire(new Inventaire());
 		this.setEquipement(new Equipement());
 		this.setVie(EntiteVivante.MAX_VIE);
@@ -48,7 +51,7 @@ public abstract class EntiteVivante implements ContenuCase { //TODO:skeggib Veri
 	}
 
 	public EntiteVivante(int force, int adresse, int resistance) {
-		
+
 		this.setInventaire(new Inventaire());
 		this.setEquipement(new Equipement());
 		this.setVie(EntiteVivante.MAX_VIE);
@@ -56,7 +59,7 @@ public abstract class EntiteVivante implements ContenuCase { //TODO:skeggib Veri
 	}
 
 	public EntiteVivante(int force, int adresse, int resistance, int vie) {
-		
+
 		this.setInventaire(new Inventaire());
 		this.setEquipement(new Equipement());
 		this.setVie(vie);
@@ -108,10 +111,7 @@ public abstract class EntiteVivante implements ContenuCase { //TODO:skeggib Veri
 	 *            Entite qui subira les degats
 	 */
 	public void attaquer(EntiteVivante cible) {
-		if(this.getPointAction() > 0){
-			cible.retirerVie(1);
-			this.setPointAction(this.getPointAction() - 2);
-		}
+		cible.retirerVie(1);
 	}
 
 	/**
@@ -141,7 +141,7 @@ public abstract class EntiteVivante implements ContenuCase { //TODO:skeggib Veri
 				this.inventaire.ajouterObjet(obj);
 				return false;
 			} else {
-				//this.majCaractEqui();
+				// this.majCaractEqui();
 				return true;
 			}
 		}
@@ -160,7 +160,7 @@ public abstract class EntiteVivante implements ContenuCase { //TODO:skeggib Veri
 			if (!this.inventaire.ajouterObjet(obj)) {
 				return this.equipement.ajouterObjet(obj);
 			} else {
-				//this.majCaractEqui();
+				// this.majCaractEqui();
 				return true;
 			}
 		}
@@ -265,23 +265,23 @@ public abstract class EntiteVivante implements ContenuCase { //TODO:skeggib Veri
 		}
 	}
 	
+	public abstract void recupererPA (); //TODO:skeggib ajouter UML
+
 	/**
 	 * Met a jour les caracteristiques apportees par l'equipement
 	 */
-//	private void majCaractEqui(){ //TODO:skeggib Ajouter UML
-//
-//		this.setForceEqui(0);
-//		this.setAdresseEqui(0);
-//		this.setResistanceEqui(0);
-//		this.setManiabiliteArm(0);
-//		this.setImpactArm(0);	
-//		
-//		for(int i = 0; i < this.equipement.getTaille(); i++){
-//			this.equipement.getObjet(i).affecterBonus(this, this);
-//		}
-//	}
-	
-	
+	// private void majCaractEqui(){ //TODO:skeggib Ajouter UML
+	//
+	// this.setForceEqui(0);
+	// this.setAdresseEqui(0);
+	// this.setResistanceEqui(0);
+	// this.setManiabiliteArm(0);
+	// this.setImpactArm(0);
+	//
+	// for(int i = 0; i < this.equipement.getTaille(); i++){
+	// this.equipement.getObjet(i).affecterBonus(this, this);
+	// }
+	// }
 
 	/*
 	 * Methode d'acces
@@ -301,10 +301,10 @@ public abstract class EntiteVivante implements ContenuCase { //TODO:skeggib Veri
 		return pointAction;
 	}
 
-	private void setPointAction(int pointAction) {
+	public void setPointAction(int pointAction) {
 		this.pointAction = pointAction;
 	}
-	
+
 	public int getVie() {
 		return vie;
 	}
@@ -337,7 +337,7 @@ public abstract class EntiteVivante implements ContenuCase { //TODO:skeggib Veri
 	}
 
 	private void setEmplacement(Case emplacement) {
-		if(this.emplacement != emplacement){
+		if (this.emplacement != emplacement) {
 			this.emplacement = emplacement;
 		}
 	}

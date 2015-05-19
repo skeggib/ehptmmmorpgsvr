@@ -38,4 +38,8 @@ public class PersonnageNJ extends EntiteVivante {
 	public int getNumero(){
 		return ContenuCase.JOUEUR;
 	}
+
+	public void recupererPA() {
+		
+	}
 }
