@@ -13,6 +13,7 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 	/*
 	 * Constante
 	 */
+	public static final int PA_UTILISE_POTION = 1;
 
 	public static final int MAX_VIE = 7;
 	public static final int MIN_VIE = 0;
