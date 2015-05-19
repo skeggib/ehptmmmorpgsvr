@@ -1,24 +1,18 @@
 package affichage;
 
-import carte.Carte;
-import personnage.Joueur;
-
 public class Test {
 
 	public static void main(String[] args) {
 				
-		Joueur joueur = new Joueur("joueur");
-		InterfaceTerm inter = new InterfaceTerm(0);
+		Matrice matr1 = new Matrice(50, 20);
+		matr1.dessinerRectangle(0, 0, matr1.getLargeur(), matr1.getHauteur(), new Pixel('#', "WHITE", "RED"));
 		
-		Carte carte = new Carte();
-		carte.chargerFichier("../ressources/carte/test");
+		Matrice matr2 = new Matrice(10, 5);
+		matr2.dessinerTexte(1, 1, "Salut", "BLACK", "WHITE");
 		
-		inter.setCarte(carte);
+		matr1.dessinerMatrice(47, 10, matr2);
 		
-		joueur.initialiserPos(carte.getCase(3, 2));
-		joueur.seDeplacer(carte.getCase(3, 3));
-		
-		inter.afficher(joueur);
+		matr1.afficher();
 		
 	}
 
