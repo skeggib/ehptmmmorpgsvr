@@ -9,9 +9,6 @@ public class Joueur extends EntiteVivante {
 
 	public static final int BASE_PA = 10;
 
-	public static final int PA_DEPLACEMENT = 2;
-	public static final int PA_ATTAQUE = 2;
-
 	/*
 	 * Constructeur
 	 */
@@ -58,9 +55,9 @@ public class Joueur extends EntiteVivante {
 		}
 		return false;
 	}
-	
+
 	public void attaquer(EntiteVivante cible) {
-		if(this.getPointAction() >= Joueur.PA_ATTAQUE){
+		if (this.getPointAction() >= Joueur.PA_ATTAQUE) {
 			super.attaquer(cible);
 			this.setPointAction(this.getPointAction() - 2);
 		}
@@ -68,18 +65,12 @@ public class Joueur extends EntiteVivante {
 
 	public void recupererPA() {
 		int pa = this.getPointAction();
-		int newPa = pa + Joueur.BASE_PA/2;
-		
-		if(newPa > Joueur.BASE_PA){
-			newPa = Joueur.BASE_PA;
+		int newPa = pa + this.getMAX_PA() / 2;
+
+		if (newPa > this.getMAX_PA()) {
+			newPa = this.getMAX_PA();
 		}
-		
 		this.setPointAction(newPa);
-		
-	}
-	
-	public boolean actionDisponible(){
-		return (this.getPointAction() != 0);
 	}
 
 	/*

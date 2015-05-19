@@ -13,7 +13,10 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 	/*
 	 * Constante
 	 */
+
 	public static final int PA_UTILISE_POTION = 1;
+	public static final int PA_DEPLACEMENT = 2;
+	public static final int PA_ATTAQUE = 2;
 
 	public static final int MAX_VIE = 7;
 	public static final int MIN_VIE = 0;
@@ -32,8 +35,9 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 
 	private Case emplacement;
 
-	private Caracteristique caractEntite;
-	private Caracteristique caractEquipe;
+	private Caracteristique caractPrinc;
+	private Caracteristique caractEquip;
+	private Caracteristique caractEffet;
 
 	private Inventaire inventaire;
 	private Equipement equipement;
@@ -265,24 +269,43 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 			}
 		}
 	}
-	
-	public abstract void recupererPA (); //TODO:skeggib ajouter UML
 
 	/**
-	 * Met a jour les caracteristiques apportees par l'equipement
+	 * Controlle le montant de PA
+	 * 
+	 * @return true s'il en reste assez pour effectuer une action, false sinon
 	 */
-	// private void majCaractEqui(){ //TODO:skeggib Ajouter UML
-	//
-	// this.setForceEqui(0);
-	// this.setAdresseEqui(0);
-	// this.setResistanceEqui(0);
-	// this.setManiabiliteArm(0);
-	// this.setImpactArm(0);
-	//
-	// for(int i = 0; i < this.equipement.getTaille(); i++){
-	// this.equipement.getObjet(i).affecterBonus(this, this);
-	// }
-	// }
+	public boolean actionDisponible() {
+		return (this.getPointAction() != 0);
+	}
+
+	public abstract void recupererPA(); // TODO:skeggib ajouter UML
+
+	/**
+	 * Met a jour les caracteristiques apportees par l'equipement (reinitialise
+	 * les caracteristiques a 0 pour tout recalculer)
+	 */
+	private void majCaractEqui() { // TODO:skeggib Ajouter UML
+
+		this.caractEquip.reinitialiserCaract();
+
+		for (int i = 0; i < this.equipement.getTaille(); i++) {
+			this.equipement.getObjet(i).affecterBonus(this, this);
+		}
+	}
+	
+	/**
+	 * Met a jour les caracteristiques apportees par les effets (reinitialise
+	 * les caracteristiques a 0 pour tout recalculer)
+	 */
+	private void majCaractEffet() { // TODO:skeggib Ajouter UML
+
+		this.caractEffet.reinitialiserCaract();
+
+		for (int i = 0; i < this.effet.size(); i++) {
+			this.effet.get(i).appliquerEffet(this);
+		}
+	}
 
 	/*
 	 * Methode d'acces
