@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import controles.Clavier;
 import affichage.InterfaceTerm;
+import affichage.fenetre.FenetreCarte;
 import carte.Carte;
 import personnage.Joueur;
 
@@ -35,14 +36,13 @@ public class Moteur {
 		
 		// Demander la taille de l'interface
 		System.out.println("Taille de l'interface : ");
-		for (int i = 0; i < InterfaceTerm.TAILLES.length; i++) {
-			System.out.println((i+1) + ". " + InterfaceTerm.TAILLES[i]);
+		for (int i = 0; i < FenetreCarte.TAILLES.length; i++) {
+			System.out.println((i+1) + ". " + FenetreCarte.TAILLES[i]);
 		}
 		int taille = sc.nextInt();
 		taille--;
 		// Creer l'interface
-		InterfaceTerm inter = new InterfaceTerm(taille);
-		inter.setCarte(carte);
+		InterfaceTerm inter = new InterfaceTerm();
 		
 		// Creer le controleur
 		Clavier clavier = new Clavier();

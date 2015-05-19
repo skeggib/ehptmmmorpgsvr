@@ -153,7 +153,7 @@ public class Matrice {
 		if (fen == null)
 			return false;
 		
-		return this.dessinerMatrice(x, y, fen.getMatrice());
+		return this.dessinerMatrice(x, y, fen.getMatriceFen());
 	}
 	
 	/* --- GETTERS / SETTERS --- */

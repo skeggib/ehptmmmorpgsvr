@@ -1,5 +1,6 @@
 package affichage;
 
+import affichage.fenetre.FenetreCarte;
 import carte.Case;
 import carte.ContenuCase;
 import carte.Inconnu;
@@ -11,9 +12,9 @@ public abstract class ImagesCases {
 	
 	public static Image getImage(int taille, Case c) {
 		if (ImagesCases.tabImg == null)
-			ImagesCases.tabImg = new Image[InterfaceTerm.TAILLES.length][ContenuCase.NB_TYPES];
+			ImagesCases.tabImg = new Image[FenetreCarte.TAILLES.length][ContenuCase.NB_TYPES];
 		
-		if (taille < 0 || taille >= InterfaceTerm.TAILLES.length)
+		if (taille < 0 || taille >= FenetreCarte.TAILLES.length)
 			return null;
 
 		if (c == null)
@@ -57,7 +58,7 @@ public abstract class ImagesCases {
 			break;
 		}
 		
-		String[] lines = LectureFichier.lireT("../ressources/images/" + nomContenu + "/" + InterfaceTerm.TAILLES[taille]);
+		String[] lines = LectureFichier.lireT("../ressources/images/" + nomContenu + "/" + FenetreCarte.TAILLES[taille]);
 		String str = new String();
 		for (int i = 0; i < lines.length; i++) {
 			str += lines[i] + "\n";

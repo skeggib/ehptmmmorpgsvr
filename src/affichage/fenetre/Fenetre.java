@@ -3,7 +3,7 @@ package affichage.fenetre;
 import affichage.Matrice;
 import affichage.Pixel;
 
-public class Fenetre { // TODO:skeggib Mettre abstract
+public abstract class Fenetre {
 	
 	private int largeur;
 	private int hauteur;
@@ -16,8 +16,8 @@ public class Fenetre { // TODO:skeggib Mettre abstract
 	/* --- CONTRUCTEURS --- */
 	
 	public Fenetre() {
-		this.largeur = 1;
-		this.hauteur = 1;
+		this.largeur = 3;
+		this.hauteur = 3;
 		this.setTitre("Fenetre");
 		this.matrice = new Matrice(this.largeur - Fenetre.LARGEUR_CADRE, this.hauteur - Fenetre.LARGEUR_CADRE);
 	}
@@ -50,7 +50,7 @@ public class Fenetre { // TODO:skeggib Mettre abstract
 	/**
 	 * @return Une matrice contenant la representation de la fenetre
 	 */
-	public Matrice getMatrice() {
+	public Matrice getMatriceFen() { // TODO:skeggib UML
 		// On cree une matrice plus grande de 2 pixels (en h et en w)
 		Matrice rtrn = new Matrice(this.largeur, this.hauteur);
 		
@@ -83,6 +83,12 @@ public class Fenetre { // TODO:skeggib Mettre abstract
 	}
 	
 	/* GETTERS / SETTERS */
+	
+	public void setTaille(int w, int h) {
+		this.largeur = w;
+		this.hauteur = h;
+		this.matrice = new Matrice(this.largeur - Fenetre.LARGEUR_CADRE, this.hauteur - Fenetre.LARGEUR_CADRE);
+	}
 
 	public String getTitre() {
 		return titre;
@@ -90,5 +96,13 @@ public class Fenetre { // TODO:skeggib Mettre abstract
 
 	public void setTitre(String titre) {
 		this.titre = titre;
+	}
+	
+	public Matrice getMatrice() {
+		return this.matrice;
+	}
+	
+	public String toString() {
+		return "Fenetre : " + this.titre + "(" + this.largeur + ", " + this.hauteur + ")\n\t";
 	}
 }
