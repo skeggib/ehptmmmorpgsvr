@@ -52,8 +52,10 @@ public class Moteur {
 		// Boucle principale
 		while (true) {
 			
+			joueur.recupererPA();
+			
 			// Boucle actions du joueur
-			while (true) { // TODO:skeggib Verifier les PA du joueur
+			while (joueur.actionDisponible()) {
 				// Affichage
 				inter.afficher(joueur, carte);
 				// Action
