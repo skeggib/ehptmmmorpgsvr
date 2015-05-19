@@ -35,12 +35,12 @@ public class Moteur {
 		// Remplir la carte avec des monstres
 		
 		// Demander la taille de l'interface
-		System.out.println("Taille de l'interface : ");
-		for (int i = 0; i < FenetreCarte.TAILLES.length; i++) {
-			System.out.println((i+1) + ". " + FenetreCarte.TAILLES[i]);
-		}
-		int taille = sc.nextInt();
-		taille--;
+//		System.out.println("Taille de l'interface : ");
+//		for (int i = 0; i < FenetreCarte.TAILLES.length; i++) {
+//			System.out.println((i+1) + ". " + FenetreCarte.TAILLES[i]);
+//		}
+//		int taille = sc.nextInt();
+//		taille--;
 		// Creer l'interface
 		InterfaceTerm inter = new InterfaceTerm();
 		
@@ -55,7 +55,7 @@ public class Moteur {
 			// Boucle actions du joueur
 			while (true) { // TODO:skeggib Verifier les PA du joueur
 				// Affichage
-				inter.afficher(joueur);
+				inter.afficher(joueur, carte);
 				// Action
 				clavier.saisieDirection(); // TODO:skeggib A remplacer par choixAction
 			}

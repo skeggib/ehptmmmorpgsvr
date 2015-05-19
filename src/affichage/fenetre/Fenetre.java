@@ -102,6 +102,14 @@ public abstract class Fenetre {
 		return this.matrice;
 	}
 	
+	public int getLargeur() {
+		return this.largeur;
+	}
+	
+	public int getHauteur() {
+		return this.hauteur;
+	}
+	
 	public String toString() {
 		return "Fenetre : " + this.titre + "(" + this.largeur + ", " + this.hauteur + ")\n\t";
 	}
