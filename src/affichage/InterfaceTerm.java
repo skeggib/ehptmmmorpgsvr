@@ -2,6 +2,7 @@ package affichage;
 
 import jeu.Log;
 import affichage.fenetre.FenetreCarte;
+import affichage.fenetre.FenetreInfosJoueur;
 import affichage.fenetre.FenetreLog;
 import personnage.Joueur;
 import carte.Carte;
@@ -13,8 +14,10 @@ public class InterfaceTerm {
 	
 	private FenetreCarte fenCarte;
 	private FenetreLog fenLog;
+	private FenetreInfosJoueur fenInfos;
 	
-	public InterfaceTerm() {
+	public InterfaceTerm() { // TODO:skeggib Regler la taille et le placement des fenetres en fonction de la taille
+		// TODO:skeggib Faire une "grille"
 		this.fenCarte = new FenetreCarte(0); // TODO: Choisir la taille
 		this.fenLog = new FenetreLog(30, 10);
 		
@@ -22,6 +25,8 @@ public class InterfaceTerm {
 		int hauteur = this.fenCarte.getHauteur();
 		
 		this.matrice = new Matrice(largeur, hauteur);
+		
+		this.fenInfos = new FenetreInfosJoueur(this.fenLog.getLargeur(), this.matrice.getHauteur() - this.fenLog.getHauteur());
 	}
 
 	public boolean afficher(Joueur joueur, Carte carte) {
@@ -39,6 +44,8 @@ public class InterfaceTerm {
 		this.fenCarte.setJoueur(joueur);
 		this.matrice.dessinerFenetre(0, 0, fenCarte);
 		this.matrice.dessinerFenetre(this.fenCarte.getLargeur(), this.matrice.getHauteur() - this.fenLog.getHauteur(), fenLog);
+		this.fenInfos.setJoueur(joueur);
+		this.matrice.dessinerFenetre(this.fenCarte.getLargeur(), 0, this.fenInfos);
 		
 		return true;
 	}
