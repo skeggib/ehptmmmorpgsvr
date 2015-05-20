@@ -31,8 +31,18 @@ public class Pixel {
 	 */
 	public Pixel(char car, String couleur, String couleurFond) {
 		this.car = car;
-		this.couleur = couleur;
-		this.couleurFond = couleurFond;
+		this.setCouleur(couleur);
+		this.setCouleurFond(couleurFond);
+	}
+	
+	/**
+	 * Contructeur par copie
+	 * @param pixel
+	 */
+	public Pixel(Pixel pixel) {
+		this.car = pixel.car;
+		this.couleur = pixel.couleur;
+		this.couleurFond = pixel.couleurFond;
 	}
 	
 	public void setCar(char car) {
@@ -60,7 +70,7 @@ public class Pixel {
 	}
 	
 	public String getPixelCouleur() {
-		return this.getCouleur() + this.getCouleurFond() + this.getCar();
+		return this.getCouleur() + this.getCouleurFond() + this.getCar() + Couleur.getCouleur("DEFAULT");
 	}
 	
 	public String toString() {

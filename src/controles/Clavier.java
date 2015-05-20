@@ -95,8 +95,9 @@ public class Clavier {
 		destination = this.carte.getCase(posDest.getX(), posDest.getY());
 		
 		// Si la dest est vide on deplace le joueur
-		if (destination.estVide())
+		if (destination.estVide()) {
 			return this.joueur.seDeplacer(destination);
+		}
 		
 		// Si la dest contient une entite on l'attaque
 		else if (destination.contientEntite()) {

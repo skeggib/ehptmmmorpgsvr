@@ -1,10 +1,14 @@
 package affichage;
 
+import affichage.fenetre.Fenetre;
+
 public class Matrice {
 	
 	private int hauteur;
 	private int largeur;
 	private Pixel[][] pxls;
+	
+	/* --- CONSTRUCTEURS --- */
 	
 	/**
 	 * Constructeur par taille
@@ -24,6 +28,8 @@ public class Matrice {
 				this.setPixel(i, j, defaultPixel);
 		}
 	}
+	
+	/* --- METHODES --- */
 	
 	/**
 	 * Affiche la matrice dans le terminal
@@ -126,6 +132,32 @@ public class Matrice {
 		return true;
 	}
 	
+	public boolean dessinerMatrice(int x, int y, Matrice matrice) {
+		if (matrice == null)
+			return false;
+		if (this.depasse(x, y))
+			return false;
+		
+		for (int i = 0; i < matrice.hauteur; i++) {
+			for (int j = 0; j < matrice.largeur; j++) {
+				if (!this.depasse(j + x, i + y)) {
+					this.pxls[i + y][j + x] = new Pixel(matrice.pxls[i][j]);
+				}
+			}
+		}
+		
+		return true;
+	}
+	
+	public boolean dessinerFenetre(int x, int y, Fenetre fen) {
+		if (fen == null)
+			return false;
+		
+		return this.dessinerMatrice(x, y, fen.getMatriceFen());
+	}
+	
+	/* --- GETTERS / SETTERS --- */
+	
 	public int getHauteur() {
 		return this.hauteur;
 	}
@@ -151,12 +183,9 @@ public class Matrice {
 	
 	private boolean setPixel(int y, int x, Pixel p) {
 		// Si on ne depasse pas de la matrice
-		if (x < this.largeur &&
-			y < this.hauteur &&
-			x >= 0 &&
-			y >= 0)
+		if (!this.depasse(x, y))
 		{
-			this.pxls[y][x] = p;
+			this.pxls[y][x] = new Pixel(p);
 			return true;
 		}
 		else

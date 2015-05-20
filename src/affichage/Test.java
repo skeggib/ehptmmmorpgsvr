@@ -1,24 +1,28 @@
 package affichage;
 
-import carte.Carte;
 import personnage.Joueur;
+import affichage.fenetre.FenetreCarte;
+import carte.Carte;
 
 public class Test {
 
 	public static void main(String[] args) {
-				
-		Joueur joueur = new Joueur("joueur");
-		InterfaceTerm inter = new InterfaceTerm(0);
 		
 		Carte carte = new Carte();
 		carte.chargerFichier("../ressources/carte/test");
 		
-		inter.setCarte(carte);
+		Joueur joueur = new Joueur("default");
+		joueur.initialiserPos(carte.getCase(3, 3));
 		
-		joueur.initialiserPos(carte.getCase(3, 2));
-		joueur.seDeplacer(carte.getCase(3, 3));
+		FenetreCarte fen = new FenetreCarte(0);
+		fen.setCarte(carte);
+		fen.setJoueur(joueur);
+		System.out.println(fen);
+		Matrice matr = new Matrice(80, 40);
 		
-		inter.afficher(joueur);
+		matr.dessinerFenetre(1, 1, fen);
+		
+		matr.afficher();
 		
 	}
 
