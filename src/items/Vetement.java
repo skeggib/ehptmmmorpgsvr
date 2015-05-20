@@ -23,15 +23,15 @@ public abstract class Vetement extends Equipable {
 	private int force;
 	private int adresse;
 	private int resistance;
-	
+
 	/*
 	 * Methode
 	 */
 
 	public void affecterBonus(EntiteVivante utilisateur, EntiteVivante cible) {
-		cible.getCaractEffet().ajouterForce(this.getForce());
-		cible.getCaractEffet().ajouterAdresse(this.getAdresse());
-		cible.getCaractEffet().ajouterResistance(this.getResistance());
+		cible.getCaractEquip().ajouterForce(this.getForce());
+		cible.getCaractEquip().ajouterAdresse(this.getAdresse());
+		cible.getCaractEquip().ajouterResistance(this.getResistance());
 	}
 
 	public int getForce() {

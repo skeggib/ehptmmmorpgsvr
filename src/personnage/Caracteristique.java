@@ -21,7 +21,11 @@ public class Caracteristique {
 	 */
 
 	public Caracteristique(){
-		
+		this.setForce(0);
+		this.setAdresse(0);
+		this.setResistance(0);
+		this.setManiabilite(0);
+		this.setImpact(0);
 	}
 	
 	public Caracteristique(int force, int adresse, int resistance, int maniabilite, int impact){
@@ -35,6 +39,14 @@ public class Caracteristique {
 	/*
 	 * Methode
 	 */
+	
+	public void ajouter(Caracteristique c){
+		this.ajouterForce(c.getForce());
+		this.ajouterAdresse(c.getAdresse());
+		this.ajouterResistance(c.getResistance());
+		this.ajouterManiabilite(c.getManiabilite());
+		this.ajouterImpact(c.getImpact());
+	}
 
 	public void reinitialiserCaract(){
 		this.setForce(0);

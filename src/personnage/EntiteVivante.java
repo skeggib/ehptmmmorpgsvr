@@ -49,9 +49,15 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 
 	public EntiteVivante() {
 
+		this.setVie(EntiteVivante.MAX_VIE);
+
+		this.caractPrinc = new Caracteristique();
+		this.caractEquip = new Caracteristique();
+		this.caractEffet = new Caracteristique();
+
 		this.setInventaire(new Inventaire());
 		this.setEquipement(new Equipement());
-		this.setVie(EntiteVivante.MAX_VIE);
+
 		this.effet = new ListeUnique<Effet>();
 	}
 
@@ -61,6 +67,14 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 		this.setEquipement(new Equipement());
 		this.setVie(EntiteVivante.MAX_VIE);
 		this.effet = new ListeUnique<Effet>();
+
+		this.caractPrinc = new Caracteristique();
+		this.caractEquip = new Caracteristique();
+		this.caractEffet = new Caracteristique();
+
+		this.caractPrinc.setForce(force);
+		this.caractPrinc.setAdresse(adresse);
+		this.caractPrinc.setResistance(resistance);
 	}
 
 	public EntiteVivante(int force, int adresse, int resistance, int vie) {
@@ -69,6 +83,14 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 		this.setEquipement(new Equipement());
 		this.setVie(vie);
 		this.effet = new ListeUnique<Effet>();
+
+		this.caractPrinc = new Caracteristique();
+		this.caractEquip = new Caracteristique();
+		this.caractEffet = new Caracteristique();
+
+		this.caractPrinc.setForce(force);
+		this.caractPrinc.setAdresse(adresse);
+		this.caractPrinc.setResistance(resistance);
 	}
 
 	/*
@@ -264,7 +286,7 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 	/**
 	 * Controlle les effets de l'entite Si l'effet prend fin, il sera supprime
 	 */
-	public void controlerEffet() {
+	public void controlerEffet() { //TODO:skeggib Ajouter UML?
 		for (int i = 0; i < this.effet.size(); i++) {
 			if (this.effet.get(i).decrementerTour()) {
 				this.retirerEffet(this.effet.get(i));
@@ -277,13 +299,31 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 	 * 
 	 * @return true s'il en reste assez pour effectuer une action, false sinon
 	 */
-	public boolean actionDisponible() {
+	public boolean actionDisponible() { //TODO:skeggib Ajouter UML
 		return (this.getPointAction() != 0);
 	}
-	
-	public void debutTour() {
+
+	/**
+	 * Effectue les actions necessaires a chaque debut de tour
+	 */
+	public void debutTour() { //TODO:skeggib Ajouter UML
 		this.ajouterVie(1);
 		this.recupererPA();
+	}
+
+	/**
+	 * Calcul les caracteristiques total de l'entite
+	 * 
+	 * @return Caracteristique total
+	 */
+	public Caracteristique getCaractTotal() { //TODO:skeggib Ajouter UML
+		Caracteristique c = new Caracteristique();
+
+		c.ajouter(this.caractPrinc);
+		c.ajouter(this.caractEquip);
+		c.ajouter(this.caractEffet);
+
+		return c;
 	}
 
 	public abstract void recupererPA(); // TODO:skeggib Ajouter UML
@@ -293,20 +333,18 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 	 * les caracteristiques a 0 pour tout recalculer)
 	 */
 	private void majCaractEqui() { // TODO:skeggib Ajouter UML
-
 		this.caractEquip.reinitialiserCaract();
 
 		for (int i = 0; i < this.equipement.getTaille(); i++) {
 			this.equipement.getObjet(i).affecterBonus(this, this);
 		}
 	}
-	
+
 	/**
 	 * Met a jour les caracteristiques apportees par les effets (reinitialise
 	 * les caracteristiques a 0 pour tout recalculer)
 	 */
 	private void majCaractEffet() { // TODO:skeggib Ajouter UML
-
 		this.caractEffet.reinitialiserCaract();
 
 		for (int i = 0; i < this.effet.size(); i++) {
@@ -351,15 +389,23 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 		}
 	}
 
-	private void setEquipement(Equipement equipement) {
-		if (this.equipement == null) {
-			this.equipement = equipement;
-		}
+	public Inventaire getInventaire() {
+		return inventaire;
 	}
 
 	private void setInventaire(Inventaire inventaire) {
 		if (this.inventaire == null) {
 			this.inventaire = inventaire;
+		}
+	}
+
+	public Equipement getEquipement() {
+		return equipement;
+	}
+
+	private void setEquipement(Equipement equipement) {
+		if (this.equipement == null) {
+			this.equipement = equipement;
 		}
 	}
 
@@ -372,16 +418,16 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 			this.emplacement = emplacement;
 		}
 	}
-	
-	public Caracteristique getCaractPrinc (){
+
+	public Caracteristique getCaractPrinc() {
 		return this.caractPrinc;
 	}
-	
-	public Caracteristique getCaractEquip (){
+
+	public Caracteristique getCaractEquip() {
 		return this.caractEquip;
 	}
-	
-	public Caracteristique getCaractEffet (){
+
+	public Caracteristique getCaractEffet() {
 		return this.caractEffet;
 	}
 }
