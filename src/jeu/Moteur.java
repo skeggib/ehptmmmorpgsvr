@@ -75,7 +75,7 @@ public class Moteur {
 			joueur.recupererPA();
 			
 			// Boucle actions du joueur
-			while (joueur.actionDisponible()) {
+			while (joueur.deplacementPossible()) {
 				log.add("PA restants : " + joueur.getPointAction()); // TODO:skeggib Test, a enlever;
 				// Affichage
 				inter.afficher(joueur, carte);

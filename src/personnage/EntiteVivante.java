@@ -351,6 +351,10 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 	public boolean actionDisponible() { // TODO:skeggib Ajouter UML
 		return (this.getPointAction() != 0);
 	}
+	
+	public boolean deplacementPossible(){
+		return (this.getPointAction() >= EntiteVivante.PA_DEPLACEMENT);
+	}
 
 	/**
 	 * Effectue les actions necessaires a chaque debut de tour
