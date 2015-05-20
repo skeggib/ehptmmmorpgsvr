@@ -6,6 +6,8 @@ import items.Objet;
 import carte.Case;
 import carte.ContenuCase;
 
+//TODO:armya Implementer l'exprerience (expPourNiveauSuivant() : int)
+
 public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 																// Verifier
 																// toute cette
