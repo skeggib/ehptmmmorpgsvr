@@ -53,6 +53,12 @@ public class FenetreInfosJoueur extends Fenetre {
 		lignes.add("Nom: " + this.joueur.getNom());
 		lignes.add("PA:  " + this.joueur.getPointAction());
 		lignes.add("Vie: " + this.joueur.getVie());
+		lignes.add("");
+		lignes.add("Adresse: " + this.joueur.getCaractTotal().getAdresse());
+		lignes.add("Force:   " + this.joueur.getCaractTotal().getForce());
+		lignes.add("Impact:  " + this.joueur.getCaractTotal().getImpact());
+		lignes.add("Maniab.: " + this.joueur.getCaractTotal().getManiabilite());
+		lignes.add("Resist.: " + this.joueur.getCaractTotal().getResistance());
 		
 		for (int i = 0; i < lignes.size(); i++) {
 			this.getMatrice().dessinerTexte(0, i, lignes.get(i), "BLACK", "WHITE");
