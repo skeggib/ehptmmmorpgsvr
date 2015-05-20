@@ -1,5 +1,7 @@
 package personnage;
 
+import java.util.Random;
+
 import items.Objet;
 import carte.Case;
 import carte.ContenuCase;
@@ -138,7 +140,56 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 	 *            Entite qui subira les degats
 	 */
 	public void attaquer(EntiteVivante cible) {
-		cible.retirerVie(1);
+		// cible.retirerVie(1);
+
+		System.out.println("\n==================");
+		int adresseCible = cible.getCaractTotal().getAdresse();
+		int encombrementCible = (cible.getEquipement().getTaille() * 2);
+
+		int esquiveCible = Capacite.getRandomEsquive(adresseCible,
+				encombrementCible);
+		System.out.println("esquive cible " + esquiveCible);
+
+		int adresseJ = this.getCaractTotal().getAdresse();
+		int maniabiliteJ = this.getCaractTotal().getManiabilite();
+
+		int attaqueJ = Capacite.getRandomAttaque(adresseJ, maniabiliteJ);
+		System.out.println("attaque joueur " + attaqueJ);
+
+		if ((new Random().nextInt(100) + 1) > esquiveCible) {
+
+			int resistanceCible = cible.getCaractTotal().getResistance();
+
+			int defenseCible = Capacite.getRandomDefense(resistanceCible);
+			System.out.println("defense cible " + defenseCible);
+
+			int forceJ = this.getCaractTotal().getForce();
+			int impactJ = this.getCaractTotal().getImpact();
+
+			int degatJ = Capacite.getRandomDegat(forceJ, impactJ);
+			System.out.println("degat joueur " + degatJ);
+
+			int degatSubit = degatJ * ((100 - defenseCible) + attaqueJ) / 100;
+
+			// if (degatJ > defenseCible) {
+			// int degatSubit = degatJ - defenseCible;
+			System.out.println("degat subit " + degatSubit);
+			//
+			int vieEnMoins = degatSubit * 40 / 100;
+			System.out.println("VIE EN MOINS : " + vieEnMoins);
+
+			System.out.println("Vie avant attaque : " + cible.getVie());
+			cible.retirerVie(vieEnMoins);
+			System.out.println("Vie apres attaque : " + cible.getVie());
+			// } else {
+			//
+			// }
+
+		} else {
+
+		}
+
+		System.out.println("==================");
 	}
 
 	/**
@@ -236,7 +287,7 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 	 *            Nombre de point de vie a retirer
 	 */
 	public void retirerVie(int vie) {
-		if (vie < 0) {
+		if (vie > 0) {
 			this.setVie(this.getVie() - vie);
 		}
 	}
@@ -286,7 +337,7 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 	/**
 	 * Controlle les effets de l'entite Si l'effet prend fin, il sera supprime
 	 */
-	public void controlerEffet() { //TODO:skeggib Ajouter UML?
+	public void controlerEffet() { // TODO:skeggib Ajouter UML?
 		for (int i = 0; i < this.effet.size(); i++) {
 			if (this.effet.get(i).decrementerTour()) {
 				this.retirerEffet(this.effet.get(i));
@@ -299,14 +350,14 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 	 * 
 	 * @return true s'il en reste assez pour effectuer une action, false sinon
 	 */
-	public boolean actionDisponible() { //TODO:skeggib Ajouter UML
+	public boolean actionDisponible() { // TODO:skeggib Ajouter UML
 		return (this.getPointAction() != 0);
 	}
 
 	/**
 	 * Effectue les actions necessaires a chaque debut de tour
 	 */
-	public void debutTour() { //TODO:skeggib Ajouter UML
+	public void debutTour() { // TODO:skeggib Ajouter UML
 		this.ajouterVie(1);
 		this.recupererPA();
 	}
@@ -316,7 +367,7 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 	 * 
 	 * @return Caracteristique total
 	 */
-	public Caracteristique getCaractTotal() { //TODO:skeggib Ajouter UML
+	public Caracteristique getCaractTotal() { // TODO:skeggib Ajouter UML
 		Caracteristique c = new Caracteristique();
 
 		c.ajouter(this.caractPrinc);

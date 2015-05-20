@@ -31,7 +31,6 @@ public class Test {
 		// c2.ajouter(c1);
 		// System.out.println(c2.getForce());
 
-
 		// Formule Esquive
 		// float x = 10;
 		// System.out.println(5.00 + (30 * (x/(x+50))));
@@ -39,49 +38,61 @@ public class Test {
 		// Formule experience
 		// (x²)/10 + 20
 		//
-		
 
-		Joueur j = new Joueur("Armya", 0, 0, 0);
+		Joueur j = new Joueur("Armya", 50, 50, 50);
+		Joueur b = new Joueur("Skeggib", 10, 10, 10);
+		j.attaquer(b);
+		j.attaquer(b);
+		j.attaquer(b);
+		j.attaquer(b);
+		j.attaquer(b);
+		j.attaquer(b);
+		j.attaquer(b);
+		j.attaquer(b);
+		j.attaquer(b);
+		j.attaquer(b);
 
-		Arme a = new Arme();
-
-		System.out.println("\nArme : ");
-		System.out.println("Nom : " + a.getNom());
-		System.out.println("Impact : " + a.getImpact());
-		System.out.println("Maniabilite : " + a.getManiabilite());
-
-		Gant g = new Gant();
-
-		System.out.println("\nGant : ");
-		System.out.println("Nom : " + g.getNom());
-		System.out.println("Adresse : " + g.getAdresse());
-		System.out.println("Force : " + g.getForce());
-		System.out.println("Resistance : " + g.getResistance());
-
-		Pantalon p = new Pantalon();
-
-		System.out.println("\nPantalon : ");
-		System.out.println("Nom : " + p.getNom());
-		System.out.println("Adresse : " + p.getAdresse());
-		System.out.println("Force : " + p.getForce());
-		System.out.println("Resistance : " + p.getResistance());
-
-		System.out.println("\nAvant (maniabilite): "
-				+ j.getCaractTotal().getManiabilite());
-		System.out.println("Avant (Force): " + j.getCaractTotal().getForce());
-
-		j.rammasserObjet(a);
-		j.equiperObjet(a);
-
-		j.rammasserObjet(g);
-		j.equiperObjet(g);
-
-		j.rammasserObjet(p);
-		j.equiperObjet(p);
-
-		System.out.println("\nApres (maniabilite): "
-				+ j.getCaractTotal().getManiabilite());
-		System.out.println("Apres (Force): " + j.getCaractTotal().getForce());
+		// Arme a = new Arme();
+		//
+		// System.out.println("\nArme : ");
+		// System.out.println("Nom : " + a.getNom());
+		// System.out.println("Impact : " + a.getImpact());
+		// System.out.println("Maniabilite : " + a.getManiabilite());
+		//
+		// Gant g = new Gant();
+		//
+		// System.out.println("\nGant : ");
+		// System.out.println("Nom : " + g.getNom());
+		// System.out.println("Adresse : " + g.getAdresse());
+		// System.out.println("Force : " + g.getForce());
+		// System.out.println("Resistance : " + g.getResistance());
+		//
+		// Pantalon p = new Pantalon();
+		//
+		// System.out.println("\nPantalon : ");
+		// System.out.println("Nom : " + p.getNom());
+		// System.out.println("Adresse : " + p.getAdresse());
+		// System.out.println("Force : " + p.getForce());
+		// System.out.println("Resistance : " + p.getResistance());
+		//
+		// System.out.println("\nAvant (maniabilite): "
+		// + j.getCaractTotal().getManiabilite());
+		// System.out.println("Avant (Force): " +
+		// j.getCaractTotal().getForce());
+		//
+		// j.rammasserObjet(a);
+		// j.equiperObjet(a);
+		//
+		// j.rammasserObjet(g);
+		// j.equiperObjet(g);
+		//
+		// j.rammasserObjet(p);
+		// j.equiperObjet(p);
+		//
+		// System.out.println("\nApres (maniabilite): "
+		// + j.getCaractTotal().getManiabilite());
+		// System.out.println("Apres (Force): " +
+		// j.getCaractTotal().getForce());
 
 		// for (int i = 0; i < 10; i++) {
 		//
