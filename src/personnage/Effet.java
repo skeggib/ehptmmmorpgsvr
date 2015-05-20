@@ -56,4 +56,12 @@ public class Effet extends Caracteristique {
 		}
 		return false;
 	}
+
+	public int getTourRestant() {
+		return tourRestant;
+	}
+
+	private void setTourRestant(int tourRestant) {
+		this.tourRestant = tourRestant;
+	}
 }

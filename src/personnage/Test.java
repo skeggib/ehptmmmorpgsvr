@@ -9,6 +9,29 @@ public class Test {
 	public static void main(String[] args) {
 
 		/*
+		 * TEST EFFET
+		 */
+		// Joueur j = new Joueur("Armya", 0, 0, 0);
+		//
+		// Effet f = new Effet(10, 0, 0, 0, 0, 1);
+		// System.out.println("Force effet : " + f.getForce());
+		// System.out.println("Duree (Tour) : " + f.getTourRestant());
+		//
+		// j.ajouterEffet(f);
+		//
+		// System.out.println("Force Caracteristique Effet apres ajout de l'effet : "
+		// + j.getCaractEffet().getForce());
+		// System.out.println("Force Caracteristique Total apres ajout de l'effet : "
+		// + j.getCaractTotal().getForce());
+		//
+		// j.debutTour();
+		//
+		// System.out.println("Force Caracteristique Effet apres debutTour de l'effet : "
+		// + j.getCaractEffet().getForce());
+		// System.out.println("Force Caracteristique Total apres debutTour de l'effet : " + j.getCaractTotal().getForce());
+				
+		
+		/*
 		 * TEST CARACTERISTIQUE
 		 */
 		// Caracteristique c = new Caracteristique();
@@ -39,7 +62,6 @@ public class Test {
 		// (x²)/10 + 20
 		//
 
-		
 		/*
 		 * TEST ATTAQUE
 		 */
@@ -56,6 +78,12 @@ public class Test {
 		// j.attaquer(b);
 		// j.attaquer(b);
 
+		/*
+		 * TEST EQUIPEMENT
+		 */
+		// Joueur j = new Joueur("Armya", 0, 0, 0);
+		// Joueur b = new Joueur("Skeggib", 0, 0, 0);
+		//
 		// Arme a = new Arme();
 		//
 		// System.out.println("\nArme : ");
