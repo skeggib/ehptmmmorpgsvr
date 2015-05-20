@@ -33,7 +33,7 @@ public class Clavier {
 		if (str.isEmpty())
 			return ' ';
 		else
-			return str.charAt(0);
+			return str.toLowerCase().charAt(0);
 	}
 	
 	/**
@@ -46,13 +46,13 @@ public class Clavier {
 		
 		int direction = 0;
 		
-		if (car == 'z' || car == 'Z')
+		if (car == 'z')
 			direction = Clavier.HAUT;
-		else if (car == 's' || car == 'S')
+		else if (car == 's')
 			direction = Clavier.BAS;
-		else if (car == 'd' || car == 'D')
+		else if (car == 'd')
 			direction = Clavier.DROITE;
-		else if (car == 'q' || car == 'Q')
+		else if (car == 'q')
 			direction = Clavier.GAUCHE;
 		
 		this.realiserAction(direction);
