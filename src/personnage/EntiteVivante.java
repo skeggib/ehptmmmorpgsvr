@@ -31,6 +31,8 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 
 	private String nom;
 
+	private int experience;
+	
 	private int pointAction;
 
 	private int vie;
@@ -481,5 +483,13 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 
 	public Caracteristique getCaractEffet() {
 		return this.caractEffet;
+	}
+
+	public int getExperience() {
+		return experience;
+	}
+
+	public void setExperience(int experience) {
+		this.experience = experience;
 	}
 }
