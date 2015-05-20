@@ -1,5 +1,7 @@
 package personnage;
 
+import java.util.Random;
+
 import items.Objet;
 import carte.Case;
 import carte.ContenuCase;
@@ -49,9 +51,15 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 
 	public EntiteVivante() {
 
+		this.setVie(EntiteVivante.MAX_VIE);
+
+		this.caractPrinc = new Caracteristique();
+		this.caractEquip = new Caracteristique();
+		this.caractEffet = new Caracteristique();
+
 		this.setInventaire(new Inventaire());
 		this.setEquipement(new Equipement());
-		this.setVie(EntiteVivante.MAX_VIE);
+
 		this.effet = new ListeUnique<Effet>();
 	}
 
@@ -61,6 +69,14 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 		this.setEquipement(new Equipement());
 		this.setVie(EntiteVivante.MAX_VIE);
 		this.effet = new ListeUnique<Effet>();
+
+		this.caractPrinc = new Caracteristique();
+		this.caractEquip = new Caracteristique();
+		this.caractEffet = new Caracteristique();
+
+		this.caractPrinc.setForce(force);
+		this.caractPrinc.setAdresse(adresse);
+		this.caractPrinc.setResistance(resistance);
 	}
 
 	public EntiteVivante(int force, int adresse, int resistance, int vie) {
@@ -69,6 +85,14 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 		this.setEquipement(new Equipement());
 		this.setVie(vie);
 		this.effet = new ListeUnique<Effet>();
+
+		this.caractPrinc = new Caracteristique();
+		this.caractEquip = new Caracteristique();
+		this.caractEffet = new Caracteristique();
+
+		this.caractPrinc.setForce(force);
+		this.caractPrinc.setAdresse(adresse);
+		this.caractPrinc.setResistance(resistance);
 	}
 
 	/*
@@ -116,7 +140,56 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 	 *            Entite qui subira les degats
 	 */
 	public void attaquer(EntiteVivante cible) {
-		cible.retirerVie(1);
+		// cible.retirerVie(1);
+
+		System.out.println("\n==================");
+		int adresseCible = cible.getCaractTotal().getAdresse();
+		int encombrementCible = (cible.getEquipement().getTaille() * 2);
+
+		int esquiveCible = Capacite.getRandomEsquive(adresseCible,
+				encombrementCible);
+		System.out.println("esquive cible " + esquiveCible);
+
+		int adresseJ = this.getCaractTotal().getAdresse();
+		int maniabiliteJ = this.getCaractTotal().getManiabilite();
+
+		int attaqueJ = Capacite.getRandomAttaque(adresseJ, maniabiliteJ);
+		System.out.println("attaque joueur " + attaqueJ);
+
+		if ((new Random().nextInt(100) + 1) > esquiveCible) {
+
+			int resistanceCible = cible.getCaractTotal().getResistance();
+
+			int defenseCible = Capacite.getRandomDefense(resistanceCible);
+			System.out.println("defense cible " + defenseCible);
+
+			int forceJ = this.getCaractTotal().getForce();
+			int impactJ = this.getCaractTotal().getImpact();
+
+			int degatJ = Capacite.getRandomDegat(forceJ, impactJ);
+			System.out.println("degat joueur " + degatJ);
+
+			int degatSubit = degatJ * ((100 - defenseCible) + attaqueJ) / 100;
+
+			// if (degatJ > defenseCible) {
+			// int degatSubit = degatJ - defenseCible;
+			System.out.println("degat subit " + degatSubit);
+			//
+			int vieEnMoins = degatSubit * 40 / 100;
+			System.out.println("VIE EN MOINS : " + vieEnMoins);
+
+			System.out.println("Vie avant attaque : " + cible.getVie());
+			cible.retirerVie(vieEnMoins);
+			System.out.println("Vie apres attaque : " + cible.getVie());
+			// } else {
+			//
+			// }
+
+		} else {
+
+		}
+
+		System.out.println("==================");
 	}
 
 	/**
@@ -214,7 +287,7 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 	 *            Nombre de point de vie a retirer
 	 */
 	public void retirerVie(int vie) {
-		if (vie < 0) {
+		if (vie > 0) {
 			this.setVie(this.getVie() - vie);
 		}
 	}
@@ -264,7 +337,7 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 	/**
 	 * Controlle les effets de l'entite Si l'effet prend fin, il sera supprime
 	 */
-	public void controlerEffet() {
+	private void controlerEffet() { // TODO:skeggib Ajouter UML?
 		for (int i = 0; i < this.effet.size(); i++) {
 			if (this.effet.get(i).decrementerTour()) {
 				this.retirerEffet(this.effet.get(i));
@@ -277,31 +350,53 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 	 * 
 	 * @return true s'il en reste assez pour effectuer une action, false sinon
 	 */
-	public boolean actionDisponible() {
+	public boolean actionDisponible() { // TODO:skeggib Ajouter UML
 		return (this.getPointAction() != 0);
 	}
 
-	public abstract void recupererPA(); // TODO:skeggib ajouter UML
+	/**
+	 * Effectue les actions necessaires a chaque debut de tour
+	 */
+	public void debutTour() { // TODO:skeggib Ajouter UML
+		this.controlerEffet();
+		this.ajouterVie(1);
+		this.recupererPA();
+	}
+
+	/**
+	 * Calcul les caracteristiques total de l'entite
+	 * 
+	 * @return Caracteristique total
+	 */
+	public Caracteristique getCaractTotal() { // TODO:skeggib Ajouter UML
+		Caracteristique c = new Caracteristique();
+
+		c.ajouter(this.caractPrinc);
+		c.ajouter(this.caractEquip);
+		c.ajouter(this.caractEffet);
+
+		return c;
+	}
+
+	public abstract void recupererPA(); // TODO:skeggib Ajouter UML
 
 	/**
 	 * Met a jour les caracteristiques apportees par l'equipement (reinitialise
 	 * les caracteristiques a 0 pour tout recalculer)
 	 */
 	private void majCaractEqui() { // TODO:skeggib Ajouter UML
-
 		this.caractEquip.reinitialiserCaract();
 
 		for (int i = 0; i < this.equipement.getTaille(); i++) {
 			this.equipement.getObjet(i).affecterBonus(this, this);
 		}
 	}
-	
+
 	/**
 	 * Met a jour les caracteristiques apportees par les effets (reinitialise
 	 * les caracteristiques a 0 pour tout recalculer)
 	 */
 	private void majCaractEffet() { // TODO:skeggib Ajouter UML
-
 		this.caractEffet.reinitialiserCaract();
 
 		for (int i = 0; i < this.effet.size(); i++) {
@@ -346,15 +441,23 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 		}
 	}
 
-	private void setEquipement(Equipement equipement) {
-		if (this.equipement == null) {
-			this.equipement = equipement;
-		}
+	public Inventaire getInventaire() {
+		return inventaire;
 	}
 
 	private void setInventaire(Inventaire inventaire) {
 		if (this.inventaire == null) {
 			this.inventaire = inventaire;
+		}
+	}
+
+	public Equipement getEquipement() {
+		return equipement;
+	}
+
+	private void setEquipement(Equipement equipement) {
+		if (this.equipement == null) {
+			this.equipement = equipement;
 		}
 	}
 
@@ -367,17 +470,16 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 			this.emplacement = emplacement;
 		}
 	}
-	
-	public Caracteristique getCaractPrinc (){
+
+	public Caracteristique getCaractPrinc() {
 		return this.caractPrinc;
 	}
-	
-	public Caracteristique getCaractEquip (){
+
+	public Caracteristique getCaractEquip() {
 		return this.caractEquip;
 	}
-	
-	public Caracteristique getCaractEffet (){
+
+	public Caracteristique getCaractEffet() {
 		return this.caractEffet;
 	}
-
 }
