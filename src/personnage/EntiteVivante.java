@@ -141,9 +141,8 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 	 * @param cible
 	 *            Entite qui subira les degats
 	 */
-	public void attaquer(EntiteVivante cible) {
-		// cible.retirerVie(1);
-
+	public void attaquer(EntiteVivante cible) { //TODO:armya Reoganiser cette methode
+		
 		System.out.println("\n==================");
 		int adresseCible = cible.getCaractTotal().getAdresse();
 		int encombrementCible = (cible.getEquipement().getTaille() * 2);
@@ -173,8 +172,6 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 
 			int degatSubit = degatJ * ((100 - defenseCible) + attaqueJ) / 100;
 
-			// if (degatJ > defenseCible) {
-			// int degatSubit = degatJ - defenseCible;
 			System.out.println("degat subit " + degatSubit);
 			//
 			int vieEnMoins = degatSubit * 40 / 100;
@@ -183,10 +180,9 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 			System.out.println("Vie avant attaque : " + cible.getVie());
 			cible.retirerVie(vieEnMoins);
 			System.out.println("Vie apres attaque : " + cible.getVie());
-			// } else {
-			//
-			// }
-
+			
+			this.ajouterXP(1);
+			
 		} else {
 
 		}
@@ -405,6 +401,10 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 			this.effet.get(i).appliquerEffet(this);
 		}
 	}
+	
+	public void ajouterXP(int exp){
+		this.setExperience(this.getExperience() + exp);
+	}
 
 	/*
 	 * Methode d'acces
@@ -489,7 +489,7 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 		return experience;
 	}
 
-	public void setExperience(int experience) {
+	private void setExperience(int experience) {
 		this.experience = experience;
 	}
 }
