@@ -39,18 +39,22 @@ public class Test {
 		// (x²)/10 + 20
 		//
 
-		Joueur j = new Joueur("Armya", 50, 50, 50);
-		Joueur b = new Joueur("Skeggib", 10, 10, 10);
-		j.attaquer(b);
-		j.attaquer(b);
-		j.attaquer(b);
-		j.attaquer(b);
-		j.attaquer(b);
-		j.attaquer(b);
-		j.attaquer(b);
-		j.attaquer(b);
-		j.attaquer(b);
-		j.attaquer(b);
+		
+		/*
+		 * TEST ATTAQUE
+		 */
+		// Joueur j = new Joueur("Armya", 50, 50, 50);
+		// Joueur b = new Joueur("Skeggib", 10, 10, 10);
+		// j.attaquer(b);
+		// j.attaquer(b);
+		// j.attaquer(b);
+		// j.attaquer(b);
+		// j.attaquer(b);
+		// j.attaquer(b);
+		// j.attaquer(b);
+		// j.attaquer(b);
+		// j.attaquer(b);
+		// j.attaquer(b);
 
 		// Arme a = new Arme();
 		//

@@ -337,7 +337,7 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 	/**
 	 * Controlle les effets de l'entite Si l'effet prend fin, il sera supprime
 	 */
-	public void controlerEffet() { // TODO:skeggib Ajouter UML?
+	private void controlerEffet() { // TODO:skeggib Ajouter UML?
 		for (int i = 0; i < this.effet.size(); i++) {
 			if (this.effet.get(i).decrementerTour()) {
 				this.retirerEffet(this.effet.get(i));
@@ -358,6 +358,7 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 	 * Effectue les actions necessaires a chaque debut de tour
 	 */
 	public void debutTour() { // TODO:skeggib Ajouter UML
+		this.controlerEffet();
 		this.ajouterVie(1);
 		this.recupererPA();
 	}
