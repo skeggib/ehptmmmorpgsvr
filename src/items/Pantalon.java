@@ -19,8 +19,8 @@ public class Pantalon extends Vetement {
 	 */
 
 	public Pantalon() {
+		super();
 		this.setNom(this.randNom());
-		this.setForce(8);
 	}
 
 	/*

@@ -8,7 +8,9 @@ public class Test {
 
 	public static void main(String[] args) {
 
-		//
+		/*
+		 * TEST CARACTERISTIQUE
+		 */
 		// Caracteristique c = new Caracteristique();
 		//
 		// System.out.println(c.getForce());
@@ -29,15 +31,17 @@ public class Test {
 		// c2.ajouter(c1);
 		// System.out.println(c2.getForce());
 
-		Joueur j = new Joueur("Armya", 0, 0, 0);
 
 		// Formule Esquive
 		// float x = 10;
-		// System.out.println(5.00 + (30 Math.exp(-(40/(x+10)))));
+		// System.out.println(5.00 + (30 * (x/(x+50))));
 		//
 		// Formule experience
-		// (xx)/10 + 20
+		// (x²)/10 + 20
 		//
+		
+
+		Joueur j = new Joueur("Armya", 0, 0, 0);
 
 		Arme a = new Arme();
 

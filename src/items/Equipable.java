@@ -8,12 +8,12 @@ public abstract class Equipable extends Objet{
 	 * Constantes
 	 */
 	
-	private final static int MAUVAIS = 0;
-	private final static int COMMUN = 1;
-	private final static int INHABITUEL = 2;
-	private final static int RARE = 3;
-	private final static int EPIQUE = 4;
-	private final static int LEGENDAIRE = 5;
+	public final static int MAUVAIS = 0;
+	public final static int COMMUN = 1;
+	public final static int INHABITUEL = 2;
+	public final static int RARE = 3;
+	public final static int EPIQUE = 4;
+	public final static int LEGENDAIRE = 5;
 	
 	/*
 	 * Variables
