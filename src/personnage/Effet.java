@@ -1,5 +1,15 @@
 package personnage;
 
+
+/**
+ * 
+ * Contient les caracteristiques d'un effet</br>
+ * 
+ * Un effet est un ajout de caracteristique dans le temps
+ * 
+ * @author armya
+ *
+ */
 public class Effet extends Caracteristique {
 
 	private int tourRestant;

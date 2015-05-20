@@ -280,8 +280,13 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 	public boolean actionDisponible() {
 		return (this.getPointAction() != 0);
 	}
+	
+	public void debutTour() {
+		this.ajouterVie(1);
+		this.recupererPA();
+	}
 
-	public abstract void recupererPA(); // TODO:skeggib ajouter UML
+	public abstract void recupererPA(); // TODO:skeggib Ajouter UML
 
 	/**
 	 * Met a jour les caracteristiques apportees par l'equipement (reinitialise
@@ -379,5 +384,4 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 	public Caracteristique getCaractEffet (){
 		return this.caractEffet;
 	}
-
 }
