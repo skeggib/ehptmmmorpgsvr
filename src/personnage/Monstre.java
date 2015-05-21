@@ -5,6 +5,12 @@ import java.util.Random;
 import carte.ContenuCase;
 import fichiers.LectureFichier;
 
+/**
+ * Cette classe permet la gestion d'un monstre controlle par l'IA
+ * 
+ * @author armya
+ *
+ */
 public class Monstre extends EntiteVivante {
 
 	public static final int BASE_PA = 5;

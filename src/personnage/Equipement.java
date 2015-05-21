@@ -6,6 +6,14 @@ import items.Arme;
 import items.Equipable;
 import items.Objet;
 
+/**
+ * 
+ * Cette Classe permet de gerer l'equipement d'une entite </br>
+ * Elle controle qu'il n'y a qu'un seul objet de chaque type (Une entite ne peut porte qu'un seul casque, par exemple)
+ * 
+ * @author armya
+ *
+ */
 public class Equipement implements ContenirObjets {
 
 	private ListeUnique<Equipable> listObjet;

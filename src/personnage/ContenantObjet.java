@@ -2,6 +2,15 @@ package personnage;
 
 import items.Objet;
 
+/**
+ * 
+ * La Classe ContenantObjet est la classe mere de toute les classe contenant des objets </br>
+ *  - Inventaire </br>
+ *  - Coffre </br>
+ * 
+ * @author armya
+ *
+ */
 public abstract class ContenantObjet implements ContenirObjets {
 
 	private ListeUnique<Objet> listObjet;

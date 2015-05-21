@@ -2,6 +2,14 @@ package personnage;
 
 import items.Objet;
 
+/**
+ * 
+ * L'interface ContenirObjet contient les methodes necessaires a la gestion d'une liste d'Objet </br>
+ * Cette interface est implemente par toutes les classes contenant une liste d'Objet
+ * 
+ * @author armya
+ *
+ */
 public interface ContenirObjets {
 
 	/**

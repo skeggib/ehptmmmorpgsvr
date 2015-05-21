@@ -4,6 +4,14 @@ import java.util.Scanner;
 
 import carte.ContenuCase;
 
+
+/**
+ * Cette classe permet la gestion d'un personnage non joueur. </br>
+ * Il est comme un joueur mais est controlee par l'IA
+ * 
+ * @author armya
+ *
+ */
 public class PersonnageNJ extends EntiteVivante {
 	
 	

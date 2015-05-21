@@ -5,6 +5,13 @@ import java.util.Scanner;
 import carte.Case;
 import carte.ContenuCase;
 
+/**
+ * 
+ * Cette classe permet la gestion d'un Joueur (EntiteVivante controllee par une personne physique)
+ * 
+ * @author armya
+ *
+ */
 public class Joueur extends EntiteVivante {
 
 	public static final int BASE_PA = 20;

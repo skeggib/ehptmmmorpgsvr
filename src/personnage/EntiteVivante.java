@@ -11,10 +11,10 @@ import carte.ContenuCase;
 /**
  * 
  * La Classe EntiteVivante est la classe mere de toute entite contenu dans le jeu : </br>
- *  - Joueur
- *  - Monstre
- *  - Personnage Non Joueur
- *  
+ *  - Joueur </br>
+ *  - Monstre </br>
+ *  - Personnage Non Joueur </br>
+ *   </br>
  *  Elle contient toutes les methodes necessaires a la gestion d'une entite
  * 
  * @author armya

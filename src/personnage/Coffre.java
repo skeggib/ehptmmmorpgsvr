@@ -5,6 +5,13 @@ import items.Objet;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+/**
+ * Cette Classe contient des Objets. </br>
+ * Il peut etre rammasser par une EntiteVivante.
+ * 
+ * @author armya
+ *
+ */
 public class Coffre extends ContenantObjet {
 
 	public Coffre() {

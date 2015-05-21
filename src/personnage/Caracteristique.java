@@ -3,8 +3,6 @@ package personnage;
 /**
  * Contient les caracteristiques influant sur l'entite.</br>
  * 
- * 
- * 
  * @author armya
  *
  */

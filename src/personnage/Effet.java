@@ -5,7 +5,7 @@ package personnage;
  * 
  * Contient les caracteristiques d'un effet</br>
  * 
- * Un effet est un ajout de caracteristique dans le temps
+ * Un effet est un ajout de caracteristique limite le temps
  * 
  * @author armya
  *
