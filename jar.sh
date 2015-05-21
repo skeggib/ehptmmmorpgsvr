@@ -1,7 +1,7 @@
 cd src
 CLASSFILES=`find . -name "*.class"`
 
-jar cfev Jeu.jar jeu.Moteur $CLASSFILES
+jar cfev Jeu.jar mmorpg.jeu.Moteur $CLASSFILES
 
 mv Jeu.jar ../
 cd ../
