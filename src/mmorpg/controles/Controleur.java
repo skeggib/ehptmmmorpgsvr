@@ -6,6 +6,7 @@ import mmorpg.carte.Carte;
 import mmorpg.carte.Case;
 import mmorpg.carte.Position;
 import mmorpg.items.Objet;
+import mmorpg.jeu.Log;
 import mmorpg.personnage.EntiteVivante;
 import mmorpg.personnage.Joueur;
 
@@ -35,6 +36,7 @@ public class Controleur { // TODO:skeggib UML
 	
 	private Joueur joueur;
 	private Carte carte;
+	private Log log;
 	
 	//TODO:skeggib Reparer le bug du "le joueur attaque "le vide" " si on entre pas une action attendu
 	
@@ -181,17 +183,25 @@ public class Controleur { // TODO:skeggib UML
 		else if (destination.contientEntite()) {
 			EntiteVivante ennemi = (EntiteVivante)destination.getContenu();
 			this.joueur.attaquer(ennemi);
+			if (this.log != null)
+			this.ecrireLog(this.joueur.getNom() + " attaque " + ennemi.getNom());
 		}
 		
 		// Si la dest contient un objet, on le ramasse puis on se deplace
 		else if (destination.contientObjet()) {
 			Objet obj = (Objet)destination.getContenu();
 			this.joueur.rammasserObjet(obj);
+			this.ecrireLog(this.joueur.getNom() + " rammasse " + obj.getNom());
 			destination.supprContenu();
 			return this.joueur.seDeplacer(destination);
 		}
 		
 		return false;
+	}
+	
+	private void ecrireLog(String message) {
+		if (this.log != null)
+			this.log.add(message);
 	}
 	
 	public int saisieInt() {
@@ -204,6 +214,10 @@ public class Controleur { // TODO:skeggib UML
 	
 	public void setJoueur(Joueur joueur) {
 		this.joueur = joueur;
+	}
+
+	public void setLog(Log log) {
+		this.log = log;
 	}
 	
 }

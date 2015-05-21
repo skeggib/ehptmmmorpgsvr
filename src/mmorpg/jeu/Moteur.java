@@ -55,6 +55,7 @@ public class Moteur {
 		Controleur controleur = new Controleur();
 		controleur.setCarte(carte);
 		controleur.setJoueur(joueur);
+		controleur.setLog(log);
 		
 		// Boucle principale
 		boolean run = true;
@@ -96,7 +97,7 @@ public class Moteur {
 				if (carte.getCase(j, i).estVide()) {
 					randInt = rand.nextInt(100);
 					if (randInt < chanceCase) {
-						tempMonstre = new Monstre("monster");
+						tempMonstre = new Monstre();
 						liste.add(tempMonstre);
 						tempMonstre.initialiserPos(carte.getCase(j, i));
 					}
@@ -116,7 +117,7 @@ public class Moteur {
 					for (int x = posM.getX() - 1; x <= posM.getX() + 1; x++) {
 						randInt = rand.nextInt(100);
 						if (randInt < 33) {
-							tempMonstre = new Monstre("monster");
+							tempMonstre = new Monstre();
 							tempMonstre.initialiserPos(carte.getCase(x, y));
 						}
 					}

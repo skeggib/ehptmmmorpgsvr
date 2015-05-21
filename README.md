@@ -30,3 +30,4 @@ Pour lancer le jeu il suffit d'executer le fichier Jeu.jar :
 - L'interface a plusieurs tailles
 - La carte contient des monstres
 - Ajout de controles
+- Ajout de logs lors de certaines actions
