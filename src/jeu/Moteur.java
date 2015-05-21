@@ -2,7 +2,7 @@ package jeu;
 
 import java.util.Scanner;
 
-import controles.Clavier;
+import controles.Controleur;
 import affichage.InterfaceTerm;
 import affichage.fenetre.FenetreCarte;
 import carte.Carte;
@@ -65,9 +65,9 @@ public class Moteur {
 		inter.setLog(log);
 		
 		// Creer le controleur
-		Clavier clavier = new Clavier();
-		clavier.setCarte(carte);
-		clavier.setJoueur(joueur);
+		Controleur controleur = new Controleur();
+		controleur.setCarte(carte);
+		controleur.setJoueur(joueur);
 		
 		// Boucle principale
 		while (true) {
@@ -76,11 +76,10 @@ public class Moteur {
 			
 			// Boucle actions du joueur
 			while (joueur.deplacementPossible()) {
-				log.add("PA restants : " + joueur.getPointAction()); // TODO:skeggib Test, a enlever;
 				// Affichage
 				inter.afficher(joueur, carte);
 				// Action
-				clavier.saisieDirection(); // TODO:skeggib A remplacer par choixAction
+				controleur.saisieAction();
 			}
 			
 			// Boucle action des monstres

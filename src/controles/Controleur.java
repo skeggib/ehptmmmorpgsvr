@@ -2,6 +2,7 @@ package controles;
 
 import items.Objet;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import carte.Carte;
@@ -10,19 +11,32 @@ import carte.Position;
 import personnage.EntiteVivante;
 import personnage.Joueur;
 
-public class Clavier {
+public class Controleur { // TODO:skeggib UML
 	
 	public static final int HAUT = 1;
 	public static final int BAS = 2;
 	public static final int GAUCHE = 3;
 	public static final int DROITE = 4;
+	public static final int INVENTAIRE = 5;
+	public static final int PERSONNAGE = 6;
+	public static final int AIDE = 7;
+	
+	private static final String TEXTE_AIDE = 
+			"Aide :"
+			+ "\n\th : Afficher cette aide"
+			+ "\n\tz : Haut"
+			+ "\n\ts : Bas"
+			+ "\n\tq : Gauche"
+			+ "\n\td : Droite"
+			+ "\n\ti : Ouvrir l'inventaire"
+			+ "\n\tp : Ouvrir la fenetre personnage";
 
 	private static Scanner sc = new Scanner(System.in);
 	
 	private Joueur joueur;
 	private Carte carte;
 	
-	//TODO:skeggib Reparer le bug du "le joueur attaque "le vide" " si on entre pas une action attendu 
+	//TODO:skeggib Reparer le bug du "le joueur attaque "le vide" " si on entre pas une action attendu
 	
 	/**
 	 * Demande une saisie et retourne le premier caractere saisit
@@ -37,33 +51,93 @@ public class Clavier {
 	}
 	
 	/**
-	 * Demande la saisie d'une direction
+	 * Demande la saisie d'une action
 	 * @return L'int correspondant a la direction ou -1 si la saisie ne correspond pas a la demande
 	 */
-	public void saisieDirection() { // TODO:skeggib Utiliser les fleches directionnelles
-		System.out.print("Dans quelle direction ? (Haut -> 'z', Bas -> 's', Droite -> 'd', Gauche -> 'q') : ");
+	public int saisieAction() {
+		System.out.print("Que voulez vous faire ? (tapez 'h' pour afficher l'aide) ");
 		char car = this.saisieCar();
 		
-		int direction = 0;
+		int action = -1;
 		
-		if (car == 'z')
-			direction = Clavier.HAUT;
-		else if (car == 's')
-			direction = Clavier.BAS;
-		else if (car == 'd')
-			direction = Clavier.DROITE;
-		else if (car == 'q')
-			direction = Clavier.GAUCHE;
+		switch (car) {
+		case 'z':
+			action = Controleur.HAUT;
+			break;
+		case 's':
+			action = Controleur.BAS;
+			break;
+		case 'd':
+			action = Controleur.DROITE;
+			break;
+		case 'q':
+			action = Controleur.GAUCHE;
+			break;
+		case 'i':
+			action = Controleur.INVENTAIRE;
+			break;
+		case 'p':
+			action = Controleur.PERSONNAGE;
+			break;
+		case 'h':
+			action = Controleur.AIDE;
+			break;
+		}
 		
-		this.realiserAction(direction);
+		if (action != -1) {
+			if (this.realiserAction(action))
+				return action;
+		}
+		
+		return -1;
 	}
 	
 	/**
-	 * Ordonne au Joueur de realiser une action en fonction du contenu de la case
-	 * @param direction Direction que l'utilisateur a choisit
-	 * @return True si le Joueur s'est deplace
+	 * Realise une action
+	 * @param action Action a effectuer
+	 * @return True si l'action a ete realisee
 	 */
-	private boolean realiserAction(int direction) {
+	private boolean realiserAction(int action) {
+		
+		if (action == Controleur.AIDE) {
+			this.afficherAide();
+		}
+		
+		else if (action == Controleur.HAUT ||
+			action == Controleur.BAS ||
+			action == Controleur.DROITE ||
+			action == Controleur.GAUCHE) {
+			return this.deplacement(action);
+		}
+		
+		else if (action == Controleur.INVENTAIRE) {
+			return this.ouvrirInventaire();
+		}
+		
+		else if (action == Controleur.PERSONNAGE) {
+			return this.ouvrirPersonnage();
+		}
+		
+		return false;
+	}
+	
+	private void afficherAide() {
+		System.out.println(Controleur.TEXTE_AIDE);
+		System.out.println("\nAppuyez sur Entrer pour continuer...");
+		sc.nextLine();
+	}
+
+	private boolean ouvrirPersonnage() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	private boolean ouvrirInventaire() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	private boolean deplacement(int direction) {
 		// Verifier que je joueur et la carte on ete defenis
 		if (this.carte == null || this.joueur == null)
 			return false;
@@ -79,16 +153,16 @@ public class Clavier {
 		// Calcul de la position de la destination
 		Position posDest = posJoueur;
 		switch (direction) {
-		case Clavier.HAUT:
+		case Controleur.HAUT:
 			posDest.setY(posDest.getY() - 1);
 			break;
-		case Clavier.BAS:
+		case Controleur.BAS:
 			posDest.setY(posDest.getY() + 1);
 			break;
-		case Clavier.GAUCHE:
+		case Controleur.GAUCHE:
 			posDest.setX(posDest.getX() - 1);
 			break;
-		case Clavier.DROITE:
+		case Controleur.DROITE:
 			posDest.setX(posDest.getX() + 1);
 			break;
 		}

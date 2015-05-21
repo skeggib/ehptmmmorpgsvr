@@ -16,7 +16,7 @@ public class Test {
 
 	}
 	
-	private static void ajoutMonstres(Carte carte) {
+	private static void ajoutMonstres(Carte carte) { // TODO:skeggib Implementer au bon endroit
 		Random rand = new Random();
 		int randInt;
 		
