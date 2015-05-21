@@ -19,9 +19,9 @@ public abstract class LectureFichier {
 	 */
 	public static String[] lireT(String chemin) {
 		String[] tab = null;
-		
+
 		chemin = LectureFichier.testChemin(chemin);
-		
+
 		try {
 			BufferedReader buff = new BufferedReader(new FileReader(chemin));
 			try {
@@ -71,11 +71,11 @@ public abstract class LectureFichier {
 	 * @return String contenant le contenu du fichier
 	 */
 	public static String lireS(String chemin) {
-		
+
 		chemin = LectureFichier.testChemin(chemin);
-		
+
 		String result = "";
-		
+
 		try {
 			BufferedReader buff = new BufferedReader(new FileReader(chemin));
 			try {
@@ -93,16 +93,23 @@ public abstract class LectureFichier {
 		}
 		return result;
 	}
-	
-	private static String testChemin(String chemin){
 
-		File f = new File(chemin);
+	private static String testChemin(String chemin) {
+		System.out.println("CHEMIN : " + chemin);
 
-		if (!f.exists()) {
-			chemin = "../" + chemin;
+		if (!new File(chemin).exists()) {
+			System.out.println("CORRECTION DU CHEMIN");
+
+			if (new File("../" + chemin).exists()) {
+				chemin = "../" + chemin;
+			}
+			if(new File("/" + chemin).exists()){
+				chemin = "/" + chemin;
+			}
+			System.out.println("NOUVEAU CHEMIN : " + chemin);
 		}
-		
+
 		return chemin;
-		
+
 	}
 }
