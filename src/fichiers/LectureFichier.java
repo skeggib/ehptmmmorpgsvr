@@ -1,6 +1,7 @@
 package fichiers;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -8,33 +9,44 @@ public abstract class LectureFichier {
 	/*
 	 * La racine (chemin) est le dossier du projet
 	 */
+
+	/**
+	 * 
+	 * @param chemin
+	 *            Chemin vers le fichier </br> Ex : ("ressources/fichier.txt")
+	 * 
+	 * @return Tableau de String contenant le contenu du fichier
+	 */
 	public static String[] lireT(String chemin) {
 		String[] tab = null;
+		
+		chemin = LectureFichier.testChemin(chemin);
+		
 		try {
 			BufferedReader buff = new BufferedReader(new FileReader(chemin));
 			try {
 				String ligne;
 				int i = 0;
-				
+
 				/*
-				 * On lit le fichier ligne par ligne.
-				 * On compte d'abord les lignes pour cree le tableau
+				 * On lit le fichier ligne par ligne. On compte d'abord les
+				 * lignes pour cree le tableau
 				 */
-				
+
 				while ((ligne = buff.readLine()) != null) {
 					i++;
 				}
 				buff.close();
 				buff = new BufferedReader(new FileReader(chemin));
-				
+
 				/*
 				 * Creation du tableau
 				 */
 				tab = new String[i];
 				i = 0;
-				
+
 				/*
-				 * Remplissage du tableau 
+				 * Remplissage du tableau
 				 */
 				while ((ligne = buff.readLine()) != null) {
 					tab[i] = ligne;
@@ -51,13 +63,24 @@ public abstract class LectureFichier {
 		return tab;
 	}
 
+	/**
+	 * 
+	 * @param chemin
+	 *            Chemin vers le fichier </br> Ex : ("ressources/fichier.txt")
+	 * 
+	 * @return String contenant le contenu du fichier
+	 */
 	public static String lireS(String chemin) {
-		String result = null;
+		
+		chemin = LectureFichier.testChemin(chemin);
+		
+		String result = "";
+		
 		try {
 			BufferedReader buff = new BufferedReader(new FileReader(chemin));
 			try {
 				String ligne;
-				
+
 				while ((ligne = buff.readLine()) != null) {
 					result += ligne + "\n";
 				}
@@ -69,5 +92,17 @@ public abstract class LectureFichier {
 			System.out.println("Erreur --" + ioe.toString());
 		}
 		return result;
+	}
+	
+	private static String testChemin(String chemin){
+
+		File f = new File(chemin);
+
+		if (!f.exists()) {
+			chemin = "../" + chemin;
+		}
+		
+		return chemin;
+		
 	}
 }
