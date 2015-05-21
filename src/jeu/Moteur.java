@@ -1,12 +1,16 @@
 package jeu;
 
+import java.util.LinkedList;
+import java.util.Random;
 import java.util.Scanner;
 
 import controles.Controleur;
 import affichage.InterfaceTerm;
 import affichage.fenetre.FenetreCarte;
 import carte.Carte;
+import carte.Position;
 import personnage.Joueur;
+import personnage.Monstre;
 
 public class Moteur {
 	
@@ -17,23 +21,6 @@ public class Moteur {
 		Scanner sc = new Scanner(System.in);
 		
 		Log log = new Log(); // TODO:skeggib Log de test, a enlever
-		log.add("Salut 1");
-		log.add("Salut 2");
-		log.add("Salut 3");
-		log.add("Salut 4");
-		log.add("Salut 5");
-		log.add("Salut 6");
-		log.add("Salut 7");
-		log.add("Salut 8");
-		log.add("Salut 9");
-		log.add("Salut 10");
-		log.add("Salut 11");
-		log.add("Salut 12");
-		log.add("Salut 13");
-		log.add("Salut 14");
-		log.add("Salut 15");
-		log.add("Test");
-		log.add("Message");
 		
 		// TODO:skeggib A faire
 		
@@ -42,6 +29,7 @@ public class Moteur {
 		// Creer la carte
 		Carte carte = new Carte();
 		carte.chargerFichier("../ressources/carte/test");
+		Moteur.ajoutMonstres(carte);
 		
 		// Creer le joueur
 		Joueur joueur = new Joueur("default");
@@ -87,6 +75,54 @@ public class Moteur {
 				// Action
 		}
 		
+	}
+	
+	private static void ajoutMonstres(Carte carte) {
+		Random rand = new Random();
+		int randInt;
+		
+		LinkedList<Monstre> liste = new LinkedList<Monstre>();
+		Monstre tempMonstre;
+		
+		// Chance qu'a chaque case de recevoir un Monstre
+		int chanceCase = 5;
+		// Chance que chaque monstre a de devenir un groupe de monstres
+		int chanceDevientGroupe = 10;
+		
+		// On ajoute des monstres aleatoirement dans la carte sur les cases vides
+		for (int i = 0; i < carte.getHauteur(); i++) {
+			for (int j = 0; j < carte.getLargeur(); j++) {
+				if (carte.getCase(j, i).estVide()) {
+					randInt = rand.nextInt(100);
+					if (randInt < chanceCase) {
+						tempMonstre = new Monstre("monster");
+						liste.add(tempMonstre);
+						tempMonstre.initialiserPos(carte.getCase(j, i));
+					}
+				}
+			}
+		}
+		
+		Position posM;
+		
+		// On creer les groupes de monstre
+		for (int i = 0; i < liste.size(); i++) {
+			randInt = rand.nextInt(100);
+			if (randInt < chanceDevientGroupe) {
+				posM = carte.getPosContenu(liste.get(i));
+				System.out.println(posM);
+				
+				for (int y = posM.getY() - 1; y <= posM.getY() + 1; y++) {
+					for (int x = posM.getX() - 1; x <= posM.getX() + 1; x++) {
+						randInt = rand.nextInt(100);
+						if (randInt < 33) {
+							tempMonstre = new Monstre("monster");
+							tempMonstre.initialiserPos(carte.getCase(x, y));
+						}
+					}
+				}
+			}
+		}
 	}
 	
 	public static void main(String[] args) {
