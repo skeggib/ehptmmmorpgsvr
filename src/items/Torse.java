@@ -7,7 +7,7 @@ import fichiers.LectureFichier;
 
 public class Torse extends Vetement{
 	public static final String[] NOM = LectureFichier
-			.lireT("../ressources/noms/torse.txt");
+			.lireT("ressources/noms/torse.txt");
 
 	public String randNom() {
 		int i = new Random().nextInt((Torse.NOM.length));

@@ -19,7 +19,7 @@ public class Arme extends Equipable {
 	 */
 
 	public static final String[] NOM = LectureFichier
-			.lireT("../ressources/noms/arme.txt");
+			.lireT("ressources/noms/arme.txt");
 
 	public Arme() {
 		super();

@@ -21,7 +21,7 @@ public class Monstre extends EntiteVivante {
 	private int MAX_PA;
 	
 	public static final String[] NOM = LectureFichier
-			.lireT("../ressources/noms/monstre.txt");
+			.lireT("ressources/noms/monstre.txt");
 	
 	/*
 	 * Constructeur

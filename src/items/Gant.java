@@ -7,7 +7,7 @@ import fichiers.LectureFichier;
 
 public class Gant extends Vetement {
 	public static final String[] NOM = LectureFichier
-			.lireT("../ressources/noms/gant.txt");
+			.lireT("ressources/noms/gant.txt");
 
 	public Gant() {
 		super();

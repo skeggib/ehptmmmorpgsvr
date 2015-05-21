@@ -18,7 +18,7 @@ public class PotionDeSoin extends Potion {
 	 */
 
 	public static final String[] NOM = LectureFichier
-			.lireT("../ressources/noms/potionSoin.txt");
+			.lireT("ressources/noms/potionSoin.txt");
 
 	public PotionDeSoin() {
 		this.setBonusVie(new Random().nextInt(PotionDeSoin.NOM.length) + 1);
