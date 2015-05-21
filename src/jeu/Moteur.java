@@ -28,7 +28,7 @@ public class Moteur {
 		
 		// Creer la carte
 		Carte carte = new Carte();
-		carte.chargerFichier("../ressources/carte/test");
+		carte.chargerFichier("ressources/carte/test");
 		Moteur.ajoutMonstres(carte);
 		
 		// Creer le joueur
