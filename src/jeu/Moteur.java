@@ -58,19 +58,21 @@ public class Moteur {
 		controleur.setJoueur(joueur);
 		
 		// Boucle principale
-		while (true) {
+		boolean run = true;
+		while (run) {
 			
 			joueur.recupererPA();
 			
 			// Boucle actions du joueur
-			while (joueur.deplacementPossible()) {
+			while (joueur.deplacementPossible() && run) {
 				// Affichage
 				inter.afficher(joueur, carte);
 				// Action
-				controleur.saisieAction();
+				if (controleur.saisieAction() == Controleur.QUITTER)
+					run = false;
 			}
 			
-			// Boucle action des monstres
+			// Boucle action des monstres (si run)
 				// Affichage
 				// Action
 		}

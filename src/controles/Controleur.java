@@ -20,6 +20,7 @@ public class Controleur { // TODO:skeggib UML
 	public static final int INVENTAIRE = 5;
 	public static final int PERSONNAGE = 6;
 	public static final int AIDE = 7;
+	public static final int QUITTER = 8;
 	
 	private static final String TEXTE_AIDE = 
 			"Aide :"
@@ -29,7 +30,8 @@ public class Controleur { // TODO:skeggib UML
 			+ "\n\tq : Gauche"
 			+ "\n\td : Droite"
 			+ "\n\ti : Ouvrir l'inventaire"
-			+ "\n\tp : Ouvrir la fenetre personnage";
+			+ "\n\tp : Ouvrir la fenetre personnage"
+			+ "\n\tx : Quitter";
 
 	private static Scanner sc = new Scanner(System.in);
 	
@@ -82,6 +84,8 @@ public class Controleur { // TODO:skeggib UML
 		case 'h':
 			action = Controleur.AIDE;
 			break;
+		case 'x':
+			return Controleur.QUITTER;
 		}
 		
 		if (action != -1) {

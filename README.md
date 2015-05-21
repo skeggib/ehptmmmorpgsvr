@@ -28,3 +28,5 @@ Pour lancer le jeu il suffit d'executer le fichier Jeu.jar :
 ### a1.2
 
 - L'interface a plusieurs tailles
+- La carte contient des monstres
+- Ajout de controles
