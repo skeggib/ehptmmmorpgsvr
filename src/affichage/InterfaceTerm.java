@@ -6,7 +6,6 @@ import affichage.fenetre.FenetreInfosJoueur;
 import affichage.fenetre.FenetreLog;
 import personnage.Joueur;
 import carte.Carte;
-import carte.Position;
 
 /**
  * 
@@ -38,21 +37,98 @@ public class InterfaceTerm {
 	
 	private Matrice matrice;
 	
+	private int largeur;
+	private int hauteur;
+	
 	private FenetreCarte fenCarte;
 	private FenetreLog fenLog;
 	private FenetreInfosJoueur fenInfos;
 	
-	public InterfaceTerm() { // TODO:skeggib Regler la taille et le placement des fenetres en fonction de la taille
-		// TODO:skeggib Faire une "grille"
-		this.fenCarte = new FenetreCarte(0); // TODO: Choisir la taille
-		this.fenLog = new FenetreLog(30, 10);
+	public static final int MODE_JEU = 1;
+	public static final int MODE_INVENTAIRE = 2;
+	public static final int MODE_STATS = 3;
+	
+	/**
+	 * Tailles de l'interface possibles
+	 */
+	public static final String[] TAILLES = {"large", "normal", "small"};
+	int taille;
+	
+	public InterfaceTerm() {
+		this(0);
+	}
+	
+	public InterfaceTerm(int taille) {
+		this.taille = taille;
 		
-		int largeur = this.fenCarte.getLargeur() + this.fenLog.getLargeur();
-		int hauteur = this.fenCarte.getHauteur();
+		this.autoPositionTailleFen();
 		
-		this.matrice = new Matrice(largeur, hauteur);
+		this.matrice = new Matrice(this.largeur, this.hauteur);
+	}
+	
+	private void autoPositionTailleFen() {
 		
-		this.fenInfos = new FenetreInfosJoueur(this.fenLog.getLargeur(), this.matrice.getHauteur() - this.fenLog.getHauteur());
+		switch (InterfaceTerm.TAILLES[this.taille]) {
+		case "large":
+			
+			this.fenCarte = new FenetreCarte(this.taille);
+			
+			this.fenCarte.setPosX(0);
+			this.fenCarte.setPosY(0);
+			
+			this.fenLog = new FenetreLog(this.fenCarte.getLargeur() / 3 * 2, this.fenCarte.getHauteur());
+			this.fenLog.setPosX(this.fenCarte.getLargeur());
+			this.fenLog.setPosY(0);
+			
+			this.fenInfos = new FenetreInfosJoueur(this.fenLog.getLargeur(), this.fenCarte.getHauteur() + this.fenLog.getHauteur());
+			this.fenInfos.setPosX(this.fenCarte.getLargeur() + this.fenLog.getLargeur());
+			this.fenInfos.setPosY(0);
+			
+			this.largeur = this.fenCarte.getLargeur() + this.fenLog.getLargeur() + this.fenInfos.getLargeur();
+			this.hauteur = this.fenCarte.getHauteur();
+			
+			break;
+			
+		case "normal":
+			
+			this.fenCarte = new FenetreCarte(this.taille);
+			
+			this.fenCarte.setPosX(0);
+			this.fenCarte.setPosY(0);
+			
+			this.fenLog = new FenetreLog(this.fenCarte.getLargeur() / 3 * 2, this.fenCarte.getHauteur());
+			this.fenLog.setPosX(this.fenCarte.getLargeur());
+			this.fenLog.setPosY(0);
+			
+			this.fenInfos = new FenetreInfosJoueur(this.fenLog.getLargeur(), this.fenCarte.getHauteur() + this.fenLog.getHauteur());
+			this.fenInfos.setPosX(this.fenCarte.getLargeur() + this.fenLog.getLargeur());
+			this.fenInfos.setPosY(0);
+			
+			this.largeur = this.fenCarte.getLargeur() + this.fenLog.getLargeur() + this.fenInfos.getLargeur();
+			this.hauteur = this.fenCarte.getHauteur();
+			
+			break;
+			
+		case "small":
+			
+			this.fenCarte = new FenetreCarte(this.taille);
+			
+			this.fenLog = new FenetreLog(this.fenCarte.getLargeur() * 2, this.fenCarte.getHauteur());
+			this.fenLog.setPosX(0);
+			this.fenLog.setPosY(0);
+			
+			this.fenCarte.setPosX(0);
+			this.fenCarte.setPosY(this.fenLog.getHauteur());
+			
+			this.fenInfos = new FenetreInfosJoueur(this.fenLog.getLargeur(), this.fenCarte.getHauteur() + this.fenLog.getHauteur());
+			this.fenInfos.setPosX(this.fenLog.getLargeur());
+			this.fenInfos.setPosY(0);
+			
+			this.largeur = this.fenLog.getLargeur() + this.fenInfos.getLargeur();
+			this.hauteur = this.fenCarte.getHauteur() + this.fenLog.getHauteur();
+			
+			break;
+		}
 	}
 
 	public boolean afficher(Joueur joueur, Carte carte) {
@@ -68,10 +144,10 @@ public class InterfaceTerm {
 		
 		this.fenCarte.setCarte(carte);
 		this.fenCarte.setJoueur(joueur);
-		this.matrice.dessinerFenetre(0, 0, fenCarte);
-		this.matrice.dessinerFenetre(this.fenCarte.getLargeur(), this.matrice.getHauteur() - this.fenLog.getHauteur(), fenLog);
+		this.matrice.dessinerFenetre(this.fenCarte.getPosX(), this.fenCarte.getPosY(), fenCarte);
+		this.matrice.dessinerFenetre(this.fenLog.getPosX(), this.fenLog.getPosY(), fenLog);
 		this.fenInfos.setJoueur(joueur);
-		this.matrice.dessinerFenetre(this.fenCarte.getLargeur(), 0, this.fenInfos);
+		this.matrice.dessinerFenetre(this.fenInfos.getPosX(), this.fenInfos.getPosY(), this.fenInfos);
 		
 		return true;
 	}

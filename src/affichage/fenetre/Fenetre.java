@@ -9,6 +9,9 @@ public abstract class Fenetre {
 	private int hauteur;
 	private String titre;
 	
+	private int posX;
+	private int posY;
+	
 	private Matrice matrice;
 	
 	public static final int LARGEUR_CADRE = 2;
@@ -112,5 +115,21 @@ public abstract class Fenetre {
 	
 	public String toString() {
 		return "Fenetre : " + this.titre + "(" + this.largeur + ", " + this.hauteur + ")\n\t";
+	}
+
+	public int getPosX() {
+		return posX;
+	}
+
+	public void setPosX(int posX) {
+		this.posX = posX;
+	}
+
+	public int getPosY() {
+		return posY;
+	}
+
+	public void setPosY(int poxY) {
+		this.posY = poxY;
 	}
 }

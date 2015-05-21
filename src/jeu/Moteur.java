@@ -54,14 +54,14 @@ public class Moteur {
 		// Remplir la carte avec des monstres
 		
 		// Demander la taille de l'interface
-//		System.out.println("Taille de l'interface : ");
-//		for (int i = 0; i < FenetreCarte.TAILLES.length; i++) {
-//			System.out.println((i+1) + ". " + FenetreCarte.TAILLES[i]);
-//		}
-//		int taille = sc.nextInt();
-//		taille--;
+		System.out.println("Taille de l'interface : ");
+		for (int i = 0; i < InterfaceTerm.TAILLES.length; i++) {
+			System.out.println((i+1) + ". " + InterfaceTerm.TAILLES[i]);
+		}
+		int taille = sc.nextInt();
+		taille--;
 		// Creer l'interface
-		InterfaceTerm inter = new InterfaceTerm();
+		InterfaceTerm inter = new InterfaceTerm(taille);
 		inter.setLog(log);
 		
 		// Creer le controleur

@@ -3,6 +3,7 @@ package affichage.fenetre;
 import personnage.Joueur;
 import affichage.Image;
 import affichage.ImagesCases;
+import affichage.InterfaceTerm;
 import affichage.Matrice;
 import carte.Carte;
 import carte.Position;
@@ -18,10 +19,6 @@ public class FenetreCarte extends Fenetre {
 	private static int NB_CASES_AFFICHEES_X = 9;
 	private static int NB_CASES_AFFICHEES_Y = 9;
 	
-	/**
-	 * Tailles de l'interface possibles
-	 */
-	public static final String[] TAILLES = {"large", "normal", "small"};
 	private int taille;
 	
 	// Largeur des espaces entre chaque cases
@@ -66,12 +63,12 @@ public class FenetreCarte extends Fenetre {
 	
 	private void setTaille(int taille) {
 		// Si la taille passee en parametre correspond a une case de la liste des tailles
-		if (taille >= 0 && taille < FenetreCarte.TAILLES.length)
+		if (taille >= 0 && taille < InterfaceTerm.TAILLES.length)
 			this.taille = taille;
 		else
 			this.taille = 0;
 		
-		switch (FenetreCarte.TAILLES[this.taille]) {
+		switch (InterfaceTerm.TAILLES[this.taille]) {
 		case "large":
 			this.largeurCaseCarte = 7;
 			this.hauteurCaseCarte = 4;
