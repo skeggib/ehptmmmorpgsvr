@@ -1,5 +1,12 @@
 package affichage;
 
+/**
+ * 
+ * Represente une image qui peut etre dessinee dans une matrice.
+ * 
+ * @author Sébastien Klasa
+ *
+ */
 public class Image {
 
 	private int largeur;

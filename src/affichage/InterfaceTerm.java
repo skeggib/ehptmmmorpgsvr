@@ -8,6 +8,32 @@ import personnage.Joueur;
 import carte.Carte;
 import carte.Position;
 
+/**
+ * 
+ * Interface textuelle du jeu "ehptmmorpgsvr".</br>
+ * </br>
+ * Affiche la carte du jeu, des informations</br>
+ * relatives au joueur et les logs.</br>
+ * 
+ * pour l'itiliser il suffit de l'instancier avec</br>
+ * son constructeur par default puis de lui donner :</br>
+ * </br>
+ *     - Un objet Joueur</br>
+ *     - Une objet Carte</br>
+ *     - Un objet Log</br>
+ * </br>
+ * Ex:</br>
+ * </br>
+ * <pre>{@code
+ * InterfaceTerm inter = new InterfaceTerm();
+ * inter.setLog(log);
+ * inter.setCarte(carte);
+ * inter.setJoueur(joueur);
+ * }</pre>
+ * 
+ * @author Sébastien Klasa
+ *
+ */
 public class InterfaceTerm {
 	
 	private Matrice matrice;

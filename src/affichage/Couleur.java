@@ -2,6 +2,32 @@ package affichage;
 
 import os.DetectOS;
 
+/**
+ * 
+ * Permet de generer une chaine de caractere qui colore le texte du terminal.</br>
+ * </br>
+ * Couleur possibles :</br>
+ * </br>
+ * - DEFAULT</br>
+ * - BLACK</br>
+ * - GREEN</br>
+ * - YELLOW</br>
+ * - BLUE</br>
+ * - PURPLE</br>
+ * - CYAN</br>
+ * - WHITE</br>
+ * </br>
+ * - BACK_BLACK</br>
+ * - BACK_GREEN</br>
+ * - BACK_YELLOW</br>
+ * - BACK_BLUE</br>
+ * - BACK_PURPLE</br>
+ * - BACK_CYAN</br>
+ * - BACK_WHITE</br>
+ * 
+ * @author Sébastien Klasa
+ *
+ */
 public class Couleur {
 	
 	private static String DEFAULT;

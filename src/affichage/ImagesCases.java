@@ -6,6 +6,13 @@ import carte.ContenuCase;
 import carte.Inconnu;
 import fichiers.LectureFichier;
 
+/**
+ * 
+ * Contient les images correspondantes aux differents types de cases.
+ * 
+ * @author Sébastien Klasa
+ *
+ */
 public abstract class ImagesCases {
 	
 	private static Image[][] tabImg;
