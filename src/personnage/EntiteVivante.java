@@ -8,6 +8,18 @@ import carte.ContenuCase;
 
 //TODO:armya Implementer l'exprerience (expPourNiveauSuivant() : int)
 
+/**
+ * 
+ * La Classe EntiteVivante est la classe mere de toute entite contenu dans le jeu : </br>
+ *  - Joueur
+ *  - Monstre
+ *  - Personnage Non Joueur
+ *  
+ *  Elle contient toutes les methodes necessaires a la gestion d'une entite
+ * 
+ * @author armya
+ *
+ */
 public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 																// Verifier
 																// toute cette
@@ -34,7 +46,7 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 	private String nom;
 
 	private int experience;
-	
+
 	private int pointAction;
 
 	private int vie;
@@ -143,53 +155,38 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 	 * @param cible
 	 *            Entite qui subira les degats
 	 */
-	public void attaquer(EntiteVivante cible) { //TODO:armya Reoganiser cette methode
-		
-		System.out.println("\n==================");
-		int adresseCible = cible.getCaractTotal().getAdresse();
-		int encombrementCible = (cible.getEquipement().getTaille() * 2);
+	public boolean attaquer(EntiteVivante cible) {
 
-		int esquiveCible = Capacite.getRandomEsquive(adresseCible,
-				encombrementCible);
-		System.out.println("esquive cible " + esquiveCible);
+		// Caracteristique de la cible et de l'attaquant
+		Caracteristique cCible = cible.getCaractTotal();
+		Caracteristique cThis = this.getCaractTotal();
 
-		int adresseJ = this.getCaractTotal().getAdresse();
-		int maniabiliteJ = this.getCaractTotal().getManiabilite();
-
-		int attaqueJ = Capacite.getRandomAttaque(adresseJ, maniabiliteJ);
-		System.out.println("attaque joueur " + attaqueJ);
+		int esquiveCible = Capacite.getRandomEsquive(cCible.getAdresse(),
+				cible.getEncombrement());
 
 		if ((new Random().nextInt(100) + 1) > esquiveCible) {
+			int defenseCible = Capacite
+					.getRandomDefense(cCible.getResistance());
 
-			int resistanceCible = cible.getCaractTotal().getResistance();
+			int degatThis = Capacite.getRandomDegat(cThis.getForce(),
+					cCible.getImpact());
 
-			int defenseCible = Capacite.getRandomDefense(resistanceCible);
-			System.out.println("defense cible " + defenseCible);
+			int attaqueThis = Capacite.getRandomAttaque(cCible.getAdresse(),
+					cCible.getManiabilite());
 
-			int forceJ = this.getCaractTotal().getForce();
-			int impactJ = this.getCaractTotal().getImpact();
+			int degatSubit = degatThis * ((100 - defenseCible) + attaqueThis)
+					/ 100;
 
-			int degatJ = Capacite.getRandomDegat(forceJ, impactJ);
-			System.out.println("degat joueur " + degatJ);
+			int vieEnMoins = (degatSubit * 40 / 100);
 
-			int degatSubit = degatJ * ((100 - defenseCible) + attaqueJ) / 100;
-
-			System.out.println("degat subit " + degatSubit);
-			//
-			int vieEnMoins = degatSubit * 40 / 100;
-			System.out.println("VIE EN MOINS : " + vieEnMoins);
-
-			System.out.println("Vie avant attaque : " + cible.getVie());
-			cible.retirerVie(vieEnMoins);
-			System.out.println("Vie apres attaque : " + cible.getVie());
-			
 			this.ajouterXP(1);
-			
-		} else {
 
+			if (vieEnMoins > 0) {
+				cible.retirerVie(vieEnMoins);
+				return true;
+			}
 		}
-
-		System.out.println("==================");
+		return false;
 	}
 
 	/**
@@ -353,8 +350,8 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 	public boolean actionDisponible() { // TODO:skeggib Ajouter UML
 		return (this.getPointAction() != 0);
 	}
-	
-	public boolean deplacementPossible(){
+
+	public boolean deplacementPossible() {
 		return (this.getPointAction() >= EntiteVivante.PA_DEPLACEMENT);
 	}
 
@@ -407,9 +404,13 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 			this.effet.get(i).appliquerEffet(this);
 		}
 	}
-	
-	public void ajouterXP(int exp){
+
+	public void ajouterXP(int exp) {
 		this.setExperience(this.getExperience() + exp);
+	}
+
+	public int getEncombrement() {
+		return (this.getEquipement().getTaille() * 2);
 	}
 
 	/*
