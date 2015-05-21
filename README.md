@@ -24,3 +24,10 @@ Pour lancer le jeu il suffit d'executer le fichier Jeu.jar :
 - Interface découpée en fenêtres
 - Gestion des PA du joueur (non fonctionnel)
 - Gestion des caractèristiques et de la vie du joueur (non fonctionnel)
+
+### a1.2
+
+- L'interface a plusieurs tailles
+- La carte contient des monstres
+- Ajout de controles
+- Ajout de logs lors de certaines actions
