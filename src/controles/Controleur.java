@@ -188,7 +188,6 @@ public class Controleur { // TODO:skeggib UML
 		// Si la dest contient un objet, on le ramasse puis on se deplace
 		else if (destination.contientObjet()) {
 			Objet obj = (Objet)destination.getContenu();
-			System.out.println(obj);
 			this.joueur.rammasserObjet(obj);
 			destination.supprContenu();
 			return this.joueur.seDeplacer(destination);

@@ -112,7 +112,6 @@ public class Moteur {
 			randInt = rand.nextInt(100);
 			if (randInt < chanceDevientGroupe) {
 				posM = carte.getPosContenu(liste.get(i));
-				System.out.println(posM);
 				
 				for (int y = posM.getY() - 1; y <= posM.getY() + 1; y++) {
 					for (int x = posM.getX() - 1; x <= posM.getX() + 1; x++) {
