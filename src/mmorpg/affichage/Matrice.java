@@ -121,8 +121,9 @@ public class Matrice {
 			texte == null)
 			return false;
 		
+		Pixel pix;
 		for (int i = 0; i < texte.length(); i++) {
-			Pixel pix = new Pixel(); // TODO:skeggib Sortir le new de la boucle
+			pix = new Pixel();
 			pix.setCouleur(couleur);
 			pix.setCouleurFond(couleurFond);
 			pix.setCar(texte.charAt(i));

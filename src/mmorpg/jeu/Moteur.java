@@ -19,7 +19,7 @@ public class Moteur {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		Log log = new Log(); // TODO:skeggib Log de test, a enlever
+		Log log = new Log();
 		
 		// TODO:skeggib A faire
 		
