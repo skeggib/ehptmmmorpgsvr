@@ -131,8 +131,8 @@ public class InterfaceTerm {
 		}
 	}
 
-	public boolean afficher(Joueur joueur, Carte carte) {
-		if (!this.dessinerInterface(joueur, carte))
+	public boolean afficher() {
+		if (!this.dessinerInterface())
 			return false;
 		
 		this.matrice.afficher();
@@ -140,13 +140,10 @@ public class InterfaceTerm {
 		return true;
 	}
 	
-	private boolean dessinerInterface(Joueur joueur, Carte carte) { // TODO:skeggib Ajouter setter joueur et carte
+	private boolean dessinerInterface() {
 		
-		this.fenCarte.setCarte(carte);
-		this.fenCarte.setJoueur(joueur);
 		this.matrice.dessinerFenetre(this.fenCarte.getPosX(), this.fenCarte.getPosY(), fenCarte);
 		this.matrice.dessinerFenetre(this.fenLog.getPosX(), this.fenLog.getPosY(), fenLog);
-		this.fenInfos.setJoueur(joueur);
 		this.matrice.dessinerFenetre(this.fenInfos.getPosX(), this.fenInfos.getPosY(), this.fenInfos);
 		
 		return true;
@@ -161,5 +158,14 @@ public class InterfaceTerm {
 
 	public void setLog(Log log) {
 		this.fenLog.setLog(log);
+	}
+	
+	public void setCarte(Carte carte) {
+		this.fenCarte.setCarte(carte);
+	}
+	
+	public void setJoueur(Joueur joueur) {
+		this.fenCarte.setJoueur(joueur);
+		this.fenInfos.setJoueur(joueur);
 	}
 }

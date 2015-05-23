@@ -50,6 +50,8 @@ public class Moteur {
 		// Creer l'interface
 		InterfaceTerm inter = new InterfaceTerm(taille);
 		inter.setLog(log);
+		inter.setCarte(carte);
+		inter.setJoueur(joueur);
 		
 		// Creer le controleur
 		Controleur controleur = new Controleur();
@@ -66,7 +68,7 @@ public class Moteur {
 			// Boucle actions du joueur
 			while (joueur.deplacementPossible() && run) {
 				// Affichage
-				inter.afficher(joueur, carte);
+				inter.afficher();
 				// Action
 				if (controleur.saisieAction() == Controleur.QUITTER)
 					run = false;
