@@ -63,12 +63,12 @@ public class Joueur extends EntiteVivante {
 		return false;
 	}
 
-	public boolean attaquer(EntiteVivante cible) {
+	public int attaquer(EntiteVivante cible) {
 		if (this.getPointAction() >= Joueur.PA_ATTAQUE) {
 			this.setPointAction(this.getPointAction() - Joueur.PA_ATTAQUE);
 			return super.attaquer(cible);
 		}
-		return false;
+		return 0;
 	}
 
 	public void recupererPA() {
