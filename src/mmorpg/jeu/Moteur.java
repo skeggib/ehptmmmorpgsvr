@@ -31,7 +31,7 @@ public class Moteur {
 		Moteur.ajoutMonstres(carte);
 		
 		// Creer le joueur
-		Joueur joueur = new Joueur("default");
+		Joueur joueur = new Joueur("Armya", 10, 10, 10);
 		// Creation du joueur interactive
 		// TODO:skeggib Mettre la creation interractive dans InterfaceTerm
 //		System.out.print("Nom du joueur : ");

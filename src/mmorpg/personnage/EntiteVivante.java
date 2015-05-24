@@ -149,11 +149,13 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 		return false;
 	}
 
+
 	/**
-	 * Attaque une cible
 	 * 
-	 * @param cible
-	 *            Entite qui subira les degats
+	 * Permet d'attaquer une cible
+	 * 
+	 * @param cible Entite a attaquer
+	 * @return Retourne le nombre de degat infliges. Retourne -1 si la cible esquive
 	 */
 	public int attaquer(EntiteVivante cible) {
 
@@ -185,6 +187,8 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 				cible.retirerVie(vieEnMoins);
 				return vieEnMoins;
 			}
+		} else {
+			return -1;
 		}
 		return 0;
 	}
@@ -287,7 +291,7 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 		if (vie > 0) {
 			this.setVie(this.getVie() - vie);
 			
-			if(this.getVie() == 0){
+			if(!this.estVivant() && this.getEmplacement() != null){
 				this.getEmplacement().supprContenu();
 			}
 		}

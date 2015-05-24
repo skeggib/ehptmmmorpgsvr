@@ -1,6 +1,5 @@
 package mmorpg.personnage;
 
-
 public class Test {
 
 	public static void main(String[] args) {
@@ -25,9 +24,9 @@ public class Test {
 		//
 		// System.out.println("Force Caracteristique Effet apres debutTour de l'effet : "
 		// + j.getCaractEffet().getForce());
-		// System.out.println("Force Caracteristique Total apres debutTour de l'effet : " + j.getCaractTotal().getForce());
-				
-		
+		// System.out.println("Force Caracteristique Total apres debutTour de l'effet : "
+		// + j.getCaractTotal().getForce());
+
 		/*
 		 * TEST CARACTERISTIQUE
 		 */
@@ -62,18 +61,19 @@ public class Test {
 		/*
 		 * TEST ATTAQUE
 		 */
-		// Joueur j = new Joueur("Armya", 50, 50, 50);
+		// Joueur j = new Joueur("Armya", 10, 10, 10);
 		// Joueur b = new Joueur("Skeggib", 10, 10, 10);
-		// j.attaquer(b);
-		// j.attaquer(b);
-		// j.attaquer(b);
-		// j.attaquer(b);
-		// j.attaquer(b);
-		// j.attaquer(b);
-		// j.attaquer(b);
-		// j.attaquer(b);
-		// j.attaquer(b);
-		// j.attaquer(b);
+		// //PersonnageNJ b = new PersonnageNJ(null, 10, 10, 10);
+		// System.out.println("\nRETURN : " + j.attaquer(b));
+		// System.out.println("\nRETURN : " + j.attaquer(b));
+		// System.out.println("\nRETURN : " + j.attaquer(b));
+		// System.out.println("\nRETURN : " + j.attaquer(b));
+		// System.out.println("\nRETURN : " + j.attaquer(b));
+		// System.out.println("\nRETURN : " + j.attaquer(b));
+		// System.out.println("\nRETURN : " + j.attaquer(b));
+		// System.out.println("\nRETURN : " + j.attaquer(b));
+		// System.out.println("\nRETURN : " + j.attaquer(b));
+		// System.out.println("\nRETURN : " + j.attaquer(b));
 
 		/*
 		 * TEST EQUIPEMENT
