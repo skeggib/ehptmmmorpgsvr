@@ -4,6 +4,11 @@ public class Test {
 
 	public static void main(String[] args) {
 
+		Monstre m = new Monstre();
+		System.out.println("FORCE : " + m.getCaractPrinc().getForce());
+		System.out.println("ADRESSE : " + m.getCaractPrinc().getAdresse());
+		System.out.println("RESISTANCE : " + m.getCaractPrinc().getResistance());
+		
 		/*
 		 * TEST EFFET
 		 */
@@ -50,11 +55,15 @@ public class Test {
 		// c2.ajouter(c1);
 		// System.out.println(c2.getForce());
 
-		// Formule Esquive
+		/*
+		 * FORMULE ESQUIVE
+		 */
 		// float x = 10;
 		// System.out.println(5.00 + (30 * (x/(x+50))));
-		//
-		// Formule experience
+		
+		/*
+		 * FORMULE EXPERIENCE
+		 */
 		// (x²)/10 + 20
 		//
 
@@ -123,6 +132,9 @@ public class Test {
 		// System.out.println("Apres (Force): " +
 		// j.getCaractTotal().getForce());
 
+		/*
+		 * TEST EQUIPEMENT UNIQUE
+		 */
 		// for (int i = 0; i < 10; i++) {
 		//
 		// System.out
