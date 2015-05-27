@@ -121,8 +121,9 @@ public class Matrice {
 			texte == null)
 			return false;
 		
+		Pixel pix;
 		for (int i = 0; i < texte.length(); i++) {
-			Pixel pix = new Pixel(); // TODO:skeggib Sortir le new de la boucle
+			pix = new Pixel();
 			pix.setCouleur(couleur);
 			pix.setCouleurFond(couleurFond);
 			pix.setCar(texte.charAt(i));
@@ -149,9 +150,12 @@ public class Matrice {
 		return true;
 	}
 	
-	public boolean dessinerFenetre(int x, int y, Fenetre fen) {
+	public boolean dessinerFenetre(Fenetre fen) {
 		if (fen == null)
 			return false;
+		
+		int x = fen.getPosX();
+		int y = fen.getPosY();
 		
 		return this.dessinerMatrice(x, y, fen.getMatriceFen());
 	}

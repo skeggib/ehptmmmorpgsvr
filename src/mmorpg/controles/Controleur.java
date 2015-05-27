@@ -2,6 +2,7 @@ package mmorpg.controles;
 
 import java.util.Scanner;
 
+import mmorpg.affichage.InterfaceTerm;
 import mmorpg.carte.Carte;
 import mmorpg.carte.Case;
 import mmorpg.carte.Position;
@@ -20,6 +21,7 @@ public class Controleur { // TODO:skeggib UML
 	public static final int PERSONNAGE = 6;
 	public static final int AIDE = 7;
 	public static final int QUITTER = 8;
+	public static final int JEU = 9;
 	
 	private static final String TEXTE_AIDE = 
 			"Aide :"
@@ -37,6 +39,8 @@ public class Controleur { // TODO:skeggib UML
 	private Joueur joueur;
 	private Carte carte;
 	private Log log;
+	
+	private InterfaceTerm inter;
 	
 	//TODO:skeggib Reparer le bug du "le joueur attaque "le vide" " si on entre pas une action attendu
 	
@@ -86,6 +90,9 @@ public class Controleur { // TODO:skeggib UML
 			break;
 		case 'x':
 			return Controleur.QUITTER;
+		case 'r':
+			action = Controleur.JEU;
+			break;
 		}
 		
 		if (action != -1) {
@@ -122,6 +129,10 @@ public class Controleur { // TODO:skeggib UML
 			return this.ouvrirPersonnage();
 		}
 		
+		else if (action == Controleur.JEU) {
+			return this.ouvrirJeu();
+		}
+		
 		return false;
 	}
 	
@@ -132,13 +143,18 @@ public class Controleur { // TODO:skeggib UML
 	}
 
 	private boolean ouvrirPersonnage() {
-		// TODO Auto-generated method stub
-		return false;
+		this.inter.setMode(InterfaceTerm.MODE_PERSONNAGE);
+		return true;
 	}
 
 	private boolean ouvrirInventaire() {
-		// TODO Auto-generated method stub
-		return false;
+		this.inter.setMode(InterfaceTerm.MODE_INVENTAIRE);
+		return true;
+	}
+	
+	private boolean ouvrirJeu() {
+		this.inter.setMode(InterfaceTerm.MODE_JEU);
+		return true;
 	}
 
 	private boolean deplacement(int direction) {
@@ -182,9 +198,9 @@ public class Controleur { // TODO:skeggib UML
 		// Si la dest contient une entite on l'attaque
 		else if (destination.contientEntite()) {
 			EntiteVivante ennemi = (EntiteVivante)destination.getContenu();
-			this.joueur.attaquer(ennemi);
+			int degats = this.joueur.attaquer(ennemi);
 			if (this.log != null)
-			this.ecrireLog(this.joueur.getNom() + " attaque " + ennemi.getNom());
+			this.ecrireLog(this.joueur.getNom() + " attaque " + ennemi.getNom() + " (-" + degats + ")"); // TODO: Si l'attaque n'a pas échouée
 		}
 		
 		// Si la dest contient un objet, on le ramasse puis on se deplace
@@ -218,6 +234,10 @@ public class Controleur { // TODO:skeggib UML
 
 	public void setLog(Log log) {
 		this.log = log;
+	}
+	
+	public void setInterface(InterfaceTerm inter) {
+		this.inter = inter;
 	}
 	
 }

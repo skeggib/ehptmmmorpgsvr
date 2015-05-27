@@ -8,6 +8,11 @@ import mmorpg.affichage.InterfaceTerm;
 import mmorpg.carte.Carte;
 import mmorpg.carte.Position;
 import mmorpg.controles.Controleur;
+import mmorpg.items.Arme;
+import mmorpg.items.Casque;
+import mmorpg.items.Pantalon;
+import mmorpg.items.Potion;
+import mmorpg.items.PotionDeDegat;
 import mmorpg.personnage.Joueur;
 import mmorpg.personnage.Monstre;
 
@@ -19,7 +24,7 @@ public class Moteur {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		Log log = new Log(); // TODO:skeggib Log de test, a enlever
+		Log log = new Log();
 		
 		// TODO:skeggib A faire
 		
@@ -37,6 +42,18 @@ public class Moteur {
 //		System.out.print("Nom du joueur : ");
 //		joueur.setNom(sc.nextLine());
 		this.joueur.initialiserPos(carte.getCase(3, 3));
+		
+		// TODO:skeggib A enlever (pour tester)
+		this.joueur.rammasserObjet(new Arme());
+		this.joueur.rammasserObjet(new Casque());
+		this.joueur.rammasserObjet(new Pantalon());
+		this.joueur.rammasserObjet(new Arme());
+		this.joueur.rammasserObjet(new Arme());
+		this.joueur.rammasserObjet(new PotionDeDegat());
+		
+		this.joueur.equiperObjet(this.joueur.getInventaire().getObjet(0));
+		this.joueur.equiperObjet(this.joueur.getInventaire().getObjet(0));
+		this.joueur.equiperObjet(this.joueur.getInventaire().getObjet(0));
 		
 		// Remplir la carte avec des monstres
 		
@@ -58,6 +75,7 @@ public class Moteur {
 		controleur.setCarte(carte);
 		controleur.setJoueur(joueur);
 		controleur.setLog(log);
+		controleur.setInterface(inter);
 		
 		// Boucle principale
 		boolean run = true;
