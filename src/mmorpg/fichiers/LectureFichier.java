@@ -95,18 +95,13 @@ public abstract class LectureFichier {
 	}
 
 	private static String testChemin(String chemin) {
-		System.out.println("CHEMIN : " + chemin);
-
 		if (!new File(chemin).exists()) {
-			System.out.println("CORRECTION DU CHEMIN");
-
 			if (new File("../" + chemin).exists()) {
 				chemin = "../" + chemin;
 			}
 			if(new File("/" + chemin).exists()){
 				chemin = "/" + chemin;
 			}
-			System.out.println("NOUVEAU CHEMIN : " + chemin);
 		}
 
 		return chemin;
