@@ -45,15 +45,15 @@ public class Moteur {
 		
 		// TODO:skeggib A enlever (pour tester)
 		this.joueur.rammasserObjet(new Arme());
+		this.joueur.rammasserObjet(new Casque());
+		this.joueur.rammasserObjet(new Pantalon());
 		this.joueur.rammasserObjet(new Arme());
 		this.joueur.rammasserObjet(new Arme());
 		this.joueur.rammasserObjet(new PotionDeDegat());
-		this.joueur.rammasserObjet(new Casque());
-		this.joueur.rammasserObjet(new Pantalon());
 		
-		this.joueur.equiperObjet(new Arme());
-		this.joueur.equiperObjet(new Casque());
-		this.joueur.equiperObjet(new Pantalon());
+		this.joueur.equiperObjet(this.joueur.getInventaire().getObjet(0));
+		this.joueur.equiperObjet(this.joueur.getInventaire().getObjet(0));
+		this.joueur.equiperObjet(this.joueur.getInventaire().getObjet(0));
 		
 		// Remplir la carte avec des monstres
 		
