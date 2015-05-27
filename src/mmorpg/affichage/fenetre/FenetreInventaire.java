@@ -62,7 +62,7 @@ public class FenetreInventaire extends Fenetre {
 		Inventaire inventaire = this.joueur.getInventaire();
 		int tailleInventaire = inventaire.getTaille();
 		for (int i = 0; i < tailleInventaire; i++) {
-			texte = i + ". " + inventaire.getObjet(i).getNom();
+			texte = i+1 + ". " + inventaire.getObjet(i).getNom();
 			this.getMatrice().dessinerTexte(0, i + 2, texte, "BLACK", "WHITE");
 		}
 		
@@ -75,7 +75,7 @@ public class FenetreInventaire extends Fenetre {
 		Equipement equipement = this.joueur.getEquipement();
 		int tailleEquipement = equipement.getTaille();
 		for (int i = 0; i < tailleEquipement; i++) {
-			texte = i + ". " + equipement.getObjet(i).getNom();
+			texte = i+1 + ". " + equipement.getObjet(i).getNom();
 			this.getMatrice().dessinerTexte(moitierLargeur, i + 2, texte, "BLACK", "WHITE");
 		}
 		
