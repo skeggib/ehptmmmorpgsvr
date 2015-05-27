@@ -32,6 +32,7 @@ public class Controleur { // TODO:skeggib UML
 			+ "\n\td : Droite"
 			+ "\n\ti : Ouvrir l'inventaire"
 			+ "\n\tp : Ouvrir la fenetre personnage"
+			+ "\n\tr : Retour"
 			+ "\n\tx : Quitter";
 
 	private static Scanner sc = new Scanner(System.in);
