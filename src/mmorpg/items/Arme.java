@@ -57,6 +57,12 @@ public class Arme extends Equipable {
 			break;
 		}
 	}
+	
+	public Arme(String nom, int maniabilite, int impact){
+		this.setNom(nom);
+		this.setManiabilite(maniabilite);
+		this.setImpact(impact);
+	}
 
 	/*
 	 * Methode
