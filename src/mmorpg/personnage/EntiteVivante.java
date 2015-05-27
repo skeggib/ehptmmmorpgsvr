@@ -37,6 +37,8 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 
 	public static final int MIN_PA = 0;
 
+	public static final int XP_VICTOIRE = 50;
+
 	/*
 	 * Variables
 	 */
@@ -113,7 +115,33 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 	 * Methode
 	 */
 
-	public void mourir() {
+	public void augmenterNiveauForce() {
+		if (this.retirerXP(this.expPourNiveauSuivant(this.getCaractPrinc().getForce()))) {
+			this.getCaractPrinc().setForce(this.getCaractPrinc().getForce() + 1);
+		}
+	}
+
+	public void augmenterNiveauAdresse() {
+		if (this.retirerXP(this.expPourNiveauSuivant(this.getCaractPrinc().getAdresse()))) {
+			this.getCaractPrinc().setAdresse(this.getCaractPrinc().getAdresse() + 1);
+		}
+	}
+
+	public void augmenterNiveauResistance() {
+		if (this.retirerXP(this.expPourNiveauSuivant(this.getCaractPrinc().getResistance()))) {
+			this.getCaractPrinc().setResistance(this.getCaractPrinc().getResistance() + 1);
+		}
+	}
+
+	public int expPourNiveauSuivant(int niveauActuel) {
+		return ((niveauActuel * niveauActuel) / 10 + 20);
+	}
+
+	/**
+	 * Methode appele a la mort de l'entite. Cree un coffre avec les objets de
+	 * son inventaire a l'interieur qui sera depose a son emplacement
+	 */
+	private void mourir() {
 		if (!this.estVivant() && this.getEmplacement() != null) {
 			this.getEmplacement().supprContenu();
 
@@ -122,8 +150,8 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 				liste.add(this.getInventaire().getObjet(i));
 			}
 
-			Coffre coffre = new Coffre(liste);
-			
+			// Coffre coffre = new Coffre(liste);
+
 			Objet o = new Arme();
 
 			this.getEmplacement().ajoutContenu(o);
@@ -204,12 +232,35 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 
 			if (vieEnMoins > 0) {
 				cible.retirerVie(vieEnMoins);
+
+				if (!cible.estVivant()) {
+					this.ajouterXP(this.calculerExpVictoire(cible));
+				}
+
 				return vieEnMoins;
 			}
 		} else {
 			return -1;
 		}
 		return 0;
+	}
+
+	/**
+	 * 
+	 * Calcule l'experience gagne lors d'une victoire
+	 * 
+	 * @param Cible
+	 *            Cible contre laquel l'attaquant a gagné
+	 * @return Experience gagné lors de la victoire
+	 */
+	private int calculerExpVictoire(EntiteVivante cible) {
+		float ratio = cible.getExperience() / this.getExperience();
+		
+		if (ratio <= 1) {
+			return EntiteVivante.XP_VICTOIRE;
+		}
+
+		return (int) (ratio * EntiteVivante.XP_VICTOIRE);
 	}
 
 	/**
@@ -434,6 +485,14 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 
 	public void ajouterXP(int exp) {
 		this.setExperience(this.getExperience() + exp);
+	}
+
+	public boolean retirerXP(int exp) {
+		if ((this.getExperience() - exp) >= 0) {
+			this.setExperience(this.getExperience() - exp);
+			return true;
+		}
+		return false;
 	}
 
 	public int getEncombrement() {

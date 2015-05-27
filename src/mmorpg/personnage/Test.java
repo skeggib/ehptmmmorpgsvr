@@ -11,17 +11,52 @@ public class Test {
 
 	public static void main(String[] args) {
 
+		
+		/*
+		 * TEST XP
+		 */
+
+		Joueur a = new Joueur("armya", 10, 10, 10);
+		Joueur s = new Joueur("skeggib", 10, 10, 10);
+		s.ajouterXP(100);
+		a.ajouterXP(100);
+		while(s.estVivant()){
+			a.attaquer(s);
+			System.out.println("EXPERIENCE ARMYA : " + a.getExperience());
+		}
+		System.out.println("FORCE : " + a.getCaractPrinc().getForce());
+		System.out.println("EXP POUR NEXT LVL FORCE : " + a.expPourNiveauSuivant(a.getCaractPrinc().getForce()));
+		a.augmenterNiveauForce();
+		System.out.println("EXPERIENCE RESTANT : " + a.getExperience());
+		System.out.println("FORCE : " + a.getCaractPrinc().getForce());
+		System.out.println("EXP POUR NEXT LVL FORCE : " + a.expPourNiveauSuivant(a.getCaractPrinc().getForce()));
+		a.augmenterNiveauForce();
+		System.out.println("EXPERIENCE RESTANT : " + a.getExperience());
+		System.out.println("FORCE : " + a.getCaractPrinc().getForce());
+		System.out.println("EXP POUR NEXT LVL FORCE : " + a.expPourNiveauSuivant(a.getCaractPrinc().getForce()));
+		a.augmenterNiveauForce();
+		System.out.println("EXPERIENCE RESTANT : " + a.getExperience());
+		System.out.println("FORCE : " + a.getCaractPrinc().getForce());
+		System.out.println("EXP POUR NEXT LVL FORCE : " + a.expPourNiveauSuivant(a.getCaractPrinc().getForce()));
+		a.augmenterNiveauForce();
+		System.out.println("EXPERIENCE RESTANT : " + a.getExperience());
+		System.out.println("FORCE : " + a.getCaractPrinc().getForce());
+		System.out.println("EXP POUR NEXT LVL FORCE : " + a.expPourNiveauSuivant(a.getCaractPrinc().getForce()));
+		a.augmenterNiveauForce();
+		System.out.println("EXPERIENCE RESTANT : " + a.getExperience());
+		System.out.println("FORCE : " + a.getCaractPrinc().getForce());
+		
 		/*
 		 * TEST CONTAIN()
 		 */
-		Inventaire i = new Inventaire();
-		Arme a = new Arme("a", 10, 10);
-		i.ajouterObjet(a);
-		Arme a2 = new Arme("a", 10, 10);
-		System.out.println(i.contient(a));
-		
-		
-		
+		// Inventaire i = new Inventaire();
+		// Arme a = new Arme("a", 10, 10);
+		// i.ajouterObjet(a);
+		// Arme a2 = new Arme("a", 10, 10);
+		// System.out.println(i.contient(a));
+		//
+		//
+
 		/*
 		 * TEST AJOUT COFFRE DANS INVENTAIRE
 		 */
