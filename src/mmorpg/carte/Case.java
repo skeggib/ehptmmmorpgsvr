@@ -7,7 +7,7 @@ public class Case {
 
 	private ContenuCase contenu;
 	
-	public Case() {
+	public Case() { // TODO:skeggib Enlever le systeme de numeros
 		contenu = null;
 	}
 	

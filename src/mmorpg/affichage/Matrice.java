@@ -195,15 +195,5 @@ public class Matrice {
 		else
 			return false;
 	}
-	
-	public static void main(String[] args) {
-		
-		Matrice matr = new Matrice(50, 20);
-		
-		matr.dessinerTexte(5, 10, "Salut !", "BLACK", "WHITE");
-		
-		matr.afficher();
-		
-	}
 
 }

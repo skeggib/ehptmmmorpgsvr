@@ -11,6 +11,7 @@ import mmorpg.jeu.Log;
 import mmorpg.personnage.EntiteVivante;
 import mmorpg.personnage.Joueur;
 
+// TODO:skeggib Bloquer les controles en fonction du mode de l'interface
 public class Controleur { // TODO:skeggib UML
 	
 	public static final int HAUT = 1;

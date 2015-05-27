@@ -101,7 +101,7 @@ public class Moteur {
 		
 	}
 	
-	private static void ajoutMonstres(Carte carte) {
+	private static void ajoutMonstres(Carte carte) { // TODO:skeggib UML (changer de classe -> Carte ?)
 		Random rand = new Random();
 		int randInt;
 		

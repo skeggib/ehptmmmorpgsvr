@@ -6,7 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 
-public class EcritureObj {
+public class EcritureObjet {
 
 	public static void ecrire(Object obj) {
 		File fichier = new File("objet.ser");
