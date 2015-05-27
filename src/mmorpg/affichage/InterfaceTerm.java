@@ -2,6 +2,7 @@ package mmorpg.affichage;
 
 import mmorpg.affichage.fenetre.FenetreCarte;
 import mmorpg.affichage.fenetre.FenetreInfosJoueur;
+import mmorpg.affichage.fenetre.FenetreInventaire;
 import mmorpg.affichage.fenetre.FenetreLog;
 import mmorpg.carte.Carte;
 import mmorpg.jeu.Log;
@@ -43,10 +44,14 @@ public class InterfaceTerm {
 	private FenetreCarte fenCarte;
 	private FenetreLog fenLog;
 	private FenetreInfosJoueur fenInfos;
+	private FenetreInventaire fenInventaire;
 	
+	// Modes dans lequels peut être l'interface
 	public static final int MODE_JEU = 1;
 	public static final int MODE_INVENTAIRE = 2;
-	public static final int MODE_STATS = 3;
+	public static final int MODE_PERSONNAGE = 3;
+	
+	private int mode;
 	
 	/**
 	 * Tailles de l'interface possibles
@@ -59,10 +64,9 @@ public class InterfaceTerm {
 	}
 	
 	public InterfaceTerm(int taille) {
+		this.mode = InterfaceTerm.MODE_JEU;
 		this.taille = taille;
-		
 		this.autoPositionTailleFen();
-		
 		this.matrice = new Matrice(this.largeur, this.hauteur);
 	}
 	
@@ -129,6 +133,10 @@ public class InterfaceTerm {
 			
 			break;
 		}
+		
+		this.fenInventaire = new FenetreInventaire(this.largeur, this.hauteur);
+		this.fenInventaire.setPosX(0);
+		this.fenInventaire.setPosY(0);
 	}
 
 	public boolean afficher() {
@@ -140,11 +148,28 @@ public class InterfaceTerm {
 		return true;
 	}
 	
-	private boolean dessinerInterface() {
+	private boolean dessinerInterface() { // TODO:skeggib Doit pouvoir lever une exception (ModeNotSetException)
 		
-		this.matrice.dessinerFenetre(this.fenCarte.getPosX(), this.fenCarte.getPosY(), fenCarte);
-		this.matrice.dessinerFenetre(this.fenLog.getPosX(), this.fenLog.getPosY(), fenLog);
-		this.matrice.dessinerFenetre(this.fenInfos.getPosX(), this.fenInfos.getPosY(), this.fenInfos);
+		switch (this.mode) {
+		
+		case InterfaceTerm.MODE_JEU:
+			this.matrice.dessinerFenetre(this.fenCarte);
+			this.matrice.dessinerFenetre(this.fenLog);
+			this.matrice.dessinerFenetre(this.fenInfos);
+			break;
+			
+		case InterfaceTerm.MODE_INVENTAIRE:
+			this.matrice.dessinerFenetre(this.fenInventaire);
+			break;
+			
+		case InterfaceTerm.MODE_PERSONNAGE:
+			// TODO:skeggib A faire
+			break;
+			
+		default:
+				
+			break;
+		}
 		
 		return true;
 	}
@@ -167,5 +192,14 @@ public class InterfaceTerm {
 	public void setJoueur(Joueur joueur) {
 		this.fenCarte.setJoueur(joueur);
 		this.fenInfos.setJoueur(joueur);
+		this.fenInventaire.setJoueur(joueur);
+	}
+	
+	public void setMode(int mode) {
+		this.mode = mode;
+	}
+	
+	public int getMode() {
+		return this.mode;
 	}
 }

@@ -150,9 +150,12 @@ public class Matrice {
 		return true;
 	}
 	
-	public boolean dessinerFenetre(int x, int y, Fenetre fen) {
+	public boolean dessinerFenetre(Fenetre fen) {
 		if (fen == null)
 			return false;
+		
+		int x = fen.getPosX();
+		int y = fen.getPosY();
 		
 		return this.dessinerMatrice(x, y, fen.getMatriceFen());
 	}

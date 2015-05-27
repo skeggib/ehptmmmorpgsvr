@@ -58,6 +58,7 @@ public class Moteur {
 		controleur.setCarte(carte);
 		controleur.setJoueur(joueur);
 		controleur.setLog(log);
+		controleur.setInterface(inter);
 		
 		// Boucle principale
 		boolean run = true;
