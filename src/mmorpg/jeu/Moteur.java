@@ -8,6 +8,11 @@ import mmorpg.affichage.InterfaceTerm;
 import mmorpg.carte.Carte;
 import mmorpg.carte.Position;
 import mmorpg.controles.Controleur;
+import mmorpg.items.Arme;
+import mmorpg.items.Casque;
+import mmorpg.items.Pantalon;
+import mmorpg.items.Potion;
+import mmorpg.items.PotionDeDegat;
 import mmorpg.personnage.Joueur;
 import mmorpg.personnage.Monstre;
 
@@ -37,6 +42,18 @@ public class Moteur {
 //		System.out.print("Nom du joueur : ");
 //		joueur.setNom(sc.nextLine());
 		this.joueur.initialiserPos(carte.getCase(3, 3));
+		
+		// TODO:skeggib A enlever (pour tester)
+		this.joueur.rammasserObjet(new Arme());
+		this.joueur.rammasserObjet(new Arme());
+		this.joueur.rammasserObjet(new Arme());
+		this.joueur.rammasserObjet(new PotionDeDegat());
+		this.joueur.rammasserObjet(new Casque());
+		this.joueur.rammasserObjet(new Pantalon());
+		
+		this.joueur.equiperObjet(new Arme());
+		this.joueur.equiperObjet(new Casque());
+		this.joueur.equiperObjet(new Pantalon());
 		
 		// Remplir la carte avec des monstres
 		

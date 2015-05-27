@@ -1,6 +1,9 @@
 package mmorpg.affichage.fenetre;
 
 import mmorpg.affichage.Matrice;
+import mmorpg.affichage.Pixel;
+import mmorpg.personnage.Equipement;
+import mmorpg.personnage.Inventaire;
 import mmorpg.personnage.Joueur;
 
 public class FenetreInventaire extends Fenetre {
@@ -41,7 +44,40 @@ public class FenetreInventaire extends Fenetre {
 		if (this.joueur == null)
 			return false;
 		
-		// TODO: A faire
+		// --- Fond
+		Pixel p = new Pixel(' ', "BLACK", "WHITE");
+		this.getMatrice().dessinerRectangle(0, 0, this.getLargeur(), this.getHauteur(), p);
+
+		
+		String texte;
+		
+		String titreCouleur = "BLACK";
+		String titreCouleurFond = "CYAN";
+		
+		// --- Inventaire
+		
+		// Titre
+		this.getMatrice().dessinerTexte(3, 0, "Inventaire", titreCouleur, titreCouleurFond);
+		
+		Inventaire inventaire = this.joueur.getInventaire();
+		int tailleInventaire = inventaire.getTaille();
+		for (int i = 0; i < tailleInventaire; i++) {
+			texte = i + ". " + inventaire.getObjet(i).getNom();
+			this.getMatrice().dessinerTexte(0, i + 2, texte, "BLACK", "WHITE");
+		}
+		
+		// --- Equipement
+		int moitierLargeur = this.getLargeur() / 2;
+		
+		// Titre
+		this.getMatrice().dessinerTexte(moitierLargeur + 3, 0, "Equipement", titreCouleur, titreCouleurFond);
+		
+		Equipement equipement = this.joueur.getEquipement();
+		int tailleEquipement = equipement.getTaille();
+		for (int i = 0; i < tailleEquipement; i++) {
+			texte = i + ". " + equipement.getObjet(i).getNom();
+			this.getMatrice().dessinerTexte(moitierLargeur, i + 2, texte, "BLACK", "WHITE");
+		}
 		
 		return true;
 	}
