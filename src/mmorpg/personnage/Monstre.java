@@ -4,7 +4,6 @@ import java.util.Random;
 
 import mmorpg.carte.ContenuCase;
 import mmorpg.fichiers.LectureFichier;
-import mmorpg.items.Equipable;
 
 /**
  * Cette classe permet la gestion d'un monstre controlle par l'IA

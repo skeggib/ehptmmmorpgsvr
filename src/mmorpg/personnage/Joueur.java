@@ -1,7 +1,5 @@
 package mmorpg.personnage;
 
-import java.util.Scanner;
-
 import mmorpg.carte.Case;
 import mmorpg.carte.ContenuCase;
 
@@ -22,7 +20,6 @@ public class Joueur extends EntiteVivante {
 
 	public Joueur() {
 		super();
-		this.setNom(new Scanner(System.in).nextLine());
 		this.setPointAction(BASE_PA);
 	}
 
