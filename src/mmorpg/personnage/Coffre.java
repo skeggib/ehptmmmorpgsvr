@@ -1,7 +1,5 @@
 package mmorpg.personnage;
 
-import java.util.ArrayList;
-
 import mmorpg.carte.ContenuCase;
 import mmorpg.items.Objet;
 
@@ -31,7 +29,7 @@ public class Coffre extends ContenantObjet implements ContenuCase {
 	
 	public ListeUnique<Objet> getContenu () {
 		
-		ListeUnique<Objet> liste = new ListeUnique();
+		ListeUnique<Objet> liste = new ListeUnique<Objet>();
 		
 		for (int i = 0; i < this.getTaille(); i++) {
 			liste.add(this.getObjet(i));
