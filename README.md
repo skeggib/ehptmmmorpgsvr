@@ -31,3 +31,9 @@ Pour lancer le jeu il suffit d'executer le fichier Jeu.jar :
 - La carte contient des monstres
 - Ajout de controles
 - Ajout de logs lors de certaines actions
+
+### a1.3
+
+- Les monstres peuvent mourir (enfin) !
+- Les monstres laisse tomber des objets que l'on peut ramasser
+- Ajout de la fenetre "Inventaire" à l'interface
