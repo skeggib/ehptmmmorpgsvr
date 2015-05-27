@@ -1,7 +1,5 @@
 package mmorpg.personnage;
 
-import java.util.Scanner;
-
 import mmorpg.carte.ContenuCase;
 
 
@@ -21,7 +19,6 @@ public class PersonnageNJ extends EntiteVivante {
 	
 	public PersonnageNJ () {
 		super();
-		this.setNom(new Scanner(System.in).nextLine()); // armya -> Met au moins un println pour demander le nom... Je cherchais pourquoi mon programme marchait pas
 	}
 	
 	public PersonnageNJ (String nom) {

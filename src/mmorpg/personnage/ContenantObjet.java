@@ -38,7 +38,7 @@ public abstract class ContenantObjet implements ContenirObjets {
 	}
 
 	public void ajouterObjets(ListeUnique<Objet> list) {
-		for(int i = 0; i < this.getTaille(); i++){
+		for(int i = 0; i < list.size(); i++){
 			this.ajouterObjet(list.get(i));
 		}
 	}
@@ -58,6 +58,26 @@ public abstract class ContenantObjet implements ContenirObjets {
 	}
 
 	public boolean contient(Objet o) {
-		return this.listObjet.contains(o);
+		
+		boolean contient = false;
+		int i = 0;
+		
+		while(!contient && (i < this.getTaille())){
+			if(this.getObjet(i) == o){
+				contient = true;
+			}
+			i++;
+		}
+		return contient;
+		
 	}
 }
+
+
+
+
+
+
+
+
+

@@ -4,18 +4,16 @@ import java.util.Random;
 
 import mmorpg.carte.Case;
 import mmorpg.carte.ContenuCase;
+import mmorpg.items.Arme;
 import mmorpg.items.Objet;
 
 //TODO:armya Implementer l'exprerience (expPourNiveauSuivant() : int)
 
 /**
  * 
- * La Classe EntiteVivante est la classe mere de toute entite contenu dans le jeu : </br>
- *  - Joueur </br>
- *  - Monstre </br>
- *  - Personnage Non Joueur </br>
- *   </br>
- *  Elle contient toutes les methodes necessaires a la gestion d'une entite
+ * La Classe EntiteVivante est la classe mere de toute entite contenu dans le
+ * jeu : </br> - Joueur </br> - Monstre </br> - Personnage Non Joueur </br>
+ * </br> Elle contient toutes les methodes necessaires a la gestion d'une entite
  * 
  * @author armya
  *
@@ -115,6 +113,26 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 	 * Methode
 	 */
 
+	public void mourir() {
+		if (!this.estVivant() && this.getEmplacement() != null) {
+			this.getEmplacement().supprContenu();
+
+			ListeUnique<Objet> liste = new ListeUnique<Objet>();
+			for (int i = 0; i < this.getInventaire().getTaille(); i++) {
+				liste.add(this.getInventaire().getObjet(i));
+			}
+
+			Coffre coffre = new Coffre(liste);
+			
+			Objet o = new Arme();
+
+			this.getEmplacement().ajoutContenu(o);
+
+			this.setEmplacement(null);
+
+		}
+	}
+
 	/**
 	 * Permet de se deplacer
 	 * 
@@ -149,13 +167,14 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 		return false;
 	}
 
-
 	/**
 	 * 
 	 * Permet d'attaquer une cible
 	 * 
-	 * @param cible Entite a attaquer
-	 * @return Retourne le nombre de degat infliges. Retourne -1 si la cible esquive
+	 * @param cible
+	 *            Entite a attaquer
+	 * @return Retourne le nombre de degat infliges. Retourne -1 si la cible
+	 *         esquive
 	 */
 	public int attaquer(EntiteVivante cible) {
 
@@ -290,9 +309,9 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 	public void retirerVie(int vie) {
 		if (vie > 0) {
 			this.setVie(this.getVie() - vie);
-			
-			if(!this.estVivant() && this.getEmplacement() != null){
-				this.getEmplacement().supprContenu();
+
+			if (!this.estVivant()) {
+				this.mourir();
 			}
 		}
 	}

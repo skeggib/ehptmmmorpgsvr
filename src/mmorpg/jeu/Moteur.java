@@ -31,12 +31,12 @@ public class Moteur {
 		Moteur.ajoutMonstres(carte);
 		
 		// Creer le joueur
-		Joueur joueur = new Joueur("Armya", 10, 10, 10);
+		this.joueur = new Joueur("Armya", 10, 10, 10);
 		// Creation du joueur interactive
 		// TODO:skeggib Mettre la creation interractive dans InterfaceTerm
 //		System.out.print("Nom du joueur : ");
 //		joueur.setNom(sc.nextLine());
-		joueur.initialiserPos(carte.getCase(3, 3));
+		this.joueur.initialiserPos(carte.getCase(3, 3));
 		
 		// Remplir la carte avec des monstres
 		
@@ -63,10 +63,10 @@ public class Moteur {
 		boolean run = true;
 		while (run) {
 			
-			joueur.recupererPA();
+			this.joueur.recupererPA();
 			
 			// Boucle actions du joueur
-			while (joueur.deplacementPossible() && run) {
+			while (this.joueur.deplacementPossible() && run) {
 				// Affichage
 				inter.afficher();
 				// Action
@@ -78,6 +78,8 @@ public class Moteur {
 				// Affichage
 				// Action
 		}
+		
+		sc.close();
 		
 	}
 	

@@ -1,8 +1,73 @@
 package mmorpg.personnage;
 
+import java.util.ArrayList;
+
+import mmorpg.items.Arme;
+import mmorpg.items.Casque;
+import mmorpg.items.Gant;
+import mmorpg.items.Objet;
+
 public class Test {
 
 	public static void main(String[] args) {
+
+		/*
+		 * TEST CONTAIN()
+		 */
+		Inventaire i = new Inventaire();
+		Arme a = new Arme("a", 10, 10);
+		i.ajouterObjet(a);
+		Arme a2 = new Arme("a", 10, 10);
+		System.out.println(i.contient(a));
+		
+		
+		
+		/*
+		 * TEST AJOUT COFFRE DANS INVENTAIRE
+		 */
+		// Inventaire i = new Inventaire();
+		//
+		// Coffre c = new Coffre();
+		// c.ajouterObjet(new Arme());
+		// ListeUnique<Objet> liste = new ListeUnique<Objet>();
+		// liste.add(new Casque());
+		// liste.add(new Gant());
+		// c.ajouterObjets(liste);
+		//
+		// System.out.println("INVENTAIRE VIDE (taille de l'inventaire) : " +
+		// i.getTaille());
+		// i.ajouterObjet(new Arme());
+		// System.out.println("AJOUT D'UNE ARME (taille de l'inventaire) : " +
+		// i.getTaille());
+		// i.ajouterContenuCoffre(c);
+		// System.out.println("AJOUT D'UN COFFRE DE TAILLE " + c.getTaille());
+		// System.out.println("NOUVELLE TAILLE DE L'INVENTAIRE : " +
+		// i.getTaille());
+
+		/*
+		 * TEST COFFRE
+		 */
+		// Coffre c = new Coffre();
+		// System.out.println("COFFRE VIDE (taille du coffre) : " +
+		// c.getTaille());
+		// c.ajouterObjet(new Arme());
+		// System.out.println("AJOUT D'UNE ARME (taille du coffre) : " +
+		// c.getTaille());
+		// ListeUnique<Objet> liste = new ListeUnique<Objet>();
+		// liste.add(new Casque());
+		// liste.add(new Gant());
+		// System.out.println("AJOUT D'UNE LISTE DE TAILLE " + liste.size());
+		// c.ajouterObjets(liste);
+		// System.out.println("NOUVELLE TAILLE DU COFFRE : " + c.getTaille());
+
+		/*
+		 * TEST STAT RANDOM MONSTRE
+		 */
+		// Monstre m = new Monstre();
+		// System.out.println("FORCE : " + m.getCaractPrinc().getForce());
+		// System.out.println("ADRESSE : " + m.getCaractPrinc().getAdresse());
+		// System.out.println("RESISTANCE : " +
+		// m.getCaractPrinc().getResistance());
 
 		/*
 		 * TEST EFFET
@@ -50,11 +115,15 @@ public class Test {
 		// c2.ajouter(c1);
 		// System.out.println(c2.getForce());
 
-		// Formule Esquive
+		/*
+		 * FORMULE ESQUIVE
+		 */
 		// float x = 10;
 		// System.out.println(5.00 + (30 * (x/(x+50))));
-		//
-		// Formule experience
+
+		/*
+		 * FORMULE EXPERIENCE
+		 */
 		// (x²)/10 + 20
 		//
 
@@ -123,6 +192,9 @@ public class Test {
 		// System.out.println("Apres (Force): " +
 		// j.getCaractTotal().getForce());
 
+		/*
+		 * TEST EQUIPEMENT UNIQUE
+		 */
 		// for (int i = 0; i < 10; i++) {
 		//
 		// System.out

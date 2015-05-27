@@ -34,7 +34,7 @@ public class PotionDeSoin extends Potion {
 	}
 
 	public void affecterBonus(EntiteVivante utilisateur, EntiteVivante cible) {
-		utilisateur.setPointAction(utilisateur.getPointAction() - utilisateur.PA_UTILISE_POTION);
+		utilisateur.setPointAction(utilisateur.getPointAction() - EntiteVivante.PA_UTILISE_POTION);
 		cible.ajouterVie(this.getBonusVie());
 		utilisateur.retirerObjet(this);
 	}
