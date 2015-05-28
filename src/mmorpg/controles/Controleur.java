@@ -379,8 +379,12 @@ public class Controleur { // TODO:skeggib UML
 		else if (destination.contientEntite()) {
 			EntiteVivante ennemi = (EntiteVivante)destination.getContenu();
 			int degats = this.joueur.attaquer(ennemi);
-			if (this.log != null)
-			this.ecrireLog(this.joueur.getNom() + " attaque " + ennemi.getNom() + " (-" + degats + ")"); // TODO: Si l'attaque n'a pas échouée
+			if (this.log != null) {
+				if (degats > 0)
+					this.ecrireLog(this.joueur.getNom() + " attaque " + ennemi.getNom() + " (-" + degats + ")");
+				else if (degats == -1)
+					this.ecrireLog(ennemi.getNom() + " esquive !");
+			}
 		}
 		
 		// Si la dest contient un objet, on le ramasse puis on se deplace
