@@ -100,7 +100,7 @@ public class InterfaceTerm {
 			this.fenCarte.setPosX(0);
 			this.fenCarte.setPosY(0);
 			
-			this.fenLog = new FenetreLog(this.fenCarte.getLargeur() / 3 * 2, this.fenCarte.getHauteur());
+			this.fenLog = new FenetreLog(this.fenCarte.getLargeur(), this.fenCarte.getHauteur());
 			this.fenLog.setPosX(this.fenCarte.getLargeur());
 			this.fenLog.setPosY(0);
 			
@@ -117,24 +117,24 @@ public class InterfaceTerm {
 			
 			this.fenCarte = new FenetreCarte(this.taille);
 			
-			this.fenLog = new FenetreLog(this.fenCarte.getLargeur() * 2, this.fenCarte.getHauteur());
-			this.fenLog.setPosX(0);
+			this.fenCarte.setPosX(0);
+			this.fenCarte.setPosY(0);
+			
+			this.fenLog = new FenetreLog(this.fenCarte.getLargeur() * 3, this.fenCarte.getHauteur());
+			this.fenLog.setPosX(this.fenCarte.getLargeur());
 			this.fenLog.setPosY(0);
 			
-			this.fenCarte.setPosX(0);
-			this.fenCarte.setPosY(this.fenLog.getHauteur());
-			
 			this.fenInfos = new FenetreInfosJoueur(this.fenLog.getLargeur(), this.fenCarte.getHauteur() + this.fenLog.getHauteur());
-			this.fenInfos.setPosX(this.fenLog.getLargeur());
+			this.fenInfos.setPosX(this.fenCarte.getLargeur() + this.fenLog.getLargeur());
 			this.fenInfos.setPosY(0);
-			
-			this.largeur = this.fenLog.getLargeur() + this.fenInfos.getLargeur();
-			this.hauteur = this.fenCarte.getHauteur() + this.fenLog.getHauteur();
+
+			this.largeur = this.fenCarte.getLargeur() + this.fenLog.getLargeur() + this.fenInfos.getLargeur();
+			this.hauteur = this.fenCarte.getHauteur();
 			
 			break;
 		}
 		
-		this.fenInventaire = new FenetreInventaire(this.largeur, this.hauteur);
+		this.fenInventaire = new FenetreInventaire(this.fenCarte.getLargeur() + this.fenLog.getLargeur(), this.hauteur);
 		this.fenInventaire.setPosX(0);
 		this.fenInventaire.setPosY(0);
 	}
@@ -160,6 +160,7 @@ public class InterfaceTerm {
 			
 		case InterfaceTerm.MODE_INVENTAIRE:
 			this.matrice.dessinerFenetre(this.fenInventaire);
+			this.matrice.dessinerFenetre(this.fenInfos);
 			break;
 			
 		case InterfaceTerm.MODE_PERSONNAGE:
