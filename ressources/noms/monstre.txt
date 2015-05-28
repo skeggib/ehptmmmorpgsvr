@@ -1,3 +1,6 @@
 Loup Garou
-Geant des montagnes
-Araignee des profondeurs
+Loup
+Gnome
+Elfe
+Canard
+Rat
