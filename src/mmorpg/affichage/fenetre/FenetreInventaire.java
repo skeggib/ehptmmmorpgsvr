@@ -6,7 +6,7 @@ import mmorpg.personnage.Equipement;
 import mmorpg.personnage.Inventaire;
 import mmorpg.personnage.Joueur;
 
-public class FenetreInventaire extends Fenetre {
+public class FenetreInventaire extends Fenetre { // TODO:skeggib Afficher le nom du type des objets
 	
 	private Joueur joueur;
 	

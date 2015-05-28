@@ -260,11 +260,21 @@ public class Controleur { // TODO:skeggib UML
 		}
 		
 		else if (action == Controleur.EQUIPER) {
-			// TODO:skeggib A faire
+			System.out.print("Entrez le numero de l'objet a equiper : ");
+			int numObj = this.saisieInt() - 1;
+			// -1 car la numerotation des objets dans l'affichage commence a 1
+			Objet objAEquiper = this.joueur.getInventaire().getObjet(numObj);
+			if (this.joueur.equiperObjet(objAEquiper))
+				System.out.println("Vous avez equipe : " + objAEquiper.getNom());
 		}
 		
 		else if (action == Controleur.DESEQUIPER) {
-			// TODO:skeggib A faire
+			System.out.println("Entrez le numero de l'objet a desequiper : ");
+			int numObj = this.saisieInt() - 1;
+			// -1 car la numerotation des objets dans l'affichage commence a 1
+			Objet objADesequiper = this.joueur.getEquipement().getObjet(numObj);
+			if (this.joueur.desequiperObjet(objADesequiper))
+				System.out.println("Vous avez desequipe : " + objADesequiper.getNom());
 		}
 		
 		else if (action == Controleur.RETOUR) {
@@ -391,7 +401,12 @@ public class Controleur { // TODO:skeggib UML
 	}
 	
 	public int saisieInt() {
-		return sc.nextInt();
+		int val = sc.nextInt();
+		
+		// Cider le buffer du scanner pour eviter une double saisie
+		sc.nextLine();
+		
+		return val;
 	}
 	
 	
