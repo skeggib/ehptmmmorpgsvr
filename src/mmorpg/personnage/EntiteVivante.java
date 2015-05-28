@@ -250,8 +250,8 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 	 * Calcule l'experience gagne lors d'une victoire
 	 * 
 	 * @param Cible
-	 *            Cible contre laquel l'attaquant a gagné
-	 * @return Experience gagné lors de la victoire
+	 *            Cible contre laquel l'attaquant a gagne
+	 * @return Experience gagnee lors de la victoire
 	 */
 	private int calculerExpVictoire(EntiteVivante cible) {
 		float ratio = cible.getExperience() / this.getExperience();
