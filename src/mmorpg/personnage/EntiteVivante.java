@@ -412,7 +412,7 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 	/**
 	 * Controlle les effets de l'entite Si l'effet prend fin, il sera supprime
 	 */
-	private void controlerEffet() { // TODO:skeggib Ajouter UML?
+	private void controlerEffet() {
 		for (int i = 0; i < this.effet.size(); i++) {
 			if (this.effet.get(i).decrementerTour()) {
 				this.retirerEffet(this.effet.get(i));
@@ -425,7 +425,7 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 	 * 
 	 * @return true s'il en reste assez pour effectuer une action, false sinon
 	 */
-	public boolean actionDisponible() { // TODO:skeggib Ajouter UML
+	public boolean actionDisponible() {
 		return (this.getPointAction() != 0);
 	}
 
@@ -436,7 +436,7 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 	/**
 	 * Effectue les actions necessaires a chaque debut de tour
 	 */
-	public void debutTour() { // TODO:skeggib Ajouter UML
+	public void debutTour() {
 		this.controlerEffet();
 		this.ajouterVie(1);
 		this.recupererPA();
@@ -447,7 +447,7 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 	 * 
 	 * @return Caracteristique total
 	 */
-	public Caracteristique getCaractTotal() { // TODO:skeggib Ajouter UML
+	public Caracteristique getCaractTotal() {
 		Caracteristique c = new Caracteristique();
 
 		c.ajouter(this.caractPrinc);
@@ -457,13 +457,13 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 		return c;
 	}
 
-	public abstract void recupererPA(); // TODO:skeggib Ajouter UML
+	public abstract void recupererPA();
 
 	/**
 	 * Met a jour les caracteristiques apportees par l'equipement (reinitialise
 	 * les caracteristiques a 0 pour tout recalculer)
 	 */
-	private void majCaractEqui() { // TODO:skeggib Ajouter UML
+	private void majCaractEqui() {
 		this.caractEquip.reinitialiserCaract();
 
 		for (int i = 0; i < this.equipement.getTaille(); i++) {
@@ -475,7 +475,7 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 	 * Met a jour les caracteristiques apportees par les effets (reinitialise
 	 * les caracteristiques a 0 pour tout recalculer)
 	 */
-	private void majCaractEffet() { // TODO:skeggib Ajouter UML
+	private void majCaractEffet() {
 		this.caractEffet.reinitialiserCaract();
 
 		for (int i = 0; i < this.effet.size(); i++) {

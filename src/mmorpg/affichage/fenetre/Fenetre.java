@@ -53,7 +53,7 @@ public abstract class Fenetre {
 	/**
 	 * @return Une matrice contenant la representation de la fenetre
 	 */
-	public Matrice getMatriceFen() { // TODO:skeggib UML
+	public Matrice getMatriceFen() {
 		// On cree une matrice plus grande de 2 pixels (en h et en w)
 		Matrice rtrn = new Matrice(this.largeur, this.hauteur);
 		

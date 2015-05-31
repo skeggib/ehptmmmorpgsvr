@@ -11,7 +11,7 @@ import mmorpg.jeu.Log;
 import mmorpg.personnage.EntiteVivante;
 import mmorpg.personnage.Joueur;
 
-public class Controleur { // TODO:skeggib UML
+public class Controleur {
 	
 	
 	
