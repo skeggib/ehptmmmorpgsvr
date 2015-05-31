@@ -4,7 +4,6 @@ import java.util.Random;
 
 import mmorpg.carte.Case;
 import mmorpg.carte.ContenuCase;
-import mmorpg.items.Arme;
 import mmorpg.items.Objet;
 
 //TODO:armya Implementer l'exprerience (expPourNiveauSuivant() : int)
@@ -116,20 +115,26 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 	 */
 
 	public void augmenterNiveauForce() {
-		if (this.retirerXP(this.expPourNiveauSuivant(this.getCaractPrinc().getForce()))) {
-			this.getCaractPrinc().setForce(this.getCaractPrinc().getForce() + 1);
+		if (this.retirerXP(this.expPourNiveauSuivant(this.getCaractPrinc()
+				.getForce()))) {
+			this.getCaractPrinc()
+					.setForce(this.getCaractPrinc().getForce() + 1);
 		}
 	}
 
 	public void augmenterNiveauAdresse() {
-		if (this.retirerXP(this.expPourNiveauSuivant(this.getCaractPrinc().getAdresse()))) {
-			this.getCaractPrinc().setAdresse(this.getCaractPrinc().getAdresse() + 1);
+		if (this.retirerXP(this.expPourNiveauSuivant(this.getCaractPrinc()
+				.getAdresse()))) {
+			this.getCaractPrinc().setAdresse(
+					this.getCaractPrinc().getAdresse() + 1);
 		}
 	}
 
 	public void augmenterNiveauResistance() {
-		if (this.retirerXP(this.expPourNiveauSuivant(this.getCaractPrinc().getResistance()))) {
-			this.getCaractPrinc().setResistance(this.getCaractPrinc().getResistance() + 1);
+		if (this.retirerXP(this.expPourNiveauSuivant(this.getCaractPrinc()
+				.getResistance()))) {
+			this.getCaractPrinc().setResistance(
+					this.getCaractPrinc().getResistance() + 1);
 		}
 	}
 
@@ -145,16 +150,28 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 		if (!this.estVivant() && this.getEmplacement() != null) {
 			this.getEmplacement().supprContenu();
 
-			ListeUnique<Objet> liste = new ListeUnique<Objet>();
-			for (int i = 0; i < this.getInventaire().getTaille(); i++) {
-				liste.add(this.getInventaire().getObjet(i));
+			// On desequipe tout les objets
+			for (int i = 0; i < this.getEquipement().getTaille(); i++) {
+				this.desequiperObjet(this.getEquipement().getObjet(i));
 			}
 
-			// Coffre coffre = new Coffre(liste);
+			// Si on possede un seul objet on le pose, sinon on cree un coffre
+			if (this.getInventaire().getTaille() == 0) {
 
-			Objet o = new Arme();
+			} else if (this.getInventaire().getTaille() == 1) {
+				this.getEmplacement().ajoutContenu(
+						this.getInventaire().getObjet(0));
+			} else {
 
-			this.getEmplacement().ajoutContenu(o);
+				ListeUnique<Objet> liste = new ListeUnique<Objet>();
+				for (int i = 0; i < this.getInventaire().getTaille(); i++) {
+					liste.add(this.getInventaire().getObjet(i));
+				}
+
+				Coffre coffre = new Coffre(liste);
+
+				this.getEmplacement().ajoutContenu(coffre);
+			}
 
 			this.setEmplacement(null);
 
@@ -255,12 +272,16 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 	 */
 	private int calculerExpVictoire(EntiteVivante cible) {
 		float ratio = cible.getExperience() / this.getExperience();
-		
+
 		if (ratio <= 1) {
 			return EntiteVivante.XP_VICTOIRE;
 		}
 
 		return (int) (ratio * EntiteVivante.XP_VICTOIRE);
+	}
+
+	public void rammasserCoffre(Coffre c) {
+		this.inventaire.ajouterObjets(c.getContenu());
 	}
 
 	/**

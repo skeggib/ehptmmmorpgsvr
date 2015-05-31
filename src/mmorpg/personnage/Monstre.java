@@ -5,6 +5,12 @@ import java.util.Random;
 import mmorpg.carte.Carte;
 import mmorpg.carte.ContenuCase;
 import mmorpg.fichiers.LectureFichier;
+import mmorpg.items.Arme;
+import mmorpg.items.Casque;
+import mmorpg.items.Gant;
+import mmorpg.items.Objet;
+import mmorpg.items.Pantalon;
+import mmorpg.items.Torse;
 
 /**
  * Cette classe permet la gestion d'un monstre controlle par l'IA
@@ -31,22 +37,26 @@ public class Monstre extends EntiteVivante {
 	public Monstre() {
 		super();
 		this.statRandom();
+		this.remplirInvetaire();
 		this.setNom(this.nomRandom());
 	}
 
 	public Monstre(String nom) {
 		super();
 		this.statRandom();
+		this.remplirInvetaire();
 		this.setNom(nom);
 	}
 
 	public Monstre(String nom, int force, int adresse, int resistance) {
 		super(force, adresse, resistance);
+		this.remplirInvetaire();
 		this.setNom(nom);
 	}
 
 	public Monstre(String nom, int force, int adresse, int resistance, int vie) {
 		super(force, adresse, resistance, vie);
+		this.remplirInvetaire();
 		this.setNom(nom);
 	}
 
@@ -60,7 +70,7 @@ public class Monstre extends EntiteVivante {
 		int niveau = 0;
 
 		int resultRand = rand.nextInt(1000);
-		
+
 		if (resultRand < 300) {
 			niveau = 0;
 		} else if (resultRand >= 300 && resultRand < 600) {
@@ -106,6 +116,43 @@ public class Monstre extends EntiteVivante {
 			break;
 		default:
 			break;
+		}
+
+	}
+
+	public void remplirInvetaire(){
+		Random rand = new Random();
+		
+		int nombreObjet = rand.nextInt(2);
+		switch(nombreObjet){
+		case 0:
+			this.getInventaire().ajouterObjet(this.creeRandomObjet());
+			break;
+		case 1:
+			this.getInventaire().ajouterObjet(this.creeRandomObjet());
+			this.getInventaire().ajouterObjet(this.creeRandomObjet());
+			break;
+		}
+	}
+
+	private Objet creeRandomObjet() {
+		Random rand = new Random();
+
+		int choix = rand.nextInt(5);
+
+		switch (choix) {
+		case 0:
+			return new Casque();
+		case 1:
+			return new Torse();
+		case 2:
+			return new Gant();
+		case 3:
+			return new Pantalon();
+		case 4:
+			return new Arme();
+		default:
+			return null;
 		}
 
 	}
