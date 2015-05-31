@@ -5,4 +5,11 @@ Epee cassee
 Masse
 Lance pierre
 Guitare
-Piano a queue
+Epee solide
+Epee en fer
+Masse lourde
+Hache en bois
+Hache solide
+Hache en acier
+Pelle
+Rateau

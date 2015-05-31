@@ -1,2 +1,4 @@
 Marchand
 Voleur
+Fee
+Elfe

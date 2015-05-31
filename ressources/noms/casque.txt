@@ -3,3 +3,11 @@ Couronne
 Bonnet
 Bonnet d'hiver
 Haume
+Casque en plaque
+Casquette
+Casque en maille
+Casque en tissu
+Casque en cuir
+Haume en cuir
+Haume en plaque
+Haume en maille
