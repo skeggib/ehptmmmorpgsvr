@@ -13,6 +13,7 @@ import mmorpg.items.Casque;
 import mmorpg.items.Pantalon;
 import mmorpg.items.Potion;
 import mmorpg.items.PotionDeDegat;
+import mmorpg.personnage.Coffre;
 import mmorpg.personnage.Joueur;
 import mmorpg.personnage.Monstre;
 

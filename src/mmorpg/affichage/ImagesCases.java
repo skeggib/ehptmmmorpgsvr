@@ -62,6 +62,9 @@ public abstract class ImagesCases {
 		case ContenuCase.VIDE:
 			nomContenu = "vide";
 			break;
+		case ContenuCase.COFFRE:
+			nomContenu = "coffre";
+			break;
 		}
 		
 		String[] lines = LectureFichier.lireT("ressources/images/" + nomContenu + "/" + InterfaceTerm.TAILLES[taille]);
@@ -70,10 +73,11 @@ public abstract class ImagesCases {
 			str += lines[i] + "\n";
 		}
 		
-		String[] couleur = LectureFichier.lireT("ressources/images/" + nomContenu + "/color");
+		String[] couleur = LectureFichier.lireT("ressources/images/" + nomContenu + "/color"); // TODO:skggib Try/Catch pour la lecture de fichiers
 		
-		rtrn.chargerString(str);
-		rtrn.setCouleur(couleur[0]);
+		if (rtrn.chargerString(str)) {
+			rtrn.setCouleur(couleur[0]);
+		}
 		
 		ImagesCases.tabImg[taille][num] = rtrn;
 		

@@ -38,6 +38,6 @@ public class Coffre extends ContenantObjet implements ContenuCase {
 	}
 
 	public int getNumero() {
-		return ContenuCase.OBJET; //TODO:skeggib a changer quand tu auras fait ce qu'il faut pour le coffre
+		return ContenuCase.COFFRE;
 	}
 }

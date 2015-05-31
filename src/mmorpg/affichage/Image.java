@@ -37,10 +37,17 @@ public class Image {
 			return false;
 		
 		// Vérifier que chaque ligne a la même longueur
-		for (int i = 1; i < parts.length; i++) {
+		boolean longEgales = true;
+		int i = 1;
+		while (i < parts.length && longEgales) {
+			
 			if (parts[i].length() != parts[i-1].length())
-				return false;
+				longEgales = false;
+			
+			i++;
 		}
+		if (!longEgales)
+			return false;
 		
 		// Enregistrer la hauteur et la largeur
 		this.hauteur = parts.length;
@@ -50,7 +57,7 @@ public class Image {
 		this.pxls = new Pixel[hauteur][largeur];
 		
 		// Créer et charger les pixels
-		for (int i = 0; i < parts.length; i++) {
+		for (i = 0; i < parts.length; i++) {
 			for (int j = 0; j < parts[i].length(); j++) {
 				this.pxls[i][j] = new Pixel();
 				this.pxls[i][j].setCar(parts[i].charAt(j));
@@ -81,7 +88,7 @@ public class Image {
 		
 		for (int i = 0; i < this.pxls.length; i++) {
 			for (int j = 0; j < this.pxls[i].length; j++) {
-				this.pxls[i][j].setCouleur(couleur);
+				this.pxls[i][j].setCouleur(couleur); // TODO:skeggib Verifier qu'il y a des pixels
 			}
 		}
 	}
