@@ -186,12 +186,15 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 	 * @return true si le deplacement est reussi, false sinon
 	 */
 	public boolean seDeplacer(Case destination) {
-		if (destination.ajoutContenu(this)) {
-			this.emplacement.supprContenu();
-			this.setEmplacement(destination);
+		if (this.deplacementPossible()) {
+			if (destination.ajoutContenu(this)) {
+				this.emplacement.supprContenu();
+				this.setEmplacement(destination);
 
-			this.setPointAction(this.getPointAction() - EntiteVivante.PA_DEPLACEMENT);
-			return (this.getEmplacement() == destination);
+				this.setPointAction(this.getPointAction()
+						- EntiteVivante.PA_DEPLACEMENT);
+				return (this.getEmplacement() == destination);
+			}
 		}
 		return false;
 	}
@@ -223,48 +226,52 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 	 *         esquive
 	 */
 	public int attaquer(EntiteVivante cible) {
+		if (this.attaquePossible()) {
+			// Caracteristique de la cible et de l'attaquant
+			Caracteristique cCible = cible.getCaractTotal();
+			Caracteristique cThis = this.getCaractTotal();
 
-		// Caracteristique de la cible et de l'attaquant
-		Caracteristique cCible = cible.getCaractTotal();
-		Caracteristique cThis = this.getCaractTotal();
+			int esquiveCible = Capacite.getRandomEsquive(cCible.getAdresse(),
+					cible.getEncombrement());
 
-		int esquiveCible = Capacite.getRandomEsquive(cCible.getAdresse(),
-				cible.getEncombrement());
+			if ((new Random().nextInt(100) + 1) > esquiveCible) {
+				int defenseCible = Capacite.getRandomDefense(cCible
+						.getResistance());
 
-		if ((new Random().nextInt(100) + 1) > esquiveCible) {
-			int defenseCible = Capacite
-					.getRandomDefense(cCible.getResistance());
+				int degatThis = Capacite.getRandomDegat(cThis.getForce(),
+						cCible.getImpact());
 
-			int degatThis = Capacite.getRandomDegat(cThis.getForce(),
-					cCible.getImpact());
+				int attaqueThis = Capacite.getRandomAttaque(
+						cCible.getAdresse(), cCible.getManiabilite());
 
-			int attaqueThis = Capacite.getRandomAttaque(cCible.getAdresse(),
-					cCible.getManiabilite());
+				int degatSubit = degatThis
+						* ((100 - defenseCible) + attaqueThis) / 100;
 
-			int degatSubit = degatThis * ((100 - defenseCible) + attaqueThis)
-					/ 100;
+				int vieEnMoins = (degatSubit * 40 / 100);
 
-			int vieEnMoins = (degatSubit * 40 / 100);
+				this.ajouterXP(1);
 
-			this.ajouterXP(1);
+				if (vieEnMoins > 0) {
+					cible.retirerVie(vieEnMoins);
 
-			if (vieEnMoins > 0) {
-				cible.retirerVie(vieEnMoins);
+					if (!cible.estVivant()) {
+						this.ajouterXP(this.calculerExpVictoire(cible));
+					}
 
-				if (!cible.estVivant()) {
-					this.ajouterXP(this.calculerExpVictoire(cible));
+					this.setPointAction(this.getPointAction()
+							- EntiteVivante.PA_ATTAQUE);
+					return vieEnMoins;
 				}
+			} else {
 
-				this.setPointAction(this.getPointAction() - EntiteVivante.PA_ATTAQUE);
-				return vieEnMoins;
+				this.setPointAction(this.getPointAction()
+						- EntiteVivante.PA_ATTAQUE);
+				return -1;
 			}
-		} else {
 
-			this.setPointAction(this.getPointAction() - EntiteVivante.PA_ATTAQUE);
-			return -1;
+			this.setPointAction(this.getPointAction()
+					- EntiteVivante.PA_ATTAQUE);
 		}
-
-		this.setPointAction(this.getPointAction() - EntiteVivante.PA_ATTAQUE);
 		return 0;
 	}
 
@@ -458,6 +465,10 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 
 	public boolean deplacementPossible() {
 		return (this.getPointAction() >= EntiteVivante.PA_DEPLACEMENT);
+	}
+
+	public boolean attaquePossible() {
+		return (this.getPointAction() >= EntiteVivante.PA_ATTAQUE);
 	}
 
 	/**
