@@ -2,6 +2,7 @@ package mmorpg.personnage;
 
 import java.util.Random;
 
+import mmorpg.carte.Carte;
 import mmorpg.carte.ContenuCase;
 import mmorpg.fichiers.LectureFichier;
 
@@ -120,6 +121,20 @@ public class Monstre extends EntiteVivante {
 
 	public void recupererPA() {
 		this.setPointAction(this.getMAX_PA());
+	}
+	
+	public void realiserAction(Carte carte) {
+		
+		// Verifier s'il y a un joueur a coté
+			// S'il y en a un, l'attaquer
+		
+			
+			// S'il y en a pas
+				// Choisir une direction au hasart
+				
+				
+				// Se deplacer vers cette direction
+		
 	}
 
 	/*
