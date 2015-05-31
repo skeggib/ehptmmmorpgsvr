@@ -76,17 +76,22 @@ public class Moteur {
 			// Boucle actions du joueur
 			while (this.joueur.deplacementPossible() && run) {
 				
-				// Affichage
 				try {
+					
+					// Affichage
 					inter.afficher();
+					
+					// Action
+					if (controleur.saisieAction() == Controleur.QUITTER)
+						run = false;
+					
 				}
 				catch (CantDrawInterfaceException e) {
-					System.out.println(e.getMessage());
-				}
-				
-				// Action
-				if (controleur.saisieAction() == Controleur.QUITTER)
+
+					e.printStackTrace();
+					
 					run = false;
+				}
 			}
 			
 			// Boucle action des monstres (si run)
