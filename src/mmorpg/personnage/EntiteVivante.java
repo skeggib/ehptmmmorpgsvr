@@ -262,6 +262,10 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 
 		return (int) (ratio * EntiteVivante.XP_VICTOIRE);
 	}
+	
+	public void rammasserCoffre(Coffre c){
+		this.inventaire.ajouterObjets(c.getContenu());
+	}
 
 	/**
 	 * Permet de ramasser un objet
