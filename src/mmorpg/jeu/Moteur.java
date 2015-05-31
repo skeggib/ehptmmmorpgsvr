@@ -1,7 +1,6 @@
 package mmorpg.jeu;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -10,82 +9,83 @@ import mmorpg.carte.Carte;
 import mmorpg.carte.Position;
 import mmorpg.controles.Controleur;
 import mmorpg.exceptions.affichage.interfaceTerm.CantDrawInterfaceException;
-import mmorpg.items.Arme;
-import mmorpg.items.Casque;
-import mmorpg.items.Pantalon;
-import mmorpg.items.Potion;
-import mmorpg.items.PotionDeDegat;
-import mmorpg.personnage.Coffre;
 import mmorpg.personnage.Joueur;
 import mmorpg.personnage.Monstre;
 
-public class Moteur { // TODO:skeggib Bug de la carte vide
+public class Moteur {
 	
+	private Log log;
+	private Carte carte;
 	private Joueur joueur;
-
+	private InterfaceTerm inter;
+	private Controleur control;
+	private ArrayList<Monstre> listeMonstres;
+	
+	
+	
+	public Moteur() {
+		this.log = new Log();
+		this.carte = new Carte();
+		this.joueur = new Joueur();
+		this.inter = new InterfaceTerm();
+		this.control = new Controleur();	
+	}
+	
 	public void jouer() {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		Log log = new Log();
+		/* Chargement de la carte */
 		
-		// TODO:skeggib A faire
+		this.carte.chargerFichier("ressources/carte/test");
+		this.listeMonstres = Moteur.ajoutMonstres(this.carte);
 		
-		// Affichage du menu
+		/* Creation du joueur */
 		
-		// Creer la carte
-		Carte carte = new Carte();
-		carte.chargerFichier("ressources/carte/test");
-		ArrayList<Monstre> listeMonstres = Moteur.ajoutMonstres(carte);
-		
-		// Creer le joueur
 		this.joueur = new Joueur("Armya", 10, 10, 10);
-		// Creation du joueur interactive
-		// TODO:skeggib Mettre la creation interractive dans InterfaceTerm
-//		System.out.print("Nom du joueur : ");
-//		joueur.setNom(sc.nextLine());
-		this.joueur.initialiserPos(carte.getCase(3, 3));
+		// TODO:skeggib Creation interractive du joueur
+		this.joueur.initialiserPos(this.carte.getCase(3, 3));
 		
-		// Remplir la carte avec des monstres
+		/* Demander la taille de l'interface */
 		
-		// Demander la taille de l'interface
-		System.out.println("Taille de l'interface : ");
-		for (int i = 0; i < InterfaceTerm.TAILLES.length; i++) {
-			System.out.println((i+1) + ". " + InterfaceTerm.TAILLES[i]);
-		}
-		int taille = sc.nextInt();
-		taille--;
-		// Creer l'interface
-		InterfaceTerm inter = new InterfaceTerm(taille);
-		inter.setLog(log);
-		inter.setCarte(carte);
-		inter.setJoueur(joueur);
+		// TODO:skeggib Decommenter et enlever int taille = 0;
+		int taille = 0;
+//		System.out.println("Taille de l'interface : ");
+//		for (int i = 0; i < InterfaceTerm.TAILLES.length; i++) {
+//			System.out.println((i+1) + ". " + InterfaceTerm.TAILLES[i]);
+//		}
+//		int taille = sc.nextInt();
+//		taille--;
 		
-		// Creer le controleur
-		Controleur controleur = new Controleur();
-		controleur.setCarte(carte);
-		controleur.setJoueur(joueur);
-		controleur.setLog(log);
-		controleur.setInterface(inter);
+		/* Creation de l'interface */
 		
-		// Boucle principale
+		this.inter = new InterfaceTerm(taille);
+		this.inter.setLog(log);
+		this.inter.setCarte(carte);
+		this.inter.setJoueur(joueur);
+		
+		/* Initialisation le controleur */
+		
+		this.control.setCarte(this.carte);
+		this.control.setJoueur(this.joueur);
+		this.control.setLog(this.log);
+		this.control.setInterface(this.inter);
+		
+		/* Boucle principale */
+
 		boolean run = true;
 		while (run) {
 			
 			this.joueur.recupererPA();
-			
 			// Boucle actions du joueur
 			while (this.joueur.deplacementPossible() && run) {
 				
 				try {
-					
 					// Affichage
 					inter.afficher();
-					
 					// Action
-					if (controleur.saisieAction() == Controleur.QUITTER)
+					if (this.control.saisieAction() == Controleur.QUITTER)
 						run = false;
-					
 				}
 				catch (CantDrawInterfaceException e) {
 					e.printStackTrace();
@@ -98,9 +98,9 @@ public class Moteur { // TODO:skeggib Bug de la carte vide
 //			boolean tourMonstres = true;
 //			while (tourMonstres && run) {
 //			
-//				for (int i = 0; i < listeMonstres.size(); i++) {
+//				for (int i = 0; i < this.listeMonstres.size(); i++) {
 //					// tourMonstres sera True si au moins un monstre aura realise une action
-//					listeMonstres.get(i).debutTour();
+//					this.listeMonstres.get(i).debutTour();
 //				}
 //			
 //			
@@ -108,16 +108,16 @@ public class Moteur { // TODO:skeggib Bug de la carte vide
 //				
 //				// Chaque monstre doit realiser une action
 //				tourMonstres = false;
-//				System.out.println("Nb monstres : " + listeMonstres.size());
-//				for (int i = 0; i < listeMonstres.size(); i++) {
+//				System.out.println("Nb monstres : " + this.listeMonstres.size());
+//				for (int i = 0; i < this.listeMonstres.size(); i++) {
 //					// tourMonstres sera True si au moins un monstre aura realise une action
-//					boolean resultatAction = listeMonstres.get(i).realiserAction(carte);
+//					boolean resultatAction = this.listeMonstres.get(i).realiserAction(carte);
 //					tourMonstres = tourMonstres || resultatAction;
 //				}
 //				
 //				// On affiche l'interface
 //				try {
-//					inter.afficher();
+//					this.inter.afficher();
 //				}
 //				catch (CantDrawInterfaceException e) {
 //					e.printStackTrace();
@@ -131,6 +131,11 @@ public class Moteur { // TODO:skeggib Bug de la carte vide
 		
 	}
 	
+	/**
+	 * Ajout des monstres aleatoirement sur une carte
+	 * @param carte
+	 * @return La liste de monstres qui ont ete crees
+	 */
 	private static ArrayList<Monstre> ajoutMonstres(Carte carte) { // TODO:skeggib UML (changer de classe -> Carte ?)
 		Random rand = new Random();
 		int randInt;
