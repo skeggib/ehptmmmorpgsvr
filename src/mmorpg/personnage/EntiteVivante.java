@@ -144,17 +144,30 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 	private void mourir() {
 		if (!this.estVivant() && this.getEmplacement() != null) {
 			this.getEmplacement().supprContenu();
-
-			ListeUnique<Objet> liste = new ListeUnique<Objet>();
-			for (int i = 0; i < this.getInventaire().getTaille(); i++) {
-				liste.add(this.getInventaire().getObjet(i));
+			
+			//On desequipe tout les objets
+			for(int i = 0; i < this.getEquipement().getTaille(); i++){
+				this.desequiperObjet(this.getEquipement().getObjet(i));
 			}
+			
+			System.out.println("TAILLE INVENTAIRE : " + this.getInventaire().getTaille());
+			
+			//Si on possede un seul objet on le pose, sinon on cree un coffre
+			if(this.getInventaire().getTaille() == 0) {
+				
+			} else if(this.getInventaire().getTaille() == 1){
+				this.getEmplacement().ajoutContenu(this.getInventaire().getObjet(0));
+			} else {
+				
+				ListeUnique<Objet> liste = new ListeUnique<Objet>();
+				for (int i = 0; i < this.getInventaire().getTaille(); i++) {
+					liste.add(this.getInventaire().getObjet(i));
+				}
+				
+				Coffre coffre = new Coffre(liste);
 
-			// Coffre coffre = new Coffre(liste);
-
-			Objet o = new Arme();
-
-			this.getEmplacement().ajoutContenu(o);
+				this.getEmplacement().ajoutContenu(coffre);
+			}
 
 			this.setEmplacement(null);
 
