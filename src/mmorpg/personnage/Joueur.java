@@ -20,25 +20,25 @@ public class Joueur extends EntiteVivante {
 
 	public Joueur() {
 		super();
-		this.setPointAction(BASE_PA);
+		this.setPointAction(Joueur.BASE_PA);
 	}
 
 	public Joueur(String nom) {
 		super();
 		this.setNom(nom);
-		this.setPointAction(BASE_PA);
+		this.setPointAction(Joueur.BASE_PA);
 	}
 
 	public Joueur(String nom, int force, int adresse, int resistance) {
 		super(force, adresse, resistance);
 		this.setNom(nom);
-		this.setPointAction(BASE_PA);
+		this.setPointAction(Joueur.BASE_PA);
 	}
 
 	public Joueur(String nom, int force, int adresse, int resistance, int vie) {
 		super(force, adresse, resistance, vie);
 		this.setNom(nom);
-		this.setPointAction(BASE_PA);
+		this.setPointAction(Joueur.BASE_PA);
 	}
 
 	/*

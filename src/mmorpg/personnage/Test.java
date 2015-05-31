@@ -2,6 +2,7 @@ package mmorpg.personnage;
 
 import java.util.ArrayList;
 
+import mmorpg.carte.Case;
 import mmorpg.items.Arme;
 import mmorpg.items.Casque;
 import mmorpg.items.Gant;
@@ -13,43 +14,68 @@ public class Test {
 	public static void main(String[] args) {
 
 		/*
-		 * TEST POTION EFFET
+		 * TEST DEPLACEMENT MONSTRE
 		 */
 		
-		PotionEffet pEf = new PotionEffet();
-		Joueur j = new Joueur();
-		System.out.println("\nPOTION : ");
-		System.out.println("Adresse : " + pEf.getAdresse());
-		System.out.println("Force : " + pEf.getForce());
-		System.out.println("Resistance : " + pEf.getResistance());
-		System.out.println("Maniabilite : " + pEf.getManiabilite());
-		System.out.println("Impact : " + pEf.getImpact());
-		System.out.println("Duree : " + pEf.getDuree());
-		j.rammasserObjet(pEf);
-		System.out.println("\nJOUEUR");
-		System.out.println("Adresse : " + j.getCaractTotal().getAdresse());
-		System.out.println("Force : " + j.getCaractTotal().getForce());
-		System.out.println("Resistance : " + j.getCaractTotal().getResistance());
-		System.out.println("Maniabilite : " + j.getCaractTotal().getManiabilite());
-		System.out.println("Impact : " + j.getCaractTotal().getImpact());
-		pEf.affecterBonus(j, j);
-		System.out.println("\nUTILISE LA POTION\nJOUEUR");
-		System.out.println("Adresse : " + j.getCaractTotal().getAdresse());
-		System.out.println("Force : " + j.getCaractTotal().getForce());
-		System.out.println("Resistance : " + j.getCaractTotal().getResistance());
-		System.out.println("Maniabilite : " + j.getCaractTotal().getManiabilite());
-		System.out.println("Impact : " + j.getCaractTotal().getImpact());
-		j.debutTour();
-		j.debutTour();
-		j.debutTour();
-		j.debutTour();
-		System.out.println("\nQUELQUE TOUR PLUS TARD\nJOUEUR");
-		System.out.println("Adresse : " + j.getCaractTotal().getAdresse());
-		System.out.println("Force : " + j.getCaractTotal().getForce());
-		System.out.println("Resistance : " + j.getCaractTotal().getResistance());
-		System.out.println("Maniabilite : " + j.getCaractTotal().getManiabilite());
-		System.out.println("Impact : " + j.getCaractTotal().getImpact());
+		//Deux cases : 
+		Case a = new Case();
+		Case b = new Case();
 		
+		//Notre monstre :
+		Monstre m = new Monstre();
+		
+		//Notre monstre commencera sur la case a :
+		m.initialiserPos(a);
+		System.out.println("LE MONSTRE A " + m.getPointAction() + " PA");
+		//Puis il se deplace :
+		m.seDeplacer(b);
+		System.out.println("LE MONSTRE SE DEPLACE\nLE MONSTRE A " + m.getPointAction() + " PA");
+		m.seDeplacer(a);
+		System.out.println("LE MONSTRE SE DEPLACE ENCORE UNE FOIS\nLE MONSTRE A " + m.getPointAction() + " PA");
+		
+		/*
+		 * TEST POTION EFFET
+		 */
+		// PotionEffet pEf = new PotionEffet();
+		// Joueur j = new Joueur();
+		// System.out.println("\nPOTION : ");
+		// System.out.println("Adresse : " + pEf.getAdresse());
+		// System.out.println("Force : " + pEf.getForce());
+		// System.out.println("Resistance : " + pEf.getResistance());
+		// System.out.println("Maniabilite : " + pEf.getManiabilite());
+		// System.out.println("Impact : " + pEf.getImpact());
+		// System.out.println("Duree : " + pEf.getDuree());
+		// j.rammasserObjet(pEf);
+		// System.out.println("\nJOUEUR");
+		// System.out.println("Adresse : " + j.getCaractTotal().getAdresse());
+		// System.out.println("Force : " + j.getCaractTotal().getForce());
+		// System.out.println("Resistance : " +
+		// j.getCaractTotal().getResistance());
+		// System.out.println("Maniabilite : " +
+		// j.getCaractTotal().getManiabilite());
+		// System.out.println("Impact : " + j.getCaractTotal().getImpact());
+		// pEf.affecterBonus(j, j);
+		// System.out.println("\nUTILISE LA POTION\nJOUEUR");
+		// System.out.println("Adresse : " + j.getCaractTotal().getAdresse());
+		// System.out.println("Force : " + j.getCaractTotal().getForce());
+		// System.out.println("Resistance : " +
+		// j.getCaractTotal().getResistance());
+		// System.out.println("Maniabilite : " +
+		// j.getCaractTotal().getManiabilite());
+		// System.out.println("Impact : " + j.getCaractTotal().getImpact());
+		// j.debutTour();
+		// j.debutTour();
+		// j.debutTour();
+		// j.debutTour();
+		// System.out.println("\nQUELQUE TOUR PLUS TARD\nJOUEUR");
+		// System.out.println("Adresse : " + j.getCaractTotal().getAdresse());
+		// System.out.println("Force : " + j.getCaractTotal().getForce());
+		// System.out.println("Resistance : " +
+		// j.getCaractTotal().getResistance());
+		// System.out.println("Maniabilite : " +
+		// j.getCaractTotal().getManiabilite());
+		// System.out.println("Impact : " + j.getCaractTotal().getImpact());
+		//
 		/*
 		 * TEST XP
 		 */

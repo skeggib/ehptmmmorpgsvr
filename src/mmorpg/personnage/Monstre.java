@@ -32,6 +32,7 @@ public class Monstre extends EntiteVivante { // TODO:armya Ne perd pas de PA
 
 	public Monstre() {
 		super();
+		this.setPointAction(Monstre.BASE_PA);
 		this.statRandom();
 		this.remplirInvetaire();
 		this.setNom(this.nomRandom());
@@ -39,6 +40,7 @@ public class Monstre extends EntiteVivante { // TODO:armya Ne perd pas de PA
 
 	public Monstre(String nom) {
 		super();
+		this.setPointAction(Monstre.BASE_PA);
 		this.statRandom();
 		this.remplirInvetaire();
 		this.setNom(nom);
@@ -46,12 +48,14 @@ public class Monstre extends EntiteVivante { // TODO:armya Ne perd pas de PA
 
 	public Monstre(String nom, int force, int adresse, int resistance) {
 		super(force, adresse, resistance);
+		this.setPointAction(Monstre.BASE_PA);
 		this.remplirInvetaire();
 		this.setNom(nom);
 	}
 
 	public Monstre(String nom, int force, int adresse, int resistance, int vie) {
 		super(force, adresse, resistance, vie);
+		this.setPointAction(Monstre.BASE_PA);
 		this.remplirInvetaire();
 		this.setNom(nom);
 	}
