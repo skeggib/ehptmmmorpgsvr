@@ -77,6 +77,11 @@ public abstract class Vetement extends Equipable {
 		cible.getCaractEquip().ajouterResistance(this.getResistance());
 	}
 
+
+	/*
+	 * Methodes d'acces
+	 */
+
 	public int getForce() {
 		return force;
 	}
@@ -100,9 +105,5 @@ public abstract class Vetement extends Equipable {
 	public void setResistance(int resistance) {
 		this.resistance = resistance;
 	}
-
-	/*
-	 * Methodes d'acces
-	 */
 
 }
