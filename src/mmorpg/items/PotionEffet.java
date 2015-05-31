@@ -89,6 +89,8 @@ public class PotionEffet extends Potion{
 		} else {
 			this.setImpact(valeurCaractAlea);
 		}
+		
+		this.setNom(this.randNom());
 	}
 
 	/*

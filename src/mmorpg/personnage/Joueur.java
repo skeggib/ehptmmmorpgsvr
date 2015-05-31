@@ -70,20 +70,12 @@ public class Joueur extends EntiteVivante {
 
 	public void recupererPA() {
 		int pa = this.getPointAction();
-		int newPa = pa + this.getMAX_PA() / 2;
+		int newPa = pa + Joueur.BASE_PA / 2;
 
-		if (newPa > this.getMAX_PA()) {
-			newPa = this.getMAX_PA();
+		if (newPa > Joueur.BASE_PA) {
+			newPa = Joueur.BASE_PA;
 		}
 		this.setPointAction(newPa);
-	}
-
-	/*
-	 * Methode d'acces
-	 */
-
-	public int getMAX_PA() {
-		return Joueur.BASE_PA;
 	}
 
 }
