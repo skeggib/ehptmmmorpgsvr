@@ -5,6 +5,8 @@ import mmorpg.affichage.fenetre.FenetreInfosJoueur;
 import mmorpg.affichage.fenetre.FenetreInventaire;
 import mmorpg.affichage.fenetre.FenetreLog;
 import mmorpg.carte.Carte;
+import mmorpg.exceptions.affichage.interfaceTerm.CantDrawInterfaceException;
+import mmorpg.exceptions.affichage.interfaceTerm.ModeNotSetException;
 import mmorpg.jeu.Log;
 import mmorpg.personnage.Joueur;
 
@@ -139,16 +141,21 @@ public class InterfaceTerm {
 		this.fenInventaire.setPosY(0);
 	}
 
-	public boolean afficher() {
-		if (!this.dessinerInterface())
-			return false;
+	public boolean afficher() throws CantDrawInterfaceException {
+		
+		try {
+			this.dessinerInterface();
+		}
+		catch(ModeNotSetException e) {
+			throw new CantDrawInterfaceException("Impossible de dessiner l'interface.", e);
+		}
 		
 		this.matrice.afficher();
 		
 		return true;
 	}
 	
-	private boolean dessinerInterface() { // TODO:skeggib Doit pouvoir lever une exception (ModeNotSetException)
+	private boolean dessinerInterface() throws ModeNotSetException {
 		
 		switch (this.mode) {
 		
@@ -168,8 +175,7 @@ public class InterfaceTerm {
 			break;
 			
 		default:
-				
-			break;
+			throw new ModeNotSetException("Le mode de l'interface n'est pas reconnu.");
 		}
 		
 		return true;

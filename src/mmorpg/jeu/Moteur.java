@@ -8,6 +8,7 @@ import mmorpg.affichage.InterfaceTerm;
 import mmorpg.carte.Carte;
 import mmorpg.carte.Position;
 import mmorpg.controles.Controleur;
+import mmorpg.exceptions.affichage.interfaceTerm.CantDrawInterfaceException;
 import mmorpg.items.Arme;
 import mmorpg.items.Casque;
 import mmorpg.items.Pantalon;
@@ -44,18 +45,6 @@ public class Moteur {
 //		joueur.setNom(sc.nextLine());
 		this.joueur.initialiserPos(carte.getCase(3, 3));
 		
-		// TODO:skeggib A enlever (pour tester)
-		this.joueur.rammasserObjet(new Arme());
-		this.joueur.rammasserObjet(new Casque());
-		this.joueur.rammasserObjet(new Pantalon());
-		this.joueur.rammasserObjet(new Arme());
-		this.joueur.rammasserObjet(new Arme());
-		this.joueur.rammasserObjet(new PotionDeDegat());
-		
-		this.joueur.equiperObjet(this.joueur.getInventaire().getObjet(0));
-		this.joueur.equiperObjet(this.joueur.getInventaire().getObjet(0));
-		this.joueur.equiperObjet(this.joueur.getInventaire().getObjet(0));
-		
 		// Remplir la carte avec des monstres
 		
 		// Demander la taille de l'interface
@@ -86,8 +75,15 @@ public class Moteur {
 			
 			// Boucle actions du joueur
 			while (this.joueur.deplacementPossible() && run) {
+				
 				// Affichage
-				inter.afficher();
+				try {
+					inter.afficher();
+				}
+				catch (CantDrawInterfaceException e) {
+					System.out.println(e.getMessage());
+				}
+				
 				// Action
 				if (controleur.saisieAction() == Controleur.QUITTER)
 					run = false;
