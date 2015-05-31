@@ -1,6 +1,7 @@
 package mmorpg.carte;
 
 import mmorpg.items.Objet;
+import mmorpg.personnage.Coffre;
 import mmorpg.personnage.EntiteVivante;
 
 public class Case {
@@ -88,6 +89,14 @@ public class Case {
 	
 	public boolean contientEnvironnement() {
 		if (this.getContenu() instanceof Environnement) {
+			return true;
+		}
+		
+		return false;
+	}
+	
+	public boolean contientCoffre() {
+		if (this.getContenu() instanceof Coffre) {
 			return true;
 		}
 		

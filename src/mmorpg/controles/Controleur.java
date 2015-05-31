@@ -8,6 +8,7 @@ import mmorpg.carte.Case;
 import mmorpg.carte.Position;
 import mmorpg.items.Objet;
 import mmorpg.jeu.Log;
+import mmorpg.personnage.Coffre;
 import mmorpg.personnage.EntiteVivante;
 import mmorpg.personnage.Joueur;
 
@@ -335,7 +336,7 @@ public class Controleur {
 	}
 
 	private boolean deplacement(int direction) {
-		// Verifier que je joueur et la carte on ete defenis
+		// Verifier que je joueur et la carte on ete definis
 		if (this.carte == null || this.joueur == null)
 			return false;
 		
@@ -389,6 +390,18 @@ public class Controleur {
 			Objet obj = (Objet)destination.getContenu();
 			this.joueur.rammasserObjet(obj);
 			this.ecrireLog(this.joueur.getNom() + " rammasse " + obj.getNom());
+			destination.supprContenu();
+			return this.joueur.seDeplacer(destination);
+		}
+		
+		else if (destination.contientCoffre()) {
+			Coffre coffre = (Coffre)destination.getContenu();
+			this.joueur.rammasserCoffre(coffre);
+			if (this.log != null) {
+				for (int i = 0; i < coffre.getTaille(); i++) {
+					this.ecrireLog(this.joueur.getNom() + " rammasse " + coffre.getContenu().get(i).getNom());
+				}
+			}
 			destination.supprContenu();
 			return this.joueur.seDeplacer(destination);
 		}

@@ -170,7 +170,7 @@ public class Monstre extends EntiteVivante {
 		this.setPointAction(this.getMAX_PA());
 	}
 	
-	public void realiserAction(Carte carte) {
+	public void realiserAction(Carte carte) { // TODO:skeggib A faire
 		
 		// Verifier s'il y a un joueur a coté
 			// S'il y en a un, l'attaquer
