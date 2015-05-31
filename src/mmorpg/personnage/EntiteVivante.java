@@ -190,6 +190,7 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 			this.emplacement.supprContenu();
 			this.setEmplacement(destination);
 
+			this.setPointAction(this.getPointAction() - EntiteVivante.PA_DEPLACEMENT);
 			return (this.getEmplacement() == destination);
 		}
 		return false;
@@ -254,11 +255,16 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 					this.ajouterXP(this.calculerExpVictoire(cible));
 				}
 
+				this.setPointAction(this.getPointAction() - EntiteVivante.PA_ATTAQUE);
 				return vieEnMoins;
 			}
 		} else {
+
+			this.setPointAction(this.getPointAction() - EntiteVivante.PA_ATTAQUE);
 			return -1;
 		}
+
+		this.setPointAction(this.getPointAction() - EntiteVivante.PA_ATTAQUE);
 		return 0;
 	}
 
