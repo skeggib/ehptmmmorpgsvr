@@ -36,6 +36,7 @@ public class Effet extends Caracteristique {
 	 * Methode
 	 */
 	
+	// TODO:armya Changer le nom en "appliquer"
 	public void appliquerEffet(EntiteVivante cible){
 		cible.getCaractEffet().ajouterForce(this.getForce());
 		cible.getCaractEffet().ajouterAdresse(this.getAdresse());

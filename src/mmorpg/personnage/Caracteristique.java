@@ -39,7 +39,7 @@ public class Caracteristique {
 	 * Methode
 	 */
 
-	public void ajouter(Caracteristique c) { // TODO:skeggib Ajouter UML
+	public void ajouter(Caracteristique c) {
 		this.ajouterForce(c.getForce());
 		this.ajouterAdresse(c.getAdresse());
 		this.ajouterResistance(c.getResistance());
@@ -47,7 +47,8 @@ public class Caracteristique {
 		this.ajouterImpact(c.getImpact());
 	}
 
-	public void reinitialiserCaract() { // TODO:skeggib Ajouter UML
+	// TODO:armya Changer le nom en "reinitialiser"
+	public void reinitialiserCaract() {
 		this.setForce(0);
 		this.setAdresse(0);
 		this.setResistance(0);
@@ -55,8 +56,9 @@ public class Caracteristique {
 		this.setImpact(0);
 	}
 
+	// TODO:armya Changer le nom en "reinitialiser"
 	public void reinitialiserCaract(int force, int adresse, int resistance,
-			int maniabilite, int impact) { // TODO:skeggib Ajouter UML
+			int maniabilite, int impact) {
 		this.setForce(force);
 		this.setAdresse(adresse);
 		this.setResistance(resistance);

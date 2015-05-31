@@ -335,7 +335,7 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 	 * @param obj
 	 *            Objet a retirer
 	 */
-	public void retirerObjet(Objet obj) { // TODO:skeggib ajouter UML
+	public void retirerObjet(Objet obj) {
 		this.inventaire.retirerObjet(obj);
 	}
 
