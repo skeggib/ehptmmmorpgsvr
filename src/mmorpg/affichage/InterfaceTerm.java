@@ -82,11 +82,11 @@ public class InterfaceTerm {
 			this.fenCarte.setPosX(0);
 			this.fenCarte.setPosY(0);
 			
-			this.fenLog = new FenetreLog(this.fenCarte.getLargeur() / 3 * 2, this.fenCarte.getHauteur());
+			this.fenLog = new FenetreLog(this.fenCarte.getLargeur(), this.fenCarte.getHauteur());
 			this.fenLog.setPosX(this.fenCarte.getLargeur());
 			this.fenLog.setPosY(0);
 			
-			this.fenInfos = new FenetreInfosJoueur(this.fenLog.getLargeur(), this.fenCarte.getHauteur() + this.fenLog.getHauteur());
+			this.fenInfos = new FenetreInfosJoueur(this.fenCarte.getLargeur() / 2, this.fenCarte.getHauteur());
 			this.fenInfos.setPosX(this.fenCarte.getLargeur() + this.fenLog.getLargeur());
 			this.fenInfos.setPosY(0);
 			
@@ -106,7 +106,7 @@ public class InterfaceTerm {
 			this.fenLog.setPosX(this.fenCarte.getLargeur());
 			this.fenLog.setPosY(0);
 			
-			this.fenInfos = new FenetreInfosJoueur(this.fenLog.getLargeur(), this.fenCarte.getHauteur() + this.fenLog.getHauteur());
+			this.fenInfos = new FenetreInfosJoueur(this.fenLog.getLargeur(), this.fenCarte.getHauteur());
 			this.fenInfos.setPosX(this.fenCarte.getLargeur() + this.fenLog.getLargeur());
 			this.fenInfos.setPosY(0);
 			
@@ -122,14 +122,14 @@ public class InterfaceTerm {
 			this.fenCarte.setPosX(0);
 			this.fenCarte.setPosY(0);
 			
-			this.fenLog = new FenetreLog(this.fenCarte.getLargeur() * 3, this.fenCarte.getHauteur());
+			this.fenLog = new FenetreLog(this.fenCarte.getLargeur() * 2, this.fenCarte.getHauteur());
 			this.fenLog.setPosX(this.fenCarte.getLargeur());
 			this.fenLog.setPosY(0);
 			
-			this.fenInfos = new FenetreInfosJoueur(this.fenLog.getLargeur(), this.fenCarte.getHauteur() + this.fenLog.getHauteur());
+			this.fenInfos = new FenetreInfosJoueur(this.fenCarte.getLargeur(), this.fenCarte.getHauteur());
 			this.fenInfos.setPosX(this.fenCarte.getLargeur() + this.fenLog.getLargeur());
 			this.fenInfos.setPosY(0);
-
+			
 			this.largeur = this.fenCarte.getLargeur() + this.fenLog.getLargeur() + this.fenInfos.getLargeur();
 			this.hauteur = this.fenCarte.getHauteur();
 			

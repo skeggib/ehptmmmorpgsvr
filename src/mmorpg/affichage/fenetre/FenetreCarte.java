@@ -78,8 +78,8 @@ public class FenetreCarte extends Fenetre {
 			this.hauteurCaseCarte = 3;
 			break;
 		case "small":
-			this.largeurCaseCarte = 1;
-			this.hauteurCaseCarte = 1;
+			this.largeurCaseCarte = 3;
+			this.hauteurCaseCarte = 2;
 			break;
 		}
 		
