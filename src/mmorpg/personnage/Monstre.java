@@ -229,21 +229,6 @@ public class Monstre extends EntiteVivante {
 			}
 		}
 		
-<<<<<<< HEAD
 		return true;
-	}
-
-	/*
-	 * Methode d'acces
-	 */
-
-	public int getMAX_PA() {
-		return this.MAX_PA;
-	}
-
-	public void setMAX_PA(int nbPA) {
-		this.MAX_PA = nbPA;
-=======
->>>>>>> branch 'develop' of https://github.com/skeggib/ehptmmmorpgsvr
 	}
 }
