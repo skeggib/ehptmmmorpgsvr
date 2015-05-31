@@ -123,8 +123,6 @@ public class Monstre extends EntiteVivante {
 		Random rand = new Random();
 		
 		int nombreObjet = rand.nextInt(2);
-		System.out.println("NOMBER D'OBJET AJOUTER : " + nombreObjet);
-		System.out.println("NOMBRE D'OBJET DANS L'INVENTAIRE AVANT : " + this.getInventaire().getTaille());
 		switch(nombreObjet){
 		case 0:
 			this.getInventaire().ajouterObjet(this.creeRandomObjet());
@@ -134,8 +132,6 @@ public class Monstre extends EntiteVivante {
 			this.getInventaire().ajouterObjet(this.creeRandomObjet());
 			break;
 		}
-
-		System.out.println("NOMBRE D'OBJET DANS L'INVENTAIRE APRES : " + this.getInventaire().getTaille());
 	}
 
 	private Objet creeRandomObjet() {

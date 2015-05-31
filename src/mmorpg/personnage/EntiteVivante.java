@@ -155,9 +155,6 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 				this.desequiperObjet(this.getEquipement().getObjet(i));
 			}
 
-			System.out.println("TAILLE INVENTAIRE : "
-					+ this.getInventaire().getTaille());
-
 			// Si on possede un seul objet on le pose, sinon on cree un coffre
 			if (this.getInventaire().getTaille() == 0) {
 
