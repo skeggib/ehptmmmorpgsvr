@@ -84,13 +84,19 @@ public class Image {
 	}
 	
 	public void setCouleur(String couleur) {
-		this.couleur = couleur;
 		
-		for (int i = 0; i < this.pxls.length; i++) {
-			for (int j = 0; j < this.pxls[i].length; j++) {
-				this.pxls[i][j].setCouleur(couleur); // TODO:skeggib Verifier qu'il y a des pixels
+		if (this.pxls != null) {
+			
+			this.couleur = couleur;
+			
+			for (int i = 0; i < this.pxls.length; i++) {
+				for (int j = 0; j < this.pxls[i].length; j++) {
+					this.pxls[i][j].setCouleur(couleur);
+				}
 			}
+			
 		}
+		
 	}
 	
 	public String getCouleur() {

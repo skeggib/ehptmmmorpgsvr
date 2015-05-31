@@ -74,8 +74,6 @@ public class Controleur { // TODO:skeggib UML
 	
 	private InterfaceTerm inter;
 	
-	//TODO:skeggib Reparer le bug du "le joueur attaque "le vide" " si on entre pas une action attendu
-	
 	/**
 	 * Demande une saisie et retourne le premier caractere saisit
 	 * @return
