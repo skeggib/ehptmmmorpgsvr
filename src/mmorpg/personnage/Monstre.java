@@ -5,12 +5,7 @@ import java.util.Random;
 import mmorpg.carte.Carte;
 import mmorpg.carte.ContenuCase;
 import mmorpg.fichiers.LectureFichier;
-import mmorpg.items.Arme;
-import mmorpg.items.Casque;
-import mmorpg.items.Gant;
-import mmorpg.items.Objet;
-import mmorpg.items.Pantalon;
-import mmorpg.items.Torse;
+import mmorpg.items.*;
 
 /**
  * Cette classe permet la gestion d'un monstre controlle par l'IA
@@ -138,7 +133,7 @@ public class Monstre extends EntiteVivante {
 	private Objet creeRandomObjet() {
 		Random rand = new Random();
 
-		int choix = rand.nextInt(5);
+		int choix = rand.nextInt(8);
 
 		switch (choix) {
 		case 0:
@@ -151,6 +146,12 @@ public class Monstre extends EntiteVivante {
 			return new Pantalon();
 		case 4:
 			return new Arme();
+		case 5:
+			return new PotionDeSoin();
+		case 6:
+			return new PotionDeDegat();
+		case 7:
+			return new PotionEffet();
 		default:
 			return null;
 		}
