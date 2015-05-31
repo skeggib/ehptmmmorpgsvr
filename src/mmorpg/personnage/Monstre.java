@@ -167,7 +167,7 @@ public class Monstre extends EntiteVivante {
 	}
 
 	public void recupererPA() {
-		this.setPointAction(this.getMAX_PA());
+		this.setPointAction(Monstre.BASE_PA);
 	}
 	
 	public void realiserAction(Carte carte) { // TODO:skeggib A faire
@@ -182,17 +182,5 @@ public class Monstre extends EntiteVivante {
 				
 				// Se deplacer vers cette direction
 		
-	}
-
-	/*
-	 * Methode d'acces
-	 */
-
-	public int getMAX_PA() {
-		return this.MAX_PA;
-	}
-
-	public void setMAX_PA(int nbPA) {
-		this.MAX_PA = nbPA;
 	}
 }
