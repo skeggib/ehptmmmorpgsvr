@@ -22,7 +22,7 @@ public class Coffre extends ContenantObjet implements ContenuCase {
 	}
 
 	public void ajouterObjets(ListeUnique<Objet> list) {
-		for (int i = 0; i < this.getTaille(); i++) {
+		for (int i = 0; i < list.size(); i++) {
 			this.ajouterObjet(list.get(i));
 		}
 	}
