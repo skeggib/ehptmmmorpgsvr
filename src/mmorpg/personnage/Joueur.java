@@ -49,25 +49,6 @@ public class Joueur extends EntiteVivante {
 		return ContenuCase.JOUEUR;
 	}
 
-	public boolean seDeplacer(Case destination) {
-		if (this.getPointAction() >= Joueur.PA_DEPLACEMENT) {
-			if (super.seDeplacer(destination)) {
-				this.setPointAction(this.getPointAction()
-						- Joueur.PA_DEPLACEMENT);
-				return true;
-			}
-		}
-		return false;
-	}
-
-	public int attaquer(EntiteVivante cible) {
-		if (this.getPointAction() >= Joueur.PA_ATTAQUE) {
-			this.setPointAction(this.getPointAction() - Joueur.PA_ATTAQUE);
-			return super.attaquer(cible);
-		}
-		return 0;
-	}
-
 	public void recupererPA() {
 		int pa = this.getPointAction();
 		int newPa = pa + Joueur.BASE_PA / 2;
