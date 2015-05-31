@@ -14,7 +14,7 @@ import mmorpg.items.*;
  * @author armya
  *
  */
-public class Monstre extends EntiteVivante {
+public class Monstre extends EntiteVivante { // TODO:armya Ne perd pas de PA
 
 	public static final int BASE_PA = 10;
 
@@ -174,7 +174,6 @@ public class Monstre extends EntiteVivante {
 	
 	public boolean realiserAction(Carte carte) { // TODO:skeggib A faire
 		
-		System.out.println(this.getPointAction());
 		if (!this.actionDisponible())
 			return false;
 		
@@ -209,26 +208,44 @@ public class Monstre extends EntiteVivante {
 
 		// S'il y en a pas
 		else {
+			
 			// Choisir une direction au hasart
 			int direction = new Random().nextInt(3);		
 			
-			// Se deplacer vers cette direction
-			switch (direction) {
-			case 0:
-				this.seDeplacer(carte.getCase(pos.getX() - 1, pos.getY()));
-				break;
-			case 1:
-				this.seDeplacer(carte.getCase(pos.getX(), pos.getY() - 1));
-				break;
-			case 2:
-				this.seDeplacer(carte.getCase(pos.getX() + 1, pos.getY()));
-				break;
-			case 3:
-				this.seDeplacer(carte.getCase(pos.getX(), pos.getY() + 1));
-				break;
+			// Boucle avec 4 iterations parce qu'il y a 4 directiones possibles
+			boolean deplace = false;
+			int i = 0;
+			// Tant que le monstre ne s'est pas deplace et que les 4 direction n'ont pas ete testees
+			while (!deplace && i < 4) {
+				
+				// Se deplacer vers cette direction
+				if (direction == 0) {
+					deplace = this.seDeplacer(carte.getCase(pos.getX() - 1, pos.getY()));
+				}
+				if (direction == 1) {
+					deplace = this.seDeplacer(carte.getCase(pos.getX(), pos.getY() - 1));
+				}
+				if (direction == 2) {
+					deplace = this.seDeplacer(carte.getCase(pos.getX() + 1, pos.getY()));
+				}
+				if (direction == 3) {
+					deplace = this.seDeplacer(carte.getCase(pos.getX(), pos.getY() + 1));
+				}
+				
+				// On increment direction pour essayer de se deplacer dans une autre direction
+				if (!deplace) {
+					if (direction < 3)
+						direction ++;
+					else
+						direction = 0;
+				}
+				
+				i++;
+				
 			}
+			
+			return deplace;
+			
 		}
-		
-		return true;
 	}
 }

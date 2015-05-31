@@ -19,7 +19,7 @@ import mmorpg.personnage.Coffre;
 import mmorpg.personnage.Joueur;
 import mmorpg.personnage.Monstre;
 
-public class Moteur {
+public class Moteur { // TODO:skeggib Bug de la carte vide
 	
 	private Joueur joueur;
 
@@ -93,35 +93,38 @@ public class Moteur {
 				}
 			}
 			
+			// TODO:skeggib Decommenter quand les monstres perderont des PA
 			// Tour des monstres
-			boolean tourMonstres = true;
-			//while (tourMonstres && run) {
-			
-				for (int i = 0; i < listeMonstres.size(); i++) {
-					// tourMonstres sera True si au moins un monstre aura realise une action
-					listeMonstres.get(i).debutTour();
-				}
-			
-			
-			
-				
-				// Chaque monstre doit realiser une action
-				tourMonstres = false;
-				for (int i = 0; i < listeMonstres.size(); i++) {
-					// tourMonstres sera True si au moins un monstre aura realise une action
-					tourMonstres = tourMonstres || listeMonstres.get(i).realiserAction(carte);
-				}
-				
-				// On affiche l'interface
-				try {
-					inter.afficher();
-				}
-				catch (CantDrawInterfaceException e) {
-					e.printStackTrace();
-					run = false;
-				}
-				
-			//}
+//			boolean tourMonstres = true;
+//			while (tourMonstres && run) {
+//			
+//				for (int i = 0; i < listeMonstres.size(); i++) {
+//					// tourMonstres sera True si au moins un monstre aura realise une action
+//					listeMonstres.get(i).debutTour();
+//				}
+//			
+//			
+//			
+//				
+//				// Chaque monstre doit realiser une action
+//				tourMonstres = false;
+//				System.out.println("Nb monstres : " + listeMonstres.size());
+//				for (int i = 0; i < listeMonstres.size(); i++) {
+//					// tourMonstres sera True si au moins un monstre aura realise une action
+//					boolean resultatAction = listeMonstres.get(i).realiserAction(carte);
+//					tourMonstres = tourMonstres || resultatAction;
+//				}
+//				
+//				// On affiche l'interface
+//				try {
+//					inter.afficher();
+//				}
+//				catch (CantDrawInterfaceException e) {
+//					e.printStackTrace();
+//					run = false;
+//				}
+//				
+//			}
 		}
 		
 		sc.close();
