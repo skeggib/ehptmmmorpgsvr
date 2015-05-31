@@ -38,3 +38,5 @@ Pour lancer le jeu il suffit d'executer le fichier Jeu.jar :
 - Les monstres laisse tomber des objets que l'on peut ramasser
 - Ajout de la fenetre "Inventaire" à l'interface
 - Possibilité d'équiper et d'enlever de l'équipement
+- Ajout des potions
+- Ajout des coffres
