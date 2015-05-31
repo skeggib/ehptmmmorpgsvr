@@ -1,5 +1,6 @@
 package mmorpg.jeu;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Random;
 import java.util.Scanner;
@@ -35,7 +36,7 @@ public class Moteur {
 		// Creer la carte
 		Carte carte = new Carte();
 		carte.chargerFichier("ressources/carte/test");
-		Moteur.ajoutMonstres(carte);
+		ArrayList<Monstre> listeMonstres = Moteur.ajoutMonstres(carte);
 		
 		// Creer le joueur
 		this.joueur = new Joueur("Armya", 10, 10, 10);
@@ -87,27 +88,52 @@ public class Moteur {
 					
 				}
 				catch (CantDrawInterfaceException e) {
-
 					e.printStackTrace();
-					
 					run = false;
 				}
 			}
 			
-			// Boucle action des monstres (si run)
-				// Affichage
-				// Action
+			// Tour des monstres
+			boolean tourMonstres = true;
+			//while (tourMonstres && run) {
+			
+				for (int i = 0; i < listeMonstres.size(); i++) {
+					// tourMonstres sera True si au moins un monstre aura realise une action
+					listeMonstres.get(i).debutTour();
+				}
+			
+			
+			
+				
+				// Chaque monstre doit realiser une action
+				tourMonstres = false;
+				for (int i = 0; i < listeMonstres.size(); i++) {
+					// tourMonstres sera True si au moins un monstre aura realise une action
+					tourMonstres = tourMonstres || listeMonstres.get(i).realiserAction(carte);
+				}
+				
+				// On affiche l'interface
+				try {
+					inter.afficher();
+				}
+				catch (CantDrawInterfaceException e) {
+					e.printStackTrace();
+					run = false;
+				}
+				
+			//}
 		}
 		
 		sc.close();
 		
 	}
 	
-	private static void ajoutMonstres(Carte carte) { // TODO:skeggib UML (changer de classe -> Carte ?)
+	private static ArrayList<Monstre> ajoutMonstres(Carte carte) { // TODO:skeggib UML (changer de classe -> Carte ?)
 		Random rand = new Random();
 		int randInt;
 		
-		LinkedList<Monstre> liste = new LinkedList<Monstre>();
+		ArrayList<Monstre> liste = new ArrayList<Monstre>();
+		ArrayList<Monstre> rtrn = new ArrayList<Monstre>();
 		Monstre tempMonstre;
 		
 		// Chance qu'a chaque case de recevoir un Monstre
@@ -129,6 +155,8 @@ public class Moteur {
 			}
 		}
 		
+		rtrn.addAll(liste);
+		
 		Position posM;
 		
 		// On creer les groupes de monstre
@@ -143,11 +171,14 @@ public class Moteur {
 						if (randInt < 33) {
 							tempMonstre = new Monstre();
 							tempMonstre.initialiserPos(carte.getCase(x, y));
+							rtrn.add(tempMonstre);
 						}
 					}
 				}
 			}
 		}
+		
+		return rtrn;
 	}
 	
 	public static void main(String[] args) {

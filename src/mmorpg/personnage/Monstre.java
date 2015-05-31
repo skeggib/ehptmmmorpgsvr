@@ -4,6 +4,7 @@ import java.util.Random;
 
 import mmorpg.carte.Carte;
 import mmorpg.carte.ContenuCase;
+import mmorpg.carte.Position;
 import mmorpg.fichiers.LectureFichier;
 import mmorpg.items.Arme;
 import mmorpg.items.Casque;
@@ -170,18 +171,64 @@ public class Monstre extends EntiteVivante {
 		this.setPointAction(this.getMAX_PA());
 	}
 	
-	public void realiserAction(Carte carte) { // TODO:skeggib A faire
+	public boolean realiserAction(Carte carte) { // TODO:skeggib A faire
+		
+		System.out.println(this.getPointAction());
+		if (!this.actionDisponible())
+			return false;
+		
+		if (!this.estVivant())
+			return false;
+		
+		Position pos = carte.getPosContenu(this);
+		if (pos == null)
+			return false;
+		
+		Position posJoueur = null;
 		
 		// Verifier s'il y a un joueur a coté
-			// S'il y en a un, l'attaquer
+		if (carte.getCase(pos.getX() - 1, pos.getY()).contientJoueur()) {
+			posJoueur = new Position(pos.getX() - 1, pos.getY());
+		}
+		else if (carte.getCase(pos.getX(), pos.getY() - 1).contientJoueur()) {
+			posJoueur = new Position(pos.getX(), pos.getY() - 1);
+		}
+		else if (carte.getCase(pos.getX() + 1, pos.getY()).contientJoueur()) {
+			posJoueur = new Position(pos.getX() + 1, pos.getY());
+		}
+		else if (carte.getCase(pos.getX(), pos.getY() + 1).contientJoueur()) {
+			posJoueur = new Position(pos.getX(), pos.getY() + 1);
+		}
 		
+		// S'il y en a un, l'attaquer
+		if (posJoueur != null) {
+			this.attaquer((Joueur)carte.getCase(posJoueur.getX(), posJoueur.getY()).getContenu());
+			return true;
+		}
+
+		// S'il y en a pas
+		else {
+			// Choisir une direction au hasart
+			int direction = new Random().nextInt(3);		
 			
-			// S'il y en a pas
-				// Choisir une direction au hasart
-				
-				
-				// Se deplacer vers cette direction
+			// Se deplacer vers cette direction
+			switch (direction) {
+			case 0:
+				this.seDeplacer(carte.getCase(pos.getX() - 1, pos.getY()));
+				break;
+			case 1:
+				this.seDeplacer(carte.getCase(pos.getX(), pos.getY() - 1));
+				break;
+			case 2:
+				this.seDeplacer(carte.getCase(pos.getX() + 1, pos.getY()));
+				break;
+			case 3:
+				this.seDeplacer(carte.getCase(pos.getX(), pos.getY() + 1));
+				break;
+			}
+		}
 		
+		return true;
 	}
 
 	/*
