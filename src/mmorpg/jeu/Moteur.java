@@ -77,6 +77,7 @@ public class Moteur {
 		while (run) {
 			
 			this.joueur.recupererPA();
+			this.joueur.setPointAction(2); // TODO A enlever
 			// Boucle actions du joueur
 			while (this.joueur.deplacementPossible() && run) {
 				
@@ -95,36 +96,37 @@ public class Moteur {
 			
 			// TODO:skeggib Decommenter quand les monstres perderont des PA
 			// Tour des monstres
-//			boolean tourMonstres = true;
-//			while (tourMonstres && run) {
-//			
-//				for (int i = 0; i < this.listeMonstres.size(); i++) {
-//					// tourMonstres sera True si au moins un monstre aura realise une action
-//					this.listeMonstres.get(i).debutTour();
-//				}
-//			
-//			
-//			
-//				
-//				// Chaque monstre doit realiser une action
-//				tourMonstres = false;
-//				System.out.println("Nb monstres : " + this.listeMonstres.size());
-//				for (int i = 0; i < this.listeMonstres.size(); i++) {
-//					// tourMonstres sera True si au moins un monstre aura realise une action
-//					boolean resultatAction = this.listeMonstres.get(i).realiserAction(carte);
-//					tourMonstres = tourMonstres || resultatAction;
-//				}
-//				
-//				// On affiche l'interface
-//				try {
-//					this.inter.afficher();
-//				}
-//				catch (CantDrawInterfaceException e) {
-//					e.printStackTrace();
-//					run = false;
-//				}
-//				
-//			}
+			boolean tourMonstres = true;
+			while (tourMonstres && run) {
+			
+				for (int i = 0; i < this.listeMonstres.size(); i++) {
+					// tourMonstres sera True si au moins un monstre aura realise une action
+					this.listeMonstres.get(i).debutTour();
+				}
+			
+			
+			
+				
+				// Chaque monstre doit realiser une action
+				tourMonstres = false;
+				System.out.println("Nb monstres : " + this.listeMonstres.size());
+				for (int i = 0; i < this.listeMonstres.size(); i++) {
+					// tourMonstres sera True si au moins un monstre aura realise une action
+					boolean resultatAction = this.listeMonstres.get(i).realiserAction(carte);
+					tourMonstres = tourMonstres || resultatAction;
+					System.out.println(this.listeMonstres.get(i).getNom() + " : " + this.listeMonstres.get(i).getPointAction());
+				}
+				
+				// On affiche l'interface
+				try {
+					this.inter.afficher();
+				}
+				catch (CantDrawInterfaceException e) {
+					e.printStackTrace();
+					run = false;
+				}
+				
+			}
 		}
 		
 		sc.close();
