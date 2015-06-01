@@ -75,7 +75,7 @@ public class Moteur {
 		/* Demander la taille de l'interface */
 		
 		// TODO:skeggib Decommenter et enlever int taille = 0;
-		int taille = 0;
+		int taille = 1;
 //		System.out.println("Taille de l'interface : ");
 //		for (int i = 0; i < InterfaceTerm.TAILLES.length; i++) {
 //			System.out.println((i+1) + ". " + InterfaceTerm.TAILLES[i]);
@@ -178,6 +178,12 @@ public class Moteur {
 				boolean resultatAction = this.listeMonstres.get(i).realiserAction(carte);
 				tourMonstres = tourMonstres || resultatAction;
 				// System.out.println(this.listeMonstres.get(i).getNom() + " : " + this.listeMonstres.get(i).getPointAction());
+			}
+			
+			// Verifier que le joueur est vivant
+			if (!this.joueur.estVivant()) {
+				this.run = false;
+				System.out.println("VOUS ETES MORT !"); // TODO:skeggib Faire une fenetre "Vous etes mort"
 			}
 			
 		}
