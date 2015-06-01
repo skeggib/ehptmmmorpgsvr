@@ -30,6 +30,7 @@ public class Controleur {
 	public static final int RETOUR = 9; // Retour au jeu
 	public static final int EQUIPER = 10;
 	public static final int DESEQUIPER = 11;
+	public static final int TERMINER_TOUR = 12;
 	
 	
 	
@@ -46,6 +47,7 @@ public class Controleur {
 			+ "\n\t i : Ouvrir l'inventaire"
 			+ "\n\t p : Ouvrir la fenetre personnage"
 			+ "\n\t r : Retour"
+			+ "\n\t t : Terminer le tour"
 			+ "\n\t x : Quitter";
 	
 	private static final String TEXTE_AIDE_INVENTAIRE = 
@@ -145,6 +147,8 @@ public class Controleur {
 			break;
 		case 'x':
 			return Controleur.QUITTER;
+		case 't':
+			return Controleur.TERMINER_TOUR;
 		}
 		
 		if (action != -1) {

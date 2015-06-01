@@ -106,14 +106,18 @@ public class Moteur {
 	private void tourJoueur() {
 		this.joueur.recupererPA();
 		// Boucle actions du joueur
-		while (this.joueur.deplacementPossible() && this.run) {
+		boolean continuerTour = true;
+		while (this.run && continuerTour) {
 			
 			try {
 				// Affichage
 				inter.afficher();
 				// Action
-				if (this.control.saisieAction() == Controleur.QUITTER)
+				int action = this.control.saisieAction(); 
+				if (action == Controleur.QUITTER)
 					this.run = false;
+				else if (action == Controleur.TERMINER_TOUR)
+					continuerTour = false;
 			}
 			catch (CantDrawInterfaceException e) {
 				e.printStackTrace();
