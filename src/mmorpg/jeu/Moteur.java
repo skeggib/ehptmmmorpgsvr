@@ -97,12 +97,14 @@ public class Moteur {
 			// TODO:skeggib Decommenter quand les monstres perderont des PA
 			// Tour des monstres
 			boolean tourMonstres = true;
-			while (tourMonstres && run) {
+
+			for (int i = 0; i < this.listeMonstres.size(); i++) {
+				// tourMonstres sera True si au moins un monstre aura realise une action
+				this.listeMonstres.get(i).debutTour();
+			}
+		
 			
-				for (int i = 0; i < this.listeMonstres.size(); i++) {
-					// tourMonstres sera True si au moins un monstre aura realise une action
-					this.listeMonstres.get(i).debutTour();
-				}
+			while (tourMonstres && run) {
 			
 			
 			
