@@ -1,0 +1,4 @@
+Marchand
+Voleur
+Fee
+Elfe

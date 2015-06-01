@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 bin/
 *.class
 doc/
 uml/*.ucls
+=======
+>>>>>>> release
