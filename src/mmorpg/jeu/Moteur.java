@@ -21,6 +21,8 @@ public class Moteur {
 	private Controleur control;
 	private ArrayList<Monstre> listeMonstres;
 	
+	private boolean run;
+	
 	
 	
 	public Moteur() {
@@ -28,10 +30,26 @@ public class Moteur {
 		this.carte = new Carte();
 		this.joueur = new Joueur();
 		this.inter = new InterfaceTerm();
-		this.control = new Controleur();	
+		this.control = new Controleur();
+		
+		this.run = true;
 	}
 	
 	public void jouer() {
+		
+		this.init();
+		
+		// Boucle principale
+		while (this.run) {
+			// Tour du joueur
+			this.tourJoueur();
+			// Tour des monstres
+			this.tourMonstres();
+		}
+		
+	}
+	
+	private void init() {
 		
 		Scanner sc = new Scanner(System.in);
 		
@@ -71,68 +89,78 @@ public class Moteur {
 		this.control.setLog(this.log);
 		this.control.setInterface(this.inter);
 		
-		/* Boucle principale */
-
-		boolean run = true;
-		while (run) {
+	}
+	
+	private void tourJoueur() {
+		this.joueur.recupererPA();
+		// Boucle actions du joueur
+		while (this.joueur.deplacementPossible() && this.run) {
 			
-			this.joueur.recupererPA();
-			this.joueur.setPointAction(2); // TODO A enlever
-			// Boucle actions du joueur
-			while (this.joueur.deplacementPossible() && run) {
-				
-				try {
-					// Affichage
-					inter.afficher();
-					// Action
-					if (this.control.saisieAction() == Controleur.QUITTER)
-						run = false;
-				}
-				catch (CantDrawInterfaceException e) {
-					e.printStackTrace();
-					run = false;
-				}
+			try {
+				// Affichage
+				inter.afficher();
+				// Action
+				if (this.control.saisieAction() == Controleur.QUITTER)
+					this.run = false;
 			}
-			
-			// TODO:skeggib Decommenter quand les monstres perderont des PA
-			// Tour des monstres
-			boolean tourMonstres = true;
-
-			for (int i = 0; i < this.listeMonstres.size(); i++) {
-				// tourMonstres sera True si au moins un monstre aura realise une action
-				this.listeMonstres.get(i).debutTour();
-			}
-		
-			
-			while (tourMonstres && run) {
-			
-			
-			
-				
-				// Chaque monstre doit realiser une action
-				tourMonstres = false;
-				System.out.println("Nb monstres : " + this.listeMonstres.size());
-				for (int i = 0; i < this.listeMonstres.size(); i++) {
-					// tourMonstres sera True si au moins un monstre aura realise une action
-					boolean resultatAction = this.listeMonstres.get(i).realiserAction(carte);
-					tourMonstres = tourMonstres || resultatAction;
-					System.out.println(this.listeMonstres.get(i).getNom() + " : " + this.listeMonstres.get(i).getPointAction());
-				}
-				
-				// On affiche l'interface
-				try {
-					this.inter.afficher();
-				}
-				catch (CantDrawInterfaceException e) {
-					e.printStackTrace();
-					run = false;
-				}
-				
+			catch (CantDrawInterfaceException e) {
+				e.printStackTrace();
+				this.run = false;
 			}
 		}
+	}
+	
+	private void tourMonstres() {
+		boolean tourMonstres = true;
+
+		for (int i = 0; i < this.listeMonstres.size(); i++) {
+			this.listeMonstres.get(i).debutTour();
+		}
+	
 		
-		sc.close();
+		while (tourMonstres && this.run) {
+			
+			// On affiche l'interface
+			try {
+				this.inter.afficher();
+			}
+			catch (CantDrawInterfaceException e) {
+				e.printStackTrace();
+				this.run = false;
+			}
+			
+			// Pause
+			try {
+				
+				Thread.sleep(1000);
+				
+				/* Je m'excuse d'avance auprès de mon professeur de Java
+				 * pour avoir utilisé une méthode de la classe Thread
+				 * (alors qu'il nous a précisé qu'il ne voulait pas
+				 * voir d'interfaces graphiques ou de threads dans ce projet).
+				 * 
+				 * C'est la seule méthode que j'ai trouvé pour mettre en pause
+				 * le programme (c'est nécessaire pour y voir quelque chose
+				 * entre deux déplacements de monstres).
+				 * 
+				 * Cordialement,
+				 * Votre élève passionné.
+				 */
+				
+			} catch (InterruptedException e) {
+			    e.printStackTrace();
+			}
 		
+			// Chaque monstre doit realiser une action
+			tourMonstres = false;
+			for (int i = 0; i < this.listeMonstres.size(); i++) {
+				// tourMonstres sera true si au moins un monstre aura realise une action
+				boolean resultatAction = this.listeMonstres.get(i).realiserAction(carte);
+				tourMonstres = tourMonstres || resultatAction;
+				// System.out.println(this.listeMonstres.get(i).getNom() + " : " + this.listeMonstres.get(i).getPointAction());
+			}
+			
+		}
 	}
 	
 	/**
@@ -145,12 +173,12 @@ public class Moteur {
 		int randInt;
 		
 		ArrayList<Monstre> liste = new ArrayList<Monstre>();
-		ArrayList<Monstre> rtrn = new ArrayList<Monstre>();
+		ArrayList<Monstre> rtrn = new ArrayList<Monstre>(); // Liste de monstres qui va etre retournee
 		Monstre tempMonstre;
 		
-		// Chance qu'a chaque case de recevoir un Monstre
+		// Chance qu'a chaque case de recevoir un Monstre en %
 		int chanceCase = 5;
-		// Chance que chaque monstre a de devenir un groupe de monstres
+		// Chance que chaque monstre a de devenir un groupe de monstres en %
 		int chanceDevientGroupe = 10;
 		
 		// On ajoute des monstres aleatoirement dans la carte sur les cases vides
@@ -172,11 +200,14 @@ public class Moteur {
 		Position posM;
 		
 		// On creer les groupes de monstre
+		// Pourque chaque monstre existant
 		for (int i = 0; i < liste.size(); i++) {
+			// On fait un rand pour savoir si le monstre va devenir un groupe
 			randInt = rand.nextInt(100);
 			if (randInt < chanceDevientGroupe) {
 				posM = carte.getPosContenu(liste.get(i));
 				
+				// Chaque case autours du monstre a 1 chance sur 3 de recevoir un monstre
 				for (int y = posM.getY() - 1; y <= posM.getY() + 1; y++) {
 					for (int x = posM.getX() - 1; x <= posM.getX() + 1; x++) {
 						randInt = rand.nextInt(100);
