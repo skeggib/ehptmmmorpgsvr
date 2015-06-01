@@ -40,3 +40,6 @@ Pour lancer le jeu il suffit d'executer le fichier Jeu.jar :
 - Possibilité d'équiper et d'enlever de l'équipement
 - Ajout des potions
 - Ajout des coffres
+- Ajout de l'IA des monstres
+- Ajout de la mort
+- Ajout des tours de jeu
