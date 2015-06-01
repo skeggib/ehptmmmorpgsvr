@@ -13,25 +13,54 @@ public class Test {
 
 	public static void main(String[] args) {
 
+		
+		/*
+		 * TEST BUG EQUIPEMENT ARME
+		 */
+		//Notre joueur :
+		Joueur j = new Joueur("Armya");
+		
+		for(int i = 0; i < 100000; i++){
+			Arme a = new Arme();
+			j.rammasserObjet(a);
+			j.equiperObjet(a);
+			if((i%2) == 0){
+				j.desequiperObjet(j.getEquipement().getObjet(1));
+			}
+			if((i%4) == 0){
+				j.desequiperObjet(j.getEquipement().getObjet(0));
+			}
+			System.out.println("L'EQUIPEMENT CONTIENT " + j.getEquipement().getTaille() + " OBJETS");
+			System.out.println("L'INVENTAIREd CONTIENT " + j.getInventaire().getTaille() + " OBJETS");
+		}
+		
 		/*
 		 * TEST DEPLACEMENT MONSTRE
 		 */
-		
-		//Deux cases : 
-		Case a = new Case();
-		Case b = new Case();
-		
-		//Notre monstre :
-		Monstre m = new Monstre();
-		
-		//Notre monstre commencera sur la case a :
-		m.initialiserPos(a);
-		System.out.println("LE MONSTRE A " + m.getPointAction() + " PA");
-		//Puis il se deplace :
-		m.seDeplacer(b);
-		System.out.println("LE MONSTRE SE DEPLACE\nLE MONSTRE A " + m.getPointAction() + " PA");
-		m.seDeplacer(a);
-		System.out.println("LE MONSTRE SE DEPLACE ENCORE UNE FOIS\nLE MONSTRE A " + m.getPointAction() + " PA");
+		//
+		// //Deux cases :
+		// Case a = new Case();
+		// Case b = new Case();
+		//
+		// //Notre monstre :
+		// Monstre m = new Monstre();
+		//
+		// //Notre monstre commencera sur la case a :
+		// m.initialiserPos(a);
+		// System.out.println("LE MONSTRE A " + m.getPointAction() + " PA");
+		// //Puis il se deplace :
+		// m.seDeplacer(b);
+		// System.out.println("LE MONSTRE SE DEPLACE\nLE MONSTRE A " +
+		// m.getPointAction() + " PA");
+		// m.seDeplacer(a);
+		// System.out.println("LE MONSTRE SE DEPLACE ENCORE UNE FOIS\nLE MONSTRE A "
+		// + m.getPointAction() + " PA");
+		// m.retirerVie(2);
+		// System.out.println("LE MONSTRE POSSEDE (VIE) : " + m.getVie());
+		// m.debutTour();
+		// System.out.println("APRES LE DEBUT D'UN TOUR\nLE MONSTRE POSSEDE (VIE) : "
+		// + m.getVie());
+		//
 		
 		/*
 		 * TEST POTION EFFET
