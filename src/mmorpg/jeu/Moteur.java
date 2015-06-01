@@ -35,6 +35,10 @@ public class Moteur {
 		this.run = true;
 	}
 	
+	
+	
+	
+	
 	public void jouer() {
 		
 		this.init();
@@ -48,6 +52,10 @@ public class Moteur {
 		}
 		
 	}
+	
+	
+	
+	
 	
 	private void init() {
 		
@@ -91,6 +99,10 @@ public class Moteur {
 		
 	}
 	
+	
+	
+	
+	
 	private void tourJoueur() {
 		this.joueur.recupererPA();
 		// Boucle actions du joueur
@@ -109,6 +121,10 @@ public class Moteur {
 			}
 		}
 	}
+	
+	
+	
+	
 	
 	private void tourMonstres() {
 		boolean tourMonstres = true;
@@ -162,6 +178,10 @@ public class Moteur {
 			
 		}
 	}
+	
+	
+	
+	
 	
 	/**
 	 * Ajout des monstres aleatoirement sur une carte
@@ -223,6 +243,10 @@ public class Moteur {
 		
 		return rtrn;
 	}
+	
+	
+	
+	
 	
 	public static void main(String[] args) {
 		

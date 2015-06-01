@@ -6,6 +6,7 @@ import mmorpg.affichage.InterfaceTerm;
 import mmorpg.affichage.Matrice;
 import mmorpg.carte.Carte;
 import mmorpg.carte.Position;
+import mmorpg.exceptions.affichage.fenetre.CantDrawWindowException;
 import mmorpg.personnage.Joueur;
 
 /**
@@ -98,12 +99,12 @@ public class FenetreCarte extends Fenetre {
 		this.setTaille(largeur + FenetreCarte.LARGEUR_CADRE, hauteur + FenetreCarte.LARGEUR_CADRE);
 	}
 	
-	private boolean dessinerCarte() {
+	private boolean dessinerCarte() throws CantDrawWindowException {
 		
 		if (this.carte == null)
-			return false;
+			throw new CantDrawWindowException("La carte n'est pas definie");
 		if (this.joueur == null)
-			return false;
+			throw new CantDrawWindowException("Le joueur n'est pas defini");
 		
 		// Image a dessiner
 		Image img;
@@ -160,9 +161,13 @@ public class FenetreCarte extends Fenetre {
 		return true;
 	}
 	
-	public Matrice getMatriceFen() {
-		this.dessinerCarte();
-		return super.getMatriceFen();
+	public Matrice getMatriceFen() throws CantDrawWindowException {
+		try {
+			this.dessinerCarte();
+			return super.getMatriceFen();
+		} catch(CantDrawWindowException e) {
+			throw e;
+		}
 	}
 	
 	/* --- GETTERS / SETTERS --- */

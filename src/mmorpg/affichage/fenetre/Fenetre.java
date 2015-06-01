@@ -2,6 +2,7 @@ package mmorpg.affichage.fenetre;
 
 import mmorpg.affichage.Matrice;
 import mmorpg.affichage.Pixel;
+import mmorpg.exceptions.affichage.fenetre.CantDrawWindowException;
 
 public abstract class Fenetre {
 	
@@ -52,8 +53,9 @@ public abstract class Fenetre {
 	
 	/**
 	 * @return Une matrice contenant la representation de la fenetre
+	 * @throws CantDrawWindowException 
 	 */
-	public Matrice getMatriceFen() {
+	public Matrice getMatriceFen() throws CantDrawWindowException {
 		// On cree une matrice plus grande de 2 pixels (en h et en w)
 		Matrice rtrn = new Matrice(this.largeur, this.hauteur);
 		

@@ -5,6 +5,7 @@ import mmorpg.affichage.fenetre.FenetreInfosJoueur;
 import mmorpg.affichage.fenetre.FenetreInventaire;
 import mmorpg.affichage.fenetre.FenetreLog;
 import mmorpg.carte.Carte;
+import mmorpg.exceptions.affichage.fenetre.CantDrawWindowException;
 import mmorpg.exceptions.affichage.interfaceTerm.CantDrawInterfaceException;
 import mmorpg.exceptions.affichage.interfaceTerm.ModeNotSetException;
 import mmorpg.jeu.Log;
@@ -149,33 +150,42 @@ public class InterfaceTerm {
 		catch(ModeNotSetException e) {
 			throw new CantDrawInterfaceException("Impossible de dessiner l'interface.", e);
 		}
+		catch(CantDrawWindowException e) {
+			throw new CantDrawInterfaceException("Impossible de dessiner l'interface.", e);
+		}
 		
 		this.matrice.afficher();
 		
 		return true;
 	}
 	
-	private boolean dessinerInterface() throws ModeNotSetException {
+	private boolean dessinerInterface() throws ModeNotSetException, CantDrawWindowException {
 		
-		switch (this.mode) {
+		try {
+			switch (this.mode) {
+			
+			case InterfaceTerm.MODE_JEU:
+				this.matrice.dessinerFenetre(this.fenCarte);
+				this.matrice.dessinerFenetre(this.fenLog);
+				this.matrice.dessinerFenetre(this.fenInfos);
+				break;
+				
+			case InterfaceTerm.MODE_INVENTAIRE:
+				this.matrice.dessinerFenetre(this.fenInventaire);
+				this.matrice.dessinerFenetre(this.fenInfos);
+				break;
+				
+			case InterfaceTerm.MODE_PERSONNAGE:
+				// TODO:skeggib A faire
+				break;
+				
+			default:
+				throw new ModeNotSetException("Le mode de l'interface n'est pas reconnu.");
+			}
+		} 
 		
-		case InterfaceTerm.MODE_JEU:
-			this.matrice.dessinerFenetre(this.fenCarte);
-			this.matrice.dessinerFenetre(this.fenLog);
-			this.matrice.dessinerFenetre(this.fenInfos);
-			break;
-			
-		case InterfaceTerm.MODE_INVENTAIRE:
-			this.matrice.dessinerFenetre(this.fenInventaire);
-			this.matrice.dessinerFenetre(this.fenInfos);
-			break;
-			
-		case InterfaceTerm.MODE_PERSONNAGE:
-			// TODO:skeggib A faire
-			break;
-			
-		default:
-			throw new ModeNotSetException("Le mode de l'interface n'est pas reconnu.");
+		catch (CantDrawWindowException e) {
+			throw e;
 		}
 		
 		return true;

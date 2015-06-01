@@ -2,6 +2,7 @@ package mmorpg.affichage.fenetre;
 
 import mmorpg.affichage.Matrice;
 import mmorpg.affichage.Pixel;
+import mmorpg.exceptions.affichage.fenetre.CantDrawWindowException;
 import mmorpg.personnage.Equipement;
 import mmorpg.personnage.Inventaire;
 import mmorpg.personnage.Joueur;
@@ -40,9 +41,9 @@ public class FenetreInventaire extends Fenetre { // TODO:skeggib Afficher le nom
 	
 	/* --- METHODES --- */
 	
-	private boolean dessinerInventaire() {
+	private boolean dessinerInventaire() throws CantDrawWindowException {
 		if (this.joueur == null)
-			return false;
+			throw new CantDrawWindowException("Le joueur n'est pas defini");
 		
 		// --- Fond
 		Pixel p = new Pixel(' ', "BLACK", "WHITE");
@@ -82,9 +83,13 @@ public class FenetreInventaire extends Fenetre { // TODO:skeggib Afficher le nom
 		return true;
 	}
 	
-	public Matrice getMatriceFen() {
-		this.dessinerInventaire();
-		return super.getMatriceFen();
+	public Matrice getMatriceFen() throws CantDrawWindowException {
+		try {
+			this.dessinerInventaire();
+			return super.getMatriceFen();
+		} catch (CantDrawWindowException e) {
+			throw e;
+		}
 	}
 	
 	/* --- GETTERS / SETTERS --- */

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import mmorpg.affichage.Matrice;
 import mmorpg.affichage.Pixel;
+import mmorpg.exceptions.affichage.fenetre.CantDrawWindowException;
 import mmorpg.personnage.Joueur;
 
 public class FenetreInfosJoueur extends Fenetre {
@@ -40,9 +41,9 @@ public class FenetreInfosJoueur extends Fenetre {
 	
 	/* --- METHODES --- */
 	
-	private boolean dessinerInfos() {
+	private boolean dessinerInfos() throws CantDrawWindowException {
 		if (this.joueur == null)
-			return false;
+			throw new CantDrawWindowException("Le joueur n'est pas defini");
 		
 		Pixel remplissage = new Pixel(' ', "BLACK", "WHITE");
 		int matriceH = this.getMatrice().getHauteur();
@@ -67,9 +68,13 @@ public class FenetreInfosJoueur extends Fenetre {
 		return true;
 	}
 	
-	public Matrice getMatriceFen() {
-		this.dessinerInfos();
-		return super.getMatriceFen();
+	public Matrice getMatriceFen() throws CantDrawWindowException {
+		try {
+			this.dessinerInfos();
+			return super.getMatriceFen();
+		} catch (CantDrawWindowException e) {
+			throw e;
+		}
 	}
 	
 	/* --- GETTERS / SETTERS --- */

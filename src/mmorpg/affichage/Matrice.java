@@ -1,6 +1,7 @@
 package mmorpg.affichage;
 
 import mmorpg.affichage.fenetre.Fenetre;
+import mmorpg.exceptions.affichage.fenetre.CantDrawWindowException;
 
 public class Matrice {
 	
@@ -150,14 +151,18 @@ public class Matrice {
 		return true;
 	}
 	
-	public boolean dessinerFenetre(Fenetre fen) {
+	public boolean dessinerFenetre(Fenetre fen) throws CantDrawWindowException {
 		if (fen == null)
 			return false;
 		
 		int x = fen.getPosX();
 		int y = fen.getPosY();
 		
-		return this.dessinerMatrice(x, y, fen.getMatriceFen());
+		try {
+			return this.dessinerMatrice(x, y, fen.getMatriceFen());
+		} catch(CantDrawWindowException e) {
+			throw e;
+		}
 	}
 	
 	/* --- GETTERS / SETTERS --- */

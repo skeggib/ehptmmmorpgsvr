@@ -2,6 +2,7 @@ package mmorpg.affichage.fenetre;
 
 import mmorpg.affichage.Matrice;
 import mmorpg.affichage.Pixel;
+import mmorpg.exceptions.affichage.fenetre.CantDrawWindowException;
 import mmorpg.jeu.Log;
 
 public class FenetreLog extends Fenetre {
@@ -38,9 +39,9 @@ public class FenetreLog extends Fenetre {
 	
 	/* --- METHODES --- */
 	
-	private boolean dessinerLog() {
+	private boolean dessinerLog() throws CantDrawWindowException {
 		if (this.log == null)
-			return false;
+			throw new CantDrawWindowException("Les logs ne sont pas definis");
 		
 		String[] messages;
 		messages = this.log.getDerniersMessages(this.getMatrice().getHauteur());
@@ -56,9 +57,13 @@ public class FenetreLog extends Fenetre {
 		return true;
 	}
 	
-	public Matrice getMatriceFen() {
-		this.dessinerLog();
-		return super.getMatriceFen();
+	public Matrice getMatriceFen() throws CantDrawWindowException {
+		try {
+			this.dessinerLog();
+			return super.getMatriceFen();
+		} catch(CantDrawWindowException e) {
+			throw e;
+		}
 	}
 	
 	/* --- GETTERS / SETTERS --- */
