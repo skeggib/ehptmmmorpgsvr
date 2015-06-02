@@ -6,8 +6,9 @@ import mmorpg.items.Objet;
 
 /**
  * 
- * Cette Classe permet de gerer l'equipement d'une entite </br>
- * Elle controle qu'il n'y a qu'un seul objet de chaque type (Une entite ne peut porte qu'un seul casque, par exemple)
+ * Cette Classe permet de gerer l'equipement d'une entite </br> Elle controle
+ * qu'il n'y a qu'un seul objet de chaque type (Une entite ne peut porte qu'un
+ * seul casque, par exemple)
  * 
  * @author armya
  *
@@ -22,7 +23,7 @@ public class Equipement implements ContenirObjets {
 
 	public Equipement() {
 		this.listObjet = new ListeUnique<Equipable>();
-	}	
+	}
 
 	/*
 	 * Methode
@@ -36,37 +37,8 @@ public class Equipement implements ContenirObjets {
 	}
 
 	public boolean ajouterObjet(Objet obj) {
-		if (obj instanceof Equipable) {
-			Equipable eq = (Equipable) obj;
-			if (!this.listObjet.contains(eq)) {
-				if (eq instanceof Arme) {
-					Arme a = (Arme) eq;
-					int nombreArmeEquipe = 0;
-					for (int i = 0; i < this.listObjet.size(); i++) {
-						if (this.listObjet.get(i).getClass() == a.getClass()) {
-							nombreArmeEquipe++;
-						}
-					}
-					if (nombreArmeEquipe < 2) {
-						this.listObjet.add(a);
-						return true;
-					}
-				} else {
-					boolean dejaEquipe = false;
-					for (int i = 0; i < this.listObjet.size(); i++) {
-						if (this.listObjet.get(i).getClass() == eq.getClass()) {
-							dejaEquipe = true;
-						}
-					}
-					if (!dejaEquipe) {
-						this.listObjet.add(eq);
-						return true;
-					}
-				}
-			}
-			return false;
-		}
-		return false;
+		Equipable eq = (Equipable) obj;
+		return this.listObjet.add(eq);
 	}
 
 	public void ajouterObjets(ListeUnique<Objet> list) {
