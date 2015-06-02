@@ -11,6 +11,7 @@ import mmorpg.controles.Controleur;
 import mmorpg.exceptions.affichage.interfaceTerm.CantDrawInterfaceException;
 import mmorpg.items.Arme;
 import mmorpg.items.Casque;
+import mmorpg.items.Pantalon;
 import mmorpg.items.Potion;
 import mmorpg.items.PotionDeDegat;
 import mmorpg.items.PotionDeSoin;
@@ -83,6 +84,10 @@ public class Moteur {
 		this.joueur.rammasserObjet(new PotionEffet());
 		this.joueur.rammasserObjet(new PotionDeSoin());
 		this.joueur.rammasserObjet(new PotionDeDegat());
+		this.joueur.rammasserObjet(new Casque());
+		this.joueur.rammasserObjet(new Arme());
+		this.joueur.rammasserObjet(new Pantalon());
+		this.joueur.rammasserObjet(new Pantalon());
 		
 		/* Demander la taille de l'interface */
 		
