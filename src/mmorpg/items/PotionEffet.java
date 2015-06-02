@@ -92,6 +92,16 @@ public class PotionEffet extends Potion{ // TODO:skeggib UML
 		
 		this.setNom(this.randNom());
 	}
+	
+	public PotionEffet(PotionEffet pe){
+		this.setAdresse(pe.getAdresse());
+		this.setForce(pe.getForce());
+		this.setImpact(pe.getImpact());
+		this.setManiabilite(pe.getManiabilite());
+		this.setResistance(pe.getResistance());
+		this.setDuree(pe.getDuree());
+		this.setNom(pe.getNom());
+	}
 
 	/*
 	 * Methode

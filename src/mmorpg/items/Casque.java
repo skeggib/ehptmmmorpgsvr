@@ -12,6 +12,11 @@ public class Casque extends Vetement {
 	public Casque() {
 		this.setNom(this.randNom());
 	}
+	
+	public Casque(Casque ca){
+		super(ca);
+		this.setNom(ca.getNom());
+	}
 
 	/*
 	 * Methode

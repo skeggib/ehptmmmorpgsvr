@@ -66,6 +66,13 @@ public abstract class Vetement extends Equipable {
 	public Vetement(int qualite) {
 		super(qualite);
 	}
+	
+	public Vetement(Vetement vet){
+		super(vet);
+		this.setAdresse(vet.getAdresse());
+		this.setForce(vet.getForce());
+		this.setResistance(vet.getResistance());
+	}
 
 	/*
 	 * Methode

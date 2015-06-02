@@ -22,6 +22,11 @@ public class Pantalon extends Vetement {
 		super();
 		this.setNom(this.randNom());
 	}
+	
+	public Pantalon(Casque pa){
+		super(pa);
+		this.setNom(pa.getNom());
+	}
 
 	/*
 	 * Methode

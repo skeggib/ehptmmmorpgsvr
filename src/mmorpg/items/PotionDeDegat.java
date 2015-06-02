@@ -24,6 +24,11 @@ public class PotionDeDegat extends Potion {
 		this.setMalusVie(new Random().nextInt(PotionDeDegat.NOM.length) + 1);
 		this.setNom(this.randNom());
 	}
+	
+	public PotionDeDegat(PotionDeDegat pdd){
+		this.setNom(pdd.getNom());
+		this.setMalusVie(pdd.getMalusVie());
+	}
 
 	/*
 	 * Methode

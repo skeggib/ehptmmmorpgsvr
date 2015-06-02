@@ -63,6 +63,13 @@ public class Arme extends Equipable {
 		this.setManiabilite(maniabilite);
 		this.setImpact(impact);
 	}
+	
+	public Arme(Arme ar){
+		super(ar);
+		this.setImpact(ar.getImpact());
+		this.setManiabilite(ar.getManiabilite());
+		this.setNom(ar.getNom());
+	}
 
 	/*
 	 * Methode

@@ -45,6 +45,10 @@ public abstract class Equipable extends Objet{
 		this.setQualite(qualite);
 	}
 
+	public Equipable(Equipable eq){
+		this.setQualite(eq.getQualite());
+	}
+	
 	/*
 	 * Methode d'acces
 	 */
