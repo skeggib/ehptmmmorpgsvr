@@ -40,7 +40,7 @@ public class Caracteristique {
 		this.setAdresse(car.getAdresse());
 		this.setResistance(car.getResistance());
 		this.setManiabilite(car.getManiabilite());
-		this.setImpact(car.getManiabilite());
+		this.setImpact(car.getImpact());
 	}
 
 	/*

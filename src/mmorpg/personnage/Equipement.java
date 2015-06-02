@@ -26,6 +26,7 @@ public class Equipement implements ContenirObjets {
 	}
 	
 	public Equipement (Equipement eq){
+		this.listObjet = new ListeUnique<Equipable>();
 		for(int i = 0; i < eq.getTaille(); i++){
 			this.ajouterObjet(eq.getObjet(i).clone());
 		}

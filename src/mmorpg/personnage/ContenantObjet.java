@@ -23,6 +23,7 @@ public abstract class ContenantObjet implements ContenirObjets {
 	}
 	
 	public ContenantObjet(ContenantObjet cobj){
+		this.listObjet = new ListeUnique<Objet>();
 		for(int i = 0; i < cobj.getTaille(); i++){
 			this.ajouterObjet(cobj.getObjet(i).clone());
 		}

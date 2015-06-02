@@ -7,33 +7,104 @@ import mmorpg.items.Arme;
 import mmorpg.items.Casque;
 import mmorpg.items.Gant;
 import mmorpg.items.Objet;
+import mmorpg.items.Pantalon;
 import mmorpg.items.PotionEffet;
 
 public class Test {
 
 	public static void main(String[] args) {
 
-		
+		/*
+		 * TEST CONSTRUC COPIE ENTITE
+		 */
+		Joueur j = new Joueur(null, 10, 10, 10);
+		j.setNom("NOM_A");
+		j.rammasserObjet(new Arme());
+		j.rammasserObjet(new Pantalon());
+		Arme a = new Arme();
+		j.rammasserObjet(a);
+		j.equiperObjet(a);
+		j.ajouterEffet(new Effet(5,5,5,5,5,5));
+		Joueur j2 = new Joueur(j);
+		System.out.println("NOM (NOM_A) : " + j2.getNom());
+		System.out.println("NOM ARME ("
+				+ j.getInventaire().getObjet(0).getNom() + ") : "
+				+ j2.getInventaire().getObjet(0).getNom());
+		System.out.println("STAT ARME IMPACT ("
+				+ ((Arme) j.getInventaire().getObjet(0)).getImpact() + ") : "
+				+ ((Arme) j2.getInventaire().getObjet(0)).getImpact());
+		System.out.println("STAT ARME MANIABILITE ("
+				+ ((Arme) j.getInventaire().getObjet(0)).getManiabilite() + ") : "
+				+ ((Arme) j2.getInventaire().getObjet(0)).getManiabilite());
+		System.out.println("NOM PANTALON ("
+				+ j.getInventaire().getObjet(1).getNom() + ") : "
+				+ j2.getInventaire().getObjet(1).getNom());
+		System.out.println("STAT PANTALON RESISTANCE ("
+				+ ((Pantalon) j.getInventaire().getObjet(1)).getResistance() + ") : "
+				+ ((Pantalon) j2.getInventaire().getObjet(1)).getResistance());
+		System.out.println("NOM ARME EQUIPE ("
+				+ j.getEquipement().getObjet(0).getNom() + ") : "
+				+ j2.getEquipement().getObjet(0).getNom());
+		System.out.println("STAT ARME EQUIPE IMPACT ("
+				+ ((Arme) j.getEquipement().getObjet(0)).getImpact() + ") : "
+				+ ((Arme) j2.getEquipement().getObjet(0)).getImpact());
+		System.out.println("STAT ARME EQUIPE MANIABILITE ("
+				+ ((Arme) j.getEquipement().getObjet(0)).getManiabilite() + ") : "
+				+ ((Arme) j2.getEquipement().getObjet(0)).getManiabilite());
+		System.out.println("EFFET ADRESSE ("
+				+ j.getCaractEffet().getAdresse() + ") : "
+				+ j2.getCaractEffet().getAdresse());
+		System.out.println("EFFET FORCE("
+				+ j.getCaractEffet().getForce() + ") : "
+				+ j2.getCaractEffet().getForce());
+		System.out.println("EFFET RESIS ("
+				+ j.getCaractEffet().getResistance() + ") : "
+				+ j2.getCaractEffet().getResistance());
+		System.out.println("EFFET IMPACT ("
+				+ j.getCaractEffet().getImpact() + ") : "
+				+ j2.getCaractEffet().getImpact());
+		System.out.println("EFFET MANIA ("
+				+ j.getCaractEffet().getManiabilite() + ") : "
+				+ j2.getCaractEffet().getManiabilite());
+
+		System.out.println("PERSO ADRESSE ("
+				+ j.getCaractTotal().getAdresse() + ") : "
+				+ j2.getCaractTotal().getAdresse());
+		System.out.println("PERSO FORCE("
+				+ j.getCaractTotal().getForce() + ") : "
+				+ j2.getCaractTotal().getForce());
+		System.out.println("PERSO RESIS ("
+				+ j.getCaractTotal().getResistance() + ") : "
+				+ j2.getCaractTotal().getResistance());
+		System.out.println("PERSO IMPACT ("
+				+ j.getCaractTotal().getImpact() + ") : "
+				+ j2.getCaractTotal().getImpact());
+		System.out.println("PERSO MANIA ("
+				+ j.getCaractTotal().getManiabilite() + ") : "
+				+ j2.getCaractTotal().getManiabilite());
+				
 		/*
 		 * TEST BUG EQUIPEMENT ARME
 		 */
-		//Notre joueur :
-		Joueur j = new Joueur("Armya");
-		
-		for(int i = 0; i < 100000; i++){
-			Arme a = new Arme();
-			j.rammasserObjet(a);
-			j.equiperObjet(a);
-			if((i%2) == 0){
-				j.desequiperObjet(j.getEquipement().getObjet(1));
-			}
-			if((i%4) == 0){
-				j.desequiperObjet(j.getEquipement().getObjet(0));
-			}
-			System.out.println("L'EQUIPEMENT CONTIENT " + j.getEquipement().getTaille() + " OBJETS");
-			System.out.println("L'INVENTAIREd CONTIENT " + j.getInventaire().getTaille() + " OBJETS");
-		}
-		
+		// Notre joueur :
+		// Joueur j = new Joueur("Armya");
+		//
+		// for(int i = 0; i < 100000; i++){
+		// Arme a = new Arme();
+		// j.rammasserObjet(a);
+		// j.equiperObjet(a);
+		// if((i%2) == 0){
+		// j.desequiperObjet(j.getEquipement().getObjet(1));
+		// }
+		// if((i%4) == 0){
+		// j.desequiperObjet(j.getEquipement().getObjet(0));
+		// }
+		// System.out.println("L'EQUIPEMENT CONTIENT " +
+		// j.getEquipement().getTaille() + " OBJETS");
+		// System.out.println("L'INVENTAIREd CONTIENT " +
+		// j.getInventaire().getTaille() + " OBJETS");
+		// }
+
 		/*
 		 * TEST DEPLACEMENT MONSTRE
 		 */
@@ -61,7 +132,7 @@ public class Test {
 		// System.out.println("APRES LE DEBUT D'UN TOUR\nLE MONSTRE POSSEDE (VIE) : "
 		// + m.getVie());
 		//
-		
+
 		/*
 		 * TEST POTION EFFET
 		 */
@@ -109,36 +180,41 @@ public class Test {
 		 * TEST XP
 		 */
 
-//		Joueur a = new Joueur("armya", 10, 10, 10);
-//		Joueur s = new Joueur("skeggib", 10, 10, 10);
-//		s.ajouterXP(100);
-//		a.ajouterXP(100);
-//		while(s.estVivant()){
-//			a.attaquer(s);
-//			System.out.println("EXPERIENCE ARMYA : " + a.getExperience());
-//		}
-//		System.out.println("FORCE : " + a.getCaractPrinc().getForce());
-//		System.out.println("EXP POUR NEXT LVL FORCE : " + a.expPourNiveauSuivant(a.getCaractPrinc().getForce()));
-//		a.augmenterNiveauForce();
-//		System.out.println("EXPERIENCE RESTANT : " + a.getExperience());
-//		System.out.println("FORCE : " + a.getCaractPrinc().getForce());
-//		System.out.println("EXP POUR NEXT LVL FORCE : " + a.expPourNiveauSuivant(a.getCaractPrinc().getForce()));
-//		a.augmenterNiveauForce();
-//		System.out.println("EXPERIENCE RESTANT : " + a.getExperience());
-//		System.out.println("FORCE : " + a.getCaractPrinc().getForce());
-//		System.out.println("EXP POUR NEXT LVL FORCE : " + a.expPourNiveauSuivant(a.getCaractPrinc().getForce()));
-//		a.augmenterNiveauForce();
-//		System.out.println("EXPERIENCE RESTANT : " + a.getExperience());
-//		System.out.println("FORCE : " + a.getCaractPrinc().getForce());
-//		System.out.println("EXP POUR NEXT LVL FORCE : " + a.expPourNiveauSuivant(a.getCaractPrinc().getForce()));
-//		a.augmenterNiveauForce();
-//		System.out.println("EXPERIENCE RESTANT : " + a.getExperience());
-//		System.out.println("FORCE : " + a.getCaractPrinc().getForce());
-//		System.out.println("EXP POUR NEXT LVL FORCE : " + a.expPourNiveauSuivant(a.getCaractPrinc().getForce()));
-//		a.augmenterNiveauForce();
-//		System.out.println("EXPERIENCE RESTANT : " + a.getExperience());
-//		System.out.println("FORCE : " + a.getCaractPrinc().getForce());
-		
+		// Joueur a = new Joueur("armya", 10, 10, 10);
+		// Joueur s = new Joueur("skeggib", 10, 10, 10);
+		// s.ajouterXP(100);
+		// a.ajouterXP(100);
+		// while(s.estVivant()){
+		// a.attaquer(s);
+		// System.out.println("EXPERIENCE ARMYA : " + a.getExperience());
+		// }
+		// System.out.println("FORCE : " + a.getCaractPrinc().getForce());
+		// System.out.println("EXP POUR NEXT LVL FORCE : " +
+		// a.expPourNiveauSuivant(a.getCaractPrinc().getForce()));
+		// a.augmenterNiveauForce();
+		// System.out.println("EXPERIENCE RESTANT : " + a.getExperience());
+		// System.out.println("FORCE : " + a.getCaractPrinc().getForce());
+		// System.out.println("EXP POUR NEXT LVL FORCE : " +
+		// a.expPourNiveauSuivant(a.getCaractPrinc().getForce()));
+		// a.augmenterNiveauForce();
+		// System.out.println("EXPERIENCE RESTANT : " + a.getExperience());
+		// System.out.println("FORCE : " + a.getCaractPrinc().getForce());
+		// System.out.println("EXP POUR NEXT LVL FORCE : " +
+		// a.expPourNiveauSuivant(a.getCaractPrinc().getForce()));
+		// a.augmenterNiveauForce();
+		// System.out.println("EXPERIENCE RESTANT : " + a.getExperience());
+		// System.out.println("FORCE : " + a.getCaractPrinc().getForce());
+		// System.out.println("EXP POUR NEXT LVL FORCE : " +
+		// a.expPourNiveauSuivant(a.getCaractPrinc().getForce()));
+		// a.augmenterNiveauForce();
+		// System.out.println("EXPERIENCE RESTANT : " + a.getExperience());
+		// System.out.println("FORCE : " + a.getCaractPrinc().getForce());
+		// System.out.println("EXP POUR NEXT LVL FORCE : " +
+		// a.expPourNiveauSuivant(a.getCaractPrinc().getForce()));
+		// a.augmenterNiveauForce();
+		// System.out.println("EXPERIENCE RESTANT : " + a.getExperience());
+		// System.out.println("FORCE : " + a.getCaractPrinc().getForce());
+
 		/*
 		 * TEST CONTAIN()
 		 */

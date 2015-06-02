@@ -60,7 +60,7 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 
 	private Inventaire inventaire;
 	private Equipement equipement;
-	private ListeUnique<Effet> effet;
+	public ListeUnique<Effet> effet;
 
 	/*
 	 * Constructeurs
@@ -492,6 +492,7 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 				return true;
 			}
 		}
+		this.majCaractEffet();
 		return false;
 	}
 
