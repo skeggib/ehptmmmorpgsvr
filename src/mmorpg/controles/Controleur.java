@@ -123,6 +123,9 @@ public class Controleur {
 	/* --- JEU --- */
 	
 	private int saisieActionJeu() {
+		if (!this.joueur.actionDisponible())
+			System.out.println("\nVous pouvez appuyer sur 't' pour terminer votre tour.");
+		
 		char car = this.saisieCar();
 		
 		int action = -1;
