@@ -14,9 +14,13 @@ public class Torse extends Vetement{
 		this.setNom(this.randNom());
 	}
 	
-	public Torse(Casque to){
+	public Torse(Torse to){
 		super(to);
 		this.setNom(to.getNom());
+	}
+	
+	public Torse clone(){
+		return new Torse(this);
 	}
 	
 	public String randNom() {

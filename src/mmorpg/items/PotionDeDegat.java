@@ -33,6 +33,10 @@ public class PotionDeDegat extends Potion {
 	/*
 	 * Methode
 	 */
+	
+	public PotionDeDegat clone(){
+		return new PotionDeDegat(this);
+	}
 
 	public String randNom() {
 		return PotionDeDegat.NOM[this.getMalusVie() - 1];

@@ -106,6 +106,10 @@ public class PotionEffet extends Potion{ // TODO:skeggib UML
 	/*
 	 * Methode
 	 */
+	
+	public PotionEffet clone(){
+		return new PotionEffet(this);
+	}
 
 	@Override
 	public String randNom() {

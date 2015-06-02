@@ -74,6 +74,10 @@ public class Arme extends Equipable {
 	/*
 	 * Methode
 	 */
+	
+	public Arme clone(){
+		return new Arme(this);
+	}
 
 	public String randNom() {
 		int i = new Random().nextInt((Arme.NOM.length));

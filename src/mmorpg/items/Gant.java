@@ -19,7 +19,7 @@ public class Gant extends Vetement {
 		this.setNom(this.randNom());
 	}
 	
-	public Gant(Casque ga){
+	public Gant(Gant ga){
 		super(ga);
 		this.setNom(ga.getNom());
 	}
@@ -27,6 +27,10 @@ public class Gant extends Vetement {
 	/*
 	 * Methode
 	 */
+	
+	public Gant clone(){
+		return new Gant(this);
+	}
 
 	public String randNom() {
 		int i = new Random().nextInt((Gant.NOM.length));

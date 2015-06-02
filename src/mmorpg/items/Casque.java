@@ -21,7 +21,11 @@ public class Casque extends Vetement {
 	/*
 	 * Methode
 	 */
-
+	
+	public Casque clone(){
+		return new Casque(this);
+	}
+	
 	public String randNom() {
 		int i = new Random().nextInt((Casque.NOM.length));
 		return Casque.NOM[i];

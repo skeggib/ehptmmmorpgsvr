@@ -23,7 +23,7 @@ public class Pantalon extends Vetement {
 		this.setNom(this.randNom());
 	}
 	
-	public Pantalon(Casque pa){
+	public Pantalon(Pantalon pa){
 		super(pa);
 		this.setNom(pa.getNom());
 	}
@@ -31,6 +31,10 @@ public class Pantalon extends Vetement {
 	/*
 	 * Methode
 	 */
+	
+	public Pantalon clone(){
+		return new Pantalon(this);
+	}
 
 	public String randNom() {
 		int i = new Random().nextInt((Pantalon.NOM.length));
