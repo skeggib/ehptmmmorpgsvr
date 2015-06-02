@@ -11,6 +11,10 @@ import mmorpg.controles.Controleur;
 import mmorpg.exceptions.affichage.interfaceTerm.CantDrawInterfaceException;
 import mmorpg.items.Arme;
 import mmorpg.items.Casque;
+import mmorpg.items.Potion;
+import mmorpg.items.PotionDeDegat;
+import mmorpg.items.PotionDeSoin;
+import mmorpg.items.PotionEffet;
 import mmorpg.personnage.Joueur;
 import mmorpg.personnage.Monstre;
 
@@ -73,6 +77,12 @@ public class Moteur {
 		this.joueur = new Joueur("Armya", 10, 10, 10);
 		// TODO:skeggib Creation interractive du joueur
 		this.joueur.initialiserPos(this.carte.getCase(3, 3));
+		// TODO: skeggib A enlver
+		this.joueur.rammasserObjet(new PotionDeSoin());
+		this.joueur.rammasserObjet(new PotionDeDegat());
+		this.joueur.rammasserObjet(new PotionEffet());
+		this.joueur.rammasserObjet(new PotionDeSoin());
+		this.joueur.rammasserObjet(new PotionDeDegat());
 		
 		/* Demander la taille de l'interface */
 		

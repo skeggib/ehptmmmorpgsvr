@@ -5,7 +5,7 @@ import java.util.Random;
 import mmorpg.personnage.Effet;
 import mmorpg.personnage.EntiteVivante;
 
-public class PotionEffet extends Potion{
+public class PotionEffet extends Potion{ // TODO:skeggib UML
 
 	/*
 	 * Variables

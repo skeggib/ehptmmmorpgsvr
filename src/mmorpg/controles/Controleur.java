@@ -5,14 +5,18 @@ import java.util.Scanner;
 import mmorpg.affichage.InterfaceTerm;
 import mmorpg.carte.Carte;
 import mmorpg.carte.Case;
+import mmorpg.carte.ContenuCase;
 import mmorpg.carte.Position;
 import mmorpg.items.Arme;
 import mmorpg.items.Objet;
+import mmorpg.items.Potion;
+import mmorpg.items.PotionDeSoin;
 import mmorpg.items.Vetement;
 import mmorpg.jeu.Log;
 import mmorpg.personnage.Coffre;
 import mmorpg.personnage.EntiteVivante;
 import mmorpg.personnage.Joueur;
+import mmorpg.personnage.ListeUnique;
 
 public class Controleur {
 	
@@ -34,6 +38,7 @@ public class Controleur {
 	public static final int DESEQUIPER = 11;
 	public static final int TERMINER_TOUR = 12;
 	public static final int AFF_CARACT_OBJ = 13;
+	public static final int UTILISER_OBJ = 14;
 	
 	
 	
@@ -58,6 +63,7 @@ public class Controleur {
 			+ "\n\t h : Afficher cette aide"
 			+ "\n\t e : Equiper un objet"
 			+ "\n\t d : Desequiper un objet"
+			+ "\n\t u : Uiliser un objet"
 			+ "\n\t c : Afficher les caracteristiques d'un objet de l'inventaire"
 			+ "\n\t r : Retour"
 			+ "\n\t x : Quitter";
@@ -128,39 +134,32 @@ public class Controleur {
 		
 		char car = this.saisieCar();
 		
-		int action = -1;
-		
 		switch (car) {
 		case 'z':
-			action = Controleur.HAUT;
+			this.deplacement(Controleur.HAUT);
 			break;
 		case 's':
-			action = Controleur.BAS;
+			this.deplacement(Controleur.BAS);
 			break;
 		case 'd':
-			action = Controleur.DROITE;
+			this.deplacement(Controleur.DROITE);
 			break;
 		case 'q':
-			action = Controleur.GAUCHE;
+			this.deplacement(Controleur.GAUCHE);
 			break;
 		case 'i':
-			action = Controleur.INVENTAIRE;
+			this.ouvrirInventaire();
 			break;
 		case 'p':
-			action = Controleur.PERSONNAGE;
+			this.ouvrirPersonnage();
 			break;
 		case 'h':
-			action = Controleur.AIDE;
+			this.afficherAide();
 			break;
 		case 'x':
 			return Controleur.QUITTER;
 		case 't':
 			return Controleur.TERMINER_TOUR;
-		}
-		
-		if (action != -1) {
-			if (this.realiserActionJeu(action))
-				return action;
 		}
 		
 		return -1;
@@ -175,19 +174,19 @@ public class Controleur {
 		
 		switch (car) {
 		case 'h':
-			action = Controleur.AIDE;
+			this.afficherAide();
 			break;
-		case 'e':
-			action = Controleur.EQUIPER;
+		case 'e': action = Controleur.EQUIPER;
 			break;
-		case 'd':
-			action = Controleur.DESEQUIPER;
+		case 'd': action = Controleur.DESEQUIPER;
+			break;
+		case 'u': action = Controleur.UTILISER_OBJ;
 			break;
 		case 'c':
-			action = Controleur.AFF_CARACT_OBJ;
+			this.afficherCaracObjet();
 			break;
 		case 'r':
-			action = Controleur.RETOUR;
+			this.ouvrirJeu();
 			break;
 		case 'x':
 			return Controleur.QUITTER;
@@ -206,22 +205,15 @@ public class Controleur {
 	private int saisieActionPersonnage() {
 		char car = this.saisieCar();
 		
-		int action = -1;
-		
 		switch (car) {
 		case 'h':
-			action = Controleur.AIDE;
+			this.afficherAide();
 			break;
 		case 'r':
-			action = Controleur.RETOUR;
+			this.ouvrirJeu();
 			break;
 		case 'x':
 			return Controleur.QUITTER;
-		}
-		
-		if (action != -1) {
-			if (this.realiserActionPersonnage(action))
-				return action;
 		}
 		
 		return -1;
@@ -232,46 +224,11 @@ public class Controleur {
 	
 	/* --- REALISER ACTION --- */
 	
-	/* --- JEU --- */
-	
-	/**
-	 * Realise une action
-	 * @param action Action a effectuer
-	 * @return True si l'action a ete realisee
-	 */
-	private boolean realiserActionJeu(int action) {
-		
-		if (action == Controleur.AIDE) {
-			this.afficherAide();
-		}
-		
-		else if (action == Controleur.HAUT ||
-			action == Controleur.BAS ||
-			action == Controleur.DROITE ||
-			action == Controleur.GAUCHE) {
-			return this.deplacement(action);
-		}
-		
-		else if (action == Controleur.INVENTAIRE) {
-			return this.ouvrirInventaire();
-		}
-		
-		else if (action == Controleur.PERSONNAGE) {
-			return this.ouvrirPersonnage();
-		}
-		
-		return false;
-	}
-	
 	/* --- INVENTAIRE --- */
 	
-	private boolean realiserActionInventaire(int action) {
+	private boolean realiserActionInventaire(int action) { // TODO:skeggib Creer methode pour chaque action et supprimer "realiserAction..."
 		
-		if (action == Controleur.AIDE) {
-			this.afficherAide();
-		}
-		
-		else if (action == Controleur.EQUIPER) {
+		if (action == Controleur.EQUIPER) {
 			System.out.print("Entrez le numero de l'objet a equiper : ");
 			int numObj = Controleur.saisieInt() - 1;
 			// -1 car la numerotation des objets dans l'affichage commence a 1
@@ -289,62 +246,15 @@ public class Controleur {
 				System.out.println("Vous avez desequipe : " + objADesequiper.getNom());
 		}
 		
-		else if (action == Controleur.AFF_CARACT_OBJ) {
-			System.out.println("Entrez le numero de l'objet : ");
+		else if (action == Controleur.UTILISER_OBJ) { // TODO:skeggib Globaliser en choisisant le personnage cible
+			System.out.print("Entrez le numero de l'objet a utiliser : ");
 			int numObj = Controleur.saisieInt() - 1;
-			System.out.println("");
 			// -1 car la numerotation des objets dans l'affichage commence a 1
-			Objet objet = this.joueur.getInventaire().getObjet(numObj);
+			Objet objAUtiliser = this.joueur.getInventaire().getObjet(numObj);
 			
-			if (objet == null) {
-				return false;
+			if (objAUtiliser instanceof Potion) {
+				return this.utiliserPotion((Potion)objAUtiliser);
 			}
-			
-			// Nom de l'objet
-			System.out.println(objet.getNom());
-			
-			// Les caracteristiques sont differentes pour les armes et les vetements
-			if (objet instanceof Arme) {
-				Arme arme = (Arme)objet;
-				if (arme.getImpact() > 0)
-					System.out.println("Impact : " + arme.getImpact());
-				if (arme.getManiabilite() > 0)
-					System.out.println("Maniabilite : " + arme.getManiabilite());
-				Controleur.pause();
-			}
-			
-			else if (objet instanceof Vetement) {
-				Vetement vetement = (Vetement)objet;
-				if (vetement.getAdresse() > 0)
-					System.out.println("Adresse : " + vetement.getAdresse());
-				if (vetement.getForce() > 0)
-					System.out.println("Force : " + vetement.getForce());
-				if (vetement.getResistance() > 0)
-					System.out.println("Resistance : " + vetement.getResistance());
-				Controleur.pause();
-			}
-			
-			// TODO:skeggib Faire les potions
-			
-		}
-		
-		else if (action == Controleur.RETOUR) {
-			return this.ouvrirJeu();
-		}
-		
-		return false;
-	}
-	
-	/* --- PERSONNAGE --- */
-	
-	private boolean realiserActionPersonnage(int action) {
-		
-		if (action == Controleur.AIDE) {
-			this.afficherAide();
-		}
-		
-		else if (action == Controleur.RETOUR) {
-			return this.ouvrirJeu();
 		}
 		
 		return false;
@@ -353,7 +263,49 @@ public class Controleur {
 	
 	
 	
-	/* --- AIDE --- */
+	private boolean afficherCaracObjet() {
+		System.out.println("Entrez le numero de l'objet : ");
+		int numObj = Controleur.saisieInt() - 1;
+		System.out.println("");
+		// -1 car la numerotation des objets dans l'affichage commence a 1
+		Objet objet = this.joueur.getInventaire().getObjet(numObj);
+		
+		if (objet == null) {
+			return false;
+		}
+		
+		// Faire un joueur temporaire pour les calcules de difference
+		// Joueur tempJoueur = new Joueur(this.joueur); // TODO:skeggib A faire
+		
+		// Nom de l'objet
+		System.out.println(objet.getNom());
+		
+		// Les caracteristiques sont differentes pour les armes et les vetements
+		
+		if (objet instanceof Arme) {
+			Arme arme = (Arme)objet;
+			if (arme.getImpact() > 0)
+				System.out.println("Impact : " + arme.getImpact());
+			if (arme.getManiabilite() > 0)
+				System.out.println("Maniabilite : " + arme.getManiabilite());
+			Controleur.pause();
+		}
+		
+		else if (objet instanceof Vetement) {
+			Vetement vetement = (Vetement)objet;
+			if (vetement.getAdresse() > 0)
+				System.out.println("Adresse : " + vetement.getAdresse());
+			if (vetement.getForce() > 0)
+				System.out.println("Force : " + vetement.getForce());
+			if (vetement.getResistance() > 0)
+				System.out.println("Resistance : " + vetement.getResistance());
+			Controleur.pause();
+		}
+		
+		return true;
+	}
+	
+	
 	
 	private void afficherAide() {
 		
@@ -428,13 +380,7 @@ public class Controleur {
 		// Si la dest contient une entite on l'attaque
 		else if (destination.contientEntite()) {
 			EntiteVivante ennemi = (EntiteVivante)destination.getContenu();
-			int degats = this.joueur.attaquer(ennemi);
-			if (this.log != null) {
-				if (degats > 0)
-					this.ecrireLog(this.joueur.getNom() + " attaque " + ennemi.getNom() + " (-" + degats + ")");
-				else if (degats == -1)
-					this.ecrireLog(ennemi.getNom() + " esquive !");
-			}
+			return this.attaquer(ennemi);
 		}
 		
 		// Si la dest contient un objet, on le ramasse puis on se deplace
@@ -459,6 +405,60 @@ public class Controleur {
 		}
 		
 		return false;
+	}
+	
+	private boolean attaquer(EntiteVivante ennemi) {
+		if (ennemi == null)
+			return false;
+		
+		int degats = this.joueur.attaquer(ennemi);
+		if (this.log != null) {
+			if (degats > 0)
+				this.ecrireLog(this.joueur.getNom() + " attaque " + ennemi.getNom() + " (-" + degats + ")");
+			else if (degats == -1)
+				this.ecrireLog(ennemi.getNom() + " esquive !");
+		}
+		
+		return true;
+	}
+	
+	private boolean utiliserPotion(Potion potion) {
+		if (potion == null)
+			return false;
+		
+		
+		ListeUnique<EntiteVivante> listeCibles = this.getEntitesAlentours();
+		
+		System.out.println("Sur qui voulez vous utiliser " + potion.getNom() + " ?");
+		for (int i = 0; i < listeCibles.size(); i++) {
+			System.out.println(i+1 + ". " + listeCibles.get(i).getNom());
+		}
+		
+		int reponse = Controleur.saisieInt() - 1;
+		if (reponse < listeCibles.size())
+			potion.affecterBonus(this.joueur, listeCibles.get(reponse));
+		
+		
+		return true;
+	}
+	
+	private ListeUnique<EntiteVivante> getEntitesAlentours() {
+		if (this.joueur == null)
+			return new ListeUnique<EntiteVivante>();
+		
+		ListeUnique<EntiteVivante> liste = new ListeUnique<EntiteVivante>();
+		
+		Position posJoueur = this.carte.getPosContenu(this.joueur);
+		int distance = 1;
+		for (int i = -distance; i <= distance; i++) {
+			for (int j = -distance; j <= distance; j++) {
+				ContenuCase contenu = this.carte.getCase(posJoueur.getX() + i, posJoueur.getY() + j).getContenu();
+				if (contenu instanceof EntiteVivante)
+					liste.add((EntiteVivante)contenu);
+			}
+		}
+		
+		return liste;
 	}
 	
 	private void ecrireLog(String message) {

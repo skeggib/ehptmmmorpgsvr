@@ -47,3 +47,4 @@ Pour lancer le jeu il suffit d'executer le fichier Jeu.jar :
 ### b1.0
 
 - Possibilite d'afficher les caracteristiques des objets
+- Utilisation des potions
