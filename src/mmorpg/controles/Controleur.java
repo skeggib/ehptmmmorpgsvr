@@ -29,16 +29,11 @@ public class Controleur {
 	public static final int BAS = 2;
 	public static final int GAUCHE = 3;
 	public static final int DROITE = 4;
-	public static final int INVENTAIRE = 5;
-	public static final int PERSONNAGE = 6;
-	public static final int AIDE = 7;
 	public static final int QUITTER = 8;
-	public static final int RETOUR = 9; // Retour au jeu
-	public static final int EQUIPER = 10;
-	public static final int DESEQUIPER = 11;
 	public static final int TERMINER_TOUR = 12;
-	public static final int AFF_CARACT_OBJ = 13;
-	public static final int UTILISER_OBJ = 14;
+	
+	
+	
 	
 	
 	
@@ -77,6 +72,10 @@ public class Controleur {
 	
 	
 	
+	
+	
+	
+	
 	/* --- AUTRES ATTRIBUTS --- */
 
 	private static Scanner sc = new Scanner(System.in);
@@ -87,17 +86,11 @@ public class Controleur {
 	
 	private InterfaceTerm inter;
 	
-	/**
-	 * Demande une saisie et retourne le premier caractere saisit
-	 * @return
-	 */
-	private char saisieCar() {
-		String str = sc.nextLine();
-		if (str.isEmpty())
-			return ' ';
-		else
-			return str.toLowerCase().charAt(0);
-	}
+	
+	
+	
+	
+	
 	
 	
 	
@@ -126,7 +119,8 @@ public class Controleur {
 		return -1;
 	}
 	
-	/* --- JEU --- */
+	
+	
 	
 	private int saisieActionJeu() {
 		if (!this.joueur.actionDisponible())
@@ -165,22 +159,24 @@ public class Controleur {
 		return -1;
 	}
 	
-	/* --- INVENTAIRE --- */
+	
+	
 	
 	private int saisieActionInventaire() {
 		char car = this.saisieCar();
-		
-		int action = -1;
 		
 		switch (car) {
 		case 'h':
 			this.afficherAide();
 			break;
-		case 'e': action = Controleur.EQUIPER;
+		case 'e':
+			this.equiper();
 			break;
-		case 'd': action = Controleur.DESEQUIPER;
+		case 'd':
+			this.desequiper();
 			break;
-		case 'u': action = Controleur.UTILISER_OBJ;
+		case 'u':
+			this.utiliser();
 			break;
 		case 'c':
 			this.afficherCaracObjet();
@@ -192,15 +188,11 @@ public class Controleur {
 			return Controleur.QUITTER;
 		}
 		
-		if (action != -1) {
-			if (this.realiserActionInventaire(action))
-				return action;
-		}
-		
 		return -1;
 	}
+
 	
-	/* --- PERSONNAGE --- */
+	
 	
 	private int saisieActionPersonnage() {
 		char car = this.saisieCar();
@@ -222,91 +214,16 @@ public class Controleur {
 	
 	
 	
-	/* --- REALISER ACTION --- */
-	
-	/* --- INVENTAIRE --- */
-	
-	private boolean realiserActionInventaire(int action) { // TODO:skeggib Creer methode pour chaque action et supprimer "realiserAction..."
-		
-		if (action == Controleur.EQUIPER) {
-			System.out.print("Entrez le numero de l'objet a equiper : ");
-			int numObj = Controleur.saisieInt() - 1;
-			// -1 car la numerotation des objets dans l'affichage commence a 1
-			Objet objAEquiper = this.joueur.getInventaire().getObjet(numObj);
-			if (this.joueur.equiperObjet(objAEquiper))
-				System.out.println("Vous avez equipe : " + objAEquiper.getNom());
-		}
-		
-		else if (action == Controleur.DESEQUIPER) {
-			System.out.println("Entrez le numero de l'objet a desequiper : ");
-			int numObj = Controleur.saisieInt() - 1;
-			// -1 car la numerotation des objets dans l'affichage commence a 1
-			Objet objADesequiper = this.joueur.getEquipement().getObjet(numObj);
-			if (this.joueur.desequiperObjet(objADesequiper))
-				System.out.println("Vous avez desequipe : " + objADesequiper.getNom());
-		}
-		
-		else if (action == Controleur.UTILISER_OBJ) { // TODO:skeggib Globaliser en choisisant le personnage cible
-			System.out.print("Entrez le numero de l'objet a utiliser : ");
-			int numObj = Controleur.saisieInt() - 1;
-			// -1 car la numerotation des objets dans l'affichage commence a 1
-			Objet objAUtiliser = this.joueur.getInventaire().getObjet(numObj);
-			
-			if (objAUtiliser instanceof Potion) {
-				return this.utiliserPotion((Potion)objAUtiliser);
-			}
-		}
-		
-		return false;
-	}
 	
 	
 	
 	
-	private boolean afficherCaracObjet() {
-		System.out.println("Entrez le numero de l'objet : ");
-		int numObj = Controleur.saisieInt() - 1;
-		System.out.println("");
-		// -1 car la numerotation des objets dans l'affichage commence a 1
-		Objet objet = this.joueur.getInventaire().getObjet(numObj);
-		
-		if (objet == null) {
-			return false;
-		}
-		
-		// Faire un joueur temporaire pour les calcules de difference
-		// Joueur tempJoueur = new Joueur(this.joueur); // TODO:skeggib A faire
-		
-		// Nom de l'objet
-		System.out.println(objet.getNom());
-		
-		// Les caracteristiques sont differentes pour les armes et les vetements
-		
-		if (objet instanceof Arme) {
-			Arme arme = (Arme)objet;
-			if (arme.getImpact() > 0)
-				System.out.println("Impact : " + arme.getImpact());
-			if (arme.getManiabilite() > 0)
-				System.out.println("Maniabilite : " + arme.getManiabilite());
-			Controleur.pause();
-		}
-		
-		else if (objet instanceof Vetement) {
-			Vetement vetement = (Vetement)objet;
-			if (vetement.getAdresse() > 0)
-				System.out.println("Adresse : " + vetement.getAdresse());
-			if (vetement.getForce() > 0)
-				System.out.println("Force : " + vetement.getForce());
-			if (vetement.getResistance() > 0)
-				System.out.println("Resistance : " + vetement.getResistance());
-			Controleur.pause();
-		}
-		
-		return true;
-	}
 	
 	
 	
+	
+	/* --- ACTIONS --- */
+
 	private void afficherAide() {
 		
 		switch (this.inter.getMode()) {
@@ -324,22 +241,30 @@ public class Controleur {
 		Controleur.pause();
 	}
 
+	
+
 	private boolean ouvrirPersonnage() {
 		this.inter.setMode(InterfaceTerm.MODE_PERSONNAGE);
 		return true;
 	}
+
+	
 
 	private boolean ouvrirInventaire() {
 		this.inter.setMode(InterfaceTerm.MODE_INVENTAIRE);
 		return true;
 	}
 	
+	
+
 	private boolean ouvrirJeu() {
 		this.inter.setMode(InterfaceTerm.MODE_JEU);
 		return true;
 	}
 
-	private boolean deplacement(int direction) {
+	
+
+	private boolean deplacement(int direction) { // TODO:skeggib Factoriser
 		// Verifier que je joueur et la carte on ete definis
 		if (this.carte == null || this.joueur == null)
 			return false;
@@ -395,11 +320,11 @@ public class Controleur {
 		else if (destination.contientCoffre()) {
 			Coffre coffre = (Coffre)destination.getContenu();
 			this.joueur.rammasserCoffre(coffre);
-			if (this.log != null) {
-				for (int i = 0; i < coffre.getTaille(); i++) {
-					this.ecrireLog(this.joueur.getNom() + " rammasse " + coffre.getContenu().get(i).getNom());
-				}
+			
+			for (int i = 0; i < coffre.getTaille(); i++) {
+				this.ecrireLog(this.joueur.getNom() + " rammasse " + coffre.getContenu().get(i).getNom());
 			}
+			
 			destination.supprContenu();
 			return this.joueur.seDeplacer(destination);
 		}
@@ -407,21 +332,24 @@ public class Controleur {
 		return false;
 	}
 	
+	
+
 	private boolean attaquer(EntiteVivante ennemi) {
 		if (ennemi == null)
 			return false;
 		
 		int degats = this.joueur.attaquer(ennemi);
-		if (this.log != null) {
-			if (degats > 0)
-				this.ecrireLog(this.joueur.getNom() + " attaque " + ennemi.getNom() + " (-" + degats + ")");
-			else if (degats == -1)
-				this.ecrireLog(ennemi.getNom() + " esquive !");
-		}
+		
+		if (degats > 0)
+			this.ecrireLog(this.joueur.getNom() + " attaque " + ennemi.getNom() + " (-" + degats + ")");
+		else if (degats == -1)
+			this.ecrireLog(ennemi.getNom() + " esquive !");
 		
 		return true;
 	}
 	
+	
+
 	private boolean utiliserPotion(Potion potion) {
 		if (potion == null)
 			return false;
@@ -441,6 +369,98 @@ public class Controleur {
 		
 		return true;
 	}
+
+	
+
+	private void equiper() {
+		
+		System.out.print("Entrez le numero de l'objet a equiper : ");
+		int numObj = Controleur.saisieInt() - 1;
+		// -1 car la numerotation des objets dans l'affichage commence a 1
+		Objet objAEquiper = this.joueur.getInventaire().getObjet(numObj);
+		if (this.joueur.equiperObjet(objAEquiper))
+			System.out.println("Vous avez equipe : " + objAEquiper.getNom());
+	}
+	
+	
+
+	private void desequiper() {
+		System.out.println("Entrez le numero de l'objet a desequiper : ");
+		int numObj = Controleur.saisieInt() - 1;
+		// -1 car la numerotation des objets dans l'affichage commence a 1
+		Objet objADesequiper = this.joueur.getEquipement().getObjet(numObj);
+		if (this.joueur.desequiperObjet(objADesequiper))
+			System.out.println("Vous avez desequipe : " + objADesequiper.getNom());
+	}
+	
+	
+
+	private void utiliser() {
+		System.out.print("Entrez le numero de l'objet a utiliser : ");
+		int numObj = Controleur.saisieInt() - 1;
+		// -1 car la numerotation des objets dans l'affichage commence a 1
+		Objet objAUtiliser = this.joueur.getInventaire().getObjet(numObj);
+		
+		if (objAUtiliser instanceof Potion) {
+			this.utiliserPotion((Potion)objAUtiliser);
+		}
+	}
+	
+	
+
+	private boolean afficherCaracObjet() {
+		System.out.println("Entrez le numero de l'objet : ");
+		int numObj = Controleur.saisieInt() - 1;
+		System.out.println("");
+		// -1 car la numerotation des objets dans l'affichage commence a 1
+		Objet objet = this.joueur.getInventaire().getObjet(numObj);
+		
+		if (objet == null) {
+			return false;
+		}
+		
+		// Faire un joueur temporaire pour les calcules de difference
+		// Joueur tempJoueur = new Joueur(this.joueur); // TODO:skeggib A faire
+		
+		// Nom de l'objet
+		System.out.println(objet.getNom());
+		
+		// Les caracteristiques sont differentes pour les armes et les vetements
+		
+		if (objet instanceof Arme) {
+			Arme arme = (Arme)objet;
+			if (arme.getImpact() > 0)
+				System.out.println("Impact : " + arme.getImpact());
+			if (arme.getManiabilite() > 0)
+				System.out.println("Maniabilite : " + arme.getManiabilite());
+			Controleur.pause();
+		}
+		
+		else if (objet instanceof Vetement) {
+			Vetement vetement = (Vetement)objet;
+			if (vetement.getAdresse() > 0)
+				System.out.println("Adresse : " + vetement.getAdresse());
+			if (vetement.getForce() > 0)
+				System.out.println("Force : " + vetement.getForce());
+			if (vetement.getResistance() > 0)
+				System.out.println("Resistance : " + vetement.getResistance());
+			Controleur.pause();
+		}
+		
+		return true;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/* --- AUTRES METHODES --- */
 	
 	private ListeUnique<EntiteVivante> getEntitesAlentours() {
 		if (this.joueur == null)
@@ -452,9 +472,11 @@ public class Controleur {
 		int distance = 1;
 		for (int i = -distance; i <= distance; i++) {
 			for (int j = -distance; j <= distance; j++) {
-				ContenuCase contenu = this.carte.getCase(posJoueur.getX() + i, posJoueur.getY() + j).getContenu();
-				if (contenu instanceof EntiteVivante)
-					liste.add((EntiteVivante)contenu);
+				
+				Case caseAct = this.carte.getCase(posJoueur.getX() + i, posJoueur.getY() + j); 
+				
+				if (caseAct.contientEntite())
+					liste.add((EntiteVivante)caseAct.getContenu());
 			}
 		}
 		
@@ -475,10 +497,29 @@ public class Controleur {
 		return val;
 	}
 	
+	/**
+	 * Demande une saisie et retourne le premier caractere saisit
+	 * @return
+	 */
+	private char saisieCar() {
+		String str = sc.nextLine();
+		if (str.isEmpty())
+			return ' ';
+		else
+			return str.toLowerCase().charAt(0);
+	}
+	
 	private static void pause() {
 		System.out.println("\nAppuyez sur Entrer pour continuer...");
 		sc.nextLine();
 	}
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

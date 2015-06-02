@@ -171,7 +171,7 @@ public class Monstre extends EntiteVivante { // TODO:armya Ne perd pas de PA
 		this.setPointAction(Monstre.BASE_PA);
 	}
 	
-	public boolean realiserAction(Carte carte) { // TODO:skeggib A faire
+	public boolean realiserAction(Carte carte) {
 		
 		if (!this.actionDisponible())
 			return false;
