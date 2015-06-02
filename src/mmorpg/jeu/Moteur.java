@@ -106,7 +106,7 @@ public class Moteur {
 	
 	
 	private void tourJoueur() {
-		this.joueur.debutTour();;
+		this.joueur.debutTour();
 		// Boucle actions du joueur
 		boolean continuerTour = true;
 		while (this.run && continuerTour) {
