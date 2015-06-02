@@ -5,6 +5,7 @@ import java.util.Scanner;
 import mmorpg.affichage.InterfaceTerm;
 import mmorpg.carte.Carte;
 import mmorpg.carte.Case;
+import mmorpg.carte.ContenuCase;
 import mmorpg.carte.Position;
 import mmorpg.items.Arme;
 import mmorpg.items.Objet;
@@ -15,6 +16,7 @@ import mmorpg.jeu.Log;
 import mmorpg.personnage.Coffre;
 import mmorpg.personnage.EntiteVivante;
 import mmorpg.personnage.Joueur;
+import mmorpg.personnage.ListeUnique;
 
 public class Controleur {
 	
@@ -250,13 +252,8 @@ public class Controleur {
 			// -1 car la numerotation des objets dans l'affichage commence a 1
 			Objet objAUtiliser = this.joueur.getInventaire().getObjet(numObj);
 			
-			if (!(objAUtiliser instanceof Potion)) {
-				return false;
-			}
-			
-			if (objAUtiliser instanceof PotionDeSoin) {
-				PotionDeSoin potionSoin = (PotionDeSoin)objAUtiliser;
-				potionSoin.affecterBonus(this.joueur, this.joueur);
+			if (objAUtiliser instanceof Potion) {
+				return this.utiliserPotion((Potion)objAUtiliser);
 			}
 		}
 		
@@ -304,8 +301,6 @@ public class Controleur {
 				System.out.println("Resistance : " + vetement.getResistance());
 			Controleur.pause();
 		}
-		
-		// TODO:skeggib Faire les potions
 		
 		return true;
 	}
@@ -425,6 +420,45 @@ public class Controleur {
 		}
 		
 		return true;
+	}
+	
+	private boolean utiliserPotion(Potion potion) {
+		if (potion == null)
+			return false;
+		
+		
+		ListeUnique<EntiteVivante> listeCibles = this.getEntitesAlentours();
+		
+		System.out.println("Sur qui voulez vous utiliser " + potion.getNom() + " ?");
+		for (int i = 0; i < listeCibles.size(); i++) {
+			System.out.println(i+1 + ". " + listeCibles.get(i).getNom());
+		}
+		
+		int reponse = Controleur.saisieInt() - 1;
+		if (reponse < listeCibles.size())
+			potion.affecterBonus(this.joueur, listeCibles.get(reponse));
+		
+		
+		return true;
+	}
+	
+	private ListeUnique<EntiteVivante> getEntitesAlentours() {
+		if (this.joueur == null)
+			return new ListeUnique<EntiteVivante>();
+		
+		ListeUnique<EntiteVivante> liste = new ListeUnique<EntiteVivante>();
+		
+		Position posJoueur = this.carte.getPosContenu(this.joueur);
+		int distance = 1;
+		for (int i = -distance; i <= distance; i++) {
+			for (int j = -distance; j <= distance; j++) {
+				ContenuCase contenu = this.carte.getCase(posJoueur.getX() + i, posJoueur.getY() + j).getContenu();
+				if (contenu instanceof EntiteVivante)
+					liste.add((EntiteVivante)contenu);
+			}
+		}
+		
+		return liste;
 	}
 	
 	private void ecrireLog(String message) {
