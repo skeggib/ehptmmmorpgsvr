@@ -2,32 +2,35 @@ package mmorpg.items;
 
 import java.util.Random;
 
+import mmorpg.fichiers.LectureFichier;
 import mmorpg.personnage.EntiteVivante;
 
 public class PotionDeDegat extends Potion {
-	
-	/*
-	 * Variables
-	 */
-	
-	private int malusVie;
-	
 
 	/*
-	 * Constructeurs
+	 * Variable
 	 */
 	
-	public PotionDeDegat () {
+	int malusVie;
+
+	/*
+	 * Constantes
+	 */
+
+	public static final String[] NOM = LectureFichier
+			.lireT("ressources/noms/potionDegat.txt");
+
+	public PotionDeDegat() {
+		this.setMalusVie(new Random().nextInt(PotionDeDegat.NOM.length) + 1);
 		this.setNom(this.randNom());
-		this.setMalusVie(new Random().nextInt(2) + 1);
 	}
-	
+
 	/*
 	 * Methode
 	 */
-	
-	public String randNom () {
-		return Arme.NOM[0]; // TODO:armya Trouver des noms de potions de degats a mettre dans un .txt
+
+	public String randNom() {
+		return PotionDeSoin.NOM[this.getMalusVie() - 1];
 	}
 
 	public void affecterBonus(EntiteVivante utilisateur, EntiteVivante cible) {

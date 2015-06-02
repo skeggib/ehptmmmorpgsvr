@@ -1,0 +1,3 @@
+Potion de degat minime
+Potion de degat
+Potion de degat majeur

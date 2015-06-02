@@ -116,7 +116,7 @@ public class Moteur {
 	
 	
 	private void tourJoueur() {
-		this.joueur.recupererPA();
+		this.joueur.debutTour();
 		// Boucle actions du joueur
 		boolean continuerTour = true;
 		while (this.run && continuerTour) {

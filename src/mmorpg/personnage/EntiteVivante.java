@@ -4,6 +4,8 @@ import java.util.Random;
 
 import mmorpg.carte.Case;
 import mmorpg.carte.ContenuCase;
+import mmorpg.items.Arme;
+import mmorpg.items.Equipable;
 import mmorpg.items.Objet;
 
 //TODO:armya Implementer l'exprerience (expPourNiveauSuivant() : int)
@@ -325,16 +327,53 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 	 * @return true si l'objet a ete equipe, false sinon
 	 */
 	public boolean equiperObjet(Objet obj) {
-		if (this.inventaire.retirerObjet(obj)) {
-			if (!this.equipement.ajouterObjet(obj)) {
-				this.inventaire.ajouterObjet(obj);
-				return false;
-			} else {
-				this.majCaractEqui();
-				return true;
+		if (obj instanceof Equipable) {
+			Equipable eq = (Equipable) obj;
+			if (this.inventaire.retirerObjet(eq)) {
+				if (eq instanceof Arme) {
+					Arme a = (Arme) eq;
+					int nombreArmeEquipe = 0;
+					for (int i = 0; i < this.getEquipement().getTaille(); i++) {
+						if (this.getEquipement().getObjet(i).getClass() == a.getClass()) {
+							nombreArmeEquipe++;
+						}
+					}
+					if (nombreArmeEquipe < 2) {
+						this.getEquipement().ajouterObjet(a);
+						this.majCaractEqui();
+						return true;
+					}
+				} else {
+					boolean dejaEquipe = false;
+					int posObj = 0;
+					for (int i = 0; i < this.getEquipement().getTaille(); i++) {
+						if (this.getEquipement().getObjet(i).getClass() == eq.getClass()) {
+							dejaEquipe = true;
+							if(dejaEquipe){
+								posObj = i;
+							}
+						}
+					}
+					if (!dejaEquipe) {
+						this.getEquipement().ajouterObjet(eq);
+						this.majCaractEqui();
+						return true;
+					} else {
+						if(this.getInventaire().ajouterObjet(this.getEquipement().getObjet(posObj))){
+							this.getEquipement().retirerObjet(this.getEquipement().getObjet(posObj));
+							this.getEquipement().ajouterObjet(eq);
+							this.getInventaire().retirerObjet(eq);
+						}
+						this.majCaractEqui();
+						return true;
+					}
+				}
 			}
+			this.inventaire.ajouterObjet(obj);
+			this.majCaractEqui();
+			return false;
 		}
-		return false;
+		return false;	
 	}
 
 	/**
