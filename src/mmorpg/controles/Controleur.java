@@ -264,7 +264,7 @@ public class Controleur {
 
 	
 
-	private boolean deplacement(int direction) {
+	private boolean deplacement(int direction) { // TODO:skeggib Factoriser
 		// Verifier que je joueur et la carte on ete definis
 		if (this.carte == null || this.joueur == null)
 			return false;
