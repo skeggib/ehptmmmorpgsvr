@@ -9,6 +9,8 @@ import mmorpg.carte.Carte;
 import mmorpg.carte.Position;
 import mmorpg.controles.Controleur;
 import mmorpg.exceptions.affichage.interfaceTerm.CantDrawInterfaceException;
+import mmorpg.items.Arme;
+import mmorpg.items.Casque;
 import mmorpg.personnage.Joueur;
 import mmorpg.personnage.Monstre;
 

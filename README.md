@@ -43,3 +43,7 @@ Pour lancer le jeu il suffit d'executer le fichier Jeu.jar :
 - Ajout de l'IA des monstres
 - Ajout de la mort
 - Ajout des tours de jeu
+
+### b1.0
+
+- Possibilite d'afficher les caracteristiques des objets

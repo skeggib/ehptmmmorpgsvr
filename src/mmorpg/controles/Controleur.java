@@ -6,7 +6,9 @@ import mmorpg.affichage.InterfaceTerm;
 import mmorpg.carte.Carte;
 import mmorpg.carte.Case;
 import mmorpg.carte.Position;
+import mmorpg.items.Arme;
 import mmorpg.items.Objet;
+import mmorpg.items.Vetement;
 import mmorpg.jeu.Log;
 import mmorpg.personnage.Coffre;
 import mmorpg.personnage.EntiteVivante;
@@ -31,6 +33,7 @@ public class Controleur {
 	public static final int EQUIPER = 10;
 	public static final int DESEQUIPER = 11;
 	public static final int TERMINER_TOUR = 12;
+	public static final int AFF_CARACT_OBJ = 13;
 	
 	
 	
@@ -55,6 +58,7 @@ public class Controleur {
 			+ "\n\t h : Afficher cette aide"
 			+ "\n\t e : Equiper un objet"
 			+ "\n\t d : Desequiper un objet"
+			+ "\n\t c : Afficher les caracteristiques d'un objet de l'inventaire"
 			+ "\n\t r : Retour"
 			+ "\n\t x : Quitter";
 	
@@ -176,6 +180,9 @@ public class Controleur {
 		case 'd':
 			action = Controleur.DESEQUIPER;
 			break;
+		case 'c':
+			action = Controleur.AFF_CARACT_OBJ;
+			break;
 		case 'r':
 			action = Controleur.RETOUR;
 			break;
@@ -263,7 +270,7 @@ public class Controleur {
 		
 		else if (action == Controleur.EQUIPER) {
 			System.out.print("Entrez le numero de l'objet a equiper : ");
-			int numObj = this.saisieInt() - 1;
+			int numObj = Controleur.saisieInt() - 1;
 			// -1 car la numerotation des objets dans l'affichage commence a 1
 			Objet objAEquiper = this.joueur.getInventaire().getObjet(numObj);
 			if (this.joueur.equiperObjet(objAEquiper))
@@ -272,11 +279,50 @@ public class Controleur {
 		
 		else if (action == Controleur.DESEQUIPER) {
 			System.out.println("Entrez le numero de l'objet a desequiper : ");
-			int numObj = this.saisieInt() - 1;
+			int numObj = Controleur.saisieInt() - 1;
 			// -1 car la numerotation des objets dans l'affichage commence a 1
 			Objet objADesequiper = this.joueur.getEquipement().getObjet(numObj);
 			if (this.joueur.desequiperObjet(objADesequiper))
 				System.out.println("Vous avez desequipe : " + objADesequiper.getNom());
+		}
+		
+		else if (action == Controleur.AFF_CARACT_OBJ) {
+			System.out.println("Entrez le numero de l'objet : ");
+			int numObj = Controleur.saisieInt() - 1;
+			System.out.println("");
+			// -1 car la numerotation des objets dans l'affichage commence a 1
+			Objet objet = this.joueur.getInventaire().getObjet(numObj);
+			
+			if (objet == null) {
+				return false;
+			}
+			
+			// Nom de l'objet
+			System.out.println(objet.getNom());
+			
+			// Les caracteristiques sont differentes pour les armes et les vetements
+			if (objet instanceof Arme) {
+				Arme arme = (Arme)objet;
+				if (arme.getImpact() > 0)
+					System.out.println("Impact : " + arme.getImpact());
+				if (arme.getManiabilite() > 0)
+					System.out.println("Maniabilite : " + arme.getManiabilite());
+				Controleur.pause();
+			}
+			
+			else if (objet instanceof Vetement) {
+				Vetement vetement = (Vetement)objet;
+				if (vetement.getAdresse() > 0)
+					System.out.println("Adresse : " + vetement.getAdresse());
+				if (vetement.getForce() > 0)
+					System.out.println("Force : " + vetement.getForce());
+				if (vetement.getResistance() > 0)
+					System.out.println("Resistance : " + vetement.getResistance());
+				Controleur.pause();
+			}
+			
+			// TODO:skeggib Faire les potions
+			
 		}
 		
 		else if (action == Controleur.RETOUR) {
@@ -320,8 +366,7 @@ public class Controleur {
 			break;
 		}
 		
-		System.out.println("\nAppuyez sur Entrer pour continuer...");
-		sc.nextLine();
+		Controleur.pause();
 	}
 
 	private boolean ouvrirPersonnage() {
@@ -418,13 +463,18 @@ public class Controleur {
 			this.log.add(message);
 	}
 	
-	public int saisieInt() {
+	public static int saisieInt() {
 		int val = sc.nextInt();
 		
 		// Cider le buffer du scanner pour eviter une double saisie
 		sc.nextLine();
 		
 		return val;
+	}
+	
+	private static void pause() {
+		System.out.println("\nAppuyez sur Entrer pour continuer...");
+		sc.nextLine();
 	}
 	
 	
