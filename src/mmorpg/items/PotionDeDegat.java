@@ -30,7 +30,7 @@ public class PotionDeDegat extends Potion {
 	 */
 
 	public String randNom() {
-		return PotionDeSoin.NOM[this.getMalusVie() - 1];
+		return PotionDeDegat.NOM[this.getMalusVie() - 1];
 	}
 
 	public void affecterBonus(EntiteVivante utilisateur, EntiteVivante cible) {

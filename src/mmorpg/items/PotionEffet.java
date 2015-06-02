@@ -122,7 +122,9 @@ public class PotionEffet extends Potion{ // TODO:skeggib UML
 		effet.ajouterImpact(this.getImpact());
 		effet.ajouterManiabilite(this.getManiabilite());
 		
-		utilisateur.ajouterEffet(effet);
+		cible.ajouterEffet(effet);
+		
+		utilisateur.retirerObjet(this);
 	}
 
 	/*
