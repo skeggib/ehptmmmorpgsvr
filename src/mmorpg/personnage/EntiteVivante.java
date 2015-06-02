@@ -327,14 +327,10 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 	 * @return true si l'objet a ete equipe, false sinon
 	 */
 	public boolean equiperObjet(Objet obj) {
-		System.out.println("TENTATIVE EQUIPEMENT");
-		System.out.println("CLASSE : " + obj.getClass());
 		if (obj instanceof Equipable) {
-			System.out.println("TENTATIVE EQUIPEMENT EQUIPABLE");
 			Equipable eq = (Equipable) obj;
 			if (this.inventaire.retirerObjet(eq)) {
 				if (eq instanceof Arme) {
-					System.out.println("TENTATIVE EQUIPEMENT ARME");
 					Arme a = (Arme) eq;
 					int nombreArmeEquipe = 0;
 					for (int i = 0; i < this.getEquipement().getTaille(); i++) {

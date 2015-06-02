@@ -11,7 +11,7 @@ import mmorpg.carte.ContenuCase;
  */
 public class Joueur extends EntiteVivante {
 
-	public static final int BASE_PA = 50;
+	public static final int BASE_PA = 20;
 
 	/*
 	 * Constructeur
