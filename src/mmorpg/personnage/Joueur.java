@@ -1,6 +1,5 @@
 package mmorpg.personnage;
 
-import mmorpg.carte.Case;
 import mmorpg.carte.ContenuCase;
 
 /**

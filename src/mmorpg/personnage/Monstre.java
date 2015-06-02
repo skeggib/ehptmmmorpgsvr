@@ -18,11 +18,6 @@ public class Monstre extends EntiteVivante { // TODO:armya Ne perd pas de PA
 
 	public static final int BASE_PA = 10;
 
-	// Demi constante qui ne peut etre modifier qu'avec
-	// une potion qui augmente le nombre de PA pour un
-	// certains nombre de tour
-	private int MAX_PA;
-
 	public static final String[] NOM = LectureFichier
 			.lireT("ressources/noms/monstre.txt");
 

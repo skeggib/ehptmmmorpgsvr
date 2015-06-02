@@ -156,17 +156,17 @@ public class Moteur {
 				
 				Thread.sleep(1000);
 				
-				/* Je m'excuse d'avance auprès de mon professeur de Java
-				 * pour avoir utilisé une méthode de la classe Thread
-				 * (alors qu'il nous a précisé qu'il ne voulait pas
+				/* Je m'excuse d'avance aupres de mon professeur de Java
+				 * pour avoir utilise une methode de la classe Thread
+				 * (alors qu'il nous a precise qu'il ne voulait pas
 				 * voir d'interfaces graphiques ou de threads dans ce projet).
 				 * 
-				 * C'est la seule méthode que j'ai trouvé pour mettre en pause
-				 * le programme (c'est nécessaire pour y voir quelque chose
-				 * entre deux déplacements de monstres).
+				 * C'est la seule methode que j'ai trouve pour mettre en pause
+				 * le programme (c'est necessaire pour y voir quelque chose
+				 * entre deux deplacements de monstres).
 				 * 
 				 * Cordialement,
-				 * Votre élève passionné.
+				 * Votre eleve passionne.
 				 */
 				
 			} catch (InterruptedException e) {
