@@ -39,6 +39,10 @@ public class Joueur extends EntiteVivante {
 		this.setNom(nom);
 		this.setPointAction(Joueur.BASE_PA);
 	}
+	
+	public Joueur (Joueur jo){
+		super(jo);
+	}
 
 	/*
 	 * Methodes

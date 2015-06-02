@@ -8,7 +8,7 @@ import java.util.Random;
  * @author armya
  *
  */
-public class Capacite {
+public abstract class Capacite {
 	
 	private static final int DE_MAX = 6;
 	private static final int DE_MIN = 1;

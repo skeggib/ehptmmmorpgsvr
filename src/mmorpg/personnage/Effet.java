@@ -22,6 +22,11 @@ public class Effet extends Caracteristique {
 		super();
 	}
 	
+	public Effet(Effet ef) {
+		super(ef);
+		this.setTourRestant(ef.getTourRestant());
+	}
+	
 	public Effet(int tourRestant) {
 		super();
 		this.tourRestant = tourRestant;

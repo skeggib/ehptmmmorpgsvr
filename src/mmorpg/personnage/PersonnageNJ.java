@@ -36,6 +36,10 @@ public class PersonnageNJ extends EntiteVivante {
 		this.setNom(nom);
 	}
 	
+	public PersonnageNJ(PersonnageNJ pnj){
+		super(pnj);
+	}
+	
 	/*
 	 * Methodes
 	 */

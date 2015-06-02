@@ -31,6 +31,8 @@ public abstract class Objet implements ContenuCase {
 	 * @return String nom correspondant a l'objet
 	 */
 	public abstract String randNom();
+	
+	public abstract Objet clone();
 
 	/**
 	 * Affecte le bonus a l'objet

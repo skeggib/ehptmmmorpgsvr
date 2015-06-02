@@ -20,6 +20,10 @@ public class Coffre extends ContenantObjet implements ContenuCase {
 		super();
 		this.ajouterObjets(list);
 	}
+	
+	public Coffre(Coffre cof){
+		super(cof);
+	}
 
 	public void ajouterObjets(ListeUnique<Objet> list) {
 		for (int i = 0; i < list.size(); i++) {

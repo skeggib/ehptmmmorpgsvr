@@ -17,6 +17,10 @@ public class Inventaire extends ContenantObjet {
 		super();
 	}
 	
+	public Inventaire(Inventaire inv){
+		super(inv);
+	}
+	
 	public void ajouterContenuCoffre(Coffre cof){
 		//TODO:armya a implementer
 	}

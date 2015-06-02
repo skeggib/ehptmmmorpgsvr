@@ -54,6 +54,10 @@ public class Monstre extends EntiteVivante { // TODO:armya Ne perd pas de PA
 		this.remplirInvetaire();
 		this.setNom(nom);
 	}
+	
+	public Monstre(Monstre mo){
+		super(mo);
+	}
 
 	/*
 	 * Methodes

@@ -111,6 +111,28 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 		this.caractPrinc.setAdresse(adresse);
 		this.caractPrinc.setResistance(resistance);
 	}
+	
+	public EntiteVivante (EntiteVivante etv) {
+		this.setEquipement(new Equipement(etv.getEquipement()));
+		this.setInventaire(new Inventaire(etv.getInventaire()));
+		this.setExperience(etv.getExperience());
+		this.setNom(etv.getNom());
+		this.setPointAction(etv.getPointAction());
+		this.setVie(etv.getVie());
+		this.setNom(etv.getNom());
+
+		this.effet = new ListeUnique<Effet>();
+		for(int i = 0; i < etv.effet.size(); i++){
+			this.effet.add(new Effet(etv.effet.get(i)));
+		}
+		
+		this.caractPrinc = new Caracteristique(etv.getCaractPrinc());
+		this.caractEffet = new Caracteristique();
+		this.caractEquip = new Caracteristique();
+		
+		this.majCaractEffet();
+		this.majCaractEqui();
+	}
 
 	/*
 	 * Methode

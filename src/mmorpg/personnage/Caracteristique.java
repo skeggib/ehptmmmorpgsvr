@@ -35,6 +35,14 @@ public class Caracteristique {
 		this.setImpact(impact);
 	}
 
+	public Caracteristique(Caracteristique car) {
+		this.setForce(car.getForce());
+		this.setAdresse(car.getAdresse());
+		this.setResistance(car.getResistance());
+		this.setManiabilite(car.getManiabilite());
+		this.setImpact(car.getManiabilite());
+	}
+
 	/*
 	 * Methode
 	 */
