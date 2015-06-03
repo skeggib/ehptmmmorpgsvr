@@ -6,6 +6,9 @@ import mmorpg.fichiers.LectureFichier;
 import mmorpg.personnage.EntiteVivante;
 
 public class Gant extends Vetement {
+	
+	private static final long serialVersionUID = 8982478495592136422L;
+	
 	public static final String[] NOM = LectureFichier
 			.lireT("ressources/noms/gant.txt");
 

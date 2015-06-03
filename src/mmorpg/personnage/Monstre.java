@@ -6,7 +6,15 @@ import mmorpg.carte.Carte;
 import mmorpg.carte.ContenuCase;
 import mmorpg.carte.Position;
 import mmorpg.fichiers.LectureFichier;
-import mmorpg.items.*;
+import mmorpg.items.Arme;
+import mmorpg.items.Casque;
+import mmorpg.items.Gant;
+import mmorpg.items.Objet;
+import mmorpg.items.Pantalon;
+import mmorpg.items.PotionDeDegat;
+import mmorpg.items.PotionDeSoin;
+import mmorpg.items.PotionEffet;
+import mmorpg.items.Torse;
 
 /**
  * Cette classe permet la gestion d'un monstre controlle par l'IA
@@ -15,6 +23,8 @@ import mmorpg.items.*;
  *
  */
 public class Monstre extends EntiteVivante { // TODO:armya Ne perd pas de PA
+
+	private static final long serialVersionUID = 1L;
 
 	public static final int BASE_PA = 10;
 

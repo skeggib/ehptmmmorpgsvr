@@ -1,16 +1,15 @@
 package mmorpg.controles;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import mmorpg.affichage.InterfaceTerm;
 import mmorpg.carte.Carte;
 import mmorpg.carte.Case;
-import mmorpg.carte.ContenuCase;
 import mmorpg.carte.Position;
 import mmorpg.items.Arme;
 import mmorpg.items.Objet;
 import mmorpg.items.Potion;
-import mmorpg.items.PotionDeSoin;
 import mmorpg.items.Vetement;
 import mmorpg.jeu.Log;
 import mmorpg.personnage.Caracteristique;
@@ -19,8 +18,9 @@ import mmorpg.personnage.EntiteVivante;
 import mmorpg.personnage.Joueur;
 import mmorpg.personnage.ListeUnique;
 
-public class Controleur {
-	
+public class Controleur implements Serializable {
+
+	private static final long serialVersionUID = 3905422874543746084L;
 	
 	
 	
@@ -312,7 +312,7 @@ public class Controleur {
 		// Si la dest contient un objet, on le ramasse puis on se deplace
 		else if (destination.contientObjet()) {
 			Objet obj = (Objet)destination.getContenu();
-			this.joueur.rammasserObjet(obj);
+			this.joueur.ramasserObjet(obj);
 			this.ecrireLog(this.joueur.getNom() + " rammasse " + obj.getNom());
 			destination.supprContenu();
 			return this.joueur.seDeplacer(destination);
@@ -320,7 +320,7 @@ public class Controleur {
 		
 		else if (destination.contientCoffre()) {
 			Coffre coffre = (Coffre)destination.getContenu();
-			this.joueur.rammasserCoffre(coffre);
+			this.joueur.ramasserCoffre(coffre);
 			
 			for (int i = 0; i < coffre.getTaille(); i++) {
 				this.ecrireLog(this.joueur.getNom() + " rammasse " + coffre.getContenu().get(i).getNom());
@@ -451,7 +451,7 @@ public class Controleur {
 		System.out.println("\nEffet apres equipement : ");
 		
 		Joueur copieJoueur = new Joueur(this.joueur);
-		copieJoueur.rammasserObjet(objet);
+		copieJoueur.ramasserObjet(objet);
 		copieJoueur.equiperObjet(objet);
 
 		Caracteristique caracJoueur = this.joueur.getCaractEquip();

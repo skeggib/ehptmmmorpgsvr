@@ -12,6 +12,8 @@ package mmorpg.personnage;
  */
 public class Effet extends Caracteristique {
 
+	private static final long serialVersionUID = 6716938930894174476L;
+
 	private int tourRestant;
 
 	/*

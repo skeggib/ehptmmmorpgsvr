@@ -1,5 +1,7 @@
 package mmorpg.personnage;
 
+import java.io.Serializable;
+
 import mmorpg.items.Objet;
 
 /**
@@ -11,8 +13,10 @@ import mmorpg.items.Objet;
  * @author armya
  *
  */
-public abstract class ContenantObjet implements ContenirObjets {
+public abstract class ContenantObjet implements ContenirObjets, Serializable {
 
+	private static final long serialVersionUID = -2909010841238767244L;
+	
 	private ListeUnique<Objet> listObjet;
 
 	/*

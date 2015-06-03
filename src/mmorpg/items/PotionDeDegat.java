@@ -11,6 +11,8 @@ public class PotionDeDegat extends Potion {
 	 * Variable
 	 */
 	
+	private static final long serialVersionUID = -2082564338739933716L;
+
 	int malusVie;
 
 	/*

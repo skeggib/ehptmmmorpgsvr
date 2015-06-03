@@ -10,6 +10,8 @@ public abstract class Vetement extends Equipable {
 	 * Variables
 	 */
 
+	private static final long serialVersionUID = 6554093752961530393L;
+
 	private int force;
 	private int adresse;
 	private int resistance;
@@ -22,7 +24,7 @@ public abstract class Vetement extends Equipable {
 		super();
 
 		Random rand = new Random();
-		
+
 		int randomCaract = rand.nextInt(2);
 
 		int valeurCaractAlea = 0;
@@ -55,8 +57,8 @@ public abstract class Vetement extends Equipable {
 		default:
 			break;
 		}
-		
-		if(randomCaract == 0){
+
+		if (randomCaract == 0) {
 			this.setAdresse(valeurCaractAlea);
 		} else {
 			this.setForce(valeurCaractAlea);
@@ -66,8 +68,8 @@ public abstract class Vetement extends Equipable {
 	public Vetement(int qualite) {
 		super(qualite);
 	}
-	
-	public Vetement(Vetement vet){
+
+	public Vetement(Vetement vet) {
 		super(vet);
 		this.setAdresse(vet.getAdresse());
 		this.setForce(vet.getForce());
@@ -77,13 +79,16 @@ public abstract class Vetement extends Equipable {
 	/*
 	 * Methode
 	 */
+	
+	public String getType(){
+		return "Vetement";
+	}
 
 	public void affecterBonus(EntiteVivante utilisateur, EntiteVivante cible) {
 		cible.getCaractEquip().ajouterForce(this.getForce());
 		cible.getCaractEquip().ajouterAdresse(this.getAdresse());
 		cible.getCaractEquip().ajouterResistance(this.getResistance());
 	}
-
 
 	/*
 	 * Methodes d'acces

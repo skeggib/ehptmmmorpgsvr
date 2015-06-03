@@ -1,6 +1,10 @@
 package mmorpg.affichage;
 
-public class Pixel {
+import java.io.Serializable;
+
+public class Pixel implements Serializable{
+
+	private static final long serialVersionUID = 799088613105435769L;
 
 	private char car;
 	

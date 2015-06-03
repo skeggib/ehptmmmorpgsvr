@@ -5,24 +5,26 @@ import java.util.Random;
 import mmorpg.fichiers.LectureFichier;
 import mmorpg.personnage.EntiteVivante;
 
-public class Torse extends Vetement{
-	
+public class Torse extends Vetement {
+
+	private static final long serialVersionUID = -6459569773295966695L;
+
 	public static final String[] NOM = LectureFichier
 			.lireT("ressources/noms/torse.txt");
 
-	public Torse () {
+	public Torse() {
 		this.setNom(this.randNom());
 	}
-	
-	public Torse(Torse to){
+
+	public Torse(Torse to) {
 		super(to);
 		this.setNom(to.getNom());
 	}
-	
-	public Torse clone(){
+
+	public Torse clone() {
 		return new Torse(this);
 	}
-	
+
 	public String randNom() {
 		int i = new Random().nextInt((Torse.NOM.length));
 		return Torse.NOM[i];

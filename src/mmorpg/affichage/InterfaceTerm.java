@@ -1,5 +1,7 @@
 package mmorpg.affichage;
 
+import java.io.Serializable;
+
 import mmorpg.affichage.fenetre.FenetreCarte;
 import mmorpg.affichage.fenetre.FenetreInfosJoueur;
 import mmorpg.affichage.fenetre.FenetreInventaire;
@@ -37,8 +39,10 @@ import mmorpg.personnage.Joueur;
  * @author Sébastien Klasa
  *
  */
-public class InterfaceTerm {
+public class InterfaceTerm implements Serializable {
 	
+	private static final long serialVersionUID = 2241542896805990737L;
+
 	private Matrice matrice;
 	
 	private int largeur;

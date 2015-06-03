@@ -12,7 +12,8 @@ import mmorpg.carte.ContenuCase;
  */
 public class PersonnageNJ extends EntiteVivante {
 	
-	
+	private static final long serialVersionUID = 8390632026591742966L;
+
 	/*
 	 * Constructeur
 	 */

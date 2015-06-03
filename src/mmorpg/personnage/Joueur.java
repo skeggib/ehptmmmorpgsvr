@@ -11,6 +11,8 @@ import mmorpg.carte.ContenuCase;
  */
 public class Joueur extends EntiteVivante {
 
+	private static final long serialVersionUID = 7347938244995263770L;
+
 	public static final int BASE_PA = 20;
 
 	/*

@@ -10,7 +10,8 @@ public class Arme extends Equipable {
 	/*
 	 * Variable
 	 */
-
+	private static final long serialVersionUID = 4266819174155112530L;
+	
 	private int maniabilite;
 	private int impact;
 
@@ -74,6 +75,10 @@ public class Arme extends Equipable {
 	/*
 	 * Methode
 	 */
+	
+	public String getType(){
+		return "Arme";
+	}
 	
 	public Arme clone(){
 		return new Arme(this);

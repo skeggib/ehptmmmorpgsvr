@@ -9,6 +9,8 @@ import mmorpg.personnage.Joueur;
 
 public class FenetreInfosJoueur extends Fenetre {
 
+	private static final long serialVersionUID = 5841962965164032985L;
+	
 	Joueur joueur;
 	
 	/* --- CONSTRUCTEURS --- */

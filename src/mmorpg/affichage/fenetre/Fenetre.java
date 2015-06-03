@@ -1,10 +1,14 @@
 package mmorpg.affichage.fenetre;
 
+import java.io.Serializable;
+
 import mmorpg.affichage.Matrice;
 import mmorpg.affichage.Pixel;
 import mmorpg.exceptions.affichage.fenetre.CantDrawWindowException;
 
-public abstract class Fenetre {
+public abstract class Fenetre implements Serializable{
+	
+	private static final long serialVersionUID = 278599052624867227L;
 	
 	private int largeur;
 	private int hauteur;

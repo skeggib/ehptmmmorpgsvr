@@ -1,12 +1,16 @@
 package mmorpg.carte;
 
+import java.io.Serializable;
+
 import mmorpg.items.Objet;
 import mmorpg.personnage.Coffre;
 import mmorpg.personnage.EntiteVivante;
 import mmorpg.personnage.Joueur;
 
-public class Case {
+public class Case implements Serializable {
 
+	private static final long serialVersionUID = -7401683263475747998L;
+	
 	private ContenuCase contenu;
 	
 	public Case() { // TODO:skeggib Enlever le systeme de numeros

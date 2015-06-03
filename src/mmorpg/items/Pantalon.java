@@ -7,10 +7,11 @@ import mmorpg.personnage.EntiteVivante;
 
 public class Pantalon extends Vetement {
 
+	private static final long serialVersionUID = 3068876954778600010L;
+	
 	/*
 	 * Constantes
 	 */
-
 	public static final String[] NOM = LectureFichier
 			.lireT("ressources/noms/jambe.txt");
 
