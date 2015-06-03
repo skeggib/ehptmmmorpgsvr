@@ -42,7 +42,7 @@ public class Carte implements Serializable{
 	 * @param chemin Chemin du fichier carte a charger
 	 * @return True si le fichier a ete charge
 	 */
-	public boolean chargerFichier(String chemin) {
+	public boolean chargerFichier(String chemin) { //TODO skeggib : Revoir cette methode (voir issue)
 		
 		// Lire le fichier
 		String lines[] = LectureFichier.lireT(chemin);
@@ -54,7 +54,7 @@ public class Carte implements Serializable{
 		
 		this.chargerString(str);
 		
-		return true;
+		return true; //TODO skeggib : Retourne tout le temps True.. Autant faire "return this.chargerString(str)"
 	}
 	
 	/**
@@ -62,7 +62,7 @@ public class Carte implements Serializable{
 	 * @param str String a charger
 	 * @return True si le String a ete charge
 	 */
-	private boolean chargerString(String str) {
+	private boolean chargerString(String str) { //TODO skeggib : Revoir cette methode (voir issue)
 		String[] lignes = str.split("\n");
 		
 		// Verifier que toute les lignes ont les meme taille
@@ -72,12 +72,12 @@ public class Carte implements Serializable{
 				return false;
 		}
 		
-		this.creerTableau(lignes.length, lignes[0].length());
-		
+		this.creerTableau(lignes.length, lignes[0].length()); //TODO Skeggib : lignes[0].length() est deja instancié dans int lengthLine0 (ligne 69)
+																//En plus tu le reutilise ligne 79, soit logique jusqu'au bout
 		// On remplit le tableau
 		for (int i = 0; i < lignes.length; i++) {
 			for (int j = 0; j < lengthLine0; j ++) {
-				switch (lignes[i].charAt(j)) {
+				switch (lignes[i].charAt(j)) { //TODO skeggib : Utilise un str.toLowerCase() : evite de faire un "case 'M' "
 					case ' ':
 						this.cases[i][j].changerContenu(new Vide());
 						break;
@@ -151,5 +151,4 @@ public class Carte implements Serializable{
 		
 		return rtrn;
 	}
-	
 }
