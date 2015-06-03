@@ -311,7 +311,7 @@ public class Controleur implements Serializable {
 		// Si la dest contient un objet, on le ramasse puis on se deplace
 		else if (destination.contientObjet()) {
 			Objet obj = (Objet)destination.getContenu();
-			this.joueur.rammasserObjet(obj);
+			this.joueur.ramasserObjet(obj);
 			this.ecrireLog(this.joueur.getNom() + " rammasse " + obj.getNom());
 			destination.supprContenu();
 			return this.joueur.seDeplacer(destination);
@@ -319,7 +319,7 @@ public class Controleur implements Serializable {
 		
 		else if (destination.contientCoffre()) {
 			Coffre coffre = (Coffre)destination.getContenu();
-			this.joueur.rammasserCoffre(coffre);
+			this.joueur.ramasserCoffre(coffre);
 			
 			for (int i = 0; i < coffre.getTaille(); i++) {
 				this.ecrireLog(this.joueur.getNom() + " rammasse " + coffre.getContenu().get(i).getNom());

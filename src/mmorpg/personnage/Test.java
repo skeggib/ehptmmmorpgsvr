@@ -12,10 +12,10 @@ public class Test {
 		 */
 		Joueur j = new Joueur(null, 10, 10, 10);
 		j.setNom("NOM_A");
-		j.rammasserObjet(new Arme());
-		j.rammasserObjet(new Pantalon());
+		j.ramasserObjet(new Arme());
+		j.ramasserObjet(new Pantalon());
 		Arme a = new Arme();
-		j.rammasserObjet(a);
+		j.ramasserObjet(a);
 		j.equiperObjet(a);
 		j.ajouterEffet(new Effet(5,5,5,5,5,5));
 		Joueur j2 = new Joueur(j);

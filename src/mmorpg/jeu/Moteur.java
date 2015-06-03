@@ -81,15 +81,15 @@ public class Moteur implements Serializable{
 		// TODO:skeggib Creation interractive du joueur
 		this.joueur.initialiserPos(this.carte.getCase(3, 3));
 		// TODO: skeggib A enlver
-		this.joueur.rammasserObjet(new PotionDeSoin());
-		this.joueur.rammasserObjet(new PotionDeDegat());
-		this.joueur.rammasserObjet(new PotionEffet());
-		this.joueur.rammasserObjet(new PotionDeSoin());
-		this.joueur.rammasserObjet(new PotionDeDegat());
-		this.joueur.rammasserObjet(new Casque());
-		this.joueur.rammasserObjet(new Arme());
-		this.joueur.rammasserObjet(new Pantalon());
-		this.joueur.rammasserObjet(new Pantalon());
+		this.joueur.ramasserObjet(new PotionDeSoin());
+		this.joueur.ramasserObjet(new PotionDeDegat());
+		this.joueur.ramasserObjet(new PotionEffet());
+		this.joueur.ramasserObjet(new PotionDeSoin());
+		this.joueur.ramasserObjet(new PotionDeDegat());
+		this.joueur.ramasserObjet(new Casque());
+		this.joueur.ramasserObjet(new Arme());
+		this.joueur.ramasserObjet(new Pantalon());
+		this.joueur.ramasserObjet(new Pantalon());
 		
 		/* Demander la taille de l'interface */
 		

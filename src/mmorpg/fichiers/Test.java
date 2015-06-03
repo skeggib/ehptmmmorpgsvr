@@ -11,7 +11,7 @@ public class Test {
 	public static void main(String[] args) {
 		
 		Joueur j = new Joueur("Armya", 20, 10, 10);
-		j.rammasserObjet(new Arme());
+		j.ramasserObjet(new Arme());
 		
 		EcritureObjet.ecrire(j);
 		

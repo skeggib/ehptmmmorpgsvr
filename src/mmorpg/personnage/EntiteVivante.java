@@ -326,7 +326,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable { // TO
 	 * @param c
 	 *            Coffre a rammasser
 	 */
-	public void rammasserCoffre(Coffre c) {
+	public void ramasserCoffre(Coffre c) {
 		this.inventaire.ajouterObjets(c.getContenu());
 	}
 
@@ -337,7 +337,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable { // TO
 	 *            Objet a rammasser
 	 * @return true si l'objet a ete ajouter a l'inventaire, false sinon
 	 */
-	public boolean rammasserObjet(Objet obj) {
+	public boolean ramasserObjet(Objet obj) {
 		if ((!this.inventaire.contient(obj) && !this.equipement.contient(obj))) {
 			return this.inventaire.ajouterObjet(obj);
 		}
