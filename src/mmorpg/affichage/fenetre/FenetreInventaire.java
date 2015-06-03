@@ -9,6 +9,8 @@ import mmorpg.personnage.Joueur;
 
 public class FenetreInventaire extends Fenetre { // TODO:skeggib Afficher le nom du type des objets
 	
+	private static final long serialVersionUID = 3778417611018397347L;
+	
 	private Joueur joueur;
 	
 /* --- CONSTRUCTEURS --- */

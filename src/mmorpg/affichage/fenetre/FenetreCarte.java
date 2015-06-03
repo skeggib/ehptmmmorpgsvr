@@ -15,6 +15,8 @@ import mmorpg.personnage.Joueur;
  */
 public class FenetreCarte extends Fenetre {
 
+	private static final long serialVersionUID = -6706695052500187472L;
+	
 	private int largeurCaseCarte;
 	private int hauteurCaseCarte;
 	private static int NB_CASES_AFFICHEES_X = 9;

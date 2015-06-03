@@ -1,9 +1,12 @@
 package mmorpg.jeu;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Log {
+public class Log implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
+
 	public static final int MAX_MESSAGES = 100;
 
 	ArrayList<String> messages;

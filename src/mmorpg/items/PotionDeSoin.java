@@ -11,6 +11,8 @@ public class PotionDeSoin extends Potion {
 	 * Variables
 	 */
 
+	private static final long serialVersionUID = 7047803648092557706L;
+
 	private int bonusVie;
 
 	/*
@@ -33,8 +35,8 @@ public class PotionDeSoin extends Potion {
 	/*
 	 * Methode
 	 */
-	
-	public PotionDeSoin clone(){
+
+	public PotionDeSoin clone() {
 		return new PotionDeSoin(this);
 	}
 

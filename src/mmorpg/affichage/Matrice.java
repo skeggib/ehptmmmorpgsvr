@@ -1,9 +1,13 @@
 package mmorpg.affichage;
 
+import java.io.Serializable;
+
 import mmorpg.affichage.fenetre.Fenetre;
 import mmorpg.exceptions.affichage.fenetre.CantDrawWindowException;
 
-public class Matrice {
+public class Matrice implements Serializable{
+	
+	private static final long serialVersionUID = -7657637477476314911L;
 	
 	private int hauteur;
 	private int largeur;

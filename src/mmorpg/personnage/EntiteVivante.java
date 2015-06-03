@@ -1,5 +1,6 @@
 package mmorpg.personnage;
 
+import java.io.Serializable;
 import java.util.Random;
 
 import mmorpg.carte.Case;
@@ -19,15 +20,17 @@ import mmorpg.items.Objet;
  * @author armya
  *
  */
-public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
-																// Verifier
-																// toute cette
-																// classe -> MAJ
-																// UML
+public abstract class EntiteVivante implements ContenuCase, Serializable { // TODO:skeggib
+	// Verifier
+	// toute cette
+	// classe -> MAJ
+	// UML
 
 	/*
 	 * Constante
 	 */
+
+	private static final long serialVersionUID = 1L;
 
 	public static final int PA_UTILISE_POTION = 1;
 	public static final int PA_DEPLACEMENT = 2;
@@ -111,8 +114,8 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 		this.caractPrinc.setAdresse(adresse);
 		this.caractPrinc.setResistance(resistance);
 	}
-	
-	public EntiteVivante (EntiteVivante etv) {
+
+	public EntiteVivante(EntiteVivante etv) {
 		this.setEquipement(new Equipement(etv.getEquipement()));
 		this.setInventaire(new Inventaire(etv.getInventaire()));
 		this.setExperience(etv.getExperience());
@@ -122,14 +125,14 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 		this.setNom(etv.getNom());
 
 		this.effet = new ListeUnique<Effet>();
-		for(int i = 0; i < etv.effet.size(); i++){
+		for (int i = 0; i < etv.effet.size(); i++) {
 			this.effet.add(new Effet(etv.effet.get(i)));
 		}
-		
+
 		this.caractPrinc = new Caracteristique(etv.getCaractPrinc());
 		this.caractEffet = new Caracteristique();
 		this.caractEquip = new Caracteristique();
-		
+
 		this.majCaractEffet();
 		this.majCaractEqui();
 	}
@@ -356,7 +359,8 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 					Arme a = (Arme) eq;
 					int nombreArmeEquipe = 0;
 					for (int i = 0; i < this.getEquipement().getTaille(); i++) {
-						if (this.getEquipement().getObjet(i).getClass() == a.getClass()) {
+						if (this.getEquipement().getObjet(i).getClass() == a
+								.getClass()) {
 							nombreArmeEquipe++;
 						}
 					}
@@ -369,9 +373,10 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 					boolean dejaEquipe = false;
 					int posObj = 0;
 					for (int i = 0; i < this.getEquipement().getTaille(); i++) {
-						if (this.getEquipement().getObjet(i).getClass() == eq.getClass()) {
+						if (this.getEquipement().getObjet(i).getClass() == eq
+								.getClass()) {
 							dejaEquipe = true;
-							if(dejaEquipe){
+							if (dejaEquipe) {
 								posObj = i;
 							}
 						}
@@ -381,8 +386,10 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 						this.majCaractEqui();
 						return true;
 					} else {
-						if(this.getInventaire().ajouterObjet(this.getEquipement().getObjet(posObj))){
-							this.getEquipement().retirerObjet(this.getEquipement().getObjet(posObj));
+						if (this.getInventaire().ajouterObjet(
+								this.getEquipement().getObjet(posObj))) {
+							this.getEquipement().retirerObjet(
+									this.getEquipement().getObjet(posObj));
 							this.getEquipement().ajouterObjet(eq);
 							this.getInventaire().retirerObjet(eq);
 						}
@@ -395,7 +402,7 @@ public abstract class EntiteVivante implements ContenuCase { // TODO:skeggib
 			this.majCaractEqui();
 			return false;
 		}
-		return false;	
+		return false;
 	}
 
 	/**

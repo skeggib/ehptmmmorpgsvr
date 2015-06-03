@@ -1,6 +1,7 @@
 package mmorpg.personnage;
 
-import mmorpg.items.Arme;
+import java.io.Serializable;
+
 import mmorpg.items.Equipable;
 import mmorpg.items.Objet;
 
@@ -13,7 +14,10 @@ import mmorpg.items.Objet;
  * @author armya
  *
  */
-public class Equipement implements ContenirObjets {
+public class Equipement implements ContenirObjets, Serializable {
+
+
+	private static final long serialVersionUID = -63684723399622813L;
 
 	private ListeUnique<Equipable> listObjet;
 

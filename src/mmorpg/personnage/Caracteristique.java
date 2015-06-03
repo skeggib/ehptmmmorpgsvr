@@ -1,12 +1,16 @@
 package mmorpg.personnage;
 
+import java.io.Serializable;
+
 /**
  * Contient les caracteristiques influant sur l'entite.</br>
  * 
  * @author armya
  *
  */
-public class Caracteristique {
+public class Caracteristique implements Serializable{
+
+	private static final long serialVersionUID = 6709953235120947528L;
 
 	private int force;
 	private int adresse;

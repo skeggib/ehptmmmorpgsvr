@@ -7,6 +7,8 @@ import mmorpg.jeu.Log;
 
 public class FenetreLog extends Fenetre {
 	
+	private static final long serialVersionUID = 1L;
+	
 	Log log;
 	
 	/* --- CONSTRUCTEURS --- */

@@ -9,6 +9,8 @@ package mmorpg.personnage;
  */
 public class Inventaire extends ContenantObjet {
 
+	private static final long serialVersionUID = -2173272356083879117L;
+	
 	/*
 	 * Constructeurs
 	 */

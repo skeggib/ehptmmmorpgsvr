@@ -8,6 +8,8 @@ public abstract class Equipable extends Objet{
 	 * Constantes
 	 */
 	
+	private static final long serialVersionUID = 975119552156210907L;
+	
 	public final static int MAUVAIS = 0;
 	public final static int COMMUN = 1;
 	public final static int INHABITUEL = 2;

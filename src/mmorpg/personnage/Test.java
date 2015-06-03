@@ -1,14 +1,7 @@
 package mmorpg.personnage;
 
-import java.util.ArrayList;
-
-import mmorpg.carte.Case;
 import mmorpg.items.Arme;
-import mmorpg.items.Casque;
-import mmorpg.items.Gant;
-import mmorpg.items.Objet;
 import mmorpg.items.Pantalon;
-import mmorpg.items.PotionEffet;
 
 public class Test {
 

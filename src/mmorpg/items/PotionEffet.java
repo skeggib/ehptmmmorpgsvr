@@ -5,11 +5,13 @@ import java.util.Random;
 import mmorpg.personnage.Effet;
 import mmorpg.personnage.EntiteVivante;
 
-public class PotionEffet extends Potion{ // TODO:skeggib UML
+public class PotionEffet extends Potion { // TODO:skeggib UML
 
 	/*
 	 * Variables
 	 */
+
+	private static final long serialVersionUID = -2324907780211988236L;
 
 	private int force;
 	private int adresse;
@@ -77,23 +79,23 @@ public class PotionEffet extends Potion{ // TODO:skeggib UML
 		}
 
 		int randomCaract = rand.nextInt(5);
-		
+
 		if (randomCaract == 0) {
 			this.setAdresse(valeurCaractAlea);
 		} else if (randomCaract == 1) {
 			this.setForce(valeurCaractAlea);
-		} else if (randomCaract == 2){
+		} else if (randomCaract == 2) {
 			this.setResistance(valeurCaractAlea);
-		} else if (randomCaract == 3){
+		} else if (randomCaract == 3) {
 			this.setManiabilite(valeurCaractAlea);
 		} else {
 			this.setImpact(valeurCaractAlea);
 		}
-		
+
 		this.setNom(this.randNom());
 	}
-	
-	public PotionEffet(PotionEffet pe){
+
+	public PotionEffet(PotionEffet pe) {
 		this.setAdresse(pe.getAdresse());
 		this.setForce(pe.getForce());
 		this.setImpact(pe.getImpact());
@@ -106,38 +108,38 @@ public class PotionEffet extends Potion{ // TODO:skeggib UML
 	/*
 	 * Methode
 	 */
-	
-	public PotionEffet clone(){
+
+	public PotionEffet clone() {
 		return new PotionEffet(this);
 	}
 
 	@Override
 	public String randNom() {
-		if(this.getForce() > 0){
+		if (this.getForce() > 0) {
 			this.setNom("Potion de force");
-		} else if (this.getAdresse() > 0){
+		} else if (this.getAdresse() > 0) {
 			this.setNom("Potion d'adresse");
-		} else if (this.getResistance() > 0){
+		} else if (this.getResistance() > 0) {
 			this.setNom("Potion de resistance");
-		} else if (this.getManiabilite() > 0){
+		} else if (this.getManiabilite() > 0) {
 			this.setNom("Potion de maniabilite");
-		} else if (this.getImpact() > 0){
+		} else if (this.getImpact() > 0) {
 			this.setNom("Potion d'impact");
 		}
 		return null;
 	}
-	
+
 	public void affecterBonus(EntiteVivante utilisateur, EntiteVivante cible) {
 		Effet effet = new Effet(this.getDuree());
-		
+
 		effet.ajouterForce(this.getForce());
 		effet.ajouterAdresse(this.getAdresse());
 		effet.ajouterResistance(this.getResistance());
 		effet.ajouterImpact(this.getImpact());
 		effet.ajouterManiabilite(this.getManiabilite());
-		
+
 		cible.ajouterEffet(effet);
-		
+
 		utilisateur.retirerObjet(this);
 	}
 

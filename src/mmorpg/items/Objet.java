@@ -1,13 +1,17 @@
 package mmorpg.items;
 
+import java.io.Serializable;
+
 import mmorpg.carte.ContenuCase;
 import mmorpg.personnage.EntiteVivante;
 
-public abstract class Objet implements ContenuCase {
+public abstract class Objet implements ContenuCase, Serializable {
 
 	/*
 	 * Variables
 	 */
+	
+	private static final long serialVersionUID = -518488975585350727L;
 
 	public static final String[] NOM = null; 
 

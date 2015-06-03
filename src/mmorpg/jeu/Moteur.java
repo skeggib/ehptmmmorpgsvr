@@ -1,25 +1,27 @@
 package mmorpg.jeu;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Scanner;
 
 import mmorpg.affichage.InterfaceTerm;
 import mmorpg.carte.Carte;
 import mmorpg.carte.Position;
 import mmorpg.controles.Controleur;
 import mmorpg.exceptions.affichage.interfaceTerm.CantDrawInterfaceException;
+import mmorpg.fichiers.EcritureObjet;
 import mmorpg.items.Arme;
 import mmorpg.items.Casque;
 import mmorpg.items.Pantalon;
-import mmorpg.items.Potion;
 import mmorpg.items.PotionDeDegat;
 import mmorpg.items.PotionDeSoin;
 import mmorpg.items.PotionEffet;
 import mmorpg.personnage.Joueur;
 import mmorpg.personnage.Monstre;
 
-public class Moteur {
+public class Moteur implements Serializable{
+	
+	private static final long serialVersionUID = -6706730199045501365L;
 	
 	private Log log;
 	private Carte carte;
@@ -66,7 +68,7 @@ public class Moteur {
 	
 	private void init() {
 		
-		Scanner sc = new Scanner(System.in);
+		
 		
 		/* Chargement de la carte */
 		
@@ -125,7 +127,7 @@ public class Moteur {
 		// Boucle actions du joueur
 		boolean continuerTour = true;
 		while (this.run && continuerTour) {
-			
+			EcritureObjet.ecrire(this);
 			try {
 				// Affichage
 				inter.afficher();

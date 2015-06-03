@@ -1,16 +1,15 @@
 package mmorpg.controles;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import mmorpg.affichage.InterfaceTerm;
 import mmorpg.carte.Carte;
 import mmorpg.carte.Case;
-import mmorpg.carte.ContenuCase;
 import mmorpg.carte.Position;
 import mmorpg.items.Arme;
 import mmorpg.items.Objet;
 import mmorpg.items.Potion;
-import mmorpg.items.PotionDeSoin;
 import mmorpg.items.Vetement;
 import mmorpg.jeu.Log;
 import mmorpg.personnage.Coffre;
@@ -18,8 +17,9 @@ import mmorpg.personnage.EntiteVivante;
 import mmorpg.personnage.Joueur;
 import mmorpg.personnage.ListeUnique;
 
-public class Controleur {
-	
+public class Controleur implements Serializable {
+
+	private static final long serialVersionUID = 3905422874543746084L;
 	
 	
 	

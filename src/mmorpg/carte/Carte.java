@@ -1,9 +1,13 @@
 package mmorpg.carte;
 
+import java.io.Serializable;
+
 import mmorpg.fichiers.LectureFichier;
 
-public class Carte {
+public class Carte implements Serializable{
 
+	private static final long serialVersionUID = -8071199923180382885L;
+	
 	private int hauteur;
 	private int largeur;
 	

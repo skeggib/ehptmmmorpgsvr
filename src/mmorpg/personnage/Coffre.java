@@ -12,6 +12,8 @@ import mmorpg.items.Objet;
  */
 public class Coffre extends ContenantObjet implements ContenuCase {
 
+	private static final long serialVersionUID = 5780310267728210810L;
+
 	public Coffre() {
 		super();
 	}
