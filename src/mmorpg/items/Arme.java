@@ -76,6 +76,10 @@ public class Arme extends Equipable {
 	 * Methode
 	 */
 	
+	public String getType(){
+		return "Vetement";
+	}
+	
 	public Arme clone(){
 		return new Arme(this);
 	}

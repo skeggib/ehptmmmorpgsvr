@@ -79,6 +79,10 @@ public abstract class Vetement extends Equipable {
 	/*
 	 * Methode
 	 */
+	
+	public String getType(){
+		return "Vetement";
+	}
 
 	public void affecterBonus(EntiteVivante utilisateur, EntiteVivante cible) {
 		cible.getCaractEquip().ajouterForce(this.getForce());

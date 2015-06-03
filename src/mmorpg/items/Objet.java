@@ -36,7 +36,16 @@ public abstract class Objet implements ContenuCase, Serializable {
 	 */
 	public abstract String randNom();
 	
+	/**
+	 * Retourne une copie de l'objet
+	 */
 	public abstract Objet clone();
+	
+	/**
+	 * Retoune ce qu'est l'objet (Un vetement, une arme, une potion)
+	 * @return Ce qu'est l'objet
+	 */
+	public abstract String getType();
 
 	/**
 	 * Affecte le bonus a l'objet
