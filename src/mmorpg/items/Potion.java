@@ -8,6 +8,6 @@ public abstract class Potion extends Objet {
 	 * Methode
 	 */
 	public String getType(){
-		return "Vetement";
+		return "Potion";
 	}
 }

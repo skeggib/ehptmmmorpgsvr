@@ -77,7 +77,7 @@ public class Arme extends Equipable {
 	 */
 	
 	public String getType(){
-		return "Vetement";
+		return "Arme";
 	}
 	
 	public Arme clone(){
