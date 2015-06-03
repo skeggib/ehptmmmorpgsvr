@@ -13,6 +13,7 @@ import mmorpg.items.Potion;
 import mmorpg.items.PotionDeSoin;
 import mmorpg.items.Vetement;
 import mmorpg.jeu.Log;
+import mmorpg.personnage.Caracteristique;
 import mmorpg.personnage.Coffre;
 import mmorpg.personnage.EntiteVivante;
 import mmorpg.personnage.Joueur;
@@ -433,7 +434,6 @@ public class Controleur {
 				System.out.println("Impact : " + arme.getImpact());
 			if (arme.getManiabilite() > 0)
 				System.out.println("Maniabilite : " + arme.getManiabilite());
-			Controleur.pause();
 		}
 		
 		else if (objet instanceof Vetement) {
@@ -444,8 +444,59 @@ public class Controleur {
 				System.out.println("Force : " + vetement.getForce());
 			if (vetement.getResistance() > 0)
 				System.out.println("Resistance : " + vetement.getResistance());
-			Controleur.pause();
 		}
+		
+		// Calcul de la diferrence de caracteristiques si on equipe l'objet
+		
+		System.out.println("\nEffet apres equipement : ");
+		
+		Joueur copieJoueur = new Joueur(this.joueur);
+		copieJoueur.rammasserObjet(objet);
+		copieJoueur.equiperObjet(objet);
+
+		Caracteristique caracJoueur = this.joueur.getCaractEquip();
+		Caracteristique caracCopie = copieJoueur.getCaractEquip();
+
+		int diffForce = caracCopie.getForce() - caracJoueur.getForce();
+		int diffAdresse = caracCopie.getAdresse() - caracJoueur.getAdresse();
+		int diffResistance = caracCopie.getResistance() - caracJoueur.getResistance();
+		int diffManiabilite = caracCopie.getManiabilite() - caracJoueur.getManiabilite();
+		int diffImpact = caracCopie.getImpact() - caracJoueur.getImpact();
+
+		if (diffForce != 0) {
+			System.out.print("Force : ");
+			if (diffForce > 0)
+				System.out.print("+");
+			System.out.println(diffForce);
+		}
+		if (diffAdresse != 0) {
+			System.out.print("Adresse : ");
+			if (diffAdresse > 0)
+				System.out.print("+");
+			System.out.println(diffAdresse);
+		}
+		if (diffResistance != 0) {
+			System.out.print("Resistance : ");
+			if (diffResistance > 0)
+				System.out.print("+");
+			System.out.println(diffResistance);
+		}
+		if (diffManiabilite != 0) {
+			System.out.print("Maniabilite : ");
+			if (diffManiabilite > 0)
+				System.out.print("+");
+			System.out.println(diffManiabilite);
+		}
+		if (diffImpact != 0) {
+			System.out.print("Impact : ");
+			if (diffImpact > 0)
+				System.out.print("+");
+			System.out.println(diffImpact);
+		}
+			
+		
+
+		Controleur.pause();
 		
 		return true;
 	}
