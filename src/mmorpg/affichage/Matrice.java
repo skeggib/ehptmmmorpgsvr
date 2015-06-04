@@ -40,16 +40,14 @@ public class Matrice implements Serializable{
 	 * Affiche la matrice dans le terminal
 	 */
 	public void afficher() {
-		String str = new String();
 		
 		for (int i = 0; i < this.pxls.length; i++) {
 			for (int j = 0; j < this.pxls[i].length; j++) {
-				str += this.pxls[i][j].getPixelCouleur();
+				System.out.print(this.pxls[i][j].getPixelCouleur());
 			}
-			str += "\n";
+			System.out.println();
 		}
 		
-		System.out.print(str);
 	}
 	
 	/**
