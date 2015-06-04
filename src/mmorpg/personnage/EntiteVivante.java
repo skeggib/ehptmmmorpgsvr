@@ -20,11 +20,7 @@ import mmorpg.items.Objet;
  * @author armya
  *
  */
-public abstract class EntiteVivante implements ContenuCase, Serializable { // TODO:skeggib
-	// Verifier
-	// toute cette
-	// classe -> MAJ
-	// UML
+public abstract class EntiteVivante implements ContenuCase, Serializable {
 
 	/*
 	 * Constante
@@ -57,7 +53,8 @@ public abstract class EntiteVivante implements ContenuCase, Serializable { // TO
 
 	private Case emplacement;
 
-	private Caracteristique caractPrinc;
+	private Caracteristique caractPrinc; // TODO:armya Soit plus explicite dans les noms de variables
+											// Par exemple caractPrincipale (c'est beaucoup plus lisible)
 	private Caracteristique caractEquip;
 	private Caracteristique caractEffet;
 

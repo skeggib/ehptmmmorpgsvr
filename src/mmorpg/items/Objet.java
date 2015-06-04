@@ -13,7 +13,7 @@ public abstract class Objet implements ContenuCase, Serializable {
 	
 	private static final long serialVersionUID = -518488975585350727L;
 
-	public static final String[] NOM = null; 
+	public static final String[] NOM = null; // TODO:armya Je vois pas pourquoi c'est en public
 
 	private String nom;
 

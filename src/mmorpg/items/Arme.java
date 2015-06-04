@@ -21,6 +21,12 @@ public class Arme extends Equipable {
 
 	public static final String[] NOM = LectureRessource
 			.lire("noms/arme.txt").split("\n");
+	// TODO:armya Je ne pense pas que ce soit une bonne idee
+	// de stocker les noms comme ca,
+	// imagine tu en a 1000 dans le fichier, et bien tu va stocker
+	// un tableau de 1000 String...
+	// Je pense q'il serait preferable de lire le fichier dans
+	// la methode randNom()
 
 	public Arme() {
 		super();
@@ -30,7 +36,7 @@ public class Arme extends Equipable {
 		Random rand = new Random();
 
 		switch (this.getQualite()) {
-		case 0:
+		case 0: // TODO:armya Ce serai plus lisible de mettre Equipable.MAUVAIS au lieu de 0, idem pour les autres case
 			this.setManiabilite(rand.nextInt(2) + 2);
 			this.setImpact(rand.nextInt(2) + 2);
 			break;

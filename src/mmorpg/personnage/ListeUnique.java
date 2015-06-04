@@ -18,7 +18,7 @@ public class ListeUnique<E> extends ArrayList<E> {
 	private static final long serialVersionUID = 7059645323747881812L;
 
 	public boolean add(E e) {
-		if (!this.contains(e)) {
+		if (!this.contains(e)) { // TODO:armya Fait gaffe avec contains...
 			return super.add(e);
 		}
 		return false;

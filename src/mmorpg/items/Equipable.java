@@ -56,7 +56,7 @@ public abstract class Equipable extends Objet{
 	 */
 
 	public int getQualite() {
-		return qualite;
+		return qualite; // TODO:armya T'as oublié this.
 	}
 
 
