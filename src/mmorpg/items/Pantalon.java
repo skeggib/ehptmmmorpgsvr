@@ -2,7 +2,7 @@ package mmorpg.items;
 
 import java.util.Random;
 
-import mmorpg.fichiers.LectureFichier;
+import mmorpg.fichiers.LectureRessource;
 import mmorpg.personnage.EntiteVivante;
 
 public class Pantalon extends Vetement {
@@ -12,8 +12,8 @@ public class Pantalon extends Vetement {
 	/*
 	 * Constantes
 	 */
-	public static final String[] NOM = LectureFichier
-			.lireT("ressources/noms/jambe.txt");
+	public static final String[] NOM = LectureRessource
+			.lire("noms/jambe.txt").split("\n");
 
 	/*
 	 * Constructeur

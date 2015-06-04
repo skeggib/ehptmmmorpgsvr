@@ -2,15 +2,15 @@ package mmorpg.items;
 
 import java.util.Random;
 
-import mmorpg.fichiers.LectureFichier;
+import mmorpg.fichiers.LectureRessource;
 import mmorpg.personnage.EntiteVivante;
 
 public class Gant extends Vetement {
 	
 	private static final long serialVersionUID = 8982478495592136422L;
 	
-	public static final String[] NOM = LectureFichier
-			.lireT("ressources/noms/gant.txt");
+	public static final String[] NOM = LectureRessource
+			.lire("noms/gant.txt").split("\n");
 
 	public Gant() {
 		super();

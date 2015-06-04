@@ -2,7 +2,7 @@ package mmorpg.carte;
 
 import java.io.Serializable;
 
-import mmorpg.fichiers.LectureFichier;
+import mmorpg.fichiers.LectureRessource;
 
 public class Carte implements Serializable{
 
@@ -45,12 +45,7 @@ public class Carte implements Serializable{
 	public boolean chargerFichier(String chemin) {
 		
 		// Lire le fichier
-		String lines[] = LectureFichier.lireT(chemin);
-		String str = new String();
-		
-		// Reconstituer les lines en une seule chaine
-		for (int i = 0; i < lines.length; i++)
-			str += lines[i] + "\n";
+		String str = LectureRessource.lire(chemin);
 		
 		this.chargerString(str);
 		

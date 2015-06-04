@@ -2,7 +2,7 @@ package mmorpg.items;
 
 import java.util.Random;
 
-import mmorpg.fichiers.LectureFichier;
+import mmorpg.fichiers.LectureRessource;
 import mmorpg.personnage.EntiteVivante;
 
 public class Arme extends Equipable {
@@ -19,8 +19,8 @@ public class Arme extends Equipable {
 	 * Constantes
 	 */
 
-	public static final String[] NOM = LectureFichier
-			.lireT("ressources/noms/arme.txt");
+	public static final String[] NOM = LectureRessource
+			.lire("noms/arme.txt").split("\n");
 
 	public Arme() {
 		super();

@@ -2,7 +2,7 @@ package mmorpg.items;
 
 import java.util.Random;
 
-import mmorpg.fichiers.LectureFichier;
+import mmorpg.fichiers.LectureRessource;
 import mmorpg.personnage.EntiteVivante;
 
 public class PotionDeDegat extends Potion {
@@ -19,8 +19,8 @@ public class PotionDeDegat extends Potion {
 	 * Constantes
 	 */
 
-	public static final String[] NOM = LectureFichier
-			.lireT("ressources/noms/potionDegat.txt");
+	public static final String[] NOM = LectureRessource
+			.lire("noms/potionDegat.txt").split("\n");
 
 	public PotionDeDegat() {
 		this.setMalusVie(new Random().nextInt(PotionDeDegat.NOM.length) + 1);

@@ -72,7 +72,7 @@ public class Moteur implements Serializable{
 		
 		/* Chargement de la carte */
 		
-		this.carte.chargerFichier("ressources/carte/test");
+		this.carte.chargerFichier("carte/test");
 		this.listeMonstres = Moteur.ajoutMonstres(this.carte);
 		
 		/* Creation du joueur */

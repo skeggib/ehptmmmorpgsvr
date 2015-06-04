@@ -2,15 +2,15 @@ package mmorpg.items;
 
 import java.util.Random;
 
-import mmorpg.fichiers.LectureFichier;
+import mmorpg.fichiers.LectureRessource;
 import mmorpg.personnage.EntiteVivante;
 
 public class Torse extends Vetement {
 
 	private static final long serialVersionUID = -6459569773295966695L;
 
-	public static final String[] NOM = LectureFichier
-			.lireT("ressources/noms/torse.txt");
+	public static final String[] NOM = LectureRessource
+			.lire("noms/torse.txt").split("\n");
 
 	public Torse() {
 		this.setNom(this.randNom());

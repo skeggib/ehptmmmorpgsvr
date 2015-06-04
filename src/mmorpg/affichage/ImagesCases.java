@@ -3,7 +3,7 @@ package mmorpg.affichage;
 import mmorpg.carte.Case;
 import mmorpg.carte.ContenuCase;
 import mmorpg.carte.Inconnu;
-import mmorpg.fichiers.LectureFichier;
+import mmorpg.fichiers.LectureRessource;
 
 /**
  * 
@@ -67,13 +67,9 @@ public abstract class ImagesCases {
 			break;
 		}
 		
-		String[] lines = LectureFichier.lireT("ressources/images/" + nomContenu + "/" + InterfaceTerm.TAILLES[taille]);
-		String str = new String();
-		for (int i = 0; i < lines.length; i++) {
-			str += lines[i] + "\n";
-		}
+		String str = LectureRessource.lire("images/" + nomContenu + "/" + InterfaceTerm.TAILLES[taille]);
 		
-		String[] couleur = LectureFichier.lireT("ressources/images/" + nomContenu + "/color"); // TODO:skggib Try/Catch pour la lecture de fichiers
+		String[] couleur = LectureRessource.lire("images/" + nomContenu + "/color").split("\n"); // TODO:skggib Try/Catch pour la lecture de fichiers
 		
 		if (rtrn.chargerString(str)) {
 			rtrn.setCouleur(couleur[0]);

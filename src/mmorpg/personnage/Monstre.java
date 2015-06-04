@@ -5,7 +5,7 @@ import java.util.Random;
 import mmorpg.carte.Carte;
 import mmorpg.carte.ContenuCase;
 import mmorpg.carte.Position;
-import mmorpg.fichiers.LectureFichier;
+import mmorpg.fichiers.LectureRessource;
 import mmorpg.items.Arme;
 import mmorpg.items.Casque;
 import mmorpg.items.Gant;
@@ -28,8 +28,8 @@ public class Monstre extends EntiteVivante { // TODO:armya Ne perd pas de PA
 
 	public static final int BASE_PA = 10;
 
-	public static final String[] NOM = LectureFichier
-			.lireT("ressources/noms/monstre.txt");
+	public static final String[] NOM = LectureRessource
+			.lire("noms/monstre.txt").split("\n");
 
 	/*
 	 * Constructeur
