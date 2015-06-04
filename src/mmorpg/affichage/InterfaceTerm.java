@@ -3,6 +3,7 @@ package mmorpg.affichage;
 import java.io.Serializable;
 
 import mmorpg.affichage.fenetre.FenetreCarte;
+import mmorpg.affichage.fenetre.FenetreFinJeu;
 import mmorpg.affichage.fenetre.FenetreInfosJoueur;
 import mmorpg.affichage.fenetre.FenetreInventaire;
 import mmorpg.affichage.fenetre.FenetreLog;
@@ -57,6 +58,7 @@ public class InterfaceTerm implements Serializable {
 	public static final int MODE_JEU = 1;
 	public static final int MODE_INVENTAIRE = 2;
 	public static final int MODE_PERSONNAGE = 3;
+	public static final int FIN_JEU = 4;
 	
 	private int mode;
 	
@@ -181,6 +183,13 @@ public class InterfaceTerm implements Serializable {
 				
 			case InterfaceTerm.MODE_PERSONNAGE:
 				// TODO:skeggib A faire
+				break;
+				
+			case InterfaceTerm.FIN_JEU:
+				FenetreFinJeu fenFin = new FenetreFinJeu();
+				fenFin.setPosX(this.matrice.getLargeur() / 2 - fenFin.getLargeur() / 2);
+				fenFin.setPosY(this.matrice.getHauteur() / 2 - fenFin.getHauteur() / 2);
+				this.matrice.dessinerFenetre(fenFin);
 				break;
 				
 			default:

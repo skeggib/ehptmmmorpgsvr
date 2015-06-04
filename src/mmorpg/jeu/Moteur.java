@@ -202,7 +202,13 @@ public class Moteur implements Serializable{
 			// Verifier que le joueur est vivant
 			if (!this.joueur.estVivant()) {
 				this.run = false;
-				System.out.println("VOUS ETES MORT !"); // TODO:skeggib Faire une fenetre "Vous etes mort"
+				this.inter.setMode(InterfaceTerm.FIN_JEU);
+				
+				try {
+					this.inter.afficher();
+				} catch (CantDrawInterfaceException e) {
+					e.printStackTrace();
+				}
 			}
 			
 		}
