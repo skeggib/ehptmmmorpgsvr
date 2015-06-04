@@ -186,6 +186,7 @@ public class InterfaceTerm implements Serializable {
 				break;
 				
 			case InterfaceTerm.FIN_JEU:
+				this.clean();
 				FenetreFinJeu fenFin = new FenetreFinJeu();
 				fenFin.setPosX(this.matrice.getLargeur() / 2 - fenFin.getLargeur() / 2);
 				fenFin.setPosY(this.matrice.getHauteur() / 2 - fenFin.getHauteur() / 2);
@@ -202,6 +203,10 @@ public class InterfaceTerm implements Serializable {
 		}
 		
 		return true;
+	}
+	
+	private void clean() {
+		this.matrice.dessinerRectangle(0, 0, this.largeur, this.hauteur, new Pixel());
 	}
 	
 	public String toString() {
