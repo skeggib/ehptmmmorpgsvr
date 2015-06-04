@@ -3,11 +3,12 @@ package mmorpg.affichage.fenetre;
 import mmorpg.affichage.Matrice;
 import mmorpg.affichage.Pixel;
 import mmorpg.exceptions.affichage.fenetre.CantDrawWindowException;
+import mmorpg.items.Objet;
 import mmorpg.personnage.Equipement;
 import mmorpg.personnage.Inventaire;
 import mmorpg.personnage.Joueur;
 
-public class FenetreInventaire extends Fenetre { // TODO:skeggib Afficher le nom du type des objets
+public class FenetreInventaire extends Fenetre {
 	
 	private static final long serialVersionUID = 3778417611018397347L;
 	
@@ -64,8 +65,10 @@ public class FenetreInventaire extends Fenetre { // TODO:skeggib Afficher le nom
 		
 		Inventaire inventaire = this.joueur.getInventaire();
 		int tailleInventaire = inventaire.getTaille();
+		Objet objet;
 		for (int i = 0; i < tailleInventaire; i++) {
-			texte = i+1 + ". " + inventaire.getObjet(i).getNom();
+			objet = inventaire.getObjet(i);
+			texte = i+1 + ". " + objet.getNom() + " (" + objet.getType() + ")";
 			this.getMatrice().dessinerTexte(0, i + 2, texte, "BLACK", "WHITE");
 		}
 		
@@ -78,7 +81,8 @@ public class FenetreInventaire extends Fenetre { // TODO:skeggib Afficher le nom
 		Equipement equipement = this.joueur.getEquipement();
 		int tailleEquipement = equipement.getTaille();
 		for (int i = 0; i < tailleEquipement; i++) {
-			texte = i+1 + ". " + equipement.getObjet(i).getNom();
+			objet = equipement.getObjet(i);
+			texte = i+1 + ". " + objet.getNom() + " (" + objet.getType() + ")";
 			this.getMatrice().dessinerTexte(moitierLargeur, i + 2, texte, "BLACK", "WHITE");
 		}
 		
