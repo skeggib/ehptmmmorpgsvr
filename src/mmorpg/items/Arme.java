@@ -21,12 +21,6 @@ public class Arme extends Equipable {
 
 	public static final String[] NOM = LectureRessource
 			.lire("noms/arme.txt").split("\n");
-	// TODO:armya Je ne pense pas que ce soit une bonne idee
-	// de stocker les noms comme ca,
-	// imagine tu en a 1000 dans le fichier, et bien tu va stocker
-	// un tableau de 1000 String...
-	// Je pense q'il serait preferable de lire le fichier dans
-	// la methode randNom()
 
 	public Arme() {
 		super();
@@ -36,29 +30,29 @@ public class Arme extends Equipable {
 		Random rand = new Random();
 
 		switch (this.getQualite()) {
-		case 0: // TODO:armya Ce serai plus lisible de mettre Equipable.MAUVAIS au lieu de 0, idem pour les autres case
+		case Equipable.MAUVAIS:
 			this.setManiabilite(rand.nextInt(2) + 2);
 			this.setImpact(rand.nextInt(2) + 2);
 			break;
-		case 1:
+		case Equipable.COMMUN:
 			this.setManiabilite(rand.nextInt(2) + 3);
 			this.setImpact(rand.nextInt(2) + 3);
 			break;
-		case 2:
+		case Equipable.INHABITUEL:
 			this.setManiabilite(rand.nextInt(3) + 4);
 			this.setImpact(rand.nextInt(3) + 4);
 			break;
-		case 3:
+		case Equipable.RARE:
 			this.setManiabilite(rand.nextInt(3) + 5);
 			this.setImpact(rand.nextInt(3) + 5);
 			break;
-		case 4:
+		case Equipable.EPIQUE:
 			this.setManiabilite(rand.nextInt(3) + 6);
 			this.setImpact(rand.nextInt(3) + 6);
 			break;
-		case 5:
-			this.setManiabilite(9);
-			this.setImpact(9);
+		case Equipable.LEGENDAIRE:
+			this.setManiabilite(10);
+			this.setImpact(10);
 			break;
 		default:
 			break;
@@ -105,7 +99,7 @@ public class Arme extends Equipable {
 	 */
 
 	public int getManiabilite() {
-		return maniabilite;
+		return this.maniabilite;
 	}
 
 	public void setManiabilite(int maniabilite) {
@@ -113,7 +107,7 @@ public class Arme extends Equipable {
 	}
 
 	public int getImpact() {
-		return impact;
+		return this.impact;
 	}
 
 	public void setImpact(int impact) {
