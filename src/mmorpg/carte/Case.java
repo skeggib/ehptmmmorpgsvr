@@ -71,12 +71,13 @@ public class Case implements Serializable {
 		if (this.getContenu() == null)
 			return true;
 		if (this.getContenu() instanceof Vide) //TODO skeggib : Pourquoi ne pas faire "if(this.getContenu().getNumero() == ContenuCase.VIDE)"
+			// TODO armya -> reponse : Par ce que je compte supprimer les numéros un jour (autant faire des instanceof, c'est la même chose et c'est plus clair)
 			return true;
 		
 		return false;
 	}
 	
-	public boolean contientObjet() { //TODO skebbig : Idem que le TO DO ci dessus, valable pour les methode en dessous aussi
+	public boolean contientObjet() {
 		if (this.getContenu() instanceof Objet) {
 			return true;
 		}

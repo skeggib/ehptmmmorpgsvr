@@ -22,7 +22,7 @@ import mmorpg.items.Torse;
  * @author armya
  *
  */
-public class Monstre extends EntiteVivante { // TODO:armya Ne perd pas de PA
+public class Monstre extends EntiteVivante {
 
 	private static final long serialVersionUID = 1L;
 
