@@ -70,13 +70,13 @@ public class Case implements Serializable {
 	public boolean estVide() {
 		if (this.getContenu() == null)
 			return true;
-		if (this.getContenu() instanceof Vide)
+		if (this.getContenu() instanceof Vide) //TODO skeggib : Pourquoi ne pas faire "if(this.getContenu().getNumero() == ContenuCase.VIDE)"
 			return true;
 		
 		return false;
 	}
 	
-	public boolean contientObjet() {
+	public boolean contientObjet() { //TODO skebbig : Idem que le TO DO ci dessus, valable pour les methode en dessous aussi
 		if (this.getContenu() instanceof Objet) {
 			return true;
 		}
