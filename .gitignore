@@ -3,3 +3,4 @@ bin/
 doc/
 uml/*.ucls
 Jeu.jar
+*.ser
