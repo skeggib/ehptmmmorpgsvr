@@ -59,8 +59,7 @@ public class Caracteristique implements Serializable{
 		this.ajouterImpact(c.getImpact());
 	}
 
-	// TODO:armya Changer le nom en "reinitialiser"
-	public void reinitialiserCaract() {
+	public void reinitialiser() {
 		this.setForce(0);
 		this.setAdresse(0);
 		this.setResistance(0);
@@ -68,8 +67,7 @@ public class Caracteristique implements Serializable{
 		this.setImpact(0);
 	}
 
-	// TODO:armya Changer le nom en "reinitialiser"
-	public void reinitialiserCaract(int force, int adresse, int resistance,
+	public void reinitialiser(int force, int adresse, int resistance,
 			int maniabilite, int impact) {
 		this.setForce(force);
 		this.setAdresse(adresse);
@@ -103,7 +101,7 @@ public class Caracteristique implements Serializable{
 	 */
 
 	public int getForce() {
-		return force;
+		return this.force;
 	}
 
 	public void setForce(int force) {
@@ -111,7 +109,7 @@ public class Caracteristique implements Serializable{
 	}
 
 	public int getAdresse() {
-		return adresse;
+		return this.adresse;
 	}
 
 	public void setAdresse(int adresse) {
@@ -119,7 +117,7 @@ public class Caracteristique implements Serializable{
 	}
 
 	public int getResistance() {
-		return resistance;
+		return this.resistance;
 	}
 
 	public void setResistance(int resistance) {
@@ -127,7 +125,7 @@ public class Caracteristique implements Serializable{
 	}
 
 	public int getManiabilite() {
-		return maniabilite;
+		return this.maniabilite;
 	}
 
 	public void setManiabilite(int maniabilite) {
@@ -135,7 +133,7 @@ public class Caracteristique implements Serializable{
 	}
 
 	public int getImpact() {
-		return impact;
+		return this.impact;
 	}
 
 	public void setImpact(int impact) {

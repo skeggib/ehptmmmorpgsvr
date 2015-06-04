@@ -22,9 +22,5 @@ public class Inventaire extends ContenantObjet {
 	public Inventaire(Inventaire inv){
 		super(inv);
 	}
-	
-	public void ajouterContenuCoffre(Coffre cof){
-		//TODO:armya a implementer
-	}
 }
  

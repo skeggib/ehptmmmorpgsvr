@@ -43,8 +43,7 @@ public class Effet extends Caracteristique {
 	 * Methode
 	 */
 	
-	// TODO:armya Changer le nom en "appliquer"
-	public void appliquerEffet(EntiteVivante cible){
+	public void appliquer(EntiteVivante cible){
 		cible.getCaractEffet().ajouterForce(this.getForce());
 		cible.getCaractEffet().ajouterAdresse(this.getAdresse());
 		cible.getCaractEffet().ajouterResistance(this.getResistance());
@@ -66,7 +65,7 @@ public class Effet extends Caracteristique {
 	}
 
 	public int getTourRestant() {
-		return tourRestant;
+		return this.tourRestant;
 	}
 
 	private void setTourRestant(int tourRestant) {

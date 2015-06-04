@@ -9,7 +9,6 @@ import mmorpg.items.Arme;
 import mmorpg.items.Equipable;
 import mmorpg.items.Objet;
 
-//TODO:armya Implementer l'exprerience (expPourNiveauSuivant() : int)
 
 /**
  * 
@@ -53,9 +52,8 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 
 	private Case emplacement;
 
-	private Caracteristique caractPrinc; // TODO:armya Soit plus explicite dans les noms de variables
-											// Par exemple caractPrincipale (c'est beaucoup plus lisible)
-	private Caracteristique caractEquip;
+	private Caracteristique cractPrincipale;
+	private Caracteristique caractEquipement;
 	private Caracteristique caractEffet;
 
 	private Inventaire inventaire;
@@ -70,8 +68,8 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 
 		this.setVie(EntiteVivante.MAX_VIE);
 
-		this.caractPrinc = new Caracteristique();
-		this.caractEquip = new Caracteristique();
+		this.cractPrincipale = new Caracteristique();
+		this.caractEquipement = new Caracteristique();
 		this.caractEffet = new Caracteristique();
 
 		this.setInventaire(new Inventaire());
@@ -87,13 +85,13 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 		this.setVie(EntiteVivante.MAX_VIE);
 		this.effet = new ListeUnique<Effet>();
 
-		this.caractPrinc = new Caracteristique();
-		this.caractEquip = new Caracteristique();
+		this.cractPrincipale = new Caracteristique();
+		this.caractEquipement = new Caracteristique();
 		this.caractEffet = new Caracteristique();
 
-		this.caractPrinc.setForce(force);
-		this.caractPrinc.setAdresse(adresse);
-		this.caractPrinc.setResistance(resistance);
+		this.cractPrincipale.setForce(force);
+		this.cractPrincipale.setAdresse(adresse);
+		this.cractPrincipale.setResistance(resistance);
 	}
 
 	public EntiteVivante(int force, int adresse, int resistance, int vie) {
@@ -103,13 +101,13 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 		this.setVie(vie);
 		this.effet = new ListeUnique<Effet>();
 
-		this.caractPrinc = new Caracteristique();
-		this.caractEquip = new Caracteristique();
+		this.cractPrincipale = new Caracteristique();
+		this.caractEquipement = new Caracteristique();
 		this.caractEffet = new Caracteristique();
 
-		this.caractPrinc.setForce(force);
-		this.caractPrinc.setAdresse(adresse);
-		this.caractPrinc.setResistance(resistance);
+		this.cractPrincipale.setForce(force);
+		this.cractPrincipale.setAdresse(adresse);
+		this.cractPrincipale.setResistance(resistance);
 	}
 
 	public EntiteVivante(EntiteVivante etv) {
@@ -126,9 +124,9 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 			this.effet.add(new Effet(etv.effet.get(i)));
 		}
 
-		this.caractPrinc = new Caracteristique(etv.getCaractPrinc());
+		this.cractPrincipale = new Caracteristique(etv.getCaractPrinc());
 		this.caractEffet = new Caracteristique();
-		this.caractEquip = new Caracteristique();
+		this.caractEquipement = new Caracteristique();
 
 		this.majCaractEffet();
 		this.majCaractEqui();
@@ -560,8 +558,8 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	public Caracteristique getCaractTotal() {
 		Caracteristique c = new Caracteristique();
 
-		c.ajouter(this.caractPrinc);
-		c.ajouter(this.caractEquip);
+		c.ajouter(this.cractPrincipale);
+		c.ajouter(this.caractEquipement);
 		c.ajouter(this.caractEffet);
 
 		return c;
@@ -574,7 +572,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	 * les caracteristiques a 0 pour tout recalculer)
 	 */
 	private void majCaractEqui() {
-		this.caractEquip.reinitialiserCaract();
+		this.caractEquipement.reinitialiser();
 
 		for (int i = 0; i < this.equipement.getTaille(); i++) {
 			this.equipement.getObjet(i).affecterBonus(this, this);
@@ -586,10 +584,10 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	 * les caracteristiques a 0 pour tout recalculer)
 	 */
 	private void majCaractEffet() {
-		this.caractEffet.reinitialiserCaract();
+		this.caractEffet.reinitialiser();
 
 		for (int i = 0; i < this.effet.size(); i++) {
-			this.effet.get(i).appliquerEffet(this);
+			this.effet.get(i).appliquer(this);
 		}
 	}
 
@@ -614,7 +612,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	 */
 
 	public String getNom() {
-		return nom;
+		return this.nom;
 	}
 
 	public void setNom(String nom) {
@@ -624,7 +622,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	}
 
 	public int getPointAction() {
-		return pointAction;
+		return this.pointAction;
 	}
 
 	public void setPointAction(int pointAction) {
@@ -632,7 +630,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	}
 
 	public int getVie() {
-		return vie;
+		return this.vie;
 	}
 
 	private void setVie(int vie) {
@@ -647,7 +645,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	}
 
 	public Inventaire getInventaire() {
-		return inventaire;
+		return this.inventaire;
 	}
 
 	private void setInventaire(Inventaire inventaire) {
@@ -657,7 +655,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	}
 
 	public Equipement getEquipement() {
-		return equipement;
+		return this.equipement;
 	}
 
 	private void setEquipement(Equipement equipement) {
@@ -667,7 +665,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	}
 
 	public Case getEmplacement() {
-		return emplacement;
+		return this.emplacement;
 	}
 
 	private void setEmplacement(Case emplacement) {
@@ -677,11 +675,11 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	}
 
 	public Caracteristique getCaractPrinc() {
-		return this.caractPrinc;
+		return this.cractPrincipale;
 	}
 
 	public Caracteristique getCaractEquip() {
-		return this.caractEquip;
+		return this.caractEquipement;
 	}
 
 	public Caracteristique getCaractEffet() {
@@ -689,7 +687,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	}
 
 	public int getExperience() {
-		return experience;
+		return this.experience;
 	}
 
 	private void setExperience(int experience) {

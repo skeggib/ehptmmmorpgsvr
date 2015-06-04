@@ -70,8 +70,7 @@ public class Case implements Serializable {
 	public boolean estVide() {
 		if (this.getContenu() == null)
 			return true;
-		if (this.getContenu() instanceof Vide) //TODO skeggib : Pourquoi ne pas faire "if(this.getContenu().getNumero() == ContenuCase.VIDE)"
-			// TODO armya -> reponse : Par ce que je compte supprimer les numéros un jour (autant faire des instanceof, c'est la même chose et c'est plus clair)
+		if (this.getContenu() instanceof Vide)
 			return true;
 		
 		return false;
