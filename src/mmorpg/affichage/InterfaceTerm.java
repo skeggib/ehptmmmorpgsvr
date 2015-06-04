@@ -12,6 +12,7 @@ import mmorpg.exceptions.affichage.fenetre.CantDrawWindowException;
 import mmorpg.exceptions.affichage.interfaceTerm.CantDrawInterfaceException;
 import mmorpg.exceptions.affichage.interfaceTerm.ModeNotSetException;
 import mmorpg.jeu.Log;
+import mmorpg.os.DetectOS;
 import mmorpg.personnage.Joueur;
 
 /**
@@ -160,13 +161,14 @@ public class InterfaceTerm implements Serializable {
 			throw new CantDrawInterfaceException("Impossible de dessiner l'interface.", e);
 		}
 		
+		InterfaceTerm.cleanTerminal();
 		this.matrice.afficher();
 		
 		return true;
 	}
 	
 	private boolean dessinerInterface() throws ModeNotSetException, CantDrawWindowException {
-		
+				
 		try {
 			switch (this.mode) {
 			
@@ -186,7 +188,7 @@ public class InterfaceTerm implements Serializable {
 				break;
 				
 			case InterfaceTerm.FIN_JEU:
-				this.clean();
+				this.cleanInterface();
 				FenetreFinJeu fenFin = new FenetreFinJeu();
 				fenFin.setPosX(this.matrice.getLargeur() / 2 - fenFin.getLargeur() / 2);
 				fenFin.setPosY(this.matrice.getHauteur() / 2 - fenFin.getHauteur() / 2);
@@ -205,8 +207,13 @@ public class InterfaceTerm implements Serializable {
 		return true;
 	}
 	
-	private void clean() {
+	private void cleanInterface() {
 		this.matrice.dessinerRectangle(0, 0, this.largeur, this.hauteur, new Pixel());
+	}
+	
+	private static void cleanTerminal() {
+		if (DetectOS.Unix())
+			System.out.print("\033[H\033[2J");
 	}
 	
 	public String toString() {
