@@ -338,6 +338,15 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 		}
 		return false;
 	}
+	
+	/**
+	 * Permet de ramasser le contenu (Objet) d'une classe implementant l'interface Ramassable
+	 * 
+	 * @param r L'objet qui contient le contenu (objet)
+	 */
+	public void ramasser(Ramassable r){
+		this.inventaire.ajouterObjets(r.getListeObjet());
+	}
 
 	/**
 	 * Permet d'equiper un objet
