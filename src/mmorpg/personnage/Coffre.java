@@ -10,7 +10,7 @@ import mmorpg.items.Objet;
  * @author armya
  *
  */
-public class Coffre extends ContenantObjet implements ContenuCase {
+public class Coffre extends ContenantObjet implements ContenuCase, Ramassable {
 
 	private static final long serialVersionUID = 5780310267728210810L;
 
@@ -25,6 +25,19 @@ public class Coffre extends ContenantObjet implements ContenuCase {
 	
 	public Coffre(Coffre cof){
 		super(cof);
+	}
+	
+	/*
+	 * Methode
+	 */
+	
+	public ListeUnique<Objet> getListeObjet(){
+		ListeUnique<Objet> liste = new ListeUnique<Objet>();
+		
+		for (int i = 0; i < this.getTaille(); i++) {
+			liste.add(this.getObjet(i));
+		}
+		return liste;
 	}
 
 	public void ajouterObjets(ListeUnique<Objet> list) {
