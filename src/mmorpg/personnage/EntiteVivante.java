@@ -321,7 +321,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	 * @param c
 	 *            Coffre a rammasser
 	 */
-	public void ramasserCoffre(Coffre c) {
+	public void ramasserCoffre(Coffre c) { //TODO armya : Enlever quand l'interface Ramassable sera valider
 		this.inventaire.ajouterObjets(c.getContenu());
 	}
 
@@ -332,7 +332,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	 *            Objet a rammasser
 	 * @return true si l'objet a ete ajouter a l'inventaire, false sinon
 	 */
-	public boolean ramasserObjet(Objet obj) {
+	public boolean ramasserObjet(Objet obj) { //TODO armya : Enlever quand l'interface Ramassable sera valider
 		if ((!this.inventaire.contient(obj) && !this.equipement.contient(obj))) {
 			return this.inventaire.ajouterObjet(obj);
 		}

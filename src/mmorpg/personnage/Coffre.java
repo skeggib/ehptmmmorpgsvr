@@ -46,7 +46,7 @@ public class Coffre extends ContenantObjet implements ContenuCase, Ramassable {
 		}
 	}
 	
-	public ListeUnique<Objet> getContenu () {
+	public ListeUnique<Objet> getContenu () { //TODO armya : Enlever quand l'interface Ramassable sera valider
 		
 		ListeUnique<Objet> liste = new ListeUnique<Objet>();
 		
