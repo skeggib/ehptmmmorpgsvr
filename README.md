@@ -48,3 +48,10 @@ Pour lancer le jeu il suffit d'executer le fichier Jeu.jar :
 
 - Possibilite d'afficher les caracteristiques des objets
 - Utilisation des potions
+- Correction des noms de potions
+- Possibilite de charger une partie
+- Ajout de la fenetre de fin de jeu
+- Affichage du type de l'objet dans l'inventaire
+- Optimisation de l'affichage sous linux
+- Creation du joueur
+- Corrections de quelques bug lors de l'attaque
