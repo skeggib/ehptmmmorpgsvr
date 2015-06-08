@@ -2,8 +2,6 @@ package mmorpg.carte;
 
 import java.io.Serializable;
 
-import mmorpg.items.Item;
-import mmorpg.personnage.Coffre;
 import mmorpg.personnage.EntiteVivante;
 import mmorpg.personnage.Joueur;
 import mmorpg.personnage.Ramassable;

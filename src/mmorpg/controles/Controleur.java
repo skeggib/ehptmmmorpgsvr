@@ -13,7 +13,6 @@ import mmorpg.items.Potion;
 import mmorpg.items.Vetement;
 import mmorpg.jeu.Log;
 import mmorpg.personnage.Caracteristique;
-import mmorpg.personnage.Coffre;
 import mmorpg.personnage.EntiteVivante;
 import mmorpg.personnage.Joueur;
 import mmorpg.personnage.ListeUnique;
@@ -357,7 +356,7 @@ public class Controleur implements Serializable {
 			System.out.println(i+1 + ". " + listeCibles.get(i).getNom());
 		}
 		
-		int reponse = Controleur.saisieInt() - 1;
+		int reponse = Controleur.saisieInt(1, listeCibles.size() + 1) - 1;
 		if (reponse < listeCibles.size())
 			potion.affecterBonus(this.joueur, listeCibles.get(reponse));
 		
@@ -370,7 +369,7 @@ public class Controleur implements Serializable {
 	private void equiper() {
 		
 		System.out.print("Entrez le numero de l'objet a equiper : ");
-		int numObj = Controleur.saisieInt() - 1;
+		int numObj = Controleur.saisieInt(1, this.joueur.getInventaire().getTaille()) - 1;
 		// -1 car la numerotation des objets dans l'affichage commence a 1
 		Item objAEquiper = this.joueur.getInventaire().getObjet(numObj);
 		if (this.joueur.equiperObjet(objAEquiper))
@@ -381,7 +380,7 @@ public class Controleur implements Serializable {
 
 	private void desequiper() {
 		System.out.println("Entrez le numero de l'objet a desequiper : ");
-		int numObj = Controleur.saisieInt() - 1;
+		int numObj = Controleur.saisieInt(1, this.joueur.getEquipement().getTaille()) - 1;
 		// -1 car la numerotation des objets dans l'affichage commence a 1
 		Item objADesequiper = this.joueur.getEquipement().getObjet(numObj);
 		if (this.joueur.desequiperObjet(objADesequiper))
@@ -392,7 +391,7 @@ public class Controleur implements Serializable {
 
 	private void utiliser() {
 		System.out.print("Entrez le numero de l'objet a utiliser : ");
-		int numObj = Controleur.saisieInt() - 1;
+		int numObj = Controleur.saisieInt(1, this.joueur.getInventaire().getTaille()) - 1;
 		// -1 car la numerotation des objets dans l'affichage commence a 1
 		Item objAUtiliser = this.joueur.getInventaire().getObjet(numObj);
 		
@@ -405,7 +404,7 @@ public class Controleur implements Serializable {
 
 	private boolean afficherCaracObjet() {
 		System.out.println("Entrez le numero de l'objet : ");
-		int numObj = Controleur.saisieInt() - 1;
+		int numObj = Controleur.saisieInt(1, this.joueur.getInventaire().getTaille()) - 1;
 		System.out.println("");
 		// -1 car la numerotation des objets dans l'affichage commence a 1
 		Item objet = this.joueur.getInventaire().getObjet(numObj);
@@ -507,6 +506,9 @@ public class Controleur implements Serializable {
 	
 	/* --- AUTRES METHODES --- */
 	
+	/**
+	 * @return La liste des EntiteVivante autours du joueur
+	 */
 	private ListeUnique<EntiteVivante> getEntitesAlentours() {
 		if (this.joueur == null)
 			return new ListeUnique<EntiteVivante>();
@@ -533,13 +535,36 @@ public class Controleur implements Serializable {
 			this.log.add(message);
 	}
 	
+	
+	/**
+	 * Demande la saisie d'un integer
+	 * @return L'integer saisi
+	 */
 	public static int saisieInt() {
 		int val = sc.nextInt();
 		
-		// Cider le buffer du scanner pour eviter une double saisie
+		// Vider le buffer du scanner pour eviter une double saisie
 		sc.nextLine();
 		
 		return val;
+	}
+	
+	/**
+	 * Demande la saisie d'un integer securisee
+	 * @param min Minimum
+	 * @param max Maximum
+	 * @return L'integer saisi
+	 */
+	public static int saisieInt(int min, int max) {
+		
+		int reponse;
+		
+		do {
+			reponse = Controleur.saisieInt();
+		} while (reponse < min || reponse > max);
+		
+		return reponse;
+		
 	}
 	
 	/**
