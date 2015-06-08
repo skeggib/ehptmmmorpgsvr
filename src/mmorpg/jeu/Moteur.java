@@ -39,12 +39,13 @@ public class Moteur implements Serializable {
 		this.control = new Controleur();
 
 		this.init();
-		//this.initJoueur();
-		
-		this.run = true;
+		this.initJoueur();
 	}
 
 	public void jouer() {
+		
+		this.run = true;
+		
 		// Boucle principale
 		while (this.run) {
 			// Tour du joueur
@@ -52,12 +53,15 @@ public class Moteur implements Serializable {
 			// Tour des monstres
 			this.tourMonstres();
 			
-			EcritureObjet.ecrire(this); //TODO : Retirer quand on aura fini l'implementation
+			EcritureObjet.ecrire(this);
 		}
 
 	}
 
 	private void init() {
+		
+		@SuppressWarnings("resource")
+		Scanner sc = new Scanner(System.in);
 
 		/* Chargement de la carte */
 
@@ -82,14 +86,12 @@ public class Moteur implements Serializable {
 
 		/* Demander la taille de l'interface */
 
-		// TODO:skeggib Decommenter et enlever int taille = 0;
-		int taille = 1;
-		// System.out.println("Taille de l'interface : ");
-		// for (int i = 0; i < InterfaceTerm.TAILLES.length; i++) {
-		// System.out.println((i+1) + ". " + InterfaceTerm.TAILLES[i]);
-		// }
-		// int taille = sc.nextInt();
-		// taille--;
+		 System.out.println("Taille de l'interface : ");
+		 for (int i = 0; i < InterfaceTerm.TAILLES.length; i++) {
+		 System.out.println((i+1) + ". " + InterfaceTerm.TAILLES[i]);
+		 }
+		 int taille = sc.nextInt();
+		 taille--;
 
 		/* Creation de l'interface */
 
@@ -255,13 +257,6 @@ public class Moteur implements Serializable {
 			}
 
 		}
-	}
-
-	public static void main(String[] args) {
-
-		Moteur moteur = new Moteur();
-		moteur.jouer();
-
 	}
 
 }
