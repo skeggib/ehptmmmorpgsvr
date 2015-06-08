@@ -17,6 +17,7 @@ import mmorpg.personnage.Coffre;
 import mmorpg.personnage.EntiteVivante;
 import mmorpg.personnage.Joueur;
 import mmorpg.personnage.ListeUnique;
+import mmorpg.personnage.Ramassable;
 
 public class Controleur implements Serializable {
 
@@ -309,24 +310,17 @@ public class Controleur implements Serializable {
 			return this.attaquer(ennemi);
 		}
 		
-		// Si la dest contient un objet, on le ramasse puis on se deplace
-		else if (destination.contientObjet()) {
-			Item obj = (Item)destination.getContenu();
-			this.joueur.ramasserObjet(obj);
-			this.ecrireLog(this.joueur.getNom() + " rammasse " + obj.getNom());
+		// Si la destination contient un ramassable
+		else if (destination.contientRamassable()) {
+			Ramassable ramassable = (Ramassable) destination.getContenu();
+			this.joueur.ramasser(ramassable);
 			destination.supprContenu();
-			return this.joueur.seDeplacer(destination);
-		}
-		
-		else if (destination.contientCoffre()) {
-			Coffre coffre = (Coffre)destination.getContenu();
-			this.joueur.ramasserCoffre(coffre);
 			
-			for (int i = 0; i < coffre.getTaille(); i++) {
-				this.ecrireLog(this.joueur.getNom() + " rammasse " + coffre.getContenu().get(i).getNom());
+			ListeUnique<Item> liste = ramassable.getListeObjet();
+			for (int i = 0; i < liste.size(); i++) {
+				this.ecrireLog(this.joueur.getNom() + " rammasse " + liste.get(i).getNom());
 			}
 			
-			destination.supprContenu();
 			return this.joueur.seDeplacer(destination);
 		}
 		

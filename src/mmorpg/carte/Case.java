@@ -6,6 +6,7 @@ import mmorpg.items.Item;
 import mmorpg.personnage.Coffre;
 import mmorpg.personnage.EntiteVivante;
 import mmorpg.personnage.Joueur;
+import mmorpg.personnage.Ramassable;
 
 public class Case implements Serializable {
 
@@ -76,8 +77,8 @@ public class Case implements Serializable {
 		return false;
 	}
 	
-	public boolean contientObjet() {
-		if (this.getContenu() instanceof Item) {
+	public boolean contientRamassable() {
+		if (this.getContenu() instanceof Ramassable) {
 			return true;
 		}
 		
@@ -94,14 +95,6 @@ public class Case implements Serializable {
 	
 	public boolean contientEnvironnement() {
 		if (this.getContenu() instanceof Environnement) {
-			return true;
-		}
-		
-		return false;
-	}
-	
-	public boolean contientCoffre() {
-		if (this.getContenu() instanceof Coffre) {
 			return true;
 		}
 		

@@ -118,7 +118,7 @@ public class Moteur implements Serializable {
 		int pointRestant = 18;
 
 		System.out.println("\nVous disposez de " + pointRestant
-				+ " a attribué entre vos caracteristiques");
+				+ " a attribuer entre vos caracteristiques");
 
 		while (pointRestant > 0) {
 
