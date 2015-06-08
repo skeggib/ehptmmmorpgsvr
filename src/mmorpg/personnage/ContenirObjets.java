@@ -1,6 +1,6 @@
 package mmorpg.personnage;
 
-import mmorpg.items.Objet;
+import mmorpg.items.Item;
 
 /**
  * 
@@ -19,7 +19,7 @@ public interface ContenirObjets {
 	 *            Index de l'objet dans la liste
 	 * @return Objet contenu a l'index
 	 */
-	public Objet getObjet(int index);
+	public Item getObjet(int index);
 
 	/**
 	 * Permet d'ajouter un objet a la liste
@@ -28,7 +28,7 @@ public interface ContenirObjets {
 	 *            Objet a ajouter
 	 * @return true si l'objet a ete ajoute, false sinon
 	 */
-	public boolean ajouterObjet(Objet o);
+	public boolean ajouterObjet(Item o);
 
 	/**
 	 * Permet d'ajouter une liste d'objet a la liste
@@ -37,7 +37,7 @@ public interface ContenirObjets {
 	 *            Objet a ajouter
 	 * @return true si l'objet a ete ajoute, false sinon
 	 */
-	public void ajouterObjets(ListeUnique<Objet> list);
+	public void ajouterObjets(ListeUnique<Item> list);
 
 	/**
 	 * Permet de retirer un objet de la liste
@@ -46,7 +46,7 @@ public interface ContenirObjets {
 	 *            Objet a retirer de la liste
 	 * @return true si l'objet a ete ajoute, false sinon
 	 */
-	public boolean retirerObjet(Objet o);
+	public boolean retirerObjet(Item o);
 
 	/**
 	 * Permet d'avoir la taille de la liste
@@ -62,5 +62,5 @@ public interface ContenirObjets {
 	 *            Objet a verifier
 	 * @return true si l'objet est dans la liste, false sinon
 	 */
-	public boolean contient(Objet o);
+	public boolean contient(Item o);
 }

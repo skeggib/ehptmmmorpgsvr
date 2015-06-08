@@ -9,7 +9,7 @@ import mmorpg.fichiers.LectureRessource;
 import mmorpg.items.Arme;
 import mmorpg.items.Casque;
 import mmorpg.items.Gant;
-import mmorpg.items.Objet;
+import mmorpg.items.Item;
 import mmorpg.items.Pantalon;
 import mmorpg.items.PotionDeDegat;
 import mmorpg.items.PotionDeSoin;
@@ -144,7 +144,7 @@ public class Monstre extends EntiteVivante {
 		}
 	}
 
-	private Objet creeRandomObjet() {
+	private Item creeRandomObjet() {
 		Random rand = new Random();
 
 		int choix = rand.nextInt(8);

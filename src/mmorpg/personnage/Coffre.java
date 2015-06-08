@@ -1,7 +1,7 @@
 package mmorpg.personnage;
 
 import mmorpg.carte.ContenuCase;
-import mmorpg.items.Objet;
+import mmorpg.items.Item;
 
 /**
  * Cette Classe contient des Objets. </br> Il peut etre rammasser par une
@@ -18,7 +18,7 @@ public class Coffre extends ContenantObjet implements ContenuCase, Ramassable {
 		super();
 	}
 
-	public Coffre(ListeUnique<Objet> list) {
+	public Coffre(ListeUnique<Item> list) {
 		super();
 		this.ajouterObjets(list);
 	}
@@ -31,8 +31,8 @@ public class Coffre extends ContenantObjet implements ContenuCase, Ramassable {
 	 * Methode
 	 */
 	
-	public ListeUnique<Objet> getListeObjet(){
-		ListeUnique<Objet> liste = new ListeUnique<Objet>();
+	public ListeUnique<Item> getListeObjet(){
+		ListeUnique<Item> liste = new ListeUnique<Item>();
 		
 		for (int i = 0; i < this.getTaille(); i++) {
 			liste.add(this.getObjet(i));
@@ -40,15 +40,15 @@ public class Coffre extends ContenantObjet implements ContenuCase, Ramassable {
 		return liste;
 	}
 
-	public void ajouterObjets(ListeUnique<Objet> list) {
+	public void ajouterObjets(ListeUnique<Item> list) {
 		for (int i = 0; i < list.size(); i++) {
 			this.ajouterObjet(list.get(i));
 		}
 	}
 	
-	public ListeUnique<Objet> getContenu () { //TODO armya : Enlever quand l'interface Ramassable sera valider
+	public ListeUnique<Item> getContenu () { //TODO armya : Enlever quand l'interface Ramassable sera valider
 		
-		ListeUnique<Objet> liste = new ListeUnique<Objet>();
+		ListeUnique<Item> liste = new ListeUnique<Item>();
 		
 		for (int i = 0; i < this.getTaille(); i++) {
 			liste.add(this.getObjet(i));

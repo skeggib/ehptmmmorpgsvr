@@ -2,7 +2,7 @@ package mmorpg.carte;
 
 import java.io.Serializable;
 
-import mmorpg.items.Objet;
+import mmorpg.items.Item;
 import mmorpg.personnage.Coffre;
 import mmorpg.personnage.EntiteVivante;
 import mmorpg.personnage.Joueur;
@@ -77,7 +77,7 @@ public class Case implements Serializable {
 	}
 	
 	public boolean contientObjet() {
-		if (this.getContenu() instanceof Objet) {
+		if (this.getContenu() instanceof Item) {
 			return true;
 		}
 		

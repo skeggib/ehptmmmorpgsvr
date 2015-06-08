@@ -1,9 +1,9 @@
 package mmorpg.personnage;
 
-import mmorpg.items.Objet;
+import mmorpg.items.Item;
 
 public interface Ramassable {
 
-	public ListeUnique<Objet> getListeObjet();
+	public ListeUnique<Item> getListeObjet();
 	
 }

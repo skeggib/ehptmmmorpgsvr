@@ -7,7 +7,7 @@ import mmorpg.personnage.EntiteVivante;
 import mmorpg.personnage.ListeUnique;
 import mmorpg.personnage.Ramassable;
 
-public abstract class Objet implements ContenuCase, Ramassable, Serializable {
+public abstract class Item implements ContenuCase, Ramassable, Serializable {
 
 	/*
 	 * Variables
@@ -21,7 +21,7 @@ public abstract class Objet implements ContenuCase, Ramassable, Serializable {
 	 * Constructeur
 	 */
 
-	public Objet() {
+	public Item() {
 
 	}
 
@@ -29,8 +29,8 @@ public abstract class Objet implements ContenuCase, Ramassable, Serializable {
 	 * Methodes
 	 */
 
-	public ListeUnique<Objet> getListeObjet() {
-		ListeUnique<Objet> liste = new ListeUnique<Objet>();
+	public ListeUnique<Item> getListeObjet() {
+		ListeUnique<Item> liste = new ListeUnique<Item>();
 		liste.add(this);
 		return liste;
 	}
@@ -45,7 +45,7 @@ public abstract class Objet implements ContenuCase, Ramassable, Serializable {
 	/**
 	 * Retourne une copie de l'objet
 	 */
-	public abstract Objet clone();
+	public abstract Item clone();
 
 	/**
 	 * Retoune ce qu'est l'objet (Un vetement, une arme, une potion)

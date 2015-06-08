@@ -2,7 +2,7 @@ package mmorpg.personnage;
 
 import java.io.Serializable;
 
-import mmorpg.items.Objet;
+import mmorpg.items.Item;
 
 /**
  * 
@@ -17,17 +17,17 @@ public abstract class ContenantObjet implements ContenirObjets, Serializable {
 
 	private static final long serialVersionUID = -2909010841238767244L;
 	
-	private ListeUnique<Objet> listObjet;
+	private ListeUnique<Item> listObjet;
 
 	/*
 	 * Constructeur
 	 */
 	public ContenantObjet() {
-		this.listObjet = new ListeUnique<Objet>();
+		this.listObjet = new ListeUnique<Item>();
 	}
 	
 	public ContenantObjet(ContenantObjet cobj){
-		this.listObjet = new ListeUnique<Objet>();
+		this.listObjet = new ListeUnique<Item>();
 		for(int i = 0; i < cobj.getTaille(); i++){
 			this.ajouterObjet(cobj.getObjet(i).clone());
 		}
@@ -37,24 +37,24 @@ public abstract class ContenantObjet implements ContenirObjets, Serializable {
 	 * Methode
 	 */
 
-	public Objet getObjet(int index) {
+	public Item getObjet(int index) {
 		if (index < this.getTaille() && index > -1) {
 			return this.listObjet.get(index);
 		}
 		return null;
 	}
 
-	public boolean ajouterObjet(Objet o) {
+	public boolean ajouterObjet(Item o) {
 		return this.listObjet.add(o);
 	}
 
-	public void ajouterObjets(ListeUnique<Objet> list) {
+	public void ajouterObjets(ListeUnique<Item> list) {
 		for(int i = 0; i < list.size(); i++){
 			this.ajouterObjet(list.get(i));
 		}
 	}
 
-	public boolean retirerObjet(Objet o) {
+	public boolean retirerObjet(Item o) {
 		if (this.listObjet.contains(o)) {
 			this.listObjet.remove(o);
 			if (!(this.listObjet.contains(o))) {
@@ -68,7 +68,7 @@ public abstract class ContenantObjet implements ContenirObjets, Serializable {
 		return this.listObjet.size();
 	}
 
-	public boolean contient(Objet o) {
+	public boolean contient(Item o) {
 		
 		boolean contient = false;
 		int i = 0;

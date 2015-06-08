@@ -8,7 +8,7 @@ import mmorpg.carte.Carte;
 import mmorpg.carte.Case;
 import mmorpg.carte.Position;
 import mmorpg.items.Arme;
-import mmorpg.items.Objet;
+import mmorpg.items.Item;
 import mmorpg.items.Potion;
 import mmorpg.items.Vetement;
 import mmorpg.jeu.Log;
@@ -311,7 +311,7 @@ public class Controleur implements Serializable {
 		
 		// Si la dest contient un objet, on le ramasse puis on se deplace
 		else if (destination.contientObjet()) {
-			Objet obj = (Objet)destination.getContenu();
+			Item obj = (Item)destination.getContenu();
 			this.joueur.ramasserObjet(obj);
 			this.ecrireLog(this.joueur.getNom() + " rammasse " + obj.getNom());
 			destination.supprContenu();
@@ -378,7 +378,7 @@ public class Controleur implements Serializable {
 		System.out.print("Entrez le numero de l'objet a equiper : ");
 		int numObj = Controleur.saisieInt() - 1;
 		// -1 car la numerotation des objets dans l'affichage commence a 1
-		Objet objAEquiper = this.joueur.getInventaire().getObjet(numObj);
+		Item objAEquiper = this.joueur.getInventaire().getObjet(numObj);
 		if (this.joueur.equiperObjet(objAEquiper))
 			System.out.println("Vous avez equipe : " + objAEquiper.getNom());
 	}
@@ -389,7 +389,7 @@ public class Controleur implements Serializable {
 		System.out.println("Entrez le numero de l'objet a desequiper : ");
 		int numObj = Controleur.saisieInt() - 1;
 		// -1 car la numerotation des objets dans l'affichage commence a 1
-		Objet objADesequiper = this.joueur.getEquipement().getObjet(numObj);
+		Item objADesequiper = this.joueur.getEquipement().getObjet(numObj);
 		if (this.joueur.desequiperObjet(objADesequiper))
 			System.out.println("Vous avez desequipe : " + objADesequiper.getNom());
 	}
@@ -400,7 +400,7 @@ public class Controleur implements Serializable {
 		System.out.print("Entrez le numero de l'objet a utiliser : ");
 		int numObj = Controleur.saisieInt() - 1;
 		// -1 car la numerotation des objets dans l'affichage commence a 1
-		Objet objAUtiliser = this.joueur.getInventaire().getObjet(numObj);
+		Item objAUtiliser = this.joueur.getInventaire().getObjet(numObj);
 		
 		if (objAUtiliser instanceof Potion) {
 			this.utiliserPotion((Potion)objAUtiliser);
@@ -414,7 +414,7 @@ public class Controleur implements Serializable {
 		int numObj = Controleur.saisieInt() - 1;
 		System.out.println("");
 		// -1 car la numerotation des objets dans l'affichage commence a 1
-		Objet objet = this.joueur.getInventaire().getObjet(numObj);
+		Item objet = this.joueur.getInventaire().getObjet(numObj);
 		
 		if (objet == null) {
 			return false;

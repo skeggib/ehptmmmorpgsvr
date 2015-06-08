@@ -2,7 +2,7 @@ package mmorpg.items;
 
 import java.util.Random;
 
-public abstract class Equipable extends Objet{
+public abstract class Equipable extends Item{
 	
 	/*
 	 * Constantes

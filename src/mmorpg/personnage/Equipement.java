@@ -3,7 +3,7 @@ package mmorpg.personnage;
 import java.io.Serializable;
 
 import mmorpg.items.Equipable;
-import mmorpg.items.Objet;
+import mmorpg.items.Item;
 
 /**
  * 
@@ -40,25 +40,25 @@ public class Equipement implements ContenirObjets, Serializable {
 	 * Methode
 	 */
 
-	public Objet getObjet(int index) {
+	public Item getObjet(int index) {
 		if (index < this.getTaille() && index > -1) {
 			return this.listObjet.get(index);
 		}
 		return null;
 	}
 
-	public boolean ajouterObjet(Objet obj) {
+	public boolean ajouterObjet(Item obj) {
 		Equipable eq = (Equipable) obj;
 		return this.listObjet.add(eq);
 	}
 
-	public void ajouterObjets(ListeUnique<Objet> list) {
+	public void ajouterObjets(ListeUnique<Item> list) {
 		for (int i = 0; i < this.getTaille(); i++) {
 			this.ajouterObjet(list.get(i));
 		}
 	}
 
-	public boolean retirerObjet(Objet o) {
+	public boolean retirerObjet(Item o) {
 		if (this.listObjet.contains(o)) {
 			this.listObjet.remove(o);
 			if (!(this.listObjet.contains(o))) {
@@ -72,7 +72,7 @@ public class Equipement implements ContenirObjets, Serializable {
 		return this.listObjet.size();
 	}
 
-	public boolean contient(Objet o) {
+	public boolean contient(Item o) {
 		return this.listObjet.contains(o);
 	}
 }

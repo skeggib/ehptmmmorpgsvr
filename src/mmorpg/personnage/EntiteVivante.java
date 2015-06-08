@@ -7,7 +7,7 @@ import mmorpg.carte.Case;
 import mmorpg.carte.ContenuCase;
 import mmorpg.items.Arme;
 import mmorpg.items.Equipable;
-import mmorpg.items.Objet;
+import mmorpg.items.Item;
 
 
 /**
@@ -185,7 +185,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 						this.getInventaire().getObjet(0));
 			} else {
 
-				ListeUnique<Objet> liste = new ListeUnique<Objet>();
+				ListeUnique<Item> liste = new ListeUnique<Item>();
 				for (int i = 0; i < this.getInventaire().getTaille(); i++) {
 					liste.add(this.getInventaire().getObjet(i));
 				}
@@ -332,7 +332,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	 *            Objet a rammasser
 	 * @return true si l'objet a ete ajouter a l'inventaire, false sinon
 	 */
-	public boolean ramasserObjet(Objet obj) { //TODO armya : Enlever quand l'interface Ramassable sera valider
+	public boolean ramasserObjet(Item obj) { //TODO armya : Enlever quand l'interface Ramassable sera valider
 		if ((!this.inventaire.contient(obj) && !this.equipement.contient(obj))) {
 			return this.inventaire.ajouterObjet(obj);
 		}
@@ -355,7 +355,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	 *            Objet a equipe (doit etre dans l'inventaire du joueur
 	 * @return true si l'objet a ete equipe, false sinon
 	 */
-	public boolean equiperObjet(Objet obj) {
+	public boolean equiperObjet(Item obj) {
 		if (obj instanceof Equipable) {
 			Equipable eq = (Equipable) obj;
 			if (this.inventaire.retirerObjet(eq)) {
@@ -416,7 +416,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	 *            Objet a desequipe (doit etre dans l'inventaire du joueur
 	 * @return true si l'objet a ete desequipe, false sinon
 	 */
-	public boolean desequiperObjet(Objet obj) {
+	public boolean desequiperObjet(Item obj) {
 		if (this.equipement.retirerObjet(obj)) {
 			if (!this.inventaire.ajouterObjet(obj)) {
 				return this.equipement.ajouterObjet(obj);
@@ -437,7 +437,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	 *            Case qui recevra l'objet
 	 * @return
 	 */
-	public boolean deposerObjet(Objet obj, Case destination) {
+	public boolean deposerObjet(Item obj, Case destination) {
 		return destination.ajoutContenu(obj);
 	}
 
@@ -447,7 +447,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	 * @param obj
 	 *            Objet a retirer
 	 */
-	public void retirerObjet(Objet obj) {
+	public void retirerObjet(Item obj) {
 		this.inventaire.retirerObjet(obj);
 	}
 

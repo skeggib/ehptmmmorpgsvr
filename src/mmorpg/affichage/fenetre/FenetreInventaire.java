@@ -3,7 +3,7 @@ package mmorpg.affichage.fenetre;
 import mmorpg.affichage.Matrice;
 import mmorpg.affichage.Pixel;
 import mmorpg.exceptions.affichage.fenetre.CantDrawWindowException;
-import mmorpg.items.Objet;
+import mmorpg.items.Item;
 import mmorpg.personnage.Equipement;
 import mmorpg.personnage.Inventaire;
 import mmorpg.personnage.Joueur;
@@ -65,7 +65,7 @@ public class FenetreInventaire extends Fenetre {
 		
 		Inventaire inventaire = this.joueur.getInventaire();
 		int tailleInventaire = inventaire.getTaille();
-		Objet objet;
+		Item objet;
 		for (int i = 0; i < tailleInventaire; i++) {
 			objet = inventaire.getObjet(i);
 			texte = i+1 + ". " + objet.getNom() + " (" + objet.getType() + ")";

@@ -40,14 +40,13 @@ public class Moteur implements Serializable {
 		this.inter = new InterfaceTerm();
 		this.control = new Controleur();
 
+		this.init();
+		this.initJoueur();
+		
 		this.run = true;
 	}
 
 	public void jouer() {
-
-		this.init();
-		//this.initJoueur();
-
 		// Boucle principale
 		while (this.run) {
 			// Tour du joueur
