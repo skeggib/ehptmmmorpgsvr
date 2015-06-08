@@ -46,7 +46,7 @@ public class Moteur implements Serializable {
 	public void jouer() {
 
 		this.init();
-		this.initJoueur();
+		//this.initJoueur();
 
 		// Boucle principale
 		while (this.run) {
@@ -54,6 +54,8 @@ public class Moteur implements Serializable {
 			this.tourJoueur();
 			// Tour des monstres
 			this.tourMonstres();
+			
+			EcritureObjet.ecrire(this); //TODO : Retirer quand on aura fini l'implementation
 		}
 
 	}
@@ -174,7 +176,6 @@ public class Moteur implements Serializable {
 		// Boucle actions du joueur
 		boolean continuerTour = true;
 		while (this.run && continuerTour) {
-			EcritureObjet.ecrire(this); //TODO : Retirer quand on en aura plus besoin
 			try {
 				// Affichage
 				inter.afficher();
