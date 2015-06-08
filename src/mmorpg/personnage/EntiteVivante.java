@@ -255,16 +255,17 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 
 			int esquiveCible = Capacite.getRandomEsquive(cCible.getAdresse(),
 					cible.getEncombrement());
+			int initiativeThis = Capacite.getRandomInitiative(cThis.getAdresse(), this.getEncombrement());
 
-			if ((new Random().nextInt(100) + 1) > esquiveCible) {
+			if ((new Random().nextInt(100) + 1) > (esquiveCible - initiativeThis)) {
 				int defenseCible = Capacite.getRandomDefense(cCible
 						.getResistance());
 
 				int degatThis = Capacite.getRandomDegat(cThis.getForce(),
-						cCible.getImpact());
+						cThis.getImpact());
 
 				int attaqueThis = Capacite.getRandomAttaque(
-						cCible.getAdresse(), cCible.getManiabilite());
+						cThis.getAdresse(), cThis.getManiabilite());
 
 				int degatSubit = degatThis
 						* ((100 - defenseCible) + attaqueThis) / 100;

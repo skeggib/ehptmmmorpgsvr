@@ -26,7 +26,14 @@ public abstract class Capacite {
 	 * @return Retourne l'initiative
 	 */
 	public static int getRandomInitiative (int adresse, int encombrement) {
-		return (Capacite.calculDeRandom(adresse) - (Capacite.calculDeRandom(encombrement)));
+		int initiative = adresse - encombrement;
+		
+		initiative = Capacite.calculDeRandom(initiative);
+		
+		if(initiative < 0){
+			return 0;
+		}
+		return (0 + (20 * initiative / (initiative + 50)));
 	}
 	
 	/**
