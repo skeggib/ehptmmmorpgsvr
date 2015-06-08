@@ -1,8 +1,11 @@
 package mmorpg.carte;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Random;
 
 import mmorpg.fichiers.LectureRessource;
+import mmorpg.personnage.Monstre;
 
 public class Carte implements Serializable{
 
@@ -136,6 +139,73 @@ public class Carte implements Serializable{
 			rtrn += "\n";
 		}
 		
+		return rtrn;
+	}
+	
+	/**
+	 * Ajout des monstres aleatoirement sur une carte
+	 * 
+	 * @param carte
+	 * @return La liste de monstres qui ont ete crees
+	 */
+	public ArrayList<Monstre> ajoutMonstres() {
+		
+		Random rand = new Random();
+		int randInt;
+
+		ArrayList<Monstre> liste = new ArrayList<Monstre>();
+		ArrayList<Monstre> rtrn = new ArrayList<Monstre>(); // Liste de monstres
+															// qui va etre
+															// retournee
+		Monstre tempMonstre;
+
+		// Chance qu'a chaque case de recevoir un Monstre en %
+		int chanceCase = 5;
+		// Chance que chaque monstre a de devenir un groupe de monstres en %
+		int chanceDevientGroupe = 10;
+
+		// On ajoute des monstres aleatoirement dans la carte sur les cases
+		// vides
+		for (int i = 0; i < this.getHauteur(); i++) {
+			for (int j = 0; j < this.getLargeur(); j++) {
+				if (this.getCase(j, i).estVide()) {
+					randInt = rand.nextInt(100);
+					if (randInt < chanceCase) {
+						tempMonstre = new Monstre();
+						liste.add(tempMonstre);
+						tempMonstre.initialiserPos(this.getCase(j, i));
+					}
+				}
+			}
+		}
+
+		rtrn.addAll(liste);
+
+		Position posM;
+
+		// On creer les groupes de monstre
+		// Pourque chaque monstre existant
+		for (int i = 0; i < liste.size(); i++) {
+			// On fait un rand pour savoir si le monstre va devenir un groupe
+			randInt = rand.nextInt(100);
+			if (randInt < chanceDevientGroupe) {
+				posM = this.getPosContenu(liste.get(i));
+
+				// Chaque case autours du monstre a 1 chance sur 3 de recevoir
+				// un monstre
+				for (int y = posM.getY() - 1; y <= posM.getY() + 1; y++) {
+					for (int x = posM.getX() - 1; x <= posM.getX() + 1; x++) {
+						randInt = rand.nextInt(100);
+						if (randInt < 33) {
+							tempMonstre = new Monstre();
+							tempMonstre.initialiserPos(this.getCase(x, y));
+							rtrn.add(tempMonstre);
+						}
+					}
+				}
+			}
+		}
+
 		return rtrn;
 	}
 }

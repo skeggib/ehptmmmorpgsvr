@@ -69,7 +69,7 @@ public abstract class ImagesCases {
 		
 		String str = LectureRessource.lire("images/" + nomContenu + "/" + InterfaceTerm.TAILLES[taille]);
 		
-		String[] couleur = LectureRessource.lire("images/" + nomContenu + "/color").split("\n"); // TODO:skggib Try/Catch pour la lecture de fichiers
+		String[] couleur = LectureRessource.lire("images/" + nomContenu + "/color").split("\n");
 		
 		if (rtrn.chargerString(str)) {
 			rtrn.setCouleur(couleur[0]);

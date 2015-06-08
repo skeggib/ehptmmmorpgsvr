@@ -2,12 +2,10 @@ package mmorpg.jeu;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.Scanner;
 
 import mmorpg.affichage.InterfaceTerm;
 import mmorpg.carte.Carte;
-import mmorpg.carte.Position;
 import mmorpg.controles.Controleur;
 import mmorpg.exceptions.affichage.interfaceTerm.CantDrawInterfaceException;
 import mmorpg.fichiers.EcritureObjet;
@@ -41,7 +39,7 @@ public class Moteur implements Serializable {
 		this.control = new Controleur();
 
 		this.init();
-		this.initJoueur();
+		//this.initJoueur();
 		
 		this.run = true;
 	}
@@ -64,14 +62,14 @@ public class Moteur implements Serializable {
 		/* Chargement de la carte */
 
 		this.carte.chargerFichier("carte/test");
-		this.listeMonstres = Moteur.ajoutMonstres(this.carte);
+		this.listeMonstres = this.carte.ajoutMonstres();
 
 		/* Creation du joueur */
 
 		this.joueur = new Joueur("Armya", 0, 0, 0);
-		// TODO:skeggib Creation interractive du joueur
 		this.joueur.initialiserPos(this.carte.getCase(3, 3));
-		// TODO: skeggib A enlver
+		
+		// Equipement de base
 		this.joueur.ramasserObjet(new PotionDeSoin());
 		this.joueur.ramasserObjet(new PotionDeDegat());
 		this.joueur.ramasserObjet(new PotionEffet());
@@ -110,6 +108,7 @@ public class Moteur implements Serializable {
 	}
 
 	private void initJoueur() {
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 
 		System.out.println("Saisissez un pseudo pour votre joueur : ");
@@ -153,6 +152,7 @@ public class Moteur implements Serializable {
 	}
 
 	private int saisieCaracteristique(int pointRestant) {
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 
 		int saisie = 0;
@@ -255,77 +255,6 @@ public class Moteur implements Serializable {
 			}
 
 		}
-	}
-
-	/**
-	 * Ajout des monstres aleatoirement sur une carte
-	 * 
-	 * @param carte
-	 * @return La liste de monstres qui ont ete crees
-	 */
-	private static ArrayList<Monstre> ajoutMonstres(Carte carte) { // TODO:skeggib
-																	// UML
-																	// (changer
-																	// de classe
-																	// -> Carte
-																	// ?)
-		Random rand = new Random();
-		int randInt;
-
-		ArrayList<Monstre> liste = new ArrayList<Monstre>();
-		ArrayList<Monstre> rtrn = new ArrayList<Monstre>(); // Liste de monstres
-															// qui va etre
-															// retournee
-		Monstre tempMonstre;
-
-		// Chance qu'a chaque case de recevoir un Monstre en %
-		int chanceCase = 5;
-		// Chance que chaque monstre a de devenir un groupe de monstres en %
-		int chanceDevientGroupe = 10;
-
-		// On ajoute des monstres aleatoirement dans la carte sur les cases
-		// vides
-		for (int i = 0; i < carte.getHauteur(); i++) {
-			for (int j = 0; j < carte.getLargeur(); j++) {
-				if (carte.getCase(j, i).estVide()) {
-					randInt = rand.nextInt(100);
-					if (randInt < chanceCase) {
-						tempMonstre = new Monstre();
-						liste.add(tempMonstre);
-						tempMonstre.initialiserPos(carte.getCase(j, i));
-					}
-				}
-			}
-		}
-
-		rtrn.addAll(liste);
-
-		Position posM;
-
-		// On creer les groupes de monstre
-		// Pourque chaque monstre existant
-		for (int i = 0; i < liste.size(); i++) {
-			// On fait un rand pour savoir si le monstre va devenir un groupe
-			randInt = rand.nextInt(100);
-			if (randInt < chanceDevientGroupe) {
-				posM = carte.getPosContenu(liste.get(i));
-
-				// Chaque case autours du monstre a 1 chance sur 3 de recevoir
-				// un monstre
-				for (int y = posM.getY() - 1; y <= posM.getY() + 1; y++) {
-					for (int x = posM.getX() - 1; x <= posM.getX() + 1; x++) {
-						randInt = rand.nextInt(100);
-						if (randInt < 33) {
-							tempMonstre = new Monstre();
-							tempMonstre.initialiserPos(carte.getCase(x, y));
-							rtrn.add(tempMonstre);
-						}
-					}
-				}
-			}
-		}
-
-		return rtrn;
 	}
 
 	public static void main(String[] args) {

@@ -265,7 +265,7 @@ public class Controleur implements Serializable {
 
 	
 
-	private boolean deplacement(int direction) { // TODO:skeggib Factoriser
+	private boolean deplacement(int direction) {
 		// Verifier que je joueur et la carte on ete definis
 		if (this.carte == null || this.joueur == null)
 			return false;
@@ -412,9 +412,6 @@ public class Controleur implements Serializable {
 		if (objet == null) {
 			return false;
 		}
-		
-		// Faire un joueur temporaire pour les calcules de difference
-		// Joueur tempJoueur = new Joueur(this.joueur); // TODO:skeggib A faire
 		
 		// Nom de l'objet
 		System.out.println(objet.getNom());
