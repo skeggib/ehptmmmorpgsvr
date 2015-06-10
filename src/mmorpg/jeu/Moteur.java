@@ -49,12 +49,13 @@ public class Moteur implements Serializable {
 		
 		// Boucle principale
 		while (this.run) {
+			// Sauvegarde automatique a chaque debut de tour
+			EcritureObjet.ecrire(this);
 			// Tour du joueur
 			this.tourJoueur();
 			// Tour des monstres
 			this.tourMonstres();
 			
-			EcritureObjet.ecrire(this);
 		}
 
 	}
