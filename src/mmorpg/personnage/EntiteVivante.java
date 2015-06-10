@@ -129,7 +129,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 		this.caractEquipement = new Caracteristique();
 
 		this.majCaractEffet();
-		this.majCaractEqui();
+		this.majCaractEquipement();
 	}
 
 	/*
@@ -174,7 +174,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 
 			// On desequipe tout les objets
 			for (int i = 0; i < this.getEquipement().getTaille(); i++) {
-				this.desequiperObjet(this.getEquipement().getObjet(i));
+				this.desequiper(this.getEquipement().get(i));
 			}
 
 			// Si on possede un seul objet on le pose, sinon on cree un coffre
@@ -182,17 +182,17 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 
 			} else if (this.getInventaire().getTaille() == 1) {
 				this.getEmplacement().ajoutContenu(
-						this.getInventaire().getObjet(0));
+						this.getInventaire().get(0));
 			} else {
 
 				ListeUnique<Item> liste = new ListeUnique<Item>();
 				for (int i = 0; i < this.getInventaire().getTaille(); i++) {
-					liste.add(this.getInventaire().getObjet(i));
+					liste.add(this.getInventaire().get(i));
 				}
 
 				Coffre coffre = new Coffre(liste);
 
-				this.getEmplacement().ajoutContenu(coffre);
+				this.deposerObjet(coffre, this.getEmplacement());
 			}
 
 			this.setEmplacement(null);
@@ -322,7 +322,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	 * @param r L'objet qui contient le contenu (objet)
 	 */
 	public void ramasser(Ramassable r){
-		this.inventaire.ajouterObjets(r.getListeObjet());
+		this.inventaire.ajouter(r.getContenu());
 	}
 
 	/**
@@ -332,29 +332,29 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	 *            Objet a equipe (doit etre dans l'inventaire du joueur
 	 * @return true si l'objet a ete equipe, false sinon
 	 */
-	public boolean equiperObjet(Item obj) {
+	public boolean equiper(Item obj) {
 		if (obj instanceof Equipable) {
 			Equipable eq = (Equipable) obj;
-			if (this.inventaire.retirerObjet(eq)) {
+			if (this.inventaire.retirer(eq)) {
 				if (eq instanceof Arme) {
 					Arme a = (Arme) eq;
 					int nombreArmeEquipe = 0;
 					for (int i = 0; i < this.getEquipement().getTaille(); i++) {
-						if (this.getEquipement().getObjet(i).getClass() == a
+						if (this.getEquipement().get(i).getClass() == a
 								.getClass()) {
 							nombreArmeEquipe++;
 						}
 					}
 					if (nombreArmeEquipe < 2) {
-						this.getEquipement().ajouterObjet(a);
-						this.majCaractEqui();
+						this.getEquipement().ajouter(a);
+						this.majCaractEquipement();
 						return true;
 					}
 				} else {
 					boolean dejaEquipe = false;
 					int posObj = 0;
 					for (int i = 0; i < this.getEquipement().getTaille(); i++) {
-						if (this.getEquipement().getObjet(i).getClass() == eq
+						if (this.getEquipement().get(i).getClass() == eq
 								.getClass()) {
 							dejaEquipe = true;
 							if (dejaEquipe) {
@@ -363,24 +363,24 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 						}
 					}
 					if (!dejaEquipe) {
-						this.getEquipement().ajouterObjet(eq);
-						this.majCaractEqui();
+						this.getEquipement().ajouter(eq);
+						this.majCaractEquipement();
 						return true;
 					} else {
-						if (this.getInventaire().ajouterObjet(
-								this.getEquipement().getObjet(posObj))) {
-							this.getEquipement().retirerObjet(
-									this.getEquipement().getObjet(posObj));
-							this.getEquipement().ajouterObjet(eq);
-							this.getInventaire().retirerObjet(eq);
+						if (this.getInventaire().ajouter(
+								this.getEquipement().get(posObj))) {
+							this.getEquipement().retirer(
+									this.getEquipement().get(posObj));
+							this.getEquipement().ajouter(eq);
+							this.getInventaire().retirer(eq);
 						}
-						this.majCaractEqui();
+						this.majCaractEquipement();
 						return true;
 					}
 				}
 			}
-			this.inventaire.ajouterObjet(obj);
-			this.majCaractEqui();
+			this.inventaire.ajouter(obj);
+			this.majCaractEquipement();
 			return false;
 		}
 		return false;
@@ -393,12 +393,12 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	 *            Objet a desequipe (doit etre dans l'inventaire du joueur
 	 * @return true si l'objet a ete desequipe, false sinon
 	 */
-	public boolean desequiperObjet(Item obj) {
-		if (this.equipement.retirerObjet(obj)) {
-			if (!this.inventaire.ajouterObjet(obj)) {
-				return this.equipement.ajouterObjet(obj);
+	public boolean desequiper(Item obj) {
+		if (this.equipement.retirer(obj)) {
+			if (!this.inventaire.ajouter(obj)) {
+				return this.equipement.ajouter(obj);
 			} else {
-				this.majCaractEqui();
+				this.majCaractEquipement();
 				return true;
 			}
 		}
@@ -414,8 +414,8 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	 *            Case qui recevra l'objet
 	 * @return
 	 */
-	public boolean deposerObjet(Item obj, Case destination) {
-		return destination.ajoutContenu(obj);
+	public boolean deposerObjet(Ramassable r, Case destination) {
+		return destination.ajoutContenu(r);
 	}
 
 	/**
@@ -425,7 +425,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	 *            Objet a retirer
 	 */
 	public void retirerObjet(Item obj) {
-		this.inventaire.retirerObjet(obj);
+		this.inventaire.retirer(obj);
 	}
 
 	/**
@@ -516,14 +516,14 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	 * @return true s'il en reste assez pour effectuer une action, false sinon
 	 */
 	public boolean actionDisponible() {
-		return (this.getPointAction() != 0);
+		return (this.deplacementPossible() && this.attaquePossible());
 	}
 
-	public boolean deplacementPossible() {
+	private boolean deplacementPossible() {
 		return (this.getPointAction() >= EntiteVivante.PA_DEPLACEMENT);
 	}
 
-	public boolean attaquePossible() {
+	private boolean attaquePossible() {
 		return (this.getPointAction() >= EntiteVivante.PA_ATTAQUE);
 	}
 
@@ -557,11 +557,11 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	 * Met a jour les caracteristiques apportees par l'equipement (reinitialise
 	 * les caracteristiques a 0 pour tout recalculer)
 	 */
-	private void majCaractEqui() {
+	private void majCaractEquipement() {
 		this.caractEquipement.reinitialiser();
 
 		for (int i = 0; i < this.equipement.getTaille(); i++) {
-			this.equipement.getObjet(i).affecterBonus(this, this);
+			this.equipement.get(i).affecterBonus(this, this);
 		}
 	}
 
@@ -602,9 +602,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	}
 
 	public void setNom(String nom) {
-		if (this.nom == null) {
-			this.nom = nom;
-		}
+		this.nom = nom;
 	}
 
 	public int getPointAction() {

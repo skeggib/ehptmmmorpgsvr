@@ -29,7 +29,7 @@ public abstract class ContenantObjet implements ContenirObjets, Serializable {
 	public ContenantObjet(ContenantObjet cobj){
 		this.listObjet = new ListeUnique<Item>();
 		for(int i = 0; i < cobj.getTaille(); i++){
-			this.ajouterObjet(cobj.getObjet(i).clone());
+			this.ajouter(cobj.get(i).clone());
 		}
 	}
 
@@ -37,24 +37,24 @@ public abstract class ContenantObjet implements ContenirObjets, Serializable {
 	 * Methode
 	 */
 
-	public Item getObjet(int index) {
+	public Item get(int index) {
 		if (index < this.getTaille() && index > -1) {
 			return this.listObjet.get(index);
 		}
 		return null;
 	}
 
-	public boolean ajouterObjet(Item o) {
+	public boolean ajouter(Item o) {
 		return this.listObjet.add(o);
 	}
 
-	public void ajouterObjets(ListeUnique<Item> list) {
+	public void ajouter(ListeUnique<Item> list) {
 		for(int i = 0; i < list.size(); i++){
-			this.ajouterObjet(list.get(i));
+			this.ajouter(list.get(i));
 		}
 	}
 
-	public boolean retirerObjet(Item o) {
+	public boolean retirer(Item o) {
 		if (this.listObjet.contains(o)) {
 			this.listObjet.remove(o);
 			if (!(this.listObjet.contains(o))) {
@@ -74,7 +74,7 @@ public abstract class ContenantObjet implements ContenirObjets, Serializable {
 		int i = 0;
 		
 		while(!contient && (i < this.getTaille())){
-			if(this.getObjet(i) == o){
+			if(this.get(i) == o){
 				contient = true;
 			}
 			i++;

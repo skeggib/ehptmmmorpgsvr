@@ -145,11 +145,11 @@ public class Monstre extends EntiteVivante {
 		int nombreObjet = rand.nextInt(2);
 		switch(nombreObjet){
 		case 0:
-			this.getInventaire().ajouterObjet(this.creeRandomObjet());
+			this.getInventaire().ajouter(this.creeRandomObjet());
 			break;
 		case 1:
-			this.getInventaire().ajouterObjet(this.creeRandomObjet());
-			this.getInventaire().ajouterObjet(this.creeRandomObjet());
+			this.getInventaire().ajouter(this.creeRandomObjet());
+			this.getInventaire().ajouter(this.creeRandomObjet());
 			break;
 		}
 	}

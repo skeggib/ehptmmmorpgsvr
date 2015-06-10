@@ -5,6 +5,6 @@ import mmorpg.items.Item;
 
 public interface Ramassable extends ContenuCase{
 
-	public ListeUnique<Item> getListeObjet();
+	public ListeUnique<Item> getContenu();
 	
 }

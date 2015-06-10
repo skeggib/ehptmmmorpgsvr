@@ -19,20 +19,20 @@ public class Equipement implements ContenirObjets, Serializable {
 
 	private static final long serialVersionUID = -63684723399622813L;
 
-	private ListeUnique<Equipable> listObjet;
+	private ListeUnique<Equipable> equipables;
 
 	/*
 	 * Constructeurs
 	 */
 
 	public Equipement() {
-		this.listObjet = new ListeUnique<Equipable>();
+		this.equipables = new ListeUnique<Equipable>();
 	}
 	
 	public Equipement (Equipement eq){
-		this.listObjet = new ListeUnique<Equipable>();
+		this.equipables = new ListeUnique<Equipable>();
 		for(int i = 0; i < eq.getTaille(); i++){
-			this.ajouterObjet(eq.getObjet(i).clone());
+			this.ajouter(eq.get(i).clone());
 		}
 	}
 
@@ -40,28 +40,28 @@ public class Equipement implements ContenirObjets, Serializable {
 	 * Methode
 	 */
 
-	public Item getObjet(int index) {
+	public Item get(int index) {
 		if (index < this.getTaille() && index > -1) {
-			return this.listObjet.get(index);
+			return this.equipables.get(index);
 		}
 		return null;
 	}
 
-	public boolean ajouterObjet(Item obj) {
+	public boolean ajouter(Item obj) {
 		Equipable eq = (Equipable) obj;
-		return this.listObjet.add(eq);
+		return this.equipables.add(eq);
 	}
 
-	public void ajouterObjets(ListeUnique<Item> list) {
+	public void ajouter(ListeUnique<Item> list) {
 		for (int i = 0; i < this.getTaille(); i++) {
-			this.ajouterObjet(list.get(i));
+			this.ajouter(list.get(i));
 		}
 	}
 
-	public boolean retirerObjet(Item o) {
-		if (this.listObjet.contains(o)) {
-			this.listObjet.remove(o);
-			if (!(this.listObjet.contains(o))) {
+	public boolean retirer(Item o) {
+		if (this.equipables.contains(o)) {
+			this.equipables.remove(o);
+			if (!(this.equipables.contains(o))) {
 				return true;
 			}
 		}
@@ -69,10 +69,10 @@ public class Equipement implements ContenirObjets, Serializable {
 	}
 
 	public int getTaille() {
-		return this.listObjet.size();
+		return this.equipables.size();
 	}
 
 	public boolean contient(Item o) {
-		return this.listObjet.contains(o);
+		return this.equipables.contains(o);
 	}
 }

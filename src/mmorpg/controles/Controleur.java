@@ -315,7 +315,7 @@ public class Controleur implements Serializable {
 			this.joueur.ramasser(ramassable);
 			destination.supprContenu();
 			
-			ListeUnique<Item> liste = ramassable.getListeObjet();
+			ListeUnique<Item> liste = ramassable.getContenu();
 			for (int i = 0; i < liste.size(); i++) {
 				this.ecrireLog(this.joueur.getNom() + " rammasse " + liste.get(i).getNom());
 			}
@@ -371,8 +371,8 @@ public class Controleur implements Serializable {
 		System.out.print("Entrez le numero de l'objet a equiper : ");
 		int numObj = Controleur.saisieInt(1, this.joueur.getInventaire().getTaille()) - 1;
 		// -1 car la numerotation des objets dans l'affichage commence a 1
-		Item objAEquiper = this.joueur.getInventaire().getObjet(numObj);
-		if (this.joueur.equiperObjet(objAEquiper))
+		Item objAEquiper = this.joueur.getInventaire().get(numObj);
+		if (this.joueur.equiper(objAEquiper))
 			System.out.println("Vous avez equipe : " + objAEquiper.getNom());
 	}
 	
@@ -382,8 +382,8 @@ public class Controleur implements Serializable {
 		System.out.println("Entrez le numero de l'objet a desequiper : ");
 		int numObj = Controleur.saisieInt(1, this.joueur.getEquipement().getTaille()) - 1;
 		// -1 car la numerotation des objets dans l'affichage commence a 1
-		Item objADesequiper = this.joueur.getEquipement().getObjet(numObj);
-		if (this.joueur.desequiperObjet(objADesequiper))
+		Item objADesequiper = this.joueur.getEquipement().get(numObj);
+		if (this.joueur.desequiper(objADesequiper))
 			System.out.println("Vous avez desequipe : " + objADesequiper.getNom());
 	}
 	
@@ -393,7 +393,7 @@ public class Controleur implements Serializable {
 		System.out.print("Entrez le numero de l'objet a utiliser : ");
 		int numObj = Controleur.saisieInt(1, this.joueur.getInventaire().getTaille()) - 1;
 		// -1 car la numerotation des objets dans l'affichage commence a 1
-		Item objAUtiliser = this.joueur.getInventaire().getObjet(numObj);
+		Item objAUtiliser = this.joueur.getInventaire().get(numObj);
 		
 		if (objAUtiliser instanceof Potion) {
 			this.utiliserPotion((Potion)objAUtiliser);
@@ -407,7 +407,7 @@ public class Controleur implements Serializable {
 		int numObj = Controleur.saisieInt(1, this.joueur.getInventaire().getTaille()) - 1;
 		System.out.println("");
 		// -1 car la numerotation des objets dans l'affichage commence a 1
-		Item objet = this.joueur.getInventaire().getObjet(numObj);
+		Item objet = this.joueur.getInventaire().get(numObj);
 		
 		if (objet == null) {
 			return false;
@@ -442,7 +442,7 @@ public class Controleur implements Serializable {
 		
 		Joueur copieJoueur = new Joueur(this.joueur);
 		copieJoueur.ramasser(objet);
-		copieJoueur.equiperObjet(objet);
+		copieJoueur.equiper(objet);
 
 		Caracteristique caracJoueur = this.joueur.getCaractEquip();
 		Caracteristique caracCopie = copieJoueur.getCaractEquip();

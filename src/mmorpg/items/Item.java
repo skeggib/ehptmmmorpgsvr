@@ -29,10 +29,10 @@ public abstract class Item implements Ramassable, Serializable {
 	 * Methodes
 	 */
 
-	public ListeUnique<Item> getListeObjet() {
-		ListeUnique<Item> liste = new ListeUnique<Item>();
-		liste.add(this);
-		return liste;
+	public ListeUnique<Item> getContenu() {
+		ListeUnique<Item> items = new ListeUnique<Item>();
+		items.add(this);
+		return items;
 	}
 
 	/**
