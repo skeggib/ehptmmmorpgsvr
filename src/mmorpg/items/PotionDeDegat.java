@@ -35,6 +35,11 @@ public class PotionDeDegat extends Potion {
 	 * Methode
 	 */
 
+
+	/**
+	 * Chargement des noms disponibles pour une potion de degat
+	 * @return Tableau de String etant des noms
+	 */
 	public static String[] chargerNom() {
 		try {
 			return LectureRessource.lire("noms/potionDegat.txt").split("\n");

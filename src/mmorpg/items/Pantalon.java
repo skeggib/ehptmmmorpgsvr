@@ -8,7 +8,7 @@ import mmorpg.personnage.EntiteVivante;
 public class Pantalon extends Vetement {
 
 	private static final long serialVersionUID = 3068876954778600010L;
-	
+
 	/*
 	 * Constantes
 	 */
@@ -22,8 +22,8 @@ public class Pantalon extends Vetement {
 		super();
 		this.setNom(this.randNom());
 	}
-	
-	public Pantalon(Pantalon pa){
+
+	public Pantalon(Pantalon pa) {
 		super(pa);
 		this.setNom(pa.getNom());
 	}
@@ -32,16 +32,21 @@ public class Pantalon extends Vetement {
 	 * Methode
 	 */
 
+	/**
+	 * Chargement des noms disponibles pour un Pantalon
+	 * 
+	 * @return Tableau de String etant des noms
+	 */
 	public static String[] chargerNom() {
 		try {
 			return LectureRessource.lire("noms/jambe.txt").split("\n");
 		} catch (Exception e) {
-			String[] result = {"Pantalon solide", "Pantalon robuste"}; 
+			String[] result = { "Pantalon solide", "Pantalon robuste" };
 			return result;
 		}
 	}
-	
-	public Pantalon clone(){
+
+	public Pantalon clone() {
 		return new Pantalon(this);
 	}
 

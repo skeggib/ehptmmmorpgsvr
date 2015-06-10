@@ -6,9 +6,9 @@ import mmorpg.fichiers.LectureRessource;
 import mmorpg.personnage.EntiteVivante;
 
 public class Gant extends Vetement {
-	
+
 	private static final long serialVersionUID = 8982478495592136422L;
-	
+
 	public static final String[] NOM = Gant.chargerNom();
 
 	public Gant() {
@@ -20,8 +20,8 @@ public class Gant extends Vetement {
 		super(qualite);
 		this.setNom(this.randNom());
 	}
-	
-	public Gant(Gant ga){
+
+	public Gant(Gant ga) {
 		super(ga);
 		this.setNom(ga.getNom());
 	}
@@ -30,16 +30,21 @@ public class Gant extends Vetement {
 	 * Methode
 	 */
 
+	/**
+	 * Chargement des noms disponibles pour un Gant
+	 * 
+	 * @return Tableau de String etant des noms
+	 */
 	public static String[] chargerNom() {
 		try {
 			return LectureRessource.lire("noms/gant.txt").split("\n");
 		} catch (Exception e) {
-			String[] result = {"Gant solide", "Gant robuste"}; 
+			String[] result = { "Gant solide", "Gant robuste" };
 			return result;
 		}
 	}
-	
-	public Gant clone(){
+
+	public Gant clone() {
 		return new Gant(this);
 	}
 

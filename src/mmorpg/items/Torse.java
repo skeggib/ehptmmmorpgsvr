@@ -14,7 +14,7 @@ public class Torse extends Vetement {
 	/*
 	 * Constructeur
 	 */
-	
+
 	public Torse() {
 		this.setNom(this.randNom());
 	}
@@ -23,16 +23,21 @@ public class Torse extends Vetement {
 		super(to);
 		this.setNom(to.getNom());
 	}
-	
+
 	/*
 	 * Methode
 	 */
 
+	/**
+	 * Chargement des noms disponibles pour un Torse
+	 * 
+	 * @return Tableau de String etant des noms
+	 */
 	public static String[] chargerNom() {
 		try {
 			return LectureRessource.lire("noms/torse.txt").split("\n");
 		} catch (Exception e) {
-			String[] result = {"Torse solide", "Torse robuste"}; 
+			String[] result = { "Torse solide", "Torse robuste" };
 			return result;
 		}
 	}

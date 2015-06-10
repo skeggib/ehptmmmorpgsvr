@@ -75,6 +75,11 @@ public class Arme extends Equipable {
 	 * Methode
 	 */
 
+
+	/**
+	 * Chargement des noms disponibles pour une Arme
+	 * @return Tableau de String etant des noms
+	 */
 	public static String[] chargerNom() {
 		try {
 			return LectureRessource.lire("noms/arme.txt").split("\n");

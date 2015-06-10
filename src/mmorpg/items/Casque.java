@@ -24,11 +24,16 @@ public class Casque extends Vetement {
 	 * Methode
 	 */
 
+	/**
+	 * Chargement des noms disponibles pour un Casque
+	 * 
+	 * @return Tableau de String etant des noms
+	 */
 	public static String[] chargerNom() {
 		try {
 			return LectureRessource.lire("noms/casque.txt").split("\n");
 		} catch (Exception e) {
-			String[] result = {"Casque solide", "Casque robuste"}; 
+			String[] result = { "Casque solide", "Casque robuste" };
 			return result;
 		}
 	}

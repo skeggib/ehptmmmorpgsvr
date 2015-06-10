@@ -70,6 +70,10 @@ public class Monstre extends EntiteVivante {
 	 * Methodes
 	 */
 
+	/**
+	 * Chargement des noms disponibles pour un Monstre
+	 * @return Tableau de String etant des noms
+	 */
 	public static String[] chargerNom() {
 		try {
 			return LectureRessource.lire("noms/monstre.txt").split("\n");

@@ -35,6 +35,11 @@ public class PotionDeSoin extends Potion {
 	 * Methode
 	 */
 
+
+	/**
+	 * Chargement des noms disponibles pour une potion de soin
+	 * @return Tableau de String etant des noms
+	 */
 	public static String[] chargerNom() {
 		try {
 			return LectureRessource.lire("noms/potionSoin.txt").split("\n");
