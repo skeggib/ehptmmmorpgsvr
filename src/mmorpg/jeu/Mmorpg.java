@@ -1,4 +1,6 @@
 package mmorpg.jeu;
+import java.io.File;
+
 import mmorpg.controles.Controleur;
 import mmorpg.fichiers.LectureObjet;
 
@@ -7,11 +9,18 @@ public class Mmorpg {
 
 	public static void main(String[] args) {
 		
-		System.out.println("Que voulez vous faire ?");
-		System.out.println("\t1. Commencer une nouvelle partie");
-		System.out.println("\t2. Continuer à la derniere sauvegarde");
+		File sav = new File("objet.ser");
 		
-		int reponse = Controleur.saisieInt(1, 2);
+		int reponse;
+		if (sav.exists() && !sav.isDirectory()) {
+			System.out.println("Que voulez vous faire ?");
+			System.out.println("1. Commencer une nouvelle partie");
+			System.out.println("2. Continuer à la derniere sauvegarde");
+			
+			reponse = Controleur.saisieInt(1, 2);
+		}
+		else
+			reponse = 1;
 		
 		Moteur moteur;
 		
