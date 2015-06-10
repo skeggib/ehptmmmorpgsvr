@@ -14,7 +14,7 @@ import mmorpg.items.Item;
  * @author armya
  *
  */
-public class Equipement implements ContenirObjets, Serializable {
+public class Equipement implements ContenirItems, Serializable {
 
 
 	private static final long serialVersionUID = -63684723399622813L;

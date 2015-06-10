@@ -13,7 +13,7 @@ import mmorpg.items.Item;
  * @author armya
  *
  */
-public abstract class ContenantObjet implements ContenirObjets, Serializable {
+public abstract class ContenantItems implements ContenirItems, Serializable {
 
 	private static final long serialVersionUID = -2909010841238767244L;
 	
@@ -22,11 +22,11 @@ public abstract class ContenantObjet implements ContenirObjets, Serializable {
 	/*
 	 * Constructeur
 	 */
-	public ContenantObjet() {
+	public ContenantItems() {
 		this.items = new ListeUnique<Item>();
 	}
 	
-	public ContenantObjet(ContenantObjet cObj){
+	public ContenantItems(ContenantItems cObj){
 		this.items = new ListeUnique<Item>();
 		for(int i = 0; i < cObj.getTaille(); i++){
 			this.ajouter(cObj.get(i).clone());

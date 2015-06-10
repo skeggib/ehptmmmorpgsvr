@@ -7,7 +7,7 @@ package mmorpg.personnage;
  * @author armya
  *
  */
-public class Inventaire extends ContenantObjet {
+public class Inventaire extends ContenantItems {
 
 	private static final long serialVersionUID = -2173272356083879117L;
 	

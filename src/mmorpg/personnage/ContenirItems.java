@@ -10,7 +10,7 @@ import mmorpg.items.Item;
  * @author armya
  *
  */
-public interface ContenirObjets {
+public interface ContenirItems {
 
 	/**
 	 * Renvoie l'objet a l'index indique
