@@ -10,7 +10,7 @@ import mmorpg.items.Item;
  * @author armya
  *
  */
-public class Coffre extends ContenantObjet implements ContenuCase, Ramassable {
+public class Coffre extends ContenantObjet implements Ramassable {
 
 	private static final long serialVersionUID = 5780310267728210810L;
 

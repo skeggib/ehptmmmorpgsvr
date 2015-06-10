@@ -7,7 +7,7 @@ import mmorpg.personnage.EntiteVivante;
 import mmorpg.personnage.ListeUnique;
 import mmorpg.personnage.Ramassable;
 
-public abstract class Item implements ContenuCase, Ramassable, Serializable {
+public abstract class Item implements Ramassable, Serializable {
 
 	/*
 	 * Variables
