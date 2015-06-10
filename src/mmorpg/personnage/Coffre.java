@@ -45,16 +45,6 @@ public class Coffre extends ContenantObjet implements Ramassable {
 			this.ajouterObjet(list.get(i));
 		}
 	}
-	
-	public ListeUnique<Item> getContenu () { //TODO armya : Enlever quand l'interface Ramassable sera valider
-		
-		ListeUnique<Item> liste = new ListeUnique<Item>();
-		
-		for (int i = 0; i < this.getTaille(); i++) {
-			liste.add(this.getObjet(i));
-		}
-		return liste;
-	}
 
 	public int getNumero() {
 		return ContenuCase.COFFRE;
