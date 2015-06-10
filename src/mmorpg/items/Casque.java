@@ -9,7 +9,7 @@ public class Casque extends Vetement {
 
 	private static final long serialVersionUID = -716294981418221813L;
 
-	public static final String[] NOM = Arme.chargerNom();
+	public static final String[] NOM = Casque.chargerNom();
 
 	public Casque() {
 		this.setNom(this.randNom());
