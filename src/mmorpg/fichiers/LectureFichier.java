@@ -16,15 +16,16 @@ public abstract class LectureFichier {
 	 *            Chemin vers le fichier </br> Ex : ("ressources/fichier.txt")
 	 * 
 	 * @return Tableau de String contenant le contenu du fichier
+	 * @throws Exception 
 	 */
-	public static String[] lireT(String chemin) {
+	public static String[] lireT(String chemin) throws Exception {
 		String[] tab = null;
 
 		chemin = LectureFichier.testChemin(chemin);
 
-		try {
+		try { // Ouverture
 			BufferedReader buff = new BufferedReader(new FileReader(chemin));
-			try {
+			try { // Lecture
 				String ligne;
 				int i = 0;
 
@@ -52,13 +53,17 @@ public abstract class LectureFichier {
 					tab[i] = ligne;
 					i++;
 				}
-			} finally {
+			}
+			catch (Exception e) { // Lecture
+				throw new Exception("Erreur lors de la lecture du fichier '" + chemin + "'", e);
+			}
+			finally { // Lecture
 				// dans tous les cas, on ferme nos flux
 				buff.close();
 			}
-		} catch (IOException ioe) {
-			// erreur de fermeture des flux
-			System.out.println("Erreur --" + ioe.toString());
+		} 
+		catch (Exception e) { // Ouverture
+			throw new Exception("Erreur lors de l'ouverture du fichier '" + chemin + "'", e);
 		}
 		return tab;
 	}
@@ -69,8 +74,9 @@ public abstract class LectureFichier {
 	 *            Chemin vers le fichier </br> Ex : ("ressources/fichier.txt")
 	 * 
 	 * @return String contenant le contenu du fichier
+	 * @throws Exception 
 	 */
-	public static String lireS(String chemin) {
+	public static String lireS(String chemin) throws Exception {
 
 		chemin = LectureFichier.testChemin(chemin);
 
@@ -84,12 +90,16 @@ public abstract class LectureFichier {
 				while ((ligne = buff.readLine()) != null) {
 					result += ligne + "\n";
 				}
-			} finally {
+			} 
+			catch (Exception e) { // Lecture
+				throw new Exception("Erreur lors de la lecture du fichier '" + chemin + "'", e);
+			}
+			finally {
 				buff.close();
 			}
-		} catch (IOException ioe) {
-			// erreur de fermeture des flux
-			System.out.println("Erreur --" + ioe.toString());
+		} 
+		catch (Exception e) { // Ouverture
+			throw new Exception("Erreur lors de l'ouverture du fichier '" + chemin + "'", e);
 		}
 		return result;
 	}

@@ -23,13 +23,22 @@ public class Mmorpg {
 			reponse = 1;
 		
 		Moteur moteur;
+		boolean initOk = true;
 		
-		if (reponse == 1)
-			moteur = new Moteur();
-		else
-			moteur = (Moteur) LectureObjet.lire("objet.ser");
-		
-		moteur.jouer();
+		try {
+			
+			if (reponse == 1)
+				moteur = new Moteur();
+			else
+				moteur = (Moteur) LectureObjet.lire("objet.ser");
+			
+			if (initOk)
+				moteur.jouer();
+			
+		} catch (Exception e) {
+			initOk = false;
+			e.printStackTrace();
+		}
 		
 	}
 	

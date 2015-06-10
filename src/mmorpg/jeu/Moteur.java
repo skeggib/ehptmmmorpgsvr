@@ -32,7 +32,7 @@ public class Moteur implements Serializable {
 
 	private boolean run;
 
-	public Moteur() {
+	public Moteur() throws Exception {
 		this.log = new Log();
 		this.carte = new Carte();
 		this.joueur = new Joueur();
@@ -59,7 +59,7 @@ public class Moteur implements Serializable {
 
 	}
 
-	private void init() {
+	private void init() throws Exception {
 		
 		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);

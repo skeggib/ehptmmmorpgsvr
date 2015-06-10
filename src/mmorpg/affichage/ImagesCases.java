@@ -16,7 +16,7 @@ public abstract class ImagesCases {
 	
 	private static Image[][] tabImg;
 	
-	public static Image getImage(int taille, Case c) {
+	public static Image getImage(int taille, Case c) throws Exception {
 		if (ImagesCases.tabImg == null)
 			ImagesCases.tabImg = new Image[InterfaceTerm.TAILLES.length][ContenuCase.NB_TYPES];
 		
@@ -67,9 +67,20 @@ public abstract class ImagesCases {
 			break;
 		}
 		
-		String str = LectureRessource.lire("images/" + nomContenu + "/" + InterfaceTerm.TAILLES[taille]);
+		String str;
+		try {
+			str = LectureRessource.lire("images/" + nomContenu + "/" + InterfaceTerm.TAILLES[taille]);
+		} catch (Exception e) {
+			throw new Exception("Impossible de charger l'image " + nomContenu + "/" + InterfaceTerm.TAILLES[taille], e);
+		}
 		
-		String[] couleur = LectureRessource.lire("images/" + nomContenu + "/color").split("\n");
+		String[] couleur = {"WHITE"}; 
+		try {
+			couleur = LectureRessource.lire("images/" + nomContenu + "/color").split("\n");
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		if (rtrn.chargerString(str)) {
 			rtrn.setCouleur(couleur[0]);

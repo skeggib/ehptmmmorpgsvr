@@ -145,7 +145,11 @@ public class FenetreCarte extends Fenetre {
 		for (int i = 0; i < FenetreCarte.NB_CASES_AFFICHEES_Y; i++) {
 			for (int j = 0; j < FenetreCarte.NB_CASES_AFFICHEES_X; j++) {
 				img = new Image();
-				img = ImagesCases.getImage(this.taille, this.carte.getCase(posPremCaseX + j, posPremCaseY + i));
+				try {
+					img = ImagesCases.getImage(this.taille, this.carte.getCase(posPremCaseX + j, posPremCaseY + i));
+				} catch (Exception e) {
+					throw new CantDrawWindowException(e);
+				}
 				
 				if (this.espace) {
 					posCaseMatrX = FenetreCarte.LARGEUR_ESPACE_CARTE + j * (this.largeurCaseCarte + FenetreCarte.LARGEUR_ESPACE_CARTE);

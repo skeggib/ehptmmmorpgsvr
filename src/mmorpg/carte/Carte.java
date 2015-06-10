@@ -35,8 +35,9 @@ public class Carte implements Serializable{
 	/**
 	 * Constructeur par chemin
 	 * @param chemin Chemin du fichier carte a charger
+	 * @throws Exception 
 	 */
-	public Carte(String chemin) {
+	public Carte(String chemin) throws Exception {
 		this.chargerFichier(chemin);
 	}
 	
@@ -44,9 +45,17 @@ public class Carte implements Serializable{
 	 * Charge une carte a partir d'un fichier
 	 * @param chemin Chemin du fichier carte a charger
 	 * @return True si le fichier a ete charge
+	 * @throws Exception 
 	 */
-	public boolean chargerFichier(String chemin) {
-		String str = LectureRessource.lire(chemin);
+	public boolean chargerFichier(String chemin) throws Exception {
+		String str;
+		
+		try {
+			str = LectureRessource.lire(chemin);
+		} catch (Exception e) {
+			throw new Exception("Impossible de charger la carte", e);
+		}
+		
 		return this.chargerString(str);
 	}
 	

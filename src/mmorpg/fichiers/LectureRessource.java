@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public abstract class LectureRessource {
 
-	public static String lire(String path) {
+	public static String lire(String path) throws Exception {
 		String rtrn = "";
 
 		InputStream is = Object.class
@@ -14,8 +14,13 @@ public abstract class LectureRessource {
 		// Si le fichier est introuveble dans le jar
 		if (is == null) {
 
-			// On lit celui qui est dans le dossier ressources
-			rtrn = LectureFichier.lireS("ressources/" + path);
+			try {
+				// On lit celui qui est dans le dossier ressources
+				rtrn = LectureFichier.lireS("ressources/" + path);
+			}
+			catch (Exception e) {
+				throw new Exception("Erreur lors de la lecture de la ressource '" + path + "'", e);
+			}
 
 			return rtrn;
 		}
@@ -44,7 +49,7 @@ public abstract class LectureRessource {
 		return rtrn;
 	}
 	
-	public static String[] lireTab(String path) {
+	public static String[] lireTab(String path) throws Exception {
 		ArrayList<String> array = new ArrayList<String>();
 
 		InputStream is = Object.class
@@ -52,9 +57,18 @@ public abstract class LectureRessource {
 
 		// Si le fichier est introuveble dans le jar
 		if (is == null) {
-
-			// On lit celui qui est dans le dossier ressources
-			return LectureFichier.lireT("ressources/" + path);
+			
+			String[] rtrn;
+			
+			try {
+				// On lit celui qui est dans le dossier ressources
+				rtrn  = LectureFichier.lireT("ressources/" + path);
+			}
+			catch (Exception e) {
+				throw new Exception("Erreur lors de la lecture de la ressource '" + path + "'", e);
+			}
+			
+			return rtrn;
 		}
 
 		InputStreamReader isr = new InputStreamReader(is);
