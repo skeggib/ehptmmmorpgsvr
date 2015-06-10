@@ -9,8 +9,7 @@ public class Gant extends Vetement {
 	
 	private static final long serialVersionUID = 8982478495592136422L;
 	
-	public static final String[] NOM = LectureRessource
-			.lire("noms/gant.txt").split("\n");
+	public static final String[] NOM = Gant.chargerNom();
 
 	public Gant() {
 		super();
@@ -30,6 +29,15 @@ public class Gant extends Vetement {
 	/*
 	 * Methode
 	 */
+
+	public static String[] chargerNom() {
+		try {
+			return LectureRessource.lire("noms/gant.txt").split("\n");
+		} catch (Exception e) {
+			String[] result = {"Gant solide", "Gant robuste"}; 
+			return result;
+		}
+	}
 	
 	public Gant clone(){
 		return new Gant(this);

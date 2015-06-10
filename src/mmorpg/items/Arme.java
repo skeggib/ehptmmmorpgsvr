@@ -11,7 +11,7 @@ public class Arme extends Equipable {
 	 * Variable
 	 */
 	private static final long serialVersionUID = 4266819174155112530L;
-	
+
 	private int maniabilite;
 	private int impact;
 
@@ -19,8 +19,7 @@ public class Arme extends Equipable {
 	 * Constantes
 	 */
 
-	public static final String[] NOM = LectureRessource
-			.lire("noms/arme.txt").split("\n");
+	public static final String[] NOM = Arme.chargerNom();
 
 	public Arme() {
 		super();
@@ -58,14 +57,14 @@ public class Arme extends Equipable {
 			break;
 		}
 	}
-	
-	public Arme(String nom, int maniabilite, int impact){
+
+	public Arme(String nom, int maniabilite, int impact) {
 		this.setNom(nom);
 		this.setManiabilite(maniabilite);
 		this.setImpact(impact);
 	}
-	
-	public Arme(Arme ar){
+
+	public Arme(Arme ar) {
 		super(ar);
 		this.setImpact(ar.getImpact());
 		this.setManiabilite(ar.getManiabilite());
@@ -75,12 +74,21 @@ public class Arme extends Equipable {
 	/*
 	 * Methode
 	 */
-	
-	public String getType(){
+
+	public static String[] chargerNom() {
+		try {
+			return LectureRessource.lire("noms/arme.txt").split("\n");
+		} catch (Exception e) {
+			String[] result = {"Epee solide", "Epee robuste"}; 
+			return result;
+		}
+	}
+
+	public String getType() {
 		return "Arme";
 	}
-	
-	public Arme clone(){
+
+	public Arme clone() {
 		return new Arme(this);
 	}
 

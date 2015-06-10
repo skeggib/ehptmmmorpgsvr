@@ -9,9 +9,12 @@ public class Torse extends Vetement {
 
 	private static final long serialVersionUID = -6459569773295966695L;
 
-	public static final String[] NOM = LectureRessource
-			.lire("noms/torse.txt").split("\n");
+	public static final String[] NOM = Torse.chargerNom();
 
+	/*
+	 * Constructeur
+	 */
+	
 	public Torse() {
 		this.setNom(this.randNom());
 	}
@@ -19,6 +22,19 @@ public class Torse extends Vetement {
 	public Torse(Torse to) {
 		super(to);
 		this.setNom(to.getNom());
+	}
+	
+	/*
+	 * Methode
+	 */
+
+	public static String[] chargerNom() {
+		try {
+			return LectureRessource.lire("noms/torse.txt").split("\n");
+		} catch (Exception e) {
+			String[] result = {"Torse solide", "Torse robuste"}; 
+			return result;
+		}
 	}
 
 	public Torse clone() {

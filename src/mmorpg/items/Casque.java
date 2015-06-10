@@ -9,8 +9,7 @@ public class Casque extends Vetement {
 
 	private static final long serialVersionUID = -716294981418221813L;
 
-	public static final String[] NOM = LectureRessource
-			.lire("noms/casque.txt").split("\n");
+	public static final String[] NOM = Arme.chargerNom();
 
 	public Casque() {
 		this.setNom(this.randNom());
@@ -24,6 +23,15 @@ public class Casque extends Vetement {
 	/*
 	 * Methode
 	 */
+
+	public static String[] chargerNom() {
+		try {
+			return LectureRessource.lire("noms/casque.txt").split("\n");
+		} catch (Exception e) {
+			String[] result = {"Casque solide", "Casque robuste"}; 
+			return result;
+		}
+	}
 
 	public Casque clone() {
 		return new Casque(this);

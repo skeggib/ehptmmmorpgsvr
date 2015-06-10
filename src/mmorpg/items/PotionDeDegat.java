@@ -19,8 +19,7 @@ public class PotionDeDegat extends Potion {
 	 * Constantes
 	 */
 
-	public static final String[] NOM = LectureRessource
-			.lire("noms/potionDegat.txt").split("\n");
+	public static final String[] NOM = PotionDeDegat.chargerNom();
 
 	public PotionDeDegat() {
 		this.setMalusVie(new Random().nextInt(PotionDeDegat.NOM.length) + 1);
@@ -35,6 +34,15 @@ public class PotionDeDegat extends Potion {
 	/*
 	 * Methode
 	 */
+
+	public static String[] chargerNom() {
+		try {
+			return LectureRessource.lire("noms/potionDegat.txt").split("\n");
+		} catch (Exception e) {
+			String[] result = {"Potion de degat minime", "Potion de degat", "Potion de degat majeur"}; 
+			return result;
+		}
+	}
 	
 	public PotionDeDegat clone(){
 		return new PotionDeDegat(this);

@@ -12,8 +12,7 @@ public class Pantalon extends Vetement {
 	/*
 	 * Constantes
 	 */
-	public static final String[] NOM = LectureRessource
-			.lire("noms/jambe.txt").split("\n");
+	public static final String[] NOM = Pantalon.chargerNom();
 
 	/*
 	 * Constructeur
@@ -32,6 +31,15 @@ public class Pantalon extends Vetement {
 	/*
 	 * Methode
 	 */
+
+	public static String[] chargerNom() {
+		try {
+			return LectureRessource.lire("noms/jambe.txt").split("\n");
+		} catch (Exception e) {
+			String[] result = {"Pantalon solide", "Pantalon robuste"}; 
+			return result;
+		}
+	}
 	
 	public Pantalon clone(){
 		return new Pantalon(this);

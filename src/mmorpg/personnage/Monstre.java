@@ -26,8 +26,7 @@ public class Monstre extends EntiteVivante {
 
 	public static final int BASE_PA = 10;
 
-	public static final String[] NOM = LectureRessource
-			.lire("noms/monstre.txt").split("\n");
+	public static final String[] NOM = Monstre.chargerNom();
 
 	/*
 	 * Constructeur
@@ -70,6 +69,15 @@ public class Monstre extends EntiteVivante {
 	/*
 	 * Methodes
 	 */
+
+	public static String[] chargerNom() {
+		try {
+			return LectureRessource.lire("noms/monstre.txt").split("\n");
+		} catch (Exception e) {
+			String[] result = {"Gorille", "Loup", "Sorciere"}; 
+			return result;
+		}
+	}
 
 	private void statRandom() {
 		Random rand = new Random();
