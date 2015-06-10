@@ -77,7 +77,7 @@ public abstract class Vetement extends Equipable {
 	}
 
 	/*
-	 * Methode
+	 * Methode 
 	 */
 	
 	public String getType(){
