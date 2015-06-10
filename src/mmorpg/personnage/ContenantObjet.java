@@ -17,19 +17,19 @@ public abstract class ContenantObjet implements ContenirObjets, Serializable {
 
 	private static final long serialVersionUID = -2909010841238767244L;
 	
-	private ListeUnique<Item> listObjet;
+	private ListeUnique<Item> items;
 
 	/*
 	 * Constructeur
 	 */
 	public ContenantObjet() {
-		this.listObjet = new ListeUnique<Item>();
+		this.items = new ListeUnique<Item>();
 	}
 	
-	public ContenantObjet(ContenantObjet cobj){
-		this.listObjet = new ListeUnique<Item>();
-		for(int i = 0; i < cobj.getTaille(); i++){
-			this.ajouter(cobj.get(i).clone());
+	public ContenantObjet(ContenantObjet cObj){
+		this.items = new ListeUnique<Item>();
+		for(int i = 0; i < cObj.getTaille(); i++){
+			this.ajouter(cObj.get(i).clone());
 		}
 	}
 
@@ -39,25 +39,25 @@ public abstract class ContenantObjet implements ContenirObjets, Serializable {
 
 	public Item get(int index) {
 		if (index < this.getTaille() && index > -1) {
-			return this.listObjet.get(index);
+			return this.items.get(index);
 		}
 		return null;
 	}
 
 	public boolean ajouter(Item o) {
-		return this.listObjet.add(o);
+		return this.items.add(o);
 	}
 
-	public void ajouter(ListeUnique<Item> list) {
-		for(int i = 0; i < list.size(); i++){
-			this.ajouter(list.get(i));
+	public void ajouter(ListeUnique<Item> items) {
+		for(int i = 0; i < items.size(); i++){
+			this.ajouter(items.get(i));
 		}
 	}
 
 	public boolean retirer(Item o) {
-		if (this.listObjet.contains(o)) {
-			this.listObjet.remove(o);
-			if (!(this.listObjet.contains(o))) {
+		if (this.items.contains(o)) {
+			this.items.remove(o);
+			if (!(this.items.contains(o))) {
 				return true;
 			}
 		}
@@ -65,7 +65,7 @@ public abstract class ContenantObjet implements ContenirObjets, Serializable {
 	}
 
 	public int getTaille() {
-		return this.listObjet.size();
+		return this.items.size();
 	}
 
 	public boolean contient(Item o) {

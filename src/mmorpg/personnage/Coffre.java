@@ -18,9 +18,9 @@ public class Coffre extends ContenantObjet implements Ramassable {
 		super();
 	}
 
-	public Coffre(ListeUnique<Item> list) {
+	public Coffre(ListeUnique<Item> items) {
 		super();
-		this.ajouter(list);
+		this.ajouter(items);
 	}
 	
 	public Coffre(Coffre cof){
@@ -40,9 +40,9 @@ public class Coffre extends ContenantObjet implements Ramassable {
 		return liste;
 	}
 
-	public void ajouter(ListeUnique<Item> list) {
-		for (int i = 0; i < list.size(); i++) {
-			this.ajouter(list.get(i));
+	public void ajouter(ListeUnique<Item> items) {
+		for (int i = 0; i < items.size(); i++) {
+			this.ajouter(items.get(i));
 		}
 	}
 

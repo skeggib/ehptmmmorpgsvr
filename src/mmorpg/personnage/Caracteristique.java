@@ -51,12 +51,12 @@ public class Caracteristique implements Serializable {
 	 * Methode
 	 */
 
-	public void ajouter(Caracteristique c) {
-		this.ajouterForce(c.getForce());
-		this.ajouterAdresse(c.getAdresse());
-		this.ajouterResistance(c.getResistance());
-		this.ajouterManiabilite(c.getManiabilite());
-		this.ajouterImpact(c.getImpact());
+	public void ajouter(Caracteristique car) {
+		this.ajouterForce(car.getForce());
+		this.ajouterAdresse(car.getAdresse());
+		this.ajouterResistance(car.getResistance());
+		this.ajouterManiabilite(car.getManiabilite());
+		this.ajouterImpact(car.getImpact());
 	}
 
 	public void reinitialiser() {

@@ -58,7 +58,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 
 	private Inventaire inventaire;
 	private Equipement equipement;
-	public ListeUnique<Effet> effet;
+	public ListeUnique<Effet> effets;
 
 	/*
 	 * Constructeurs
@@ -75,7 +75,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 		this.setInventaire(new Inventaire());
 		this.setEquipement(new Equipement());
 
-		this.effet = new ListeUnique<Effet>();
+		this.effets = new ListeUnique<Effet>();
 	}
 
 	public EntiteVivante(int force, int adresse, int resistance) {
@@ -83,7 +83,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 		this.setInventaire(new Inventaire());
 		this.setEquipement(new Equipement());
 		this.setVie(EntiteVivante.MAX_VIE);
-		this.effet = new ListeUnique<Effet>();
+		this.effets = new ListeUnique<Effet>();
 
 		this.cractPrincipale = new Caracteristique();
 		this.caractEquipement = new Caracteristique();
@@ -99,7 +99,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 		this.setInventaire(new Inventaire());
 		this.setEquipement(new Equipement());
 		this.setVie(vie);
-		this.effet = new ListeUnique<Effet>();
+		this.effets = new ListeUnique<Effet>();
 
 		this.cractPrincipale = new Caracteristique();
 		this.caractEquipement = new Caracteristique();
@@ -119,9 +119,9 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 		this.setVie(etv.getVie());
 		this.setNom(etv.getNom());
 
-		this.effet = new ListeUnique<Effet>();
-		for (int i = 0; i < etv.effet.size(); i++) {
-			this.effet.add(new Effet(etv.effet.get(i)));
+		this.effets = new ListeUnique<Effet>();
+		for (int i = 0; i < etv.effets.size(); i++) {
+			this.effets.add(new Effet(etv.effets.get(i)));
 		}
 
 		this.cractPrincipale = new Caracteristique(etv.getCaractPrinc());
@@ -473,9 +473,9 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	 * @return true si l'effet a ete ajoute, false sinon
 	 */
 	public boolean ajouterEffet(Effet effet) {
-		if (!this.effet.contains(effet)) {
-			this.effet.add(effet);
-			if (this.effet.contains(effet)) {
+		if (!this.effets.contains(effet)) {
+			this.effets.add(effet);
+			if (this.effets.contains(effet)) {
 				this.majCaractEffet();
 				return true;
 			}
@@ -492,20 +492,20 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	 * @return true si l'effet a ete retirer, false sinon
 	 */
 	public boolean retirerEffet(Effet effet) {
-		if (this.effet.contains(effet)) {
-			this.effet.remove(effet);
+		if (this.effets.contains(effet)) {
+			this.effets.remove(effet);
 			this.majCaractEffet();
 		}
-		return !this.effet.contains(effet);
+		return !this.effets.contains(effet);
 	}
 
 	/**
 	 * Controlle les effets de l'entite Si l'effet prend fin, il sera supprime
 	 */
 	private void controlerEffet() {
-		for (int i = 0; i < this.effet.size(); i++) {
-			if (this.effet.get(i).decrementerTour()) {
-				this.retirerEffet(this.effet.get(i));
+		for (int i = 0; i < this.effets.size(); i++) {
+			if (this.effets.get(i).decrementerTour()) {
+				this.retirerEffet(this.effets.get(i));
 			}
 		}
 	}
@@ -572,8 +572,8 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	private void majCaractEffet() {
 		this.caractEffet.reinitialiser();
 
-		for (int i = 0; i < this.effet.size(); i++) {
-			this.effet.get(i).appliquer(this);
+		for (int i = 0; i < this.effets.size(); i++) {
+			this.effets.get(i).appliquer(this);
 		}
 	}
 
