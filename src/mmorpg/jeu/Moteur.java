@@ -75,15 +75,15 @@ public class Moteur implements Serializable {
 		this.joueur.initialiserPos(this.carte.getCase(3, 3));
 		
 		// Equipement de base
-		this.joueur.ramasserObjet(new PotionDeSoin());
-		this.joueur.ramasserObjet(new PotionDeDegat());
-		this.joueur.ramasserObjet(new PotionEffet());
-		this.joueur.ramasserObjet(new PotionDeSoin());
-		this.joueur.ramasserObjet(new PotionDeDegat());
-		this.joueur.ramasserObjet(new Casque());
-		this.joueur.ramasserObjet(new Arme());
-		this.joueur.ramasserObjet(new Pantalon());
-		this.joueur.ramasserObjet(new Pantalon());
+		this.joueur.ramasser(new PotionDeSoin());
+		this.joueur.ramasser(new PotionDeDegat());
+		this.joueur.ramasser(new PotionEffet());
+		this.joueur.ramasser(new PotionDeSoin());
+		this.joueur.ramasser(new PotionDeDegat());
+		this.joueur.ramasser(new Casque());
+		this.joueur.ramasser(new Arme());
+		this.joueur.ramasser(new Pantalon());
+		this.joueur.ramasser(new Pantalon());
 
 		/* Demander la taille de l'interface */
 

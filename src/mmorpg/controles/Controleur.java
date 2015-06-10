@@ -441,7 +441,7 @@ public class Controleur implements Serializable {
 		System.out.println("\nEffet apres equipement : ");
 		
 		Joueur copieJoueur = new Joueur(this.joueur);
-		copieJoueur.ramasserObjet(objet);
+		copieJoueur.ramasser(objet);
 		copieJoueur.equiperObjet(objet);
 
 		Caracteristique caracJoueur = this.joueur.getCaractEquip();
