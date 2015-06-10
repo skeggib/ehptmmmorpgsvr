@@ -12,7 +12,7 @@ public class Case implements Serializable {
 	
 	private ContenuCase contenu;
 	
-	public Case() { // TODO:skeggib Enlever le systeme de numeros
+	public Case() {
 		contenu = null;
 	}
 	
