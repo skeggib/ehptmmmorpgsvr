@@ -7,6 +7,7 @@ import java.util.Scanner;
 import mmorpg.affichage.InterfaceTerm;
 import mmorpg.carte.Carte;
 import mmorpg.controles.Controleur;
+import mmorpg.controles.IAMonstre;
 import mmorpg.exceptions.affichage.interfaceTerm.CantDrawInterfaceException;
 import mmorpg.fichiers.EcritureObjet;
 import mmorpg.items.Arme;
@@ -237,11 +238,8 @@ public class Moteur implements Serializable {
 			for (int i = 0; i < this.listeMonstres.size(); i++) {
 				// tourMonstres sera true si au moins un monstre aura realise
 				// une action
-				boolean resultatAction = this.listeMonstres.get(i)
-						.realiserAction(carte);
+				boolean resultatAction = IAMonstre.realiserAction(this.listeMonstres.get(i), carte, this.log);
 				tourMonstres = tourMonstres || resultatAction;
-				// System.out.println(this.listeMonstres.get(i).getNom() + " : "
-				// + this.listeMonstres.get(i).getPointAction());
 			}
 
 			// Verifier que le joueur est vivant

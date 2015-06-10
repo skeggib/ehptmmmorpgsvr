@@ -2,9 +2,7 @@ package mmorpg.personnage;
 
 import java.util.Random;
 
-import mmorpg.carte.Carte;
 import mmorpg.carte.ContenuCase;
-import mmorpg.carte.Position;
 import mmorpg.fichiers.LectureRessource;
 import mmorpg.items.Arme;
 import mmorpg.items.Casque;
@@ -185,80 +183,4 @@ public class Monstre extends EntiteVivante {
 		this.setPointAction(Monstre.BASE_PA);
 	}
 	
-	public boolean realiserAction(Carte carte) {
-		
-		if (!this.actionDisponible())
-			return false;
-		
-		if (!this.estVivant())
-			return false;
-		
-		Position pos = carte.getPosContenu(this);
-		if (pos == null)
-			return false;
-		
-		Position posJoueur = null;
-		
-		// Verifier s'il y a un joueur a coté
-		if (carte.getCase(pos.getX() - 1, pos.getY()).contientJoueur()) {
-			posJoueur = new Position(pos.getX() - 1, pos.getY());
-		}
-		else if (carte.getCase(pos.getX(), pos.getY() - 1).contientJoueur()) {
-			posJoueur = new Position(pos.getX(), pos.getY() - 1);
-		}
-		else if (carte.getCase(pos.getX() + 1, pos.getY()).contientJoueur()) {
-			posJoueur = new Position(pos.getX() + 1, pos.getY());
-		}
-		else if (carte.getCase(pos.getX(), pos.getY() + 1).contientJoueur()) {
-			posJoueur = new Position(pos.getX(), pos.getY() + 1);
-		}
-		
-		// S'il y en a un, l'attaquer
-		if (posJoueur != null) {
-			this.attaquer((Joueur)carte.getCase(posJoueur.getX(), posJoueur.getY()).getContenu());
-			return true;
-		}
-
-		// S'il y en a pas
-		else {
-			
-			// Choisir une direction au hasart
-			int direction = new Random().nextInt(3);		
-			
-			// Boucle avec 4 iterations parce qu'il y a 4 directiones possibles
-			boolean deplace = false;
-			int i = 0;
-			// Tant que le monstre ne s'est pas deplace et que les 4 direction n'ont pas ete testees
-			while (!deplace && i < 4) {
-				
-				// Se deplacer vers cette direction
-				if (direction == 0) {
-					deplace = this.seDeplacer(carte.getCase(pos.getX() - 1, pos.getY()));
-				}
-				if (direction == 1) {
-					deplace = this.seDeplacer(carte.getCase(pos.getX(), pos.getY() - 1));
-				}
-				if (direction == 2) {
-					deplace = this.seDeplacer(carte.getCase(pos.getX() + 1, pos.getY()));
-				}
-				if (direction == 3) {
-					deplace = this.seDeplacer(carte.getCase(pos.getX(), pos.getY() + 1));
-				}
-				
-				// On increment direction pour essayer de se deplacer dans une autre direction
-				if (!deplace) {
-					if (direction < 3)
-						direction ++;
-					else
-						direction = 0;
-				}
-				
-				i++;
-				
-			}
-			
-			return deplace;
-			
-		}
-	}
 }
