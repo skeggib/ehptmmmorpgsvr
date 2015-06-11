@@ -1,5 +1,7 @@
 package mmorpg.personnage;
 
+import mmorpg.items.Item;
+
 /**
  * 
  * Cette classe gere l'equipement d'une entite
@@ -21,6 +23,12 @@ public class Inventaire extends ContenantItems {
 	
 	public Inventaire(Inventaire inv){
 		super(inv);
+	}
+	
+	public void supprimer(Item obj){
+		if(this.contient(obj)){
+			this.retirer(obj);
+		}
 	}
 }
  

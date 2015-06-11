@@ -324,6 +324,10 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	public void ramasser(Ramassable r){
 		this.inventaire.ajouter(r.getContenu());
 	}
+	
+	public void supprimer(Item obj){
+		this.inventaire.supprimer(obj);
+	}
 
 	/**
 	 * Permet d'equiper un objet
