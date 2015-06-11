@@ -142,6 +142,7 @@ public class PotionEffet extends Potion {
 			cible.ajouterEffet(effet);
 
 			utilisateur.retirerObjet(this);
+			utilisateur.setPointAction(utilisateur.getPointAction() - EntiteVivante.PA_UTILISE_POTION);
 		}
 	}
 
