@@ -537,13 +537,15 @@ public class Controleur implements Serializable {
 	 * Demande la saisie d'un integer
 	 * @return L'integer saisi
 	 */
-	public static int saisieInt() {
-		int val = sc.nextInt();
-		
-		// Vider le buffer du scanner pour eviter une double saisie
-		sc.nextLine();
-		
-		return val;
+	public static int saisieInt() throws Exception{
+		try{
+			int val = sc.nextInt();			
+			return val;
+		} catch (Exception e){
+			throw new Exception("Caractere entre invalide", e);
+		} finally {
+			sc.nextLine();
+		}
 	}
 	
 	/**
@@ -557,7 +559,11 @@ public class Controleur implements Serializable {
 		int reponse;
 		
 		do {
-			reponse = Controleur.saisieInt();
+			try {
+				reponse = Controleur.saisieInt();
+			} catch (Exception e) {
+				reponse = (min - 1);
+			}
 		} while (reponse < min || reponse > max);
 		
 		return reponse;
