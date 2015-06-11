@@ -130,17 +130,19 @@ public class PotionEffet extends Potion {
 	}
 
 	public void affecterBonus(EntiteVivante utilisateur, EntiteVivante cible) {
-		Effet effet = new Effet(this.getDuree());
+		if (utilisateur.getPointAction() >= EntiteVivante.PA_UTILISE_POTION) {
+			Effet effet = new Effet(this.getDuree());
 
-		effet.ajouterForce(this.getForce());
-		effet.ajouterAdresse(this.getAdresse());
-		effet.ajouterResistance(this.getResistance());
-		effet.ajouterImpact(this.getImpact());
-		effet.ajouterManiabilite(this.getManiabilite());
+			effet.ajouterForce(this.getForce());
+			effet.ajouterAdresse(this.getAdresse());
+			effet.ajouterResistance(this.getResistance());
+			effet.ajouterImpact(this.getImpact());
+			effet.ajouterManiabilite(this.getManiabilite());
 
-		cible.ajouterEffet(effet);
+			cible.ajouterEffet(effet);
 
-		utilisateur.retirerObjet(this);
+			utilisateur.retirerObjet(this);
+		}
 	}
 
 	/*

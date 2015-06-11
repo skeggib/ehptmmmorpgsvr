@@ -58,8 +58,10 @@ public class PotionDeDegat extends Potion {
 	}
 
 	public void affecterBonus(EntiteVivante utilisateur, EntiteVivante cible) {
-		cible.retirerVie(this.getMalusVie());
-		utilisateur.retirerObjet(this);
+		if(utilisateur.getPointAction() >= EntiteVivante.PA_UTILISE_POTION){
+			cible.retirerVie(this.getMalusVie());
+			utilisateur.retirerObjet(this);
+		}
 	}
 	
 	/*
