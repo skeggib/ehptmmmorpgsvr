@@ -81,7 +81,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 
 		this.inventaire = new Inventaire();
 		this.equipement = new Equipement();
-		this.setVie(EntiteVivante.MAX_VIE);
+		this.vie = EntiteVivante.MAX_VIE;
 		this.effets = new ListeUnique<Effet>();
 
 		this.cractPrincipale = new Caracteristique();
@@ -97,7 +97,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 
 		this.inventaire = new Inventaire();
 		this.equipement = new Equipement();
-		this.setVie(vie);
+		this.vie = vie;
 		this.effets = new ListeUnique<Effet>();
 
 		this.cractPrincipale = new Caracteristique();
@@ -112,11 +112,10 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	public EntiteVivante(EntiteVivante etv) {
 		this.equipement = new Equipement(etv.getEquipement());
 		this.inventaire = new Inventaire(etv.getInventaire());
-		this.setExperience(etv.getExperience());
-		this.setNom(etv.getNom());
+		this.experience = etv.getExperience();
+		this.nom = (etv.getNom());
 		this.pointAction = etv.getPointAction();
-		this.setVie(etv.getVie());
-		this.setNom(etv.getNom());
+		this.vie = etv.getVie();
 
 		this.effets = new ListeUnique<Effet>();
 		for (int i = 0; i < etv.effets.size(); i++) {
@@ -135,6 +134,9 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	 * Methode
 	 */
 
+	/**
+	 * Augemente un niveau de force si possible
+	 */
 	public void augmenterNiveauForce() {
 		if (this.retirerXP(Joueur.expPourNiveauSuivant(this.getCaractPrinc()
 				.getForce()))) {
@@ -143,6 +145,9 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 		}
 	}
 
+	/**
+	 * Augemente un niveau d'adresse si possible
+	 */
 	public void augmenterNiveauAdresse() {
 		if (this.retirerXP(Joueur.expPourNiveauSuivant(this.getCaractPrinc()
 				.getAdresse()))) {
@@ -151,6 +156,9 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 		}
 	}
 
+	/**
+	 * Augemente un niveau de resistance si possible
+	 */
 	public void augmenterNiveauResistance() {
 		if (this.retirerXP(Joueur.expPourNiveauSuivant(this.getCaractPrinc()
 				.getResistance()))) {
@@ -159,6 +167,14 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 		}
 	}
 
+	/**
+	 * Donne le montant d'experience necessaire pour augmenter le niveau d'une
+	 * caracteristique
+	 * 
+	 * @param niveauActuel
+	 *            niveau de la caacteristique a augmenter
+	 * @return montant d'experience necessaire
+	 */
 	public static int expPourNiveauSuivant(int niveauActuel) {
 		return ((niveauActuel * niveauActuel) / 10 + 20);
 	}
@@ -182,19 +198,15 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 			} else if (this.getInventaire().getTaille() == 1) {
 				this.getEmplacement().ajoutContenu(this.getInventaire().get(0));
 			} else {
-
 				ListeUnique<Item> liste = new ListeUnique<Item>();
 				for (int i = 0; i < this.getInventaire().getTaille(); i++) {
 					liste.add(this.getInventaire().get(i));
 				}
-
 				Coffre coffre = new Coffre(liste);
-
 				this.deposerObjet(coffre, this.getEmplacement());
 			}
-
+			// On retire l'entite de la carte
 			this.emplacement = null;
-
 		}
 	}
 
@@ -602,7 +614,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	 *            Montant d'experience a ajouter
 	 */
 	public void ajouterXP(int exp) {
-		this.setExperience(this.getExperience() + exp);
+		this.experience += exp;
 	}
 
 	/**
@@ -613,7 +625,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	 */
 	public boolean retirerXP(int exp) {
 		if ((this.getExperience() - exp) >= 0) {
-			this.setExperience(this.getExperience() - exp);
+			this.experience -= exp;
 			return true;
 		}
 		return false;
@@ -694,9 +706,5 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 
 	public int getExperience() {
 		return this.experience;
-	}
-
-	private void setExperience(int experience) {
-		this.experience = experience;
 	}
 }
