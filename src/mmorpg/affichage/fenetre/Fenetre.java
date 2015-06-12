@@ -21,6 +21,13 @@ public abstract class Fenetre implements Serializable{
 	
 	public static final int LARGEUR_CADRE = 2;
 	
+	
+	
+	
+	
+	
+	
+	
 	/* --- CONTRUCTEURS --- */
 	
 	public Fenetre() {
@@ -52,6 +59,14 @@ public abstract class Fenetre implements Serializable{
 		this(w, h);
 		this.setTitre(titre);
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	/* METHODES */
 	
@@ -91,6 +106,19 @@ public abstract class Fenetre implements Serializable{
 		return rtrn;
 	}
 	
+
+	
+	public String toString() {
+		return "Fenetre : " + this.titre + "(" + this.largeur + ", " + this.hauteur + ")\n\t";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	/* GETTERS / SETTERS */
 	
 	public void setTaille(int w, int h) {
@@ -117,10 +145,6 @@ public abstract class Fenetre implements Serializable{
 	
 	public int getHauteur() {
 		return this.hauteur;
-	}
-	
-	public String toString() {
-		return "Fenetre : " + this.titre + "(" + this.largeur + ", " + this.hauteur + ")\n\t";
 	}
 
 	public int getPosX() {

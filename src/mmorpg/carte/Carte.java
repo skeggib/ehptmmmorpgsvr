@@ -16,6 +16,14 @@ public class Carte implements Serializable{
 	
 	private Case[][] cases;
 	
+	
+	
+	
+	
+	
+	
+	/* --- CONTRUCTEURS --- */
+	
 	/**
 	 * Constructeur vide
 	 */
@@ -41,6 +49,15 @@ public class Carte implements Serializable{
 		this.chargerFichier(chemin);
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	/* --- METHODES --- */
+	
 	/**
 	 * Charge une carte a partir d'un fichier
 	 * @param chemin Chemin du fichier carte a charger
@@ -58,6 +75,8 @@ public class Carte implements Serializable{
 		
 		return this.chargerString(str);
 	}
+	
+	
 	
 	/**
 	 * Charge la carte a partir d'un String
@@ -96,6 +115,8 @@ public class Carte implements Serializable{
 		return true;
 	}
 	
+	
+	
 	private void creerTableau(int hauteur, int largeur) {
 		this.largeur = largeur;
 		this.hauteur = hauteur;
@@ -107,6 +128,14 @@ public class Carte implements Serializable{
 				this.cases[i][j] = new Case();
 		}
 	}
+	
+	
+	
+	
+	
+	
+	
+	/* --- GET / SET --- */
 	
 	public Position getPosContenu(ContenuCase contenu) {
 		for (int i = 0; i < this.cases.length; i++) {

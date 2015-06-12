@@ -14,7 +14,13 @@ public class FenetreInventaire extends Fenetre {
 	
 	private Joueur joueur;
 	
-/* --- CONSTRUCTEURS --- */
+	
+	
+	
+	
+	
+	
+	/* --- CONSTRUCTEURS --- */
 	
 	public FenetreInventaire() {
 		super();
@@ -41,6 +47,14 @@ public class FenetreInventaire extends Fenetre {
 		this.setJoueur(joueur);
 		this.setTitre(titre);
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	/* --- METHODES --- */
 	
@@ -89,6 +103,8 @@ public class FenetreInventaire extends Fenetre {
 		return true;
 	}
 	
+	
+	
 	public Matrice getMatriceFen() throws CantDrawWindowException {
 		try {
 			this.dessinerInventaire();
@@ -97,6 +113,13 @@ public class FenetreInventaire extends Fenetre {
 			throw e;
 		}
 	}
+	
+	
+	
+	
+	
+	
+	
 	
 	/* --- GETTERS / SETTERS --- */
 	

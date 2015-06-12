@@ -68,9 +68,18 @@ public class InterfaceTerm implements Serializable {
 	public static final String[] TAILLES = {"large", "normal", "small"};
 	int taille;
 	
+	
+	
+	
+	
+	
+	/* --- CONTRUCTEURS --- */
+	
 	public InterfaceTerm() {
 		this(0);
 	}
+	
+	
 	
 	public InterfaceTerm(int taille) {
 		this.mode = InterfaceTerm.MODE_JEU;
@@ -79,6 +88,17 @@ public class InterfaceTerm implements Serializable {
 		this.matrice = new Matrice(this.largeur, this.hauteur);
 	}
 	
+	
+	
+	
+	
+	
+	
+	/* --- METHODES --- */
+	
+	/**
+	 * Place les fenetres en fonction de la taille de l'interface
+	 */
 	private void autoPositionTailleFen() {
 		
 		switch (InterfaceTerm.TAILLES[this.taille]) {
@@ -147,7 +167,14 @@ public class InterfaceTerm implements Serializable {
 		this.fenInventaire.setPosX(0);
 		this.fenInventaire.setPosY(0);
 	}
-
+	
+	
+	
+	/**
+	 * Affiche l'interface
+	 * @return True si l'interface a ete affichee
+	 * @throws CantDrawInterfaceException
+	 */
 	public boolean afficher() throws CantDrawInterfaceException {
 		
 		try {
@@ -166,6 +193,14 @@ public class InterfaceTerm implements Serializable {
 		return true;
 	}
 	
+	
+	
+	/**
+	 * Dessine l'interface dans la matrice
+	 * @return True si l'interface a ete dessinee
+	 * @throws ModeNotSetException
+	 * @throws CantDrawWindowException
+	 */
 	private boolean dessinerInterface() throws ModeNotSetException, CantDrawWindowException {
 				
 		try {
@@ -202,14 +237,24 @@ public class InterfaceTerm implements Serializable {
 		return true;
 	}
 	
+	
+	/**
+	 * Dessine un rectangle sur la totalite de la matrice pour la "netoyer"
+	 */
 	private void cleanInterface() {
 		this.matrice.dessinerRectangle(0, 0, this.largeur, this.hauteur, new Pixel());
 	}
 	
+	
+	/**
+	 * Efface le terminal
+	 */
 	private static void cleanTerminal() {
 		if (DetectOS.Unix())
 			System.out.print("\033[H\033[2J");
 	}
+	
+	
 	
 	public String toString() {
 		String rtrn = new String();
@@ -218,6 +263,13 @@ public class InterfaceTerm implements Serializable {
 		return rtrn;
 	}
 
+	
+	
+	
+	
+	
+	/* --- GET / SET --- */
+	
 	public void setLog(Log log) {
 		this.fenLog.setLog(log);
 	}

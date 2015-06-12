@@ -6,6 +6,12 @@ public class FenetreFinJeu extends Fenetre {
 	
 	private static final long serialVersionUID = 4813274906987852647L;
 	
+	
+	
+	
+	
+	
+	
 	/* --- CONSTRUCTEURS --- */
 
 	public FenetreFinJeu() {

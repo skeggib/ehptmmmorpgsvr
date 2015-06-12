@@ -14,6 +14,9 @@ public class Image {
 	private Pixel[][] pxls;
 	private String couleur;
 	
+	
+	
+	
 	/**
 	 * Creer l'image a partir d'un String de la forme : "abcd\nabcd\nabcd" 
 	 * qui donne l'Image :
@@ -66,6 +69,11 @@ public class Image {
 		
 		return true;
 	}
+	
+	
+	
+	
+	
 	
 	public int getHauteur() {
 		return this.hauteur;

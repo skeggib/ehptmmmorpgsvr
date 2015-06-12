@@ -31,6 +31,13 @@ public class FenetreCarte extends Fenetre {
 	private Joueur joueur;
 	private Carte carte;
 	
+	
+	
+	
+	
+	
+	
+	
 	/* --- CONSTRUCTEURS --- */
 	
 	public FenetreCarte() {
@@ -62,33 +69,18 @@ public class FenetreCarte extends Fenetre {
 		this.setTitre("Carte");
 	}
 	
+	
+	
+	
+	
+	
+	
+	
 	/* --- METHODES --- */
 	
-	private void setTaille(int taille) {
-		// Si la taille passee en parametre correspond a une case de la liste des tailles
-		if (taille >= 0 && taille < InterfaceTerm.TAILLES.length)
-			this.taille = taille;
-		else
-			this.taille = 0;
-		
-		switch (InterfaceTerm.TAILLES[this.taille]) {
-		case "large":
-			this.largeurCaseCarte = 7;
-			this.hauteurCaseCarte = 4;
-			break;
-		case "normal":
-			this.largeurCaseCarte = 5;
-			this.hauteurCaseCarte = 3;
-			break;
-		case "small":
-			this.largeurCaseCarte = 3;
-			this.hauteurCaseCarte = 2;
-			break;
-		}
-		
-		this.creerMatrice();
-	}
-	
+	/**
+	 * Creer la matrice de la fenetre (en fonction de la taille de la carte)
+	 */
 	private void creerMatrice() {
 		int largeur = this.largeurCaseCarte * FenetreCarte.NB_CASES_AFFICHEES_X;
 		if (this.espace)
@@ -100,6 +92,8 @@ public class FenetreCarte extends Fenetre {
 		
 		this.setTaille(largeur + FenetreCarte.LARGEUR_CADRE, hauteur + FenetreCarte.LARGEUR_CADRE);
 	}
+	
+	
 	
 	private boolean dessinerCarte() throws CantDrawWindowException {
 		
@@ -167,6 +161,8 @@ public class FenetreCarte extends Fenetre {
 		return true;
 	}
 	
+	
+	
 	public Matrice getMatriceFen() throws CantDrawWindowException {
 		try {
 			this.dessinerCarte();
@@ -176,7 +172,45 @@ public class FenetreCarte extends Fenetre {
 		}
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/* --- GETTERS / SETTERS --- */
+	
+	/**
+	 * Definir la taille des images de la carte
+	 * @param taille
+	 */
+	private void setTaille(int taille) {
+		// Si la taille passee en parametre correspond a une case de la liste des tailles
+		if (taille >= 0 && taille < InterfaceTerm.TAILLES.length)
+			this.taille = taille;
+		else
+			this.taille = 0;
+		
+		switch (InterfaceTerm.TAILLES[this.taille]) {
+		case "large":
+			this.largeurCaseCarte = 7;
+			this.hauteurCaseCarte = 4;
+			break;
+		case "normal":
+			this.largeurCaseCarte = 5;
+			this.hauteurCaseCarte = 3;
+			break;
+		case "small":
+			this.largeurCaseCarte = 3;
+			this.hauteurCaseCarte = 2;
+			break;
+		}
+		
+		this.creerMatrice();
+	}
 
 	public Joueur getJoueur() {
 		return this.joueur;

@@ -52,6 +52,11 @@ public class Couleur {
 	
 	private static boolean loaded = false;
 	
+	
+	
+	/**
+	 * Charge les couleurs dans les variables statiques
+	 */
 	private static void loadCouleurs() {
 		if (Couleur.loaded == false) {
 			Couleur.loaded = true;
@@ -124,6 +129,9 @@ public class Couleur {
 			}
 		}
 	}
+	
+	
+	
 	
 	/**
 	 * Renvoi le code couleur a partir du nom de cette couleur (ex: "RED")
