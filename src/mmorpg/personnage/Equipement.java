@@ -16,8 +16,11 @@ import mmorpg.items.Item;
  */
 public class Equipement implements ContenirItems, Serializable {
 
-
 	private static final long serialVersionUID = -63684723399622813L;
+
+	/*
+	 * Variable
+	 */
 
 	private ListeUnique<Equipable> equipables;
 
@@ -28,10 +31,10 @@ public class Equipement implements ContenirItems, Serializable {
 	public Equipement() {
 		this.equipables = new ListeUnique<Equipable>();
 	}
-	
-	public Equipement (Equipement eq){
+
+	public Equipement(Equipement eq) {
 		this.equipables = new ListeUnique<Equipable>();
-		for(int i = 0; i < eq.getTaille(); i++){
+		for (int i = 0; i < eq.getTaille(); i++) {
 			this.ajouter(eq.get(i).clone());
 		}
 	}

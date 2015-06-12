@@ -10,14 +10,14 @@ import java.util.Random;
  */
 public abstract class Capacite {
 
+	/*
+	 * Constante
+	 */
+	
 	private static final int DE_MAX = 6;
 	private static final int DE_MIN = 1;
 
 	private static Random rand = new Random();
-
-	private Capacite() {
-
-	}
 
 	/**
 	 * 

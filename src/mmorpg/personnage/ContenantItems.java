@@ -6,9 +6,8 @@ import mmorpg.items.Item;
 
 /**
  * 
- * La Classe ContenantObjet est la classe mere de toute les classe contenant des objets </br>
- *  - Inventaire </br>
- *  - Coffre </br>
+ * La Classe ContenantObjet est la classe mere de toute les classe contenant des
+ * objets </br> - Inventaire </br> - Coffre </br>
  * 
  * @author armya
  *
@@ -16,19 +15,24 @@ import mmorpg.items.Item;
 public abstract class ContenantItems implements ContenirItems, Serializable {
 
 	private static final long serialVersionUID = -2909010841238767244L;
+
+	/*
+	 * Variable
+	 */
 	
 	private ListeUnique<Item> items;
 
 	/*
 	 * Constructeur
 	 */
+	
 	public ContenantItems() {
 		this.items = new ListeUnique<Item>();
 	}
-	
-	public ContenantItems(ContenantItems cObj){
+
+	public ContenantItems(ContenantItems cObj) {
 		this.items = new ListeUnique<Item>();
-		for(int i = 0; i < cObj.getTaille(); i++){
+		for (int i = 0; i < cObj.getTaille(); i++) {
 			this.ajouter(cObj.get(i).clone());
 		}
 	}
@@ -49,7 +53,7 @@ public abstract class ContenantItems implements ContenirItems, Serializable {
 	}
 
 	public void ajouter(ListeUnique<Item> items) {
-		for(int i = 0; i < items.size(); i++){
+		for (int i = 0; i < items.size(); i++) {
 			this.ajouter(items.get(i));
 		}
 	}
@@ -69,26 +73,17 @@ public abstract class ContenantItems implements ContenirItems, Serializable {
 	}
 
 	public boolean contient(Item o) {
-		
+
 		boolean contient = false;
 		int i = 0;
-		
-		while(!contient && (i < this.getTaille())){
-			if(this.get(i) == o){
+
+		while (!contient && (i < this.getTaille())) {
+			if (this.get(i) == o) {
 				contient = true;
 			}
 			i++;
 		}
 		return contient;
-		
+
 	}
 }
-
-
-
-
-
-
-
-
-

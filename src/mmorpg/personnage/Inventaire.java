@@ -25,9 +25,13 @@ public class Inventaire extends ContenantItems {
 		super(inv);
 	}
 	
-	public void supprimer(Item obj){
-		if(this.contient(obj)){
-			this.retirer(obj);
+	/**
+	 * Supprime un item de l'inventaire
+	 * @param item Item a supprimer
+	 */
+	public void supprimer(Item item){
+		if(this.contient(item)){
+			this.retirer(item);
 		}
 	}
 }

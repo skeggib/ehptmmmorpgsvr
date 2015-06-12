@@ -14,6 +14,10 @@ public class Coffre extends ContenantItems implements Ramassable {
 
 	private static final long serialVersionUID = 5780310267728210810L;
 
+	/*
+	 * Constructeur
+	 */
+	
 	public Coffre() {
 		super();
 	}

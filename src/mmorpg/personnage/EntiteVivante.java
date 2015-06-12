@@ -19,6 +19,7 @@ import mmorpg.items.Item;
  *
  */
 public abstract class EntiteVivante implements ContenuCase, Serializable {
+	//TODO skeggib : UML -> suppression de presque tout les setters
 
 	/*
 	 * Constante
@@ -65,7 +66,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 
 	public EntiteVivante() {
 
-		this.setVie(EntiteVivante.MAX_VIE);
+		this.vie = EntiteVivante.MAX_VIE;
 
 		this.cractPrincipale = new Caracteristique();
 		this.caractEquipement = new Caracteristique();

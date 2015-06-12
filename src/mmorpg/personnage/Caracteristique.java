@@ -9,9 +9,13 @@ import java.io.Serializable;
  *
  */
 public class Caracteristique implements Serializable {
-
+	//TODO skeggib : UML retirer une des methodes reinitialiser()
 	private static final long serialVersionUID = 6709953235120947528L;
 
+	/*
+	 * Variable
+	 */
+	
 	private int force;
 	private int adresse;
 	private int resistance;
@@ -65,15 +69,6 @@ public class Caracteristique implements Serializable {
 		this.setResistance(0);
 		this.setManiabilite(0);
 		this.setImpact(0);
-	}
-
-	public void reinitialiser(int force, int adresse, int resistance,
-			int maniabilite, int impact) {
-		this.setForce(force);
-		this.setAdresse(adresse);
-		this.setResistance(resistance);
-		this.setManiabilite(maniabilite);
-		this.setImpact(impact);
 	}
 
 	public void ajouterForce(int force) {
