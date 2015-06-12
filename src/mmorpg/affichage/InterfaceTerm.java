@@ -58,8 +58,7 @@ public class InterfaceTerm implements Serializable {
 	// Modes dans lequels peut être l'interface
 	public static final int MODE_JEU = 1;
 	public static final int MODE_INVENTAIRE = 2;
-	public static final int MODE_PERSONNAGE = 3;
-	public static final int FIN_JEU = 4;
+	public static final int FIN_JEU = 3;
 	
 	private int mode;
 	
@@ -181,10 +180,6 @@ public class InterfaceTerm implements Serializable {
 			case InterfaceTerm.MODE_INVENTAIRE:
 				this.matrice.dessinerFenetre(this.fenInventaire);
 				this.matrice.dessinerFenetre(this.fenInfos);
-				break;
-				
-			case InterfaceTerm.MODE_PERSONNAGE:
-				// TODO:skeggib A faire
 				break;
 				
 			case InterfaceTerm.FIN_JEU:

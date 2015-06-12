@@ -160,7 +160,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 		}
 	}
 
-	public int expPourNiveauSuivant(int niveauActuel) {
+	public static int expPourNiveauSuivant(int niveauActuel) {
 		return ((niveauActuel * niveauActuel) / 10 + 20);
 	}
 

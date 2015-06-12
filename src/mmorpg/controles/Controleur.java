@@ -49,7 +49,7 @@ public class Controleur implements Serializable {
 			+ "\n\t q : Gauche"
 			+ "\n\t d : Droite"
 			+ "\n\t i : Ouvrir l'inventaire"
-			+ "\n\t p : Ouvrir la fenetre personnage"
+			+ "\n\t p : Utiliser l'experience"
 			+ "\n\t r : Retour"
 			+ "\n\t t : Terminer le tour"
 			+ "\n\t x : Quitter";
@@ -61,12 +61,6 @@ public class Controleur implements Serializable {
 			+ "\n\t d : Desequiper un objet"
 			+ "\n\t u : Uiliser un objet"
 			+ "\n\t c : Afficher les caracteristiques d'un objet de l'inventaire"
-			+ "\n\t r : Retour"
-			+ "\n\t x : Quitter";
-	
-	private static final String TEXTE_AIDE_PERSONNAGE = 
-			"Aide :"
-			+ "\n\t h : Afficher cette aide"
 			+ "\n\t r : Retour"
 			+ "\n\t x : Quitter";
 	
@@ -112,8 +106,6 @@ public class Controleur implements Serializable {
 			return this.saisieActionJeu();
 		case InterfaceTerm.MODE_INVENTAIRE:
 			return this.saisieActionInventaire();
-		case InterfaceTerm.MODE_PERSONNAGE:
-			return this.saisieActionPersonnage();
 			
 		}
 		
@@ -146,7 +138,7 @@ public class Controleur implements Serializable {
 			this.ouvrirInventaire();
 			break;
 		case 'p':
-			this.ouvrirPersonnage();
+			this.utiliserXP();
 			break;
 		case 'h':
 			this.afficherAide();
@@ -191,26 +183,6 @@ public class Controleur implements Serializable {
 		
 		return -1;
 	}
-
-	
-	
-	
-	private int saisieActionPersonnage() {
-		char car = this.saisieCar();
-		
-		switch (car) {
-		case 'h':
-			this.afficherAide();
-			break;
-		case 'r':
-			this.ouvrirJeu();
-			break;
-		case 'x':
-			return Controleur.QUITTER;
-		}
-		
-		return -1;
-	}
 	
 	
 	
@@ -234,19 +206,9 @@ public class Controleur implements Serializable {
 		case InterfaceTerm.MODE_INVENTAIRE:
 			System.out.println(Controleur.TEXTE_AIDE_INVENTAIRE);
 			break;
-		case InterfaceTerm.MODE_PERSONNAGE:
-			System.out.println(Controleur.TEXTE_AIDE_PERSONNAGE);
-			break;
 		}
 		
 		Controleur.pause();
-	}
-
-	
-
-	private boolean ouvrirPersonnage() {
-		this.inter.setMode(InterfaceTerm.MODE_PERSONNAGE);
-		return true;
 	}
 
 	
@@ -491,6 +453,57 @@ public class Controleur implements Serializable {
 		return true;
 	}
 	
+	private void utiliserXP() {
+		
+		int xp = this.joueur.getExperience();
+		
+		System.out.println("\nVous avez " + xp + " XP");
+		System.out.println("Quelle caracteristique voulez-vous agmenter ?");
+		
+		Caracteristique carac = joueur.getCaractPrinc();
+		int force = carac.getForce();
+		int xpToNextForce = Joueur.expPourNiveauSuivant(force);
+		int adresse = carac.getAdresse();
+		int xpToNextAdresse = Joueur.expPourNiveauSuivant(adresse);
+		int resistance = carac.getResistance();
+		int xpToNextResistance = Joueur.expPourNiveauSuivant(resistance);
+		
+		System.out.println("0. Aucune");
+		
+		System.out.print("1. Force " + force + " -> " + (force + 1) + " ");
+		if (xpToNextForce <= xp)
+			System.out.println("(-" + xpToNextForce + " XP)");
+		else
+			System.out.println("(Pas assez d'XP)");
+		
+		System.out.print("2. Adresse " + adresse + " -> " + (adresse + 1) + " ");
+		if (xpToNextAdresse <= xp)
+			System.out.println("(-" + xpToNextAdresse + " XP)");
+		else
+			System.out.println("(Pas assez d'XP)");
+		
+		System.out.print("3. Force " + resistance + " -> " + (resistance + 1) + " ");
+		if (xpToNextResistance <= xp)
+			System.out.println("(-" + xpToNextResistance + " XP)");
+		else
+			System.out.println("(Pas assez d'XP)");
+		
+		
+		
+		int reponse  = Controleur.saisieInt(0, 3);
+		
+		switch (reponse) {
+		case 1:
+			this.joueur.augmenterNiveauForce();
+			break;
+		case 2:
+			this.joueur.augmenterNiveauAdresse();
+			break;
+		case 3:
+			this.joueur.augmenterNiveauResistance();
+			break;
+		}
+	}
 	
 	
 	
