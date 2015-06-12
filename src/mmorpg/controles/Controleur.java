@@ -560,6 +560,7 @@ public class Controleur implements Serializable {
 		
 		do {
 			try {
+				System.out.print("(" + min + " - " + max + ") : ");
 				reponse = Controleur.saisieInt();
 			} catch (Exception e) {
 				reponse = (min - 1);
