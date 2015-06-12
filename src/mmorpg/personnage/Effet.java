@@ -26,7 +26,7 @@ public class Effet extends Caracteristique {
 	
 	public Effet(Effet ef) {
 		super(ef);
-		this.setTourRestant(ef.getTourRestant());
+		this.tourRestant = ef.getTourRestant();
 	}
 	
 	public Effet(int tourRestant) {
@@ -52,7 +52,7 @@ public class Effet extends Caracteristique {
 	}
 
 	public void reinitialiserTimer(int tourRestant){
-		this.setTourRestant(tourRestant);
+		this.tourRestant = tourRestant;
 	}
 	
 	public boolean decrementerTour() {
@@ -66,9 +66,5 @@ public class Effet extends Caracteristique {
 
 	public int getTourRestant() {
 		return this.tourRestant;
-	}
-
-	private void setTourRestant(int tourRestant) {
-		this.tourRestant = tourRestant;
 	}
 }
