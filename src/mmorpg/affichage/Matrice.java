@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import mmorpg.affichage.fenetre.Fenetre;
 import mmorpg.exceptions.affichage.fenetre.CantDrawWindowException;
+import mmorpg.os.DetectOS;
 
 public class Matrice implements Serializable{
 	
@@ -41,13 +42,27 @@ public class Matrice implements Serializable{
 	 */
 	public void afficher() {
 		
-		for (int i = 0; i < this.pxls.length; i++) {
-			for (int j = 0; j < this.pxls[i].length; j++) {
-				System.out.print(this.pxls[i][j].getPixelCouleur());
+		if (DetectOS.Unix()) {
+			for (int i = 0; i < this.pxls.length; i++) {
+				for (int j = 0; j < this.pxls[i].length; j++) {
+					System.out.print(this.pxls[i][j].getPixelCouleur());
+				}
+				System.out.println();
 			}
-			System.out.println();
 		}
 		
+		else {
+			String str = "";
+			
+			for (int i = 0; i < this.pxls.length; i++) {
+				for (int j = 0; j < this.pxls[i].length; j++) {
+					str += this.pxls[i][j].getPixelCouleur();
+				}
+				str += "\n";
+			}
+			
+			System.out.print(str);
+		}
 	}
 	
 	/**
