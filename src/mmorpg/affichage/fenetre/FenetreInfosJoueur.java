@@ -13,6 +13,13 @@ public class FenetreInfosJoueur extends Fenetre {
 	
 	Joueur joueur;
 	
+	
+	
+	
+	
+	
+	
+	
 	/* --- CONSTRUCTEURS --- */
 	
 	public FenetreInfosJoueur() {
@@ -40,6 +47,13 @@ public class FenetreInfosJoueur extends Fenetre {
 		this.setJoueur(joueur);
 		this.setTitre(titre);
 	}
+	
+	
+	
+	
+	
+	
+	
 	
 	/* --- METHODES --- */
 	
@@ -72,6 +86,8 @@ public class FenetreInfosJoueur extends Fenetre {
 		return true;
 	}
 	
+	
+	
 	public Matrice getMatriceFen() throws CantDrawWindowException {
 		try {
 			this.dessinerInfos();
@@ -80,6 +96,13 @@ public class FenetreInfosJoueur extends Fenetre {
 			throw e;
 		}
 	}
+	
+	
+	
+	
+	
+	
+	
 	
 	/* --- GETTERS / SETTERS --- */
 	

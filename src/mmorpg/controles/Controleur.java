@@ -95,7 +95,7 @@ public class Controleur implements Serializable {
 	
 	/**
 	 * Demande la saisie d'une action
-	 * @return L'int correspondant a la direction ou -1 si la saisie ne correspond pas a la demande
+	 * @return QUITTER ou TERMINER_TOUR
 	 */
 	public int saisieAction() {
 		System.out.print("Que voulez vous faire ? (tapez 'h' pour afficher l'aide) ");
@@ -115,7 +115,10 @@ public class Controleur implements Serializable {
 	
 	
 	
-	
+	/**
+	 * Demande une saisie d'action en mode JEU et effectue l'action demandee
+	 * @return QUITTER ou TERMINER_TOUR
+	 */
 	private int saisieActionJeu() {
 		if (!this.joueur.actionDisponible())
 			System.out.println("\nVous pouvez appuyer sur 't' pour terminer votre tour.");
@@ -155,7 +158,10 @@ public class Controleur implements Serializable {
 	
 	
 	
-	
+	/**
+	 * Demande une saisie d'action en mode INVENTAIRE et effectue l'action demandee
+	 * @return QUITTER ou TERMINER_TOUR
+	 */
 	private int saisieActionInventaire() {
 		char car = this.saisieCar();
 		
@@ -201,6 +207,9 @@ public class Controleur implements Serializable {
 	
 	/* --- ACTIONS --- */
 
+	/**
+	 * Affiche l'aide en fonction du mode actuel
+	 */
 	private void afficherAide() {
 		
 		switch (this.inter.getMode()) {
@@ -467,6 +476,9 @@ public class Controleur implements Serializable {
 		return true;
 	}
 	
+	
+	
+	
 	private void utiliserXP() {
 		
 		int xp = this.joueur.getExperience();
@@ -554,10 +566,18 @@ public class Controleur implements Serializable {
 		return liste;
 	}
 	
+	
+	
+	/**
+	 * Ecrit un message dans les logs (véfifie que les logs existent)
+	 * @param message
+	 */
 	private void ecrireLog(String message) {
 		if (this.log != null)
 			this.log.add(message);
 	}
+	
+	
 	
 	
 	/**
@@ -575,6 +595,9 @@ public class Controleur implements Serializable {
 		}
 	}
 	
+	
+	
+	
 	/**
 	 * Demande la saisie d'un integer securisee
 	 * @param min Minimum
@@ -585,11 +608,14 @@ public class Controleur implements Serializable {
 		
 		int reponse;
 		
+		// Tant que la reponse n'est pas correcte
 		do {
+			// Gere les exception du genre : l'utilisateur entre un caractere
 			try {
 				System.out.print("(" + min + " - " + max + ") : ");
 				reponse = Controleur.saisieInt();
 			} catch (Exception e) {
+				// On met une valeur inferieure a min pour redemander une saisie
 				reponse = (min - 1);
 			}
 		} while (reponse < min || reponse > max);
@@ -597,6 +623,8 @@ public class Controleur implements Serializable {
 		return reponse;
 		
 	}
+	
+	
 	
 	/**
 	 * Demande une saisie et retourne le premier caractere saisit
@@ -610,6 +638,10 @@ public class Controleur implements Serializable {
 			return str.toLowerCase().charAt(0);
 	}
 	
+	
+	/**
+	 * Effectue une pause dans le terminal
+	 */
 	private static void pause() {
 		System.out.println("\nAppuyez sur Entrer pour continuer...");
 		sc.nextLine();

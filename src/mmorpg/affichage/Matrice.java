@@ -14,6 +14,13 @@ public class Matrice implements Serializable{
 	private int largeur;
 	private Pixel[][] pxls;
 	
+	
+	
+	
+	
+	
+	
+	
 	/* --- CONSTRUCTEURS --- */
 	
 	/**
@@ -34,6 +41,12 @@ public class Matrice implements Serializable{
 				this.setPixel(i, j, defaultPixel);
 		}
 	}
+	
+	
+	
+	
+	
+	
 	
 	/* --- METHODES --- */
 	
@@ -65,6 +78,8 @@ public class Matrice implements Serializable{
 		}
 	}
 	
+	
+	
 	/**
 	 * Verifier si les coordonnes depassent de la carte
 	 * @param x Abcisse
@@ -78,6 +93,8 @@ public class Matrice implements Serializable{
 		
 		return false;
 	}
+	
+	
 	
 	/**
 	 * Dessine un rectangle dans la matrice
@@ -102,6 +119,8 @@ public class Matrice implements Serializable{
 		
 		return true;
 	}
+	
+	
 
 	/**
 	 * Dessine une Image dans la matrice
@@ -124,6 +143,8 @@ public class Matrice implements Serializable{
 		
 		return true;
 	}
+	
+	
 	
 	/**
 	 * Ecrit du texte dans la matrice
@@ -151,6 +172,14 @@ public class Matrice implements Serializable{
 		return true;
 	}
 	
+	
+	/**
+	 * Dessine une matrice dans la matrice
+	 * @param x
+	 * @param y
+	 * @param matrice
+	 * @return True si la matrice a ete dessinee
+	 */
 	public boolean dessinerMatrice(int x, int y, Matrice matrice) {
 		if (matrice == null)
 			return false;
@@ -168,6 +197,14 @@ public class Matrice implements Serializable{
 		return true;
 	}
 	
+	
+	
+	/**
+	 * Dessine une fenetre dans la matrice
+	 * @param fen
+	 * @return True si la fenetre a ete dessinee
+	 * @throws CantDrawWindowException
+	 */
 	public boolean dessinerFenetre(Fenetre fen) throws CantDrawWindowException {
 		if (fen == null)
 			return false;
@@ -182,15 +219,7 @@ public class Matrice implements Serializable{
 		}
 	}
 	
-	/* --- GETTERS / SETTERS --- */
-	
-	public int getHauteur() {
-		return this.hauteur;
-	}
-	
-	public int getLargeur() {
-		return this.largeur;
-	}
+
 	
 	public String toString() {
 		String rtrn = new String();
@@ -205,6 +234,23 @@ public class Matrice implements Serializable{
 		}
 		
 		return rtrn;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	/* --- GETTERS / SETTERS --- */
+	
+	public int getHauteur() {
+		return this.hauteur;
+	}
+	
+	public int getLargeur() {
+		return this.largeur;
 	}
 	
 	private boolean setPixel(int y, int x, Pixel p) {

@@ -11,6 +11,13 @@ public class FenetreLog extends Fenetre {
 	
 	Log log;
 	
+	
+	
+	
+	
+	
+	
+	
 	/* --- CONSTRUCTEURS --- */
 	
 	public FenetreLog() {
@@ -38,6 +45,14 @@ public class FenetreLog extends Fenetre {
 		this.setLog(log);
 		this.setTitre(titre);
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	/* --- METHODES --- */
 	
@@ -67,6 +82,13 @@ public class FenetreLog extends Fenetre {
 			throw e;
 		}
 	}
+	
+	
+	
+	
+	
+	
+	
 	
 	/* --- GETTERS / SETTERS --- */
 	

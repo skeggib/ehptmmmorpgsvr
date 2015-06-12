@@ -18,6 +18,13 @@ public class Pixel implements Serializable{
 	private String couleur;
 	private String couleurFond;
 	
+	
+	
+	
+	
+	
+	/* --- CONTRUCTEURS --- */
+	
 	/**
 	 * Contructeur par defaut
 	 */
@@ -26,6 +33,8 @@ public class Pixel implements Serializable{
 		this.setCouleur("WHITE");
 		this.setCouleurFond("BLACK");
 	}
+	
+	
 	
 	/**
 	 * Constructeur par parametres 
@@ -39,6 +48,8 @@ public class Pixel implements Serializable{
 		this.setCouleurFond(couleurFond);
 	}
 	
+	
+	
 	/**
 	 * Contructeur par copie
 	 * @param pixel
@@ -48,6 +59,11 @@ public class Pixel implements Serializable{
 		this.couleur = pixel.couleur;
 		this.couleurFond = pixel.couleurFond;
 	}
+	
+	
+	
+	
+	/* --- GET / SET --- */
 	
 	public void setCar(char car) {
 		this.car = car;

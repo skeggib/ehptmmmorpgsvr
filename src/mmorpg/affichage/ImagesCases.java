@@ -14,18 +14,32 @@ import mmorpg.fichiers.LectureRessource;
  */
 public abstract class ImagesCases {
 	
+	// Tableau qui va contenir les images deja chargees (pour ne pas lire le fichier a chaque fois)
 	private static Image[][] tabImg;
 	
+	
+	
+	
+	/**
+	 * Retourne l'image correspondante au contenu de la case
+	 * @param taille Taille de l'image
+	 * @param c Case
+	 * @return
+	 * @throws Exception
+	 */
 	public static Image getImage(int taille, Case c) throws Exception {
+		// Creer le tableau s'il n'existe pas
 		if (ImagesCases.tabImg == null)
 			ImagesCases.tabImg = new Image[InterfaceTerm.TAILLES.length][ContenuCase.NB_TYPES];
 		
 		if (taille < 0 || taille >= InterfaceTerm.TAILLES.length)
 			return null;
-
+		
+		// Si la case est null on creer une case par defaut
 		if (c == null)
 			c = new Case();
 		
+		// Si la case contient null on lui donne un type Inconnu
 		if (c.getContenu() == null)
 			c.ajoutContenu(new Inconnu());
 		
@@ -34,8 +48,12 @@ public abstract class ImagesCases {
 		if (num < 0 || num >= ImagesCases.tabImg[taille].length)
 			return null;
 
+		// Si l'image existe deja dans le tableau
 		if (ImagesCases.tabImg[taille][num] != null)
 			return ImagesCases.tabImg[taille][num];
+		
+		
+		// Si non on charge l'image
 		
 		Image rtrn = new Image();
 		
