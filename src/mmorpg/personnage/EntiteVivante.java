@@ -9,7 +9,6 @@ import mmorpg.items.Arme;
 import mmorpg.items.Equipable;
 import mmorpg.items.Item;
 
-
 /**
  * 
  * La Classe EntiteVivante est la classe mere de toute entite contenu dans le
@@ -72,16 +71,16 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 		this.caractEquipement = new Caracteristique();
 		this.caractEffet = new Caracteristique();
 
-		this.setInventaire(new Inventaire());
-		this.setEquipement(new Equipement());
+		this.inventaire = new Inventaire();
+		this.equipement = new Equipement();
 
 		this.effets = new ListeUnique<Effet>();
 	}
 
 	public EntiteVivante(int force, int adresse, int resistance) {
 
-		this.setInventaire(new Inventaire());
-		this.setEquipement(new Equipement());
+		this.inventaire = new Inventaire();
+		this.equipement = new Equipement();
 		this.setVie(EntiteVivante.MAX_VIE);
 		this.effets = new ListeUnique<Effet>();
 
@@ -96,8 +95,8 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 
 	public EntiteVivante(int force, int adresse, int resistance, int vie) {
 
-		this.setInventaire(new Inventaire());
-		this.setEquipement(new Equipement());
+		this.inventaire = new Inventaire();
+		this.equipement = new Equipement();
 		this.setVie(vie);
 		this.effets = new ListeUnique<Effet>();
 
@@ -111,11 +110,11 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	}
 
 	public EntiteVivante(EntiteVivante etv) {
-		this.setEquipement(new Equipement(etv.getEquipement()));
-		this.setInventaire(new Inventaire(etv.getInventaire()));
+		this.equipement = new Equipement(etv.getEquipement());
+		this.inventaire = new Inventaire(etv.getInventaire());
 		this.setExperience(etv.getExperience());
 		this.setNom(etv.getNom());
-		this.setPointAction(etv.getPointAction());
+		this.pointAction = etv.getPointAction();
 		this.setVie(etv.getVie());
 		this.setNom(etv.getNom());
 
@@ -181,8 +180,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 			if (this.getInventaire().getTaille() == 0) {
 
 			} else if (this.getInventaire().getTaille() == 1) {
-				this.getEmplacement().ajoutContenu(
-						this.getInventaire().get(0));
+				this.getEmplacement().ajoutContenu(this.getInventaire().get(0));
 			} else {
 
 				ListeUnique<Item> liste = new ListeUnique<Item>();
@@ -195,7 +193,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 				this.deposerObjet(coffre, this.getEmplacement());
 			}
 
-			this.setEmplacement(null);
+			this.emplacement = null;
 
 		}
 	}
@@ -211,10 +209,9 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 		if (this.deplacementPossible()) {
 			if (destination.ajoutContenu(this)) {
 				this.emplacement.supprContenu();
-				this.setEmplacement(destination);
+				this.emplacement = destination;
 
-				this.setPointAction(this.getPointAction()
-						- EntiteVivante.PA_DEPLACEMENT);
+				this.pointAction -= EntiteVivante.PA_DEPLACEMENT;
 				return (this.getEmplacement() == destination);
 			}
 		}
@@ -230,7 +227,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	 */
 	public boolean initialiserPos(Case position) {
 		if (this.getEmplacement() == null) {
-			this.setEmplacement(position);
+			this.emplacement = position;
 			if (this.getEmplacement() == position) {
 				return position.ajoutContenu(this);
 			}
@@ -249,13 +246,17 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	 */
 	public int attaquer(EntiteVivante cible) {
 		if (this.attaquePossible()) {
+			// retrait des point d'action a l'entite
+			this.pointAction -= EntiteVivante.PA_ATTAQUE;
+
 			// Caracteristique de la cible et de l'attaquant
 			Caracteristique cCible = cible.getCaractTotal();
 			Caracteristique cThis = this.getCaractTotal();
 
 			int esquiveCible = Capacite.getRandomEsquive(cCible.getAdresse(),
 					cible.getEncombrement());
-			int initiativeThis = Capacite.getRandomInitiative(cThis.getAdresse(), this.getEncombrement());
+			int initiativeThis = Capacite.getRandomInitiative(
+					cThis.getAdresse(), this.getEncombrement());
 
 			if ((new Random().nextInt(100) + 1) > (esquiveCible - initiativeThis)) {
 				int defenseCible = Capacite.getRandomDefense(cCible
@@ -264,8 +265,8 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 				int degatThis = Capacite.getRandomDegat(cThis.getForce(),
 						cThis.getImpact());
 
-				int attaqueThis = Capacite.getRandomAttaque(
-						cThis.getAdresse(), cThis.getManiabilite());
+				int attaqueThis = Capacite.getRandomAttaque(cThis.getAdresse(),
+						cThis.getManiabilite());
 
 				int degatSubit = degatThis
 						* ((100 - defenseCible) + attaqueThis) / 100;
@@ -281,19 +282,11 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 						this.ajouterXP(this.calculerExpVictoire(cible));
 					}
 
-					this.setPointAction(this.getPointAction()
-							- EntiteVivante.PA_ATTAQUE);
 					return vieEnMoins;
 				}
 			} else {
-
-				this.setPointAction(this.getPointAction()
-						- EntiteVivante.PA_ATTAQUE);
 				return -1;
 			}
-
-			this.setPointAction(this.getPointAction()
-					- EntiteVivante.PA_ATTAQUE);
 		}
 		return 0;
 	}
@@ -315,21 +308,25 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 
 		return (int) (ratio * EntiteVivante.XP_VICTOIRE);
 	}
-	
+
 	/**
-	 * Permet de ramasser le contenu (Objet) d'une classe implementant l'interface Ramassable
+	 * Permet de ramasser le contenu (Objet) d'une classe implementant
+	 * l'interface Ramassable
 	 * 
-	 * @param r L'objet qui contient le contenu (objet)
+	 * @param r
+	 *            L'objet qui contient le contenu (objet)
 	 */
-	public void ramasser(Ramassable r){
+	public void ramasser(Ramassable r) {
 		this.inventaire.ajouter(r.getContenu());
 	}
-	
+
 	/**
 	 * Permet de suppriemr un Item contenu dans l'inventaire
-	 * @param obj Item a retirer
+	 * 
+	 * @param obj
+	 *            Item a retirer
 	 */
-	public void supprimer(Item obj){
+	public void supprimer(Item obj) {
 		this.inventaire.supprimer(obj);
 	}
 
@@ -527,10 +524,20 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 		return (this.deplacementPossible() && this.attaquePossible());
 	}
 
+	/**
+	 * Controle si un deplacement est possible
+	 * 
+	 * @return true si c'est possible, false sinon
+	 */
 	private boolean deplacementPossible() {
 		return (this.getPointAction() >= EntiteVivante.PA_DEPLACEMENT);
 	}
 
+	/**
+	 * Controle si une attaque est possible
+	 * 
+	 * @return true si c'est possible, false sinon
+	 */
 	private boolean attaquePossible() {
 		return (this.getPointAction() >= EntiteVivante.PA_ATTAQUE);
 	}
@@ -559,6 +566,9 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 		return c;
 	}
 
+	/**
+	 * Fait recuperer les points d'actions au l'entite
+	 */
 	public abstract void recupererPA();
 
 	/**
@@ -585,10 +595,22 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 		}
 	}
 
+	/**
+	 * Ajoute de l'experience a l'EntiteVivante
+	 * 
+	 * @param exp
+	 *            Montant d'experience a ajouter
+	 */
 	public void ajouterXP(int exp) {
 		this.setExperience(this.getExperience() + exp);
 	}
 
+	/**
+	 * Retire de l'experience a l'EntiteVivante
+	 * 
+	 * @param exp
+	 *            Montant d'experience a retirer
+	 */
 	public boolean retirerXP(int exp) {
 		if ((this.getExperience() - exp) >= 0) {
 			this.setExperience(this.getExperience() - exp);
@@ -597,6 +619,12 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 		return false;
 	}
 
+	/**
+	 * Encombrement (Caracteristique) en fonction du nombre d'objet dans
+	 * l'equipement
+	 * 
+	 * @return Montant de l'encombrement du joueur
+	 */
 	public int getEncombrement() {
 		return (this.getEquipement().getTaille() * 2);
 	}
@@ -618,7 +646,11 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	}
 
 	public void setPointAction(int pointAction) {
-		this.pointAction = pointAction;
+		if ((this.pointAction - pointAction) >= 0) {
+			this.pointAction = pointAction;
+		} else {
+			this.pointAction = 0;
+		}
 	}
 
 	public int getVie() {
@@ -640,30 +672,12 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 		return this.inventaire;
 	}
 
-	private void setInventaire(Inventaire inventaire) {
-		if (this.inventaire == null) {
-			this.inventaire = inventaire;
-		}
-	}
-
 	public Equipement getEquipement() {
 		return this.equipement;
 	}
 
-	private void setEquipement(Equipement equipement) {
-		if (this.equipement == null) {
-			this.equipement = equipement;
-		}
-	}
-
 	public Case getEmplacement() {
 		return this.emplacement;
-	}
-
-	private void setEmplacement(Case emplacement) {
-		if (this.emplacement != emplacement) {
-			this.emplacement = emplacement;
-		}
 	}
 
 	public Caracteristique getCaractPrinc() {
