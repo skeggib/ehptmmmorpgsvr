@@ -60,6 +60,7 @@ public class Controleur implements Serializable {
 			+ "\n\t e : Equiper un objet"
 			+ "\n\t d : Desequiper un objet"
 			+ "\n\t u : Uiliser un objet"
+			+ "\n\t s : Supprimer un objet"
 			+ "\n\t c : Afficher les caracteristiques d'un objet de l'inventaire"
 			+ "\n\t r : Retour"
 			+ "\n\t x : Quitter";
@@ -170,6 +171,9 @@ public class Controleur implements Serializable {
 			break;
 		case 'u':
 			this.utiliser();
+			break;
+		case 's':
+			this.supprimer();
 			break;
 		case 'c':
 			this.afficherCaracObjet();
@@ -318,7 +322,7 @@ public class Controleur implements Serializable {
 			System.out.println(i+1 + ". " + listeCibles.get(i).getNom());
 		}
 		
-		int reponse = Controleur.saisieInt(1, listeCibles.size() + 1) - 1;
+		int reponse = Controleur.saisieInt(1, listeCibles.size()) - 1;
 		if (reponse < listeCibles.size())
 			potion.affecterBonus(this.joueur, listeCibles.get(reponse));
 		
@@ -360,6 +364,16 @@ public class Controleur implements Serializable {
 		if (objAUtiliser instanceof Potion) {
 			this.utiliserPotion((Potion)objAUtiliser);
 		}
+	}
+	
+	
+	
+	private void supprimer() {
+		System.out.print("Entrez le numero de l'objet a utiliser : ");
+		int numObj = Controleur.saisieInt(1, this.joueur.getInventaire().getTaille()) - 1;
+		// -1 car la numerotation des objets dans l'affichage commence a 1
+		Item objASupprimer = this.joueur.getInventaire().get(numObj);
+		this.joueur.supprimer(objASupprimer);
 	}
 	
 	
