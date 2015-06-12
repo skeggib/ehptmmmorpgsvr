@@ -137,7 +137,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	 */
 
 	public void augmenterNiveauForce() {
-		if (this.retirerXP(this.expPourNiveauSuivant(this.getCaractPrinc()
+		if (this.retirerXP(Joueur.expPourNiveauSuivant(this.getCaractPrinc()
 				.getForce()))) {
 			this.getCaractPrinc()
 					.setForce(this.getCaractPrinc().getForce() + 1);
@@ -145,7 +145,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	}
 
 	public void augmenterNiveauAdresse() {
-		if (this.retirerXP(this.expPourNiveauSuivant(this.getCaractPrinc()
+		if (this.retirerXP(Joueur.expPourNiveauSuivant(this.getCaractPrinc()
 				.getAdresse()))) {
 			this.getCaractPrinc().setAdresse(
 					this.getCaractPrinc().getAdresse() + 1);
@@ -153,7 +153,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	}
 
 	public void augmenterNiveauResistance() {
-		if (this.retirerXP(this.expPourNiveauSuivant(this.getCaractPrinc()
+		if (this.retirerXP(Joueur.expPourNiveauSuivant(this.getCaractPrinc()
 				.getResistance()))) {
 			this.getCaractPrinc().setResistance(
 					this.getCaractPrinc().getResistance() + 1);
