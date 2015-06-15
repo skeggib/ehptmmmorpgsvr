@@ -4,7 +4,8 @@ import mmorpg.carte.ContenuCase;
 
 /**
  * 
- * Cette classe permet la gestion d'un Joueur (EntiteVivante controllee par une personne physique)
+ * Cette classe permet la gestion d'un Joueur (EntiteVivante controllee par une
+ * personne physique)
  * 
  * @author armya
  *
@@ -41,8 +42,8 @@ public class Joueur extends EntiteVivante {
 		this.setNom(nom);
 		this.setPointAction(Joueur.BASE_PA);
 	}
-	
-	public Joueur (Joueur jo){
+
+	public Joueur(Joueur jo) {
 		super(jo);
 	}
 

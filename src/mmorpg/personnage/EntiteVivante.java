@@ -246,7 +246,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	 */
 	public int attaquer(EntiteVivante cible) {
 		if (this.attaquePossible()) {
-			//retrait des point d'action necessaire a une attaque
+			// retrait des point d'action necessaire a une attaque
 			this.setPointAction(this.getPointAction()
 					- EntiteVivante.PA_ATTAQUE);
 			// Caracteristique de la cible et de l'attaquant
