@@ -110,8 +110,8 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	}
 
 	public EntiteVivante(EntiteVivante etv) {
-		this.setEquipement(new Equipement(etv.getEquipement()));
-		this.setInventaire(new Inventaire(etv.getInventaire()));
+		this.equipement = new Equipement(etv.getEquipement());
+		this.inventaire = new Inventaire(etv.getInventaire());
 		this.experience = etv.getExperience();
 		this.setPointAction(etv.getPointAction());
 		this.vie = etv.getVie();
@@ -667,20 +667,8 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 		return this.inventaire;
 	}
 
-	private void setInventaire(Inventaire inventaire) {
-		if (this.inventaire == null) {
-			this.inventaire = inventaire;
-		}
-	}
-
 	public Equipement getEquipement() {
 		return this.equipement;
-	}
-
-	private void setEquipement(Equipement equipement) {
-		if (this.equipement == null) {
-			this.equipement = equipement;
-		}
 	}
 
 	public Case getEmplacement() {
