@@ -9,7 +9,6 @@ import mmorpg.items.Arme;
 import mmorpg.items.Equipable;
 import mmorpg.items.Item;
 
-
 /**
  * 
  * La Classe EntiteVivante est la classe mere de toute entite contenu dans le
@@ -180,8 +179,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 			if (this.getInventaire().getTaille() == 0) {
 
 			} else if (this.getInventaire().getTaille() == 1) {
-				this.getEmplacement().ajoutContenu(
-						this.getInventaire().get(0));
+				this.getEmplacement().ajoutContenu(this.getInventaire().get(0));
 			} else {
 
 				ListeUnique<Item> liste = new ListeUnique<Item>();
@@ -248,13 +246,17 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	 */
 	public int attaquer(EntiteVivante cible) {
 		if (this.attaquePossible()) {
+			//retrait des point d'action necessaire a une attaque
+			this.setPointAction(this.getPointAction()
+					- EntiteVivante.PA_ATTAQUE);
 			// Caracteristique de la cible et de l'attaquant
 			Caracteristique cCible = cible.getCaractTotal();
 			Caracteristique cThis = this.getCaractTotal();
 
 			int esquiveCible = Capacite.getRandomEsquive(cCible.getAdresse(),
 					cible.getEncombrement());
-			int initiativeThis = Capacite.getRandomInitiative(cThis.getAdresse(), this.getEncombrement());
+			int initiativeThis = Capacite.getRandomInitiative(
+					cThis.getAdresse(), this.getEncombrement());
 
 			if ((new Random().nextInt(100) + 1) > (esquiveCible - initiativeThis)) {
 				int defenseCible = Capacite.getRandomDefense(cCible
@@ -263,8 +265,8 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 				int degatThis = Capacite.getRandomDegat(cThis.getForce(),
 						cThis.getImpact());
 
-				int attaqueThis = Capacite.getRandomAttaque(
-						cThis.getAdresse(), cThis.getManiabilite());
+				int attaqueThis = Capacite.getRandomAttaque(cThis.getAdresse(),
+						cThis.getManiabilite());
 
 				int degatSubit = degatThis
 						* ((100 - defenseCible) + attaqueThis) / 100;
@@ -279,20 +281,11 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 					if (!cible.estVivant()) {
 						this.ajouterXP(this.calculerExpVictoire(cible));
 					}
-
-					this.setPointAction(this.getPointAction()
-							- EntiteVivante.PA_ATTAQUE);
 					return vieEnMoins;
 				}
 			} else {
-
-				this.setPointAction(this.getPointAction()
-						- EntiteVivante.PA_ATTAQUE);
 				return -1;
 			}
-
-			this.setPointAction(this.getPointAction()
-					- EntiteVivante.PA_ATTAQUE);
 		}
 		return 0;
 	}
@@ -314,21 +307,25 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 
 		return (int) (ratio * EntiteVivante.XP_VICTOIRE);
 	}
-	
+
 	/**
-	 * Permet de ramasser le contenu (Objet) d'une classe implementant l'interface Ramassable
+	 * Permet de ramasser le contenu (Objet) d'une classe implementant
+	 * l'interface Ramassable
 	 * 
-	 * @param r L'objet qui contient le contenu (objet)
+	 * @param r
+	 *            L'objet qui contient le contenu (objet)
 	 */
-	public void ramasser(Ramassable r){
+	public void ramasser(Ramassable r) {
 		this.inventaire.ajouter(r.getContenu());
 	}
-	
+
 	/**
 	 * Permet de suppriemr un Item contenu dans l'inventaire
-	 * @param obj Item a retirer
+	 * 
+	 * @param obj
+	 *            Item a retirer
 	 */
-	public void supprimer(Item obj){
+	public void supprimer(Item obj) {
 		this.inventaire.supprimer(obj);
 	}
 
@@ -526,10 +523,20 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 		return (this.deplacementPossible() && this.attaquePossible());
 	}
 
+	/**
+	 * Indique si un deplacement est possible
+	 * 
+	 * @return true si un deplacement est possible, false sinon
+	 */
 	private boolean deplacementPossible() {
 		return (this.getPointAction() >= EntiteVivante.PA_DEPLACEMENT);
 	}
 
+	/**
+	 * Indique si une attaque est possible
+	 * 
+	 * @return true si l'attaque est possible, false sinon
+	 */
 	private boolean attaquePossible() {
 		return (this.getPointAction() >= EntiteVivante.PA_ATTAQUE);
 	}
@@ -558,6 +565,9 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 		return c;
 	}
 
+	/**
+	 * Redonne un certain montant de PA a l'entite
+	 */
 	public abstract void recupererPA();
 
 	/**
@@ -584,10 +594,23 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 		}
 	}
 
+	/**
+	 * Ajout de l'experience a l'entite
+	 * 
+	 * @param exp
+	 *            experience a ajouter
+	 */
 	public void ajouterXP(int exp) {
 		this.experience += exp;
 	}
 
+	/**
+	 * Retirer de l'experience a l'entite si possible
+	 * 
+	 * @param exp
+	 *            experience a retirer
+	 * @return true si l'experience a ete retirer, false sinon
+	 */
 	public boolean retirerXP(int exp) {
 		if ((this.getExperience() - exp) >= 0) {
 			this.experience -= exp;
@@ -596,6 +619,11 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 		return false;
 	}
 
+	/**
+	 * Donnne l'emcombrement de l'inventaire du joueur
+	 * 
+	 * @return l'emcombrement
+	 */
 	public int getEncombrement() {
 		return (this.getEquipement().getTaille() * 2);
 	}
