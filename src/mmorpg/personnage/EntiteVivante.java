@@ -51,7 +51,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 
 	private Case emplacement;
 
-	private Caracteristique cractPrincipale;
+	private Caracteristique caractPrincipale;
 	private Caracteristique caractEquipement;
 	private Caracteristique caractEffet;
 
@@ -67,7 +67,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 
 		this.vie = EntiteVivante.MAX_VIE;
 
-		this.cractPrincipale = new Caracteristique();
+		this.caractPrincipale = new Caracteristique();
 		this.caractEquipement = new Caracteristique();
 		this.caractEffet = new Caracteristique();
 
@@ -84,13 +84,13 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 		this.vie = EntiteVivante.MAX_VIE;
 		this.effets = new ListeUnique<Effet>();
 
-		this.cractPrincipale = new Caracteristique();
+		this.caractPrincipale = new Caracteristique();
 		this.caractEquipement = new Caracteristique();
 		this.caractEffet = new Caracteristique();
 
-		this.cractPrincipale.setForce(force);
-		this.cractPrincipale.setAdresse(adresse);
-		this.cractPrincipale.setResistance(resistance);
+		this.caractPrincipale.setForce(force);
+		this.caractPrincipale.setAdresse(adresse);
+		this.caractPrincipale.setResistance(resistance);
 	}
 
 	public EntiteVivante(int force, int adresse, int resistance, int vie) {
@@ -100,13 +100,13 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 		this.vie = vie;
 		this.effets = new ListeUnique<Effet>();
 
-		this.cractPrincipale = new Caracteristique();
+		this.caractPrincipale = new Caracteristique();
 		this.caractEquipement = new Caracteristique();
 		this.caractEffet = new Caracteristique();
 
-		this.cractPrincipale.setForce(force);
-		this.cractPrincipale.setAdresse(adresse);
-		this.cractPrincipale.setResistance(resistance);
+		this.caractPrincipale.setForce(force);
+		this.caractPrincipale.setAdresse(adresse);
+		this.caractPrincipale.setResistance(resistance);
 	}
 
 	public EntiteVivante(EntiteVivante etv) {
@@ -122,7 +122,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 			this.effets.add(new Effet(etv.effets.get(i)));
 		}
 
-		this.cractPrincipale = new Caracteristique(etv.getCaractPrinc());
+		this.caractPrincipale = new Caracteristique(etv.getCaractPrinc());
 		this.caractEffet = new Caracteristique();
 		this.caractEquipement = new Caracteristique();
 
@@ -192,7 +192,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 				this.deposerObjet(coffre, this.getEmplacement());
 			}
 
-			this.setEmplacement(null);
+			this.emplacement = null;
 
 		}
 	}
@@ -208,7 +208,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 		if (this.deplacementPossible()) {
 			if (destination.ajoutContenu(this)) {
 				this.emplacement.supprContenu();
-				this.setEmplacement(destination);
+				this.emplacement = destination;
 
 				this.setPointAction(this.getPointAction()
 						- EntiteVivante.PA_DEPLACEMENT);
@@ -227,7 +227,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	 */
 	public boolean initialiserPos(Case position) {
 		if (this.getEmplacement() == null) {
-			this.setEmplacement(position);
+			this.emplacement = position;
 			if (this.getEmplacement() == position) {
 				return position.ajoutContenu(this);
 			}
@@ -558,7 +558,7 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	public Caracteristique getCaractTotal() {
 		Caracteristique c = new Caracteristique();
 
-		c.ajouter(this.cractPrincipale);
+		c.ajouter(this.caractPrincipale);
 		c.ajouter(this.caractEquipement);
 		c.ajouter(this.caractEffet);
 
@@ -687,14 +687,8 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 		return this.emplacement;
 	}
 
-	private void setEmplacement(Case emplacement) {
-		if (this.emplacement != emplacement) {
-			this.emplacement = emplacement;
-		}
-	}
-
 	public Caracteristique getCaractPrinc() {
-		return this.cractPrincipale;
+		return this.caractPrincipale;
 	}
 
 	public Caracteristique getCaractEquip() {
