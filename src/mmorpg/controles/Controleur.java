@@ -569,7 +569,7 @@ public class Controleur implements Serializable {
 	
 	
 	/**
-	 * Ecrit un message dans les logs (véfifie que les logs existent)
+	 * Ecrit un message dans les logs (vefifie que les logs existent)
 	 * @param message
 	 */
 	private void ecrireLog(String message) {
