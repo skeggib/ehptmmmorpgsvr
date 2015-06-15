@@ -61,9 +61,7 @@ public class Moteur implements Serializable {
 	}
 
 	private void init() throws Exception {
-		
-		Scanner sc = new Scanner(System.in);
-
+	
 		/* Chargement de la carte */
 
 		this.carte.chargerFichier("carte/test");
@@ -91,6 +89,7 @@ public class Moteur implements Serializable {
 		 for (int i = 0; i < InterfaceTerm.TAILLES.length; i++) {
 		 System.out.println((i+1) + ". " + InterfaceTerm.TAILLES[i]);
 		 }
+		 
 		 int taille = Controleur.saisieInt(1, 3);
 		 taille--;
 
@@ -107,8 +106,7 @@ public class Moteur implements Serializable {
 		this.control.setJoueur(this.joueur);
 		this.control.setLog(this.log);
 		this.control.setInterface(this.inter);
-		
-		sc.close();
+
 	}
 
 	private void initJoueur() {
