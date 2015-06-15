@@ -66,23 +66,23 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 
 	public EntiteVivante() {
 
-		this.setVie(EntiteVivante.MAX_VIE);
+		this.vie = EntiteVivante.MAX_VIE;
 
 		this.cractPrincipale = new Caracteristique();
 		this.caractEquipement = new Caracteristique();
 		this.caractEffet = new Caracteristique();
 
-		this.setInventaire(new Inventaire());
-		this.setEquipement(new Equipement());
+		this.inventaire = new Inventaire();
+		this.equipement = new Equipement();
 
 		this.effets = new ListeUnique<Effet>();
 	}
 
 	public EntiteVivante(int force, int adresse, int resistance) {
 
-		this.setInventaire(new Inventaire());
-		this.setEquipement(new Equipement());
-		this.setVie(EntiteVivante.MAX_VIE);
+		this.inventaire = new Inventaire();
+		this.equipement = new Equipement();
+		this.vie = EntiteVivante.MAX_VIE;
 		this.effets = new ListeUnique<Effet>();
 
 		this.cractPrincipale = new Caracteristique();
@@ -96,9 +96,9 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 
 	public EntiteVivante(int force, int adresse, int resistance, int vie) {
 
-		this.setInventaire(new Inventaire());
-		this.setEquipement(new Equipement());
-		this.setVie(vie);
+		this.inventaire = new Inventaire();
+		this.equipement = new Equipement();
+		this.vie = vie;
 		this.effets = new ListeUnique<Effet>();
 
 		this.cractPrincipale = new Caracteristique();
@@ -113,11 +113,10 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	public EntiteVivante(EntiteVivante etv) {
 		this.setEquipement(new Equipement(etv.getEquipement()));
 		this.setInventaire(new Inventaire(etv.getInventaire()));
-		this.setExperience(etv.getExperience());
-		this.setNom(etv.getNom());
+		this.experience = etv.getExperience();
 		this.setPointAction(etv.getPointAction());
-		this.setVie(etv.getVie());
-		this.setNom(etv.getNom());
+		this.vie = etv.getVie();
+		this.nom = etv.getNom();
 
 		this.effets = new ListeUnique<Effet>();
 		for (int i = 0; i < etv.effets.size(); i++) {
@@ -586,12 +585,12 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 	}
 
 	public void ajouterXP(int exp) {
-		this.setExperience(this.getExperience() + exp);
+		this.experience += exp;
 	}
 
 	public boolean retirerXP(int exp) {
 		if ((this.getExperience() - exp) >= 0) {
-			this.setExperience(this.getExperience() - exp);
+			this.experience -= exp;
 			return true;
 		}
 		return false;
@@ -680,9 +679,5 @@ public abstract class EntiteVivante implements ContenuCase, Serializable {
 
 	public int getExperience() {
 		return this.experience;
-	}
-
-	private void setExperience(int experience) {
-		this.experience = experience;
 	}
 }
