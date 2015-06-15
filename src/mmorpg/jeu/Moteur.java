@@ -62,7 +62,6 @@ public class Moteur implements Serializable {
 
 	private void init() throws Exception {
 		
-		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 
 		/* Chargement de la carte */
@@ -72,7 +71,7 @@ public class Moteur implements Serializable {
 
 		/* Creation du joueur */
 
-		this.joueur = new Joueur("Armya", 0, 0, 0);
+		this.joueur = new Joueur();
 		this.joueur.initialiserPos(this.carte.getCase(3, 3));
 		
 		// Equipement de base
@@ -92,7 +91,7 @@ public class Moteur implements Serializable {
 		 for (int i = 0; i < InterfaceTerm.TAILLES.length; i++) {
 		 System.out.println((i+1) + ". " + InterfaceTerm.TAILLES[i]);
 		 }
-		 int taille = sc.nextInt();
+		 int taille = Controleur.saisieInt(1, 3);
 		 taille--;
 
 		/* Creation de l'interface */
@@ -108,7 +107,8 @@ public class Moteur implements Serializable {
 		this.control.setJoueur(this.joueur);
 		this.control.setLog(this.log);
 		this.control.setInterface(this.inter);
-
+		
+		sc.close();
 	}
 
 	private void initJoueur() {
